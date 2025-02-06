@@ -7,5 +7,5 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
-  return <HeaderUI onMenuToggle={onMenuToggle} />;
+    return <HeaderUI onMenuToggle={onMenuToggle} />;
 };
