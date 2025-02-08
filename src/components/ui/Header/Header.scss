@@ -6,15 +6,40 @@
   z-index: 100;
 
   background: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  padding-top: 30px;
 
   &__container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
   }
-}
 
-.logo {
-  color: var(--text-primary);
+  &__logo-container {
+    margin-right: 73px;
+  }
+
+  &__nav {
+    &-list {
+      display: flex;
+      align-items: center;
+      gap: 48px
+    }
+  }
+
+  &__social-media {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-left: auto;
+
+    &-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .logo {
+    width: 150px;
+    height: 50px;
+  }
 }

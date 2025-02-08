@@ -7,64 +7,64 @@ import react from 'eslint-plugin-react';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  {
-    ignores: ['node_modules/', 'public/', 'dist/', '**/*.min.js', '**/vendor/*.js'],
-  },
+    {
+        ignores: ['node_modules/', 'public/', 'dist/', '**/*.min.js', '**/vendor/*.js'],
+    },
 
-  {
-    files: ['**/*.{js,mjs,cjs,ts,tsx,jsx}'],
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
+    {
+        files: ['**/*.{js,mjs,cjs,ts,tsx,jsx}'],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            sourceType: 'module',
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+            },
+        },
+        plugins: {
+            '@typescript-eslint': tseslint,
+            react: react,
+            'react-hooks': reactHooks,
+        },
     },
-    plugins: {
-      '@typescript-eslint': tseslint,
-      react: react,
-      'react-hooks': reactHooks,
-    },
-  },
 
-  pluginJs.configs.recommended,
+    pluginJs.configs.recommended,
 
-  {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: tsParser,
+    {
+        files: ['**/*.{ts,tsx}'],
+        languageOptions: {
+            parser: tsParser,
+        },
+        rules: {
+            ...tseslint.configs.recommended.rules,
+            '@typescript-eslint/no-unused-vars': 'warn', // Предупреждение о неиспользуемых переменных
+            '@typescript-eslint/explicit-module-boundary-types': 'off', // Отключаем требование явных типов для функций
+            '@typescript-eslint/no-explicit-any': 'warn', // Предупреждение при использовании any
+        },
     },
-    rules: {
-      ...tseslint.configs.recommended.rules,
-      '@typescript-eslint/no-unused-vars': 'warn', // Предупреждение о неиспользуемых переменных
-      '@typescript-eslint/explicit-module-boundary-types': 'off', // Отключаем требование явных типов для функций
-      '@typescript-eslint/no-explicit-any': 'warn', // Предупреждение при использовании any
-    },
-  },
 
-  {
-    files: ['**/*.{jsx,tsx}'],
-    settings: {
-      react: {
-        version: 'detect',
-      },
+    {
+        files: ['**/*.{jsx,tsx}'],
+        settings: {
+            react: {
+                version: 'detect',
+            },
+        },
+        rules: {
+            ...react.configs.recommended.rules,
+            'react/react-in-jsx-scope': 'off', // Отключаем проверку scope для React (React 17+)
+            'react/jsx-uses-react': 'off', // Отключаем проверку использования React в JSX (React 17+)
+            'react-hooks/rules-of-hooks': 'error', // Обязательное соблюдение правил хуков
+            'react-hooks/exhaustive-deps': 'warn', // Предупреждение о неполном списке зависимостей хуков
+        },
     },
-    rules: {
-      ...react.configs.recommended.rules,
-      'react/react-in-jsx-scope': 'off', // Отключаем проверку scope для React (React 17+)
-      'react/jsx-uses-react': 'off', // Отключаем проверку использования React в JSX (React 17+)
-      'react-hooks/rules-of-hooks': 'error', // Обязательное соблюдение правил хуков
-      'react-hooks/exhaustive-deps': 'warn', // Предупреждение о неполном списке зависимостей хуков
-    },
-  },
 
-  {
-    rules: {
-      indent: ['error', 2], // Использовать отступы в 2 пробела
-      semi: ['error', 'always'], // Требовать точку с запятой в конце строк
-      'no-console': 'warn', // Предупреждение при использовании console.log
-      'no-debugger': 'error', // Запретить использование debugger
+    {
+        rules: {
+            indent: ['error', 4], // Использовать отступы в 4 пробела
+            semi: ['error', 'always'], // Требовать точку с запятой в конце строк
+            'no-console': 'warn', // Предупреждение при использовании console.log
+            'no-debugger': 'error', // Запретить использование debugger
+        },
     },
-  },
 ];

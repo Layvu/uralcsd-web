@@ -1,4 +1,5 @@
 html {
+  font-size: 20px;
   box-sizing: border-box;
 }
 
@@ -11,7 +12,7 @@ html {
 body {
   margin: 0;
   margin-top: 74px; // HEADER_SIZE
-  font-family: "Lexend-Regular", sans-serif;
+  font-family: 'Lexend-Regular', sans-serif;
   font-weight: 400;
   color: var(--text-primary);
   background-color: var(--white);
@@ -70,8 +71,11 @@ h3 {
 }
 
 .container {
-  margin: 0 auto;
-  //padding: 0 120px;
-  //border: #ff4019 1px solid;
-  //max-width: 1440px;
+  @include min-max(320px, 100%);
+  // Элемент растягивается на всю ширину родителя, но не становится уже 320px
+}
+
+.wrap {
+  @include min-max(320px, 1300px);
+  // Элемент ограничен шириной 1300px, даже если экран больше
 }
