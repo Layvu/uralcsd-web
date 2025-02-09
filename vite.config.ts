@@ -10,7 +10,10 @@ import eslint from 'vite-plugin-eslint2';
 export default defineConfig({
     plugins: [
         react(),
-        eslint(),
+        eslint({
+            cache: false,
+            fix: true,
+        }),
         tsconfigPaths(),
         ViteSvgSpriteWrapper({
             icons: 'src/assets/icons/**/*.svg',

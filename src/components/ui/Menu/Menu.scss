@@ -1,0 +1,63 @@
+.menu {
+    height: 100vh;
+    width: 100%;
+
+    position: fixed;
+    top: 70px;
+    right: 0;
+    z-index: 90;
+
+    overflow-y: auto;
+
+    &__wrap {
+        position: relative;
+        background-color: var(--white);
+
+        min-height: 100%;
+        z-index: 90;
+
+        padding: 23px 8% 90px;
+    }
+
+    &__nav-list {
+        display: flex;
+        flex-direction: column;
+
+        margin-bottom: 23px;
+    }
+
+    &__nav-item {
+        font-family: 'Lexend-Medium', sans-serif;
+        font-size: 16px;
+        line-height: 178%;
+        letter-spacing: -0.04em;
+
+        width: 100%;
+
+        padding: 11px 0;
+        border-bottom: 1px solid;
+    }
+
+    // Тоже самое во многом:
+    &__logo {
+        display: block;
+        width: 197px;
+        height: 62px;
+        border-radius: 20px;
+
+        background-color: var(--dark-skeleton);
+    }
+    &__social-media {
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+
+        margin-top: 40px;
+    }
+    &__social-media-item {
+        width: 30px;
+        height: 30px;
+
+        color: var(--dark-skeleton);
+    }
+}

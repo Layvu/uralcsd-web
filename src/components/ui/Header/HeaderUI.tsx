@@ -1,5 +1,6 @@
 import './Header.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { HeaderUIProps } from './type';
 import { SvgIcon } from '@components/Shared/SvgIcon';
@@ -8,28 +9,28 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle }) => {
     return (
         <header className="header">
             <div className="wrap header__wrap">
-                <button className="btn-reset logo header__logo" onClick={onMenuToggle}>
+                <Link to="/" className="logo header__logo" onClick={onMenuToggle}>
                     <SvgIcon id="ellipseMock" title="Logotype" />
-                </button>
+                </Link>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
                         <li className="header__nav-item">
-                            <a href="/">Афиша</a>
+                            <Link to="/afisha">Афиша</Link>
                         </li>
                         <li className="header__nav-item">
-                            <a href="/">Спектакли</a>
+                            <Link to="/performances">Спектакли</Link>
                         </li>
                         <li className="header__nav-item">
-                            <a href="/">О театре</a>
+                            <Link to="/about">О театре</Link>
                         </li>
                         <li className="header__nav-item">
-                            <a href="/">Команда</a>
+                            <Link to="/team">Команда</Link>
                         </li>
                         <li className="header__nav-item">
-                            <a href="/">Проекты</a>
+                            <Link to="/projects">Проекты</Link>
                         </li>
                         <li className="header__nav-item">
-                            <a href="/">Контакты</a>
+                            <Link to="/contacts">Контакты</Link>
                         </li>
                     </ul>
                 </nav>
