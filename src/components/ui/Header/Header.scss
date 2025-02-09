@@ -33,7 +33,7 @@
         margin-left: auto;
     }
 
-    &__social-media-icon {
+    &__social-media-item {
         width: 30px;
         height: 30px;
 
@@ -45,12 +45,4 @@
         height: 50px;
         color: var(--skeleton);
     }
-}
-
-// TODO: SvgIcon component
-svg {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
 }

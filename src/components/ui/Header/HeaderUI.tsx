@@ -1,17 +1,15 @@
 import './Header.scss';
-
 import React from 'react';
 
 import { HeaderUIProps } from './type';
+import { SvgIcon } from '@components/Shared/SvgIcon';
 
 export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle }) => {
     return (
         <header className="header">
             <div className="wrap header__wrap">
                 <button className="btn-reset logo header__logo" onClick={onMenuToggle}>
-                    <svg aria-hidden="true">
-                        <use xlinkHref="img/sprite.svg#ellipseMock"></use>
-                    </svg>
+                    <SvgIcon id="ellipseMock" title="Logotype" />
                 </button>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
@@ -37,14 +35,10 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle }) => {
                 </nav>
                 <div className="header__social-media">
                     <a href="#" className="header__social-media-item">
-                        <svg className="header__social-media-icon" aria-hidden="true">
-                            <use xlinkHref="img/sprite.svg#ellipseMock"></use>
-                        </svg>
+                        <SvgIcon id="ellipseMock" title="VK icon" />
                     </a>
                     <a href="#" className="header__social-media-item">
-                        <svg className="header__social-media-icon" aria-hidden="true">
-                            <use xlinkHref="img/sprite.svg#ellipseMock"></use>
-                        </svg>
+                        <SvgIcon id="ellipseMock" title="Telegram icon" />
                     </a>
                 </div>
             </div>
