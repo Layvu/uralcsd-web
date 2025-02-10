@@ -22,7 +22,7 @@ const App: React.FC = () => {
             <Router>
                 <div className="site-container">
                     <Header onMenuToggle={toggleMenu} />
-                    {isMenuOpen && <Menu />}
+                    <Menu isOpen={isMenuOpen} />
 
                     <main className="main">
                         <Routes>
