@@ -1,0 +1,36 @@
+.latest-performances{
+    margin-top: 75px;
+    margin-bottom: 195px;
+
+    &__title{
+        font-size: 36px;
+    }
+
+    &__list{
+        display: grid;
+        gap: 35px;
+        margin-top: 25px;
+        height: 450px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    }
+
+    &__card{
+        height: 100%;
+        border-radius: 18px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--skeleton);
+    }
+
+    &__button{
+        margin-top: 38px;
+        border-radius: 30px;
+        border: 0px solid transparent;
+        width: calc((100% - 70px) / 3); // for > 1000px
+        height: 50px;
+
+        background-color: var(--dark-skeleton);
+    }
+}
