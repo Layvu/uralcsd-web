@@ -11,7 +11,7 @@ export const Afisha: React.FC = () => {
 
     return (
         <section className="wrap afisha">
-            <MainTitle className='afisha__main-title'>Аssфиша</MainTitle>
+            <MainTitle className='afisha__main-title'>Афиша</MainTitle>
             <MonthFilter
                 months={months} 
                 activeIndex={activeMonthIndex} 

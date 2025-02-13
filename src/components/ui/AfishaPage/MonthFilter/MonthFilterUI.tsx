@@ -5,7 +5,7 @@ import './Month-filter.scss';
 
 export const MonthFilterUI: React.FC<MonthFilterProps> = ({ months, activeIndex, setActiveIndex }) => {
     return (
-        <div className="month-filter">
+        <div className="afisha__month-filter month-filter"> 
             {months.map((month, index) => (
                 <button
                     key={index}

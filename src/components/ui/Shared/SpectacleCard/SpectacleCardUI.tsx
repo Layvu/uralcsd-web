@@ -7,7 +7,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = () => {
     return (
         <>
             {/* Прикручивать контекст */}
-            <div>SpectacleUI</div> 
+            <div className='spectacle-card'>SpectacleUI</div> 
         </>
     );
 };
