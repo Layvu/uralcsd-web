@@ -1,0 +1,16 @@
+.month-filter{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+
+    &__button{
+        border-radius: 30px;
+        padding: 13px 87px;
+       
+        background-color: var(--white);
+
+        &--active{
+            background-color: var(--skeleton);
+        }
+    }
+}

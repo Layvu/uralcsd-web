@@ -11,7 +11,7 @@ html {
 
 body {
     margin: 0;
-    margin-top: 74px; // HEADER_SIZE
+    margin-top: 80px; // HEADER_SIZE
     font-family: 'Lexend-Regular', sans-serif;
     font-weight: 400;
     color: var(--text-primary);
@@ -39,6 +39,9 @@ ul {
 
 button {
     padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
 h1,h2,h3,h4,h5,h6 {
