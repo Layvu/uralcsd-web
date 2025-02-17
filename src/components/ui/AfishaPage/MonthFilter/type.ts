@@ -1,5 +1,5 @@
-export interface MonthFilterProps {
-  months: string[];
-  activeMonthIndex: number;
-  setActiveMonthIndex: (index: number) => void;
+import { BaseAfishaProps } from "types/BaseAfishaProps";
+
+export interface MonthFilterProps extends BaseAfishaProps {
+    
 }

@@ -1,0 +1,1 @@
+export { TeamPageUI } from "./TeamPageUI";

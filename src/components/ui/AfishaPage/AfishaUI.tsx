@@ -6,14 +6,14 @@ import React from 'react';
 
 import './afisha.scss';
 
-export const AfishaUI: React.FC<AfishaProps> = ({months, activeMonthIndex, setActiveMonthIndex}) => {
+export const AfishaUI: React.FC<AfishaProps> = ({months, activeMonthIndex, onMonthChange}) => {
     return (
         <section className="wrap afisha">
             <MainTitle className='afisha__main-title'>Афиша</MainTitle>
             <MonthFilter
                 months={months} 
                 activeMonthIndex={activeMonthIndex} 
-                setActiveMonthIndex={setActiveMonthIndex} 
+                onMonthChange={onMonthChange} 
             />
 
             <ul className="afisha__schedule">
