@@ -5,8 +5,8 @@ import { Header } from '@components/Header';
 import { Footer } from '@components/Footer';
 import { Menu } from '@components/Menu';
 
-import { Home } from '@pages/home';
-import { Afisha } from '@pages/afisha';
+import { HomePage } from '@pages/HomePage';
+import { AfishaPage } from '@pages/AfishaPage';
 import { Performances } from '@pages/performances';
 import { About } from '@pages/about';
 import { Team } from '@pages/team';
@@ -26,8 +26,8 @@ const App: React.FC = () => {
 
                     <main className="main">
                         <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/afisha" element={<Afisha />} />
+                            <Route path="/" element={<HomePage />} />
+                            <Route path="/afisha" element={<AfishaPage />} />
                             <Route path="/performances" element={<Performances />} />
                             <Route path="/about" element={<About />} />
                             <Route path="/team" element={<Team />} />

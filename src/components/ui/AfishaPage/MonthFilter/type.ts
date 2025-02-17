@@ -1,5 +1,5 @@
 export interface MonthFilterProps {
   months: string[];
-  activeIndex: number;
-  setActiveIndex: (index: number) => void;
+  activeMonthIndex: number;
+  setActiveMonthIndex: (index: number) => void;
 }

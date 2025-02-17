@@ -1,21 +1,19 @@
 import { DaySchedule } from '@components/AfishaPage/DaySchedule';
 import { MonthFilter } from '@components/AfishaPage/MonthFilter';
 import { MainTitle } from '@components/Shared/MainTitle';
-import React, { useState } from 'react';
+import React from 'react';
 
 import './afisha.scss';
+import { AfishaProps } from './type';
 
-export const Afisha: React.FC = () => {
-    const [activeMonthIndex, setActiveMonthIndex] = useState(0);
-    const months = ["Февраль", "Март", "Апрель"]; 
-
+export const AfishaUI: React.FC<AfishaProps> = ({months, activeMonthIndex, setActiveMonthIndex}) => {
     return (
         <section className="wrap afisha">
             <MainTitle className='afisha__main-title'>Афиша</MainTitle>
             <MonthFilter
                 months={months} 
-                activeIndex={activeMonthIndex} 
-                setActiveIndex={setActiveMonthIndex} 
+                activeMonthIndex={activeMonthIndex} 
+                setActiveMonthIndex={setActiveMonthIndex} 
             />
 
             <ul className="afisha__schedule">
