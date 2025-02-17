@@ -1,0 +1,1 @@
+export  { MainTitle } from "@components/Shared/MainTitle/MainTitle";
