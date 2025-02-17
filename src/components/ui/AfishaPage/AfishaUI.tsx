@@ -1,10 +1,10 @@
 import { DaySchedule } from '@components/AfishaPage/DaySchedule';
 import { MonthFilter } from '@components/AfishaPage/MonthFilter';
 import { MainTitle } from '@components/Shared/MainTitle';
+import { AfishaProps } from './type';
 import React from 'react';
 
 import './afisha.scss';
-import { AfishaProps } from './type';
 
 export const AfishaUI: React.FC<AfishaProps> = ({months, activeMonthIndex, setActiveMonthIndex}) => {
     return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AfishaUI } from '@components/ui/AfishaPage/Afisha';
+import { AfishaUI } from '@components/ui/AfishaPage';
 
 export const Afisha: React.FC = () => {
     const [activeMonthIndex, setActiveMonthIndex] = useState(0);
