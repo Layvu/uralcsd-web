@@ -56,6 +56,8 @@ export default [
             'react/jsx-uses-react': 'off', // Отключаем проверку использования React в JSX (React 17+)
             'react-hooks/rules-of-hooks': 'error', // Обязательное соблюдение правил хуков
             'react-hooks/exhaustive-deps': 'warn', // Предупреждение о неполном списке зависимостей хуков
+            'react/display-name': 'off', // Отключаем требование displayName
+            'react/prop-types': 'off', // Отключаем проверку prop-types (используем TypeScript)
         },
     },
 

@@ -1,0 +1,1 @@
+export { TeamCardBriefUI } from "./TeamCardBriefUI";

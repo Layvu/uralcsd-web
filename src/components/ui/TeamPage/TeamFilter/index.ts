@@ -1,1 +1,1 @@
-export { TeamFilter } from "./TeamFilter";
+export { TeamFilterUI } from "./TeamFilterUI";

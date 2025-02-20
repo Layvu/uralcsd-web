@@ -1,9 +1,10 @@
+import { Team } from '@components/TeamPage';
 import React from 'react';
 
 export const TeamPage: React.FC = () => {
     return (
         <>
-            <h1>Team page</h1>
+            <Team />
         </>
     );
 };

@@ -5,6 +5,6 @@ import { MainTitleProps } from './type';
 import './main-title.scss';
 
 
-export const MainTitleUI: React.FC<MainTitleProps> = ({ className, ...props }) => {
+export const MainTitleUI: React.FC<MainTitleProps> = React.memo(({ className, ...props }) => {
     return <h1 className={clsx('main-title', className)} {...props} />;
-};
+});
