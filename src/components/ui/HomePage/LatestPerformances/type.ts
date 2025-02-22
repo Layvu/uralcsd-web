@@ -1,3 +1,5 @@
+import { Performance } from 'types/performance';
+
 export interface LatestPerformancesProps {
-  // Добавь пропсы здесь
+    latestPerformances: Performance[];
 }
