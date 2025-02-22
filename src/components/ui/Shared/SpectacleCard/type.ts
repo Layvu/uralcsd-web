@@ -1,3 +1,3 @@
-export interface SpectacleCardProps {
-  // Добавь пропсы здесь
-}
+import { Performance } from 'types/performance';
+
+export type SpectacleCardProps = Performance;
