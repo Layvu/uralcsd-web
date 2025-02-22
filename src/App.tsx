@@ -10,7 +10,7 @@ import { AfishaPage } from '@pages/AfishaPage';
 import { PerformancesPage } from '@pages/PerformancesPage';
 import { PerformancePage } from '@pages/PerformancePage';
 import { About } from '@pages/about';
-import { Team } from '@pages/team';
+import { TeamPage } from '@pages/TeamPage';
 import { Projects } from '@pages/projects';
 import { Contacts } from '@pages/contacts';
 
@@ -32,7 +32,7 @@ const App: React.FC = () => {
                             <Route path="/performances" element={<PerformancesPage />} />
                             <Route path="/performances/:slug" element={<PerformancePage />} />
                             <Route path="/about" element={<About />} />
-                            <Route path="/team" element={<Team />} />
+                            <Route path="/team" element={<TeamPage />} />
                             <Route path="/projects" element={<Projects />} />
                             <Route path="/contacts" element={<Contacts />} />
                         </Routes>

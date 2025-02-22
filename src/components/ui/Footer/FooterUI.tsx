@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { SvgIcon } from '@components/Shared/SvgIcon';
 //import { Social } from "@components/Shared/Social";
 
-export const FooterUI: React.FC = () => {
+export const FooterUI: React.FC = React.memo(() => {
     return (
         <footer className="footer">
             <div className="wrap footer__wrap">
@@ -64,4 +64,4 @@ export const FooterUI: React.FC = () => {
             </div>
         </footer>
     );
-};
+});

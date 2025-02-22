@@ -1,7 +1,7 @@
 import './SvgIcon.scss';
 
 import React from 'react';
-import { SvgIconProps } from 'types/svgIcon';
+import { SvgIconProps } from './type';
 
 export const SvgIconUI: React.FC<SvgIconProps> = ({ id, className, title }) => (
     <svg className={className} role={title ? 'img' : undefined} aria-label={title}>

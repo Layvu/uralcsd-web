@@ -1,5 +1,5 @@
-import { MonthFilterProps } from "./MonthFilter/type";
+import { BaseAfishaProps } from "types/BaseAfishaProps";
 
-export interface AfishaProps extends MonthFilterProps {
-    
+export interface AfishaProps extends BaseAfishaProps {
+
 }
