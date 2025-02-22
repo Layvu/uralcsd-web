@@ -1,0 +1,40 @@
+.performance-info .default-banner {
+    width: 100%;
+    overflow: hidden;
+
+    margin-top: 40px;
+
+    &__container {
+        position: relative;
+        height: 458px;
+        padding: 0;
+
+        overflow: visible;
+    }
+
+    &__slider {
+        height: 100%;
+        text-align: center;
+
+        overflow: visible;
+    }
+
+    &__slider-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+
+        border-radius: 20px;
+
+        opacity: 0.5;
+        &.swiper-slide-active {
+            opacity: 1;
+        }
+
+        &--placeholder {
+            background-color: var(--skeleton);
+        }
+    }
+}

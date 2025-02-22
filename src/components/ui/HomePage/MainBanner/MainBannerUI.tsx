@@ -1,28 +1,31 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import React from 'react';
-import { Navigation} from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 
-import './main-banner.scss'; 
+import './main-banner.scss';
+import { MainBannerProps } from './type';
 
-export const MainBannerUI: React.FC = () => {
+export const MainBannerUI: React.FC<MainBannerProps> = ({ premierePerformances }) => {
     return (
-        <section className='main-banner wrap'>
+        <section className="main-banner wrap">
             <Swiper
                 spaceBetween={50}
                 slidesPerView={1}
                 modules={[Navigation]}
                 navigation
                 loop={true}
-                
                 className="main-banner__slider"
             >
-                <SwiperSlide tag='div' className='main-banner__slider-item main-banner__slider-item--placeholder'>Slide 1</SwiperSlide>
-                <SwiperSlide tag='div' className='main-banner__slider-item main-banner__slider-item--placeholder'>Slide 2</SwiperSlide>
-                <SwiperSlide tag='div' className='main-banner__slider-item main-banner__slider-item--placeholder'>Slide 3</SwiperSlide>
-                <SwiperSlide tag='div' className='main-banner__slider-item main-banner__slider-item--placeholder'>Slide 4</SwiperSlide>
+                {premierePerformances.map((performance, index) => (
+                    <SwiperSlide
+                        key={index}
+                        tag="div"
+                        className="main-banner__slider-item main-banner__slider-item--placeholder"
+                    >
+                        {performance.name}
+                    </SwiperSlide>
+                ))}
             </Swiper>
         </section>
     );
 };
-
-
