@@ -8,7 +8,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     name,
     slug,
     description,
-    image,
+    images,
     date,
     age,
     duration,
@@ -19,7 +19,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
             <div className="spectacle-card">
                 <div className="container spectacle-card__container">
                     <Link to={`/performances/${slug}`}>
-                        <img src={image} alt={name} className="spectacle-card__image" />
+                        <img src={images[0]} alt={name} className="spectacle-card__image" />
                         <h2 className="spectacle-card__name">{name}</h2>
                     </Link>
                     <p className="spectacle-card__age">{age}</p>

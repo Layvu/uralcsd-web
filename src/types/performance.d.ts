@@ -4,7 +4,7 @@ export interface Performance {
     description: string;
     cast: { name: string; role: string }[];
     crew: { name: string; role: string }[];
-    image: string;
+    images: string[];
     date: string;
     age: number;
     duration: string;

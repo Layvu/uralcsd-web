@@ -16,9 +16,9 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premierePerformances }
                 loop={true}
                 className="main-banner__slider"
             >
-                {premierePerformances.map((performance) => (
+                {premierePerformances.map((performance, index) => (
                     <SwiperSlide
-                        key={performance.name}
+                        key={index}
                         tag="div"
                         className="main-banner__slider-item main-banner__slider-item--placeholder"
                     >
