@@ -5,10 +5,12 @@ import { TeamFilter } from '@components/TeamPage/TeamFilter';
 import { TeamList } from '@components/TeamPage/TeamList';
 
 import './team-page.scss';
+import { mockMembers } from 'mockData';
+import { IMember } from 'interfases/IMember';
 
 
 export const TeamPageUI: React.FC<TeamPageProps> = React.memo(({ selectedCategory, onSelectCategory }) => {
-
+    const members = mockMembers as IMember[];
     return (
         <section className='team-page wrap'>
             <MainTitle className='team-page__title'>Команда</MainTitle>
@@ -16,7 +18,7 @@ export const TeamPageUI: React.FC<TeamPageProps> = React.memo(({ selectedCategor
                 selectedCategory={selectedCategory}
                 onSelectCategory={onSelectCategory} />
 
-            <TeamList category={selectedCategory} />
+            <TeamList category={selectedCategory} members={members} />
         </section>
     );
 });

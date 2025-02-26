@@ -1,3 +1,5 @@
+import { IMember } from "interfases/IMember";
+
 export interface TeamCardBriefProps {
-  // Добавь пропсы здесь
+    member: IMember;
 }

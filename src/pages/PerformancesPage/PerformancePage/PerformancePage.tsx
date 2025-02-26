@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 import { mockPerformances } from 'mockData';
-import { PerformanceInfoUI } from '@components/ui/PerformanceInfo';
+import { PerformanceInfoUI } from '@components/ui/PerformancesPage/PerformanceInfo';
 
 export const PerformancePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();

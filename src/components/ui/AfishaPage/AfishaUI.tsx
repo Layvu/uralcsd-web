@@ -5,27 +5,29 @@ import { AfishaProps } from './type';
 import React from 'react';
 
 import './afisha.scss';
-import { mockPerformances } from 'mockData';
-import { groupPerformancesByDate } from 'utils/groupPerformancesByDate';
 
-export const AfishaUI: React.FC<AfishaProps> = ({months, activeMonthIndex, onMonthChange}) => {
-    const groupedPerformances = groupPerformancesByDate(mockPerformances);
+export const AfishaUI: React.FC<AfishaProps> = ({ months, activeMonthIndex, onMonthChange, groupedPerformancesByDate }) => {
+ 
     return (
         <section className="wrap afisha">
             <MainTitle className="afisha__main-title">Афиша</MainTitle>
             <MonthFilter
-                months={months} 
-                activeMonthIndex={activeMonthIndex} 
-                onMonthChange={onMonthChange} 
+                months={months}
+                activeMonthIndex={activeMonthIndex}
+                onMonthChange={onMonthChange}
             />
 
             <ul className="afisha__schedule">
-                {Object.entries(groupedPerformances).map(([date, performances]) => (
+                {Object.entries(groupedPerformancesByDate).map(([date, performances]) => (
                     <li key={date} className="afisha__schedule-item">
                         <DaySchedule performances={performances} />
                     </li>
                 ))}
+
+                {/* TODO
+                Спектаклей нет */}
             </ul>
+
         </section>
     );
 };
