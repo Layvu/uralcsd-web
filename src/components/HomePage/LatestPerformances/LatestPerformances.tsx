@@ -1,10 +1,11 @@
 import React from 'react';
 import { LatestPerformancesUI } from '@components/ui/HomePage/LatestPerformances';
 
-import { mockPerformances } from 'mockData';
+import { useSelector } from 'react-redux';
+import { selectLatestPerformances } from 'services/selectors/performancesSelectors';
 
 export const LatestPerformances: React.FC = () => {
-    const latestPerformances = mockPerformances.slice(0, 3);
+    const latestPerformances = useSelector(selectLatestPerformances);
 
     return <LatestPerformancesUI latestPerformances={latestPerformances} />;
 };

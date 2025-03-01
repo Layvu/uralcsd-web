@@ -1,3 +1,4 @@
 export interface HeaderUIProps {
-  onMenuToggle: () => void;
+    onMenuToggle: () => void;
+    isMenuOpen: boolean;
 }

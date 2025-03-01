@@ -1,13 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import { mockPerformances } from 'mockData';
 import { PerformanceInfoUI } from '@components/ui/PerformancesPage/PerformanceInfo';
 
-export const PerformancePage: React.FC = () => {
-    const { slug } = useParams<{ slug: string }>();
+import { useSelector } from 'react-redux';
+import { selectPerformanceBySlug } from 'services/selectors/performancesSelectors';
 
-    const performance = mockPerformances.find((performance) => performance.slug === slug);
+export const PerformancePage: React.FC = () => {
+    const { slug: slugParam } = useParams<{ slug: string | undefined }>();
+    const slug = typeof slugParam === 'string' ? slugParam : '';
+    const performance = useSelector((state) => selectPerformanceBySlug(state, slug));
 
     if (!performance) {
         return <div>Событие не найдено</div>;

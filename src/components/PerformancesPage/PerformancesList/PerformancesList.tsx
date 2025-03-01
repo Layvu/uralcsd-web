@@ -1,12 +1,12 @@
-import { PerformancesListUI } from '@components/ui/PerformancesPage/PerformancesList';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { mockPerformances } from 'mockData';
+import { selectPerformances } from '@services/selectors/performancesSelectors';
+
+import { PerformancesListUI } from '@components/ui/PerformancesPage/PerformancesList';
 
 export const PerformancesList: React.FC = () => {
-    return (
-        <>
-            <PerformancesListUI performances={mockPerformances}></PerformancesListUI>
-        </>
-    );
+    const performances = useSelector(selectPerformances);
+
+    return <PerformancesListUI performances={performances} />;
 };

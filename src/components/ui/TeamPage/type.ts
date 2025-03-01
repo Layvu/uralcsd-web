@@ -1,4 +1,7 @@
-import { BaseTeamProps } from "types/BaseTeamProps";
+// import { BaseTeamProps } from "types/BaseTeamProps";
 
-export interface TeamPageProps extends BaseTeamProps {
+import { TeamFilterCategory } from 'types/TeamFilterCategory';
+
+export interface TeamPageProps {
+    onSelectCategory: (category: TeamFilterCategory) => void;
 }

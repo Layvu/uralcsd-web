@@ -66,7 +66,7 @@ export const mockPerformances: Performance[] = [
     },
 ];
 
-export const mockMembers: IMember[] = [
+export const mockTeam: IMember[] = [
     {
         id: 1,
         slug: 'ivan-ivanov',
