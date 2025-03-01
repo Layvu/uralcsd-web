@@ -14,7 +14,7 @@ export const MenuUI: React.FC<MenuProps> = ({ isOpen }) => {
     return (
         <CSSTransition
             in={isOpen}
-            timeout={400}
+            timeout={1000}
             classNames={{
                 enter: 'menu--enter',
                 enterActive: 'menu--enter-active',

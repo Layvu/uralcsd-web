@@ -1,30 +1,27 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { AfishaUI } from '@components/ui/AfishaPage';
-import { getNextThreeMonths } from 'utils/utils';
-import { groupPerformancesByDate } from 'utils/groupPerformancesByDate';
+import { useSelector } from 'react-redux';
 
-import { mockPerformances } from 'mockData';
+import { AfishaUI } from '@components/ui/AfishaPage';
+
+import { getNextThreeMonths } from 'utils/getNextThreeMonths';
+
+import { makeSelectFilteredPerformances } from 'services/selectors/performancesSelectors';
+import { RootState } from '@services/store';
 
 export const Afisha: React.FC = () => {
-    const months = useMemo(() => getNextThreeMonths(), []);
-    const [activeMonthIndex, setActiveMonthIndex] = useState(months[0].monthIndex);
+    const currentDate = useMemo(() => new Date(), []);
+    const [activeMonthIndex, setActiveMonthIndex] = useState(currentDate.getMonth());
 
-    const groupedPerformances = useMemo(() => {
-        const currentDate = new Date();
-        const filteredPerformances = mockPerformances.filter((performance) => {
-            const performanceDate = new Date(performance.date);
-            return (
-                performanceDate.getMonth() === activeMonthIndex && // Фильтр по месяцу
-                performanceDate >= currentDate // Фильтр по дате (только будущие спектакли)
-            );
-        });
-        return groupPerformancesByDate(filteredPerformances); 
-    }, [activeMonthIndex]); 
+    const selectFilteredPerformances = useMemo(() => makeSelectFilteredPerformances(), []);
+    const groupedPerformances = useSelector((state: RootState) =>
+        selectFilteredPerformances(state, activeMonthIndex, currentDate),
+    );
 
-
-    const handleMonthChange = useCallback((index: number) => {
-        setActiveMonthIndex(index);
+    const handleMonthChange = useCallback((monthIndex: number) => {
+        setActiveMonthIndex(monthIndex);
     }, []);
+
+    const months = useMemo(() => getNextThreeMonths(), []);
 
     return (
         <AfishaUI

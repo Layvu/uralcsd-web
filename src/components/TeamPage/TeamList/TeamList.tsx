@@ -1,10 +1,12 @@
-import { TeamListUI } from '@components/ui/TeamPage/TeamList';
-import { TeamListProps } from '@components/ui/TeamPage/TeamList/type';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
+import { TeamListUI } from '@components/ui/TeamPage/TeamList';
 
-export const TeamList: React.FC<TeamListProps> = ({ members, category }) => {
-    return (
-        <TeamListUI category={category} members={members}></TeamListUI>
-    );
+import { selectFilteredTeam } from '@services/selectors/teamSelectors';
+
+export const TeamList: React.FC = () => {
+    const filteredMembers = useSelector(selectFilteredTeam);
+
+    return <TeamListUI filteredMembers={filteredMembers}></TeamListUI>;
 };

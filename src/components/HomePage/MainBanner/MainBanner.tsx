@@ -1,8 +1,11 @@
+import { useSelector } from 'react-redux';
+
 import { MainBannerUI } from '@components/ui/HomePage/MainBanner';
-import { mockPerformances } from 'mockData';
+
+import { selectPremierePerformances } from 'services/selectors/performancesSelectors';
 
 export const MainBanner = () => {
-    const premierePerformances = mockPerformances.filter((performance) => performance.isPremiere);
+    const premierePerformances = useSelector(selectPremierePerformances);
 
     return <MainBannerUI premierePerformances={premierePerformances} />;
 };

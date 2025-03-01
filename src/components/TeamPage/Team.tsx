@@ -1,17 +1,18 @@
-import { TeamPageUI } from '@components/ui/TeamPage';
-import React, { useCallback, useState } from 'react';
-import { TeamFilterCategory } from 'types/TeamFilterCategory';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCategory } from 'services/slices/teamSlice';
 
+import { TeamPageUI } from '@components/ui/TeamPage';
+import { AppDispatch } from '@services/store';
 
 export const Team: React.FC = () => {
-    const [selectedCategory, setSelectedCategory] = useState<TeamFilterCategory>("actors" as TeamFilterCategory);
+    const dispatch = useDispatch<AppDispatch>();
+    const location = useLocation();
 
-    const handleCategoryChange = useCallback((category: TeamFilterCategory) => {
-        setSelectedCategory(category);
-    },[]); 
+    useEffect(() => {
+        dispatch(setCategory('actors'));
+    }, [location, dispatch]);
 
-    // контекст актеров припилить 
-    return (
-        <TeamPageUI selectedCategory={selectedCategory} onSelectCategory={handleCategoryChange} />     
-    );
+    return <TeamPageUI />;
 };

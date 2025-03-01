@@ -1,7 +1,5 @@
-import { IMember } from "interfases/IMember";
-import { TeamFilterCategory } from "types/TeamFilterCategory";
+import { IMember } from 'interfases/IMember';
 
 export interface TeamListProps {
-    category: TeamFilterCategory,
-    members: IMember[],
+    filteredMembers: IMember[];
 }
