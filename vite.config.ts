@@ -11,7 +11,7 @@ export default defineConfig({
     plugins: [
         react(),
         eslint({
-            cache: false,
+            cache: true,
             fix: true,
         }),
         tsconfigPaths(),
@@ -53,9 +53,9 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                additionalData: ` 
-          @import "@styles/global.scss";
-        `,
+                additionalData: `
+                    @use "@styles/global" as *;
+                `,
             },
         },
     },
@@ -66,9 +66,29 @@ export default defineConfig({
             output: {
                 manualChunks(id) {
                     if (id.includes('node_modules')) {
+                        if (id.includes('swiper')) {
+                            return 'swiper';
+                        }
                         return 'vendor';
                     }
                 },
+                chunkFileNames: 'assets/js/[name]-[hash].js',
+                entryFileNames: 'assets/js/[name]-[hash].js',
+                assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+            },
+        },
+        cssCodeSplit: true,
+        sourcemap: false,
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+                unused: true,
+                dead_code: true,
+            },
+            format: {
+                comments: false,
             },
         },
     },

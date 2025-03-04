@@ -17,8 +17,8 @@ export const groupPerformancesByDate = (performances: Performance[]) => {
     // Сортируем спектакли внутри каждой группы по времени начала
     for (const dateKey in grouped) {
         grouped[dateKey].sort((a, b) => {
-            const timeA = a.date.split('T')[1]; 
-            const timeB = b.date.split('T')[1]; 
+            const timeA = a.date.split('T')[1];
+            const timeB = b.date.split('T')[1];
             return timeA.localeCompare(timeB);
         });
     }

@@ -1,7 +1,7 @@
-@import 'mixins/font-face.scss';
-@import 'mixins/visually-hidden.scss';
-@import 'mixins/min-max.scss';
-@import 'mixins/device-size.scss';
+@forward 'mixins/font-face';
+@forward 'mixins/visually-hidden';
+@forward 'mixins/min-max';
+@forward 'mixins/device-size';
 
 /*@function vw($value, $base: 1440) {
     @return $value / $base * 100vw;
