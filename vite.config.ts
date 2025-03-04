@@ -66,10 +66,15 @@ export default defineConfig({
             output: {
                 manualChunks(id) {
                     if (id.includes('node_modules')) {
+                        if (id.includes('swiper')) {
+                            return 'swiper';
+                        }
                         return 'vendor';
                     }
                 },
             },
         },
+        cssCodeSplit: true,
+        sourcemap: true, // TODO: Убрать из production. Полезно для разработки
     },
 });
