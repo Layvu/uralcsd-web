@@ -11,7 +11,7 @@ export default defineConfig({
     plugins: [
         react(),
         eslint({
-            cache: false,
+            cache: true,
             fix: true,
         }),
         tsconfigPaths(),
@@ -72,9 +72,24 @@ export default defineConfig({
                         return 'vendor';
                     }
                 },
+                chunkFileNames: 'assets/js/[name]-[hash].js',
+                entryFileNames: 'assets/js/[name]-[hash].js',
+                assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
             },
         },
         cssCodeSplit: true,
-        sourcemap: true, // TODO: Убрать из production. Полезно для разработки
+        sourcemap: false,
+        minify: 'terser',
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true,
+                unused: true,
+                dead_code: true,
+            },
+            format: {
+                comments: false,
+            },
+        },
     },
 });

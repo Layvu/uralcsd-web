@@ -5,9 +5,12 @@ import { groupPerformancesByDate } from 'utils/groupPerformancesByDate';
 export const selectPerformancesState = (state: RootState) => state.performances;
 export const selectPerformances = createSelector([selectPerformancesState], (state) => state.data);
 
+const performancesBySlug = createSelector([selectPerformances], (performances) =>
+    Object.fromEntries(performances.map((p) => [p.slug, p])),
+);
 export const selectPerformanceBySlug = createSelector(
-    [selectPerformances, (_, slug: string) => slug],
-    (performances, slug) => performances.find((p) => p.slug === slug),
+    [performancesBySlug, (_, slug: string) => slug],
+    (bySlug, slug) => bySlug[slug],
 );
 
 export const selectLatestPerformances = createSelector([selectPerformances], (performances) =>
@@ -15,7 +18,7 @@ export const selectLatestPerformances = createSelector([selectPerformances], (pe
 );
 
 export const selectPremierePerformances = createSelector([selectPerformances], (performances) =>
-    performances.filter((performance) => performance.isPremiere),
+    performances.filter((p) => p.isPremiere),
 );
 
 export const makeSelectFilteredPerformances = () =>

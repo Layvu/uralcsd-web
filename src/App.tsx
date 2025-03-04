@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import { ROUTES } from 'consts';
 import { useInitialData } from 'hooks/useInitialData';
 
 import { Header } from '@components/Header';
@@ -16,32 +17,35 @@ import { TeamCardFull } from '@pages/TeamPage/TeamCardFull';
 import { Projects } from '@pages/projects';
 import { Contacts } from '@pages/contacts';
 
-const App: React.FC = () => {
+const AppContent = () => {
     useInitialData();
 
     return (
-        <>
-            <Router>
-                <div className="site-container">
-                    <Header />
-                    <main className="main">
-                        <Routes>
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="/afisha" element={<AfishaPage />} />
-                            <Route path="/performances" element={<PerformancesPage />} />
-                            <Route path="/performances/:slug" element={<PerformancePage />} />
-                            <Route path="/about" element={<About />} />
-                            <Route path="/team" element={<TeamPage />} />
-                            <Route path="/team/:slug" element={<TeamCardFull />} />
-                            <Route path="/projects" element={<Projects />} />
-                            <Route path="/contacts" element={<Contacts />} />
-                        </Routes>
-                    </main>
+        <div className="site-container">
+            <Header />
+            <main className="main">
+                <Routes>
+                    <Route path={ROUTES.HOME} element={<HomePage />} />
+                    <Route path={ROUTES.AFISHA} element={<AfishaPage />} />
+                    <Route path={ROUTES.PERFORMANCES} element={<PerformancesPage />} />
+                    <Route path={`${ROUTES.PERFORMANCES}/:slug`} element={<PerformancePage />} />
+                    <Route path={ROUTES.ABOUT} element={<About />} />
+                    <Route path={ROUTES.TEAM} element={<TeamPage />} />
+                    <Route path={`${ROUTES.TEAM}/:slug`} element={<TeamCardFull />} />
+                    <Route path={ROUTES.PROJECTS} element={<Projects />} />
+                    <Route path={ROUTES.CONTACTS} element={<Contacts />} />
+                </Routes>
+            </main>
+            <Footer />
+        </div>
+    );
+};
 
-                    <Footer />
-                </div>
-            </Router>
-        </>
+const App: React.FC = () => {
+    return (
+        <Router>
+            <AppContent />
+        </Router>
     );
 };
 
