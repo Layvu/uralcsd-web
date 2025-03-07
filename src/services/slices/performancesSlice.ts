@@ -21,9 +21,10 @@ const performancesSlice = createSlice({
             .addCase(fetchPerformances.fulfilled, (state, action) => {
                 state.data = action.payload;
                 state.loading = false;
+                state.error = null;
             })
             .addCase(fetchPerformances.rejected, (state, action) => {
-                state.error = action.error.message || 'Ошибка загрузки событий';
+                state.error = action.error.message || 'Failed to fetch performances';
                 state.loading = false;
             });
     },

@@ -2,12 +2,7 @@ import React from 'react';
 import { TeamFilterProps } from './type';
 
 import './team-filter.scss';
-
-export enum TeamFilterCategories {
-    Actors = 'actors',
-    Directors = 'directors',
-    Management = 'management',
-}
+import { TeamFilterCategories } from 'consts';
 
 const categoriesLabels: Record<TeamFilterCategories, string> = {
     [TeamFilterCategories.Actors]: 'Актёры',

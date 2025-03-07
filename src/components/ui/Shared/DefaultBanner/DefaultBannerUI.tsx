@@ -4,7 +4,7 @@ import { Navigation } from 'swiper/modules';
 import './DefaultBanner.scss';
 import { DefaultBannerProps } from './type';
 
-export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ performance }) => {
+export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) => {
     return (
         <section className="default-banner">
             <div className="default-banner__container container">
@@ -20,13 +20,13 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ performance }) =
                     initialSlide={0}
                     className="default-banner__slider"
                 >
-                    {performance.images.map((image, index) => (
+                    {images.map((image, index) => (
                         <SwiperSlide
                             key={index}
                             tag="div"
                             className="default-banner__slider-item default-banner__slider-item--placeholder"
                         >
-                            <img src={image} alt={performance.name} className="default-banner__slider-image" />
+                            <img src={image} alt={name} className="default-banner__slider-image" />
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -1,3 +1,3 @@
-import { Performance } from 'types/performance';
+import { IPerformance } from 'types/performance';
 
-export type SpectacleCardProps = Performance;
+export type SpectacleCardProps = IPerformance;

@@ -1,5 +1,5 @@
-export interface Performance {
-    id: number;
+export interface IPerformance {
+    id: string;
     name: string;
     slug: string;
     description: string;
@@ -9,6 +9,7 @@ export interface Performance {
     date: string;
     age: number;
     duration: string;
+    purchaseLink: string;
     isWithIntermission: boolean;
     isPremiere: boolean;
 }

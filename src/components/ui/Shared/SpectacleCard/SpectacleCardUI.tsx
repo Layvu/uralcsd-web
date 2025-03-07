@@ -15,7 +15,6 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
 }) => {
     return (
         <>
-            {/* Прикручивать контекст */}
             <div className="spectacle-card">
                 <div className="container spectacle-card__container">
                     <Link to={`/performances/${slug}`}>

@@ -38,6 +38,6 @@ export const makeSelectFilteredPerformances = () =>
     );
 
 export const selectPerformancesByIds = createSelector(
-    [selectPerformances, (_state: RootState, performanceIds: number[]) => new Set(performanceIds)],
+    [selectPerformances, (_state: RootState, performanceIds: string[]) => new Set(performanceIds)],
     (performances, performanceIdsSet) => performances.filter((p) => performanceIdsSet.has(p.id)),
 );

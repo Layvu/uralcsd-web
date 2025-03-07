@@ -8,7 +8,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
     return (
         <>
             <div className="performance-info">
-                <DefaultBanner performance={performance} />
+                <DefaultBanner name={performance.name} images={performance.images} />
 
                 <div className="performance-info__wrap wrap">
                     <h2 className="performance-info__name">{performance.name}</h2>
@@ -31,7 +31,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                         <div className="performance-info__crew">
                             <h3 className="performance-info__crew-title">Постановщики</h3>
                             <ul className="performance-info__crew-list">
-                                {performance.crew.map((member) => ( 
+                                {performance.crew.map((member) => (
                                     // TODO
                                     // member: IMember и из него уже вытаскивать роль в этом спектакле
                                     <li key={member.name} className="performance-info__crew-item">

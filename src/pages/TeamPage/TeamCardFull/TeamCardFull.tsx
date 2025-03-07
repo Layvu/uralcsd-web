@@ -9,9 +9,9 @@ import { TeamCardFullUI } from '@components/ui/TeamPage/TeamCardFull';
 import { RootState } from '@services/store';
 
 export const TeamCardFull: React.FC = React.memo(() => {
-    const { slug } = useParams<{ slug: string | undefined }>();
-
+    const { slug } = useParams<{ slug: string }>();
     const member = useSelector((state: RootState) => selectTeamMemberBySlug(state, slug || ''));
+
     const performanceIds = member?.performances?.map((p) => p.performanceID) || [];
     const memberPerformances = useSelector((state: RootState) => selectPerformancesByIds(state, performanceIds));
 

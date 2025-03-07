@@ -1,3 +1,5 @@
+import { IPerformance } from 'types/performance';
+
 export interface PerformancesListProps {
-  // Добавь пропсы здесь
+    performances?: IPerformance[];
 }

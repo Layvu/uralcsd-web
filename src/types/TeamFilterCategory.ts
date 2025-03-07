@@ -1,1 +1,1 @@
-export type TeamFilterCategory = "actors" | "directors" | "management";
+export type TeamFilterCategory = 'actors' | 'directors' | 'management';

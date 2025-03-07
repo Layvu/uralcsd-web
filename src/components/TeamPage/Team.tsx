@@ -5,13 +5,14 @@ import { setCategory } from 'services/slices/teamSlice';
 
 import { TeamPageUI } from '@components/ui/TeamPage';
 import { AppDispatch } from '@services/store';
+import { TeamFilterCategories } from 'consts';
 
 export const Team: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const location = useLocation();
 
     useEffect(() => {
-        dispatch(setCategory('actors'));
+        dispatch(setCategory(TeamFilterCategories.Actors));
     }, [location, dispatch]);
 
     return <TeamPageUI />;
