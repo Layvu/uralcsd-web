@@ -38,8 +38,8 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                         <div className="performance-info__cast">
                             <h3 className="performance-info__cast-title">Актерский состав</h3>
                             <ul className="performance-info__cast-list">
-                                {cast.map((actor, index) => (
-                                    <li key={index} className="performance-info__cast-item">
+                                {cast.map((actor) => (
+                                    <li key={`${actor.name}-${actor.role}`} className="performance-info__cast-item">
                                         {actor.name} — {actor.role}
                                     </li>
                                 ))}
@@ -49,10 +49,10 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                         <div className="performance-info__crew">
                             <h3 className="performance-info__crew-title">Постановщики</h3>
                             <ul className="performance-info__crew-list">
-                                {crew.map((member, index) => (
+                                {crew.map((member) => (
                                     // TODO
                                     // member: IMember и из него уже вытаскивать роль в этом спектакле
-                                    <li key={index} className="performance-info__crew-item">
+                                    <li key={`${member.name}-${member.role}`} className="performance-info__crew-item">
                                         {member.role} — {member.name}
                                     </li>
                                 ))}

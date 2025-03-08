@@ -22,7 +22,7 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                 >
                     {images.map((image, index) => (
                         <SwiperSlide
-                            key={index}
+                            key={`${image}-${index}`}
                             tag="div"
                             className="default-banner__slider-item default-banner__slider-item--placeholder"
                         >
