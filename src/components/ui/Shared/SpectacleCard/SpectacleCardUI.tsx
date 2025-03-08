@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SpectacleCardProps } from './type';
+import { openTicketsWidget } from '@services/yandexTickets';
 
 import './spectacle-card.scss';
 
@@ -12,7 +13,14 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     date,
     age,
     duration,
+    sessionId,
 }) => {
+    const handleBuyTicket = () => {
+        if (sessionId) {
+            openTicketsWidget(sessionId);
+        }
+    };
+
     return (
         <>
             <div className="spectacle-card">
@@ -25,6 +33,10 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                     <p className="spectacle-card__description">{description}</p>
                     <p className="spectacle-card__date">{date}</p>
                     <p className="spectacle-card__duration">{duration}</p>
+
+                    <button className="spectacle-card__ya-button select-button" onClick={handleBuyTicket}>
+                        Купить билет
+                    </button>
                 </div>
             </div>
         </>

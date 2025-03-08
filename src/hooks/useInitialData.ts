@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
@@ -11,6 +11,8 @@ import { selectPerformances } from '@services/selectors/performancesSelectors';
 import { selectTeam } from '@services/selectors/teamSelectors';
 import { selectProjects } from '@services/selectors/projectsSelectors';
 
+import { initYandexTicketsWidget } from '@services/yandexTickets';
+
 import { ROUTES } from 'consts';
 
 const isPerformancesRoute = (pathname: string) =>
@@ -21,6 +23,7 @@ const isProjectsRoute = (pathname: string) => pathname.includes(ROUTES.PROJECTS)
 export const useInitialData = () => {
     const dispatch = useDispatch<AppDispatch>();
     const location = useLocation();
+    const yandexWidgetInitialized = useRef(false);
 
     const performancesData = useSelector(selectPerformances);
     const teamData = useSelector(selectTeam);
@@ -33,6 +36,16 @@ export const useInitialData = () => {
             if (!performancesData.length && isPerformancesRoute(location.pathname)) {
                 console.log('Загрузка данных спектаклей');
                 promises.push(dispatch(fetchPerformances()));
+
+                // Инициализируем виджет Яндекс.Билетов только при первой загрузке данных о событиях
+                if (!yandexWidgetInitialized.current) {
+                    try {
+                        await initYandexTicketsWidget();
+                        yandexWidgetInitialized.current = true;
+                    } catch (error) {
+                        console.error('Failed to initialize Yandex Tickets widget:', error);
+                    }
+                }
             }
 
             if (!teamData.length && isTeamRoute(location.pathname)) {

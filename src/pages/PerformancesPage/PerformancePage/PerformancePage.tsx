@@ -14,5 +14,5 @@ export const PerformancePage: React.FC = () => {
         return <div>Событие не найдено</div>;
     }
 
-    return <PerformanceInfoUI performance={performance} />;
+    return <PerformanceInfoUI {...performance} />;
 };

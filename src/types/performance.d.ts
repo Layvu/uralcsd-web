@@ -9,7 +9,7 @@ export interface IPerformance {
     date: string;
     age: number;
     duration: string;
-    purchaseLink: string;
+    sessionId?: string; // ID сеанса для Яндекс.Билетов. Выдаётся администратору при создании события на Яндекс Афише
     isWithIntermission: boolean;
     isPremiere: boolean;
 }

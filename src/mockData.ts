@@ -16,7 +16,7 @@ export const mockPerformances: IPerformance[] = [
         duration: '2 часа',
         isWithIntermission: true,
         isPremiere: true,
-        purchaseLink: 'https://afisha.yandex.ru/yekaterinburg',
+        sessionId: '247907',
     },
     {
         id: '2',
@@ -31,7 +31,7 @@ export const mockPerformances: IPerformance[] = [
         duration: '1.5 часа',
         isWithIntermission: false,
         isPremiere: true,
-        purchaseLink: 'https://afisha.yandex.ru/yekaterinburg',
+        sessionId: '247907',
     },
     {
         id: '3',
@@ -46,7 +46,7 @@ export const mockPerformances: IPerformance[] = [
         duration: '3 часа',
         isWithIntermission: true,
         isPremiere: false,
-        purchaseLink: 'https://afisha.yandex.ru/yekaterinburg',
+        sessionId: '247907',
     },
     {
         id: '4',
@@ -64,7 +64,7 @@ export const mockPerformances: IPerformance[] = [
         duration: '1.5 часа',
         isWithIntermission: false,
         isPremiere: false,
-        purchaseLink: 'https://afisha.yandex.ru/yekaterinburg',
+        sessionId: '247907',
     },
     {
         id: '5',
@@ -79,7 +79,7 @@ export const mockPerformances: IPerformance[] = [
         duration: '2 часа',
         isWithIntermission: true,
         isPremiere: false,
-        purchaseLink: 'https://afisha.yandex.ru/yekaterinburg',
+        sessionId: '247907',
     },
     {
         id: '6',
@@ -97,7 +97,7 @@ export const mockPerformances: IPerformance[] = [
         duration: '1.5 часа',
         isWithIntermission: false,
         isPremiere: true,
-        purchaseLink: 'https://afisha.yandex.ru/yekaterinburg',
+        sessionId: '247907',
     },
 ];
 
