@@ -8,15 +8,15 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
             {/* TODO Продюссеров еще надо рассмотреть */}
             <div>{member.name}</div>
             <div>{member.surname}</div>
-            {performancesWithRoles.map(({ performance, role }, index) =>
+            {performancesWithRoles.map(({ performance, role }) =>
                 performance ? (
-                    <Link to={`/performances/${performance.slug}`} key={index}>
+                    <Link to={`/performances/${performance.slug}`} key={performance.id}>
                         <div>
                             {performance.name} - {role}
                         </div>
                     </Link>
                 ) : (
-                    <div key={index}>Спектакль не найден - {role}</div>
+                    <div key={`no-performance-${member.id}-${role}`}>Спектакль не найден - {role}</div>
                 ),
             )}
         </>

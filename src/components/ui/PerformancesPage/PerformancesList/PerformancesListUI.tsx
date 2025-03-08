@@ -8,7 +8,7 @@ export const PerformancesListUI: React.FC<PerformanceListUI> = ({ performances }
     return (
         <ul className="performances-list">
             {performances.map((performance) => (
-                <li key={performance.name} className="performances-list__spectacle-card">
+                <li key={performance.slug} className="performances-list__spectacle-card">
                     <SpectacleCard {...performance} />
                 </li>
             ))}

@@ -7,13 +7,12 @@ import { useSelector } from 'react-redux';
 import { selectPerformanceBySlug } from 'services/selectors/performancesSelectors';
 
 export const PerformancePage: React.FC = () => {
-    const { slug: slugParam } = useParams<{ slug: string | undefined }>();
-    const slug = typeof slugParam === 'string' ? slugParam : '';
-    const performance = useSelector((state) => selectPerformanceBySlug(state, slug));
+    const { slug } = useParams<{ slug: string }>();
+    const performance = useSelector((state) => selectPerformanceBySlug(state, slug || ''));
 
     if (!performance) {
         return <div>Событие не найдено</div>;
     }
 
-    return <PerformanceInfoUI performance={performance} />;
+    return <PerformanceInfoUI {...performance} />;
 };

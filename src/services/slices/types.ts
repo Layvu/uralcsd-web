@@ -1,5 +1,6 @@
-import { IMember } from 'interfases/IMember';
-import { Performance } from 'types/performance';
+import { IMember } from 'types/member';
+import { IPerformance } from 'types/performance';
+import { IProject } from 'types/project';
 import { TeamFilterCategory } from 'types/TeamFilterCategory';
 
 type GenericState<T> = {
@@ -12,4 +13,6 @@ export interface TeamState extends GenericState<IMember> {
     selectedCategory: TeamFilterCategory;
 }
 
-export type PerformanceState = GenericState<Performance>;
+export type PerformanceState = GenericState<IPerformance>;
+
+export type ProjectsState = GenericState<IProject>;

@@ -1,74 +1,109 @@
-import { IMember } from 'interfases/IMember';
-import { Performance } from 'types/performance';
+import { IPerformance } from 'types/performance';
+import { IMember } from 'types/member';
+import { IProject } from 'types/project';
 
-export const mockPerformances: Performance[] = [
+export const mockPerformances: IPerformance[] = [
     {
-        id: 1,
+        id: '1',
         name: 'Спектакль 1',
         slug: 'spectacle-1',
         description: 'Описание спектакля 1...',
-        cast: [{ name: 'Актер 1', role: 'Роль 1' }],
+        cast: [{ name: 'Иван Иванов', role: 'Гамлет, Король Лир' }],
         crew: [{ name: 'Режиссер 1', role: 'Режиссер' }],
         images: ['/img/mockImage.jpg', '/img/mockImage.jpg', '/img/mockImage.jpg'],
-        date: '2025-02-28T19:00:00',
+        date: '2025-03-15T19:00:00',
         age: 16,
         duration: '2 часа',
         isWithIntermission: true,
         isPremiere: true,
+        sessionId: '247907',
     },
     {
-        id: 2,
+        id: '2',
         name: 'Спектакль 2',
         slug: 'spectacle-2',
         description: 'Описание спектакля 2...',
-        cast: [{ name: 'Актер 2', role: 'Роль 2' }],
+        cast: [{ name: 'Иван Иванов', role: 'Чацкий' }],
         crew: [{ name: 'Режиссер 2', role: 'Режиссер' }],
         images: ['/img/mockImage.jpg', '/img/mockImage.jpg'],
-        date: '2025-02-28T18:30:00',
+        date: '2025-03-28T14:30:00',
         age: 12,
         duration: '1.5 часа',
         isWithIntermission: false,
         isPremiere: true,
+        sessionId: '247907',
     },
     {
-        id: 3,
+        id: '3',
         name: 'Спектакль 3',
         slug: 'spectacle-3',
         description: 'Описание спектакля 3...',
-        cast: [{ name: 'Актер 3', role: 'Роль 3' }],
+        cast: [{ name: 'Анна Петрова', role: 'Офелия' }],
         crew: [{ name: 'Режиссер 3', role: 'Режиссер' }],
         images: ['/img/mockImage.jpg'],
-        date: '2025-03-05T20:00:00',
+        date: '2025-03-28T18:00:00',
         age: 16,
         duration: '3 часа',
         isWithIntermission: true,
         isPremiere: false,
+        sessionId: '247907',
     },
     {
-        id: 4,
+        id: '4',
         name: 'Спектакль 4',
         slug: 'spectacle-4',
         description: 'Описание спектакля 4...',
-        cast: [
-            { name: 'Актер 4', role: 'Роль 4' },
-            { name: 'Актер 4', role: 'Роль 4' },
-        ],
+        cast: [{ name: 'Анна Петрова', role: 'Софья' }],
         crew: [
             { name: 'Режиссер 4', role: 'Режиссер' },
             { name: 'Режиссер 4', role: 'Режиссер' },
         ],
         images: ['/img/mockImage.jpg', '/img/mockImage.jpg', '/img/mockImage.jpg', '/img/mockImage.jpg'],
-        date: '2025-04-06T19:30:00',
+        date: '2025-03-28T21:30:00',
         age: 12,
         duration: '1.5 часа',
         isWithIntermission: false,
         isPremiere: false,
+        sessionId: '247907',
+    },
+    {
+        id: '5',
+        name: 'Спектакль 5',
+        slug: 'spectacle-5',
+        description: 'Описание спектакля 5...',
+        cast: [{ name: 'Сергей Сидоров', role: 'Главная роль' }],
+        crew: [{ name: 'Режиссер 5', role: 'Режиссер' }],
+        images: ['/img/mockImage.jpg', '/img/mockImage.jpg'],
+        date: '2025-04-10T19:00:00',
+        age: 16,
+        duration: '2 часа',
+        isWithIntermission: true,
+        isPremiere: false,
+        sessionId: '247907',
+    },
+    {
+        id: '6',
+        name: 'Спектакль 6',
+        slug: 'spectacle-6',
+        description: 'Описание спектакля 6...',
+        cast: [
+            { name: 'Иван Иванов', role: 'Главный герой' },
+            { name: 'Анна Петрова', role: 'Главная героиня' },
+        ],
+        crew: [{ name: 'Режиссер 6', role: 'Режиссер' }],
+        images: ['/img/mockImage.jpg', '/img/mockImage.jpg'],
+        date: '2025-04-25T18:30:00',
+        age: 12,
+        duration: '1.5 часа',
+        isWithIntermission: false,
+        isPremiere: true,
+        sessionId: '247907',
     },
 ];
 
 export const mockTeam: IMember[] = [
     {
-        id: 1,
+        id: '5',
         slug: 'ivan-ivanov',
         surname: 'Иванов',
         name: 'Иван',
@@ -78,11 +113,11 @@ export const mockTeam: IMember[] = [
         biography: ['Иван Иванов — талантливый актер, выпускник ГИТИСа.', 'Участвовал в более чем 50 спектаклях.'],
         performances: [
             {
-                performanceID: 1,
+                performanceID: '1',
                 role: ['Гамлет', 'Король Лир'],
             },
             {
-                performanceID: 2,
+                performanceID: '2',
                 role: ['Чацкий'],
             },
         ],
@@ -90,7 +125,7 @@ export const mockTeam: IMember[] = [
         images: ['/photos/ivan-ivanov-1.jpg', '/photos/ivan-ivanov-2.jpg'],
     },
     {
-        id: 2,
+        id: '6',
         slug: 'anna-petrova',
         surname: 'Петрова',
         name: 'Анна',
@@ -99,18 +134,18 @@ export const mockTeam: IMember[] = [
         biography: ['Анна Петрова — актриса с многолетним опытом.', 'Лауреат премии "Золотая маска".'],
         performances: [
             {
-                performanceID: 3,
+                performanceID: '3',
                 role: ['Офелия'],
             },
             {
-                performanceID: 4,
+                performanceID: '4',
                 role: ['Софья'],
             },
         ],
         mainPhoto: '/photos/anna-petrova.jpg',
     },
     {
-        id: 3,
+        id: '7',
         slug: 'sergey-sidorov',
         surname: 'Сидоров',
         name: 'Сергей',
@@ -119,14 +154,14 @@ export const mockTeam: IMember[] = [
         biography: ['Сергей Сидоров — известный режиссер, постановщик более 30 спектаклей.'],
         performances: [
             {
-                performanceID: 1,
+                performanceID: '1',
             },
         ],
         mainPhoto: '/photos/sergey-sidorov.jpg',
         images: ['/photos/sergey-sidorov-1.jpg'],
     },
     {
-        id: 4,
+        id: '8',
         slug: 'maria-ivanova',
         surname: 'Иванова',
         name: 'Мария',
@@ -137,7 +172,7 @@ export const mockTeam: IMember[] = [
         mainPhoto: '/photos/maria-ivanova.jpg',
     },
     {
-        id: 5,
+        id: '9',
         slug: 'alexey-smirnov',
         surname: 'Смирнов',
         name: 'Алексей',
@@ -147,5 +182,35 @@ export const mockTeam: IMember[] = [
         biography: [], // Нет биографии
         performances: [], // Нет данных о спектаклях
         mainPhoto: '/photos/alexey-smirnov.jpg',
+    },
+];
+
+export const mockProjects: IProject[] = [
+    {
+        id: '10',
+        name: 'Театральная лаборатория',
+        slug: 'theatre-lab',
+        description: 'Экспериментальная театральная лаборатория для молодых режиссеров и драматургов...',
+        images: ['/img/mockImage.jpg', '/img/mockImage.jpg', '/img/mockImage.jpg'],
+        buttonText: 'Подробнее',
+        buttonLink: 'https://afisha.yandex.ru/yekaterinburg',
+    },
+    {
+        id: '11',
+        name: 'Детская театральная школа',
+        slug: 'kids-theatre-school',
+        description: 'Образовательный проект для детей, включающий занятия по актерскому мастерству...',
+        images: ['/img/mockImage.jpg', '/img/mockImage.jpg'],
+        buttonText: 'Регистрация',
+        buttonLink: 'https://afisha.yandex.ru/yekaterinburg',
+    },
+    {
+        id: '12',
+        name: 'Театральный фестиваль',
+        slug: 'theatre-festival',
+        description: 'Ежегодный фестиваль современного театрального искусства...',
+        images: ['/img/mockImage.jpg'],
+        buttonText: 'Купить билет',
+        buttonLink: 'https://afisha.yandex.ru/yekaterinburg',
     },
 ];

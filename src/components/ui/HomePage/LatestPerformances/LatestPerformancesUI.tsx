@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import './latest-performances.scss';
 
+import { ROUTES } from 'consts';
 import { SpectacleCard } from '@components/Shared/SpectacleCard';
 import { LatestPerformancesProps } from './type';
 
@@ -15,7 +16,7 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
 
             <ul className="latest-performances__list">
                 {latestPerformances.map((performance) => (
-                    <li key={performance.name} className="latest-performances__card">
+                    <li key={performance.slug} className="latest-performances__card">
                         <SpectacleCard {...performance} />
                     </li>
                 ))}
@@ -24,7 +25,7 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
             <button
                 className="latest-performances__button button"
                 onClick={() => {
-                    navigate('/afisha');
+                    navigate(ROUTES.AFISHA);
                 }}
             >
                 Переход ко всей афише

@@ -2,12 +2,13 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchTeamApi } from 'services/api/theater-api';
 import { TeamState } from './types';
 import { TeamFilterCategory } from 'types/TeamFilterCategory';
+import { TeamFilterCategories } from 'consts';
 
 const initialState: TeamState = {
     data: [],
     loading: false,
     error: null,
-    selectedCategory: 'actors', // начальная категория
+    selectedCategory: TeamFilterCategories.Actors, // начальная категория
 };
 
 const teamSlice = createSlice({
@@ -27,9 +28,10 @@ const teamSlice = createSlice({
             .addCase(fetchTeam.fulfilled, (state, action) => {
                 state.data = action.payload;
                 state.loading = false;
+                state.error = null;
             })
             .addCase(fetchTeam.rejected, (state, action) => {
-                state.error = action.error.message || 'Ошибка загрузки команды';
+                state.error = action.error.message || 'Failed to fetch team';
                 state.loading = false;
             });
     },

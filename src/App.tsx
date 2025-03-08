@@ -14,7 +14,8 @@ import { PerformancePage } from '@pages/PerformancesPage/PerformancePage';
 import { About } from '@pages/about';
 import { TeamPage } from '@pages/TeamPage';
 import { TeamCardFull } from '@pages/TeamPage/TeamCardFull';
-import { Projects } from '@pages/projects';
+import { ProjectsPage } from '@pages/ProjectsPage';
+import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
 import { Contacts } from '@pages/contacts';
 
 const AppContent = () => {
@@ -32,7 +33,8 @@ const AppContent = () => {
                     <Route path={ROUTES.ABOUT} element={<About />} />
                     <Route path={ROUTES.TEAM} element={<TeamPage />} />
                     <Route path={`${ROUTES.TEAM}/:slug`} element={<TeamCardFull />} />
-                    <Route path={ROUTES.PROJECTS} element={<Projects />} />
+                    <Route path={ROUTES.PROJECTS} element={<ProjectsPage />} />
+                    <Route path={`${ROUTES.PROJECTS}/:slug`} element={<ProjectPage />} />
                     <Route path={ROUTES.CONTACTS} element={<Contacts />} />
                 </Routes>
             </main>
