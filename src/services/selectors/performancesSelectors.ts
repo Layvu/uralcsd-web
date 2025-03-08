@@ -38,6 +38,13 @@ export const makeSelectFilteredPerformances = () =>
     );
 
 export const selectPerformancesByIds = createSelector(
-    [selectPerformances, (_state: RootState, performanceIds: string[]) => new Set(performanceIds)],
-    (performances, performanceIdsSet) => performances.filter((p) => performanceIdsSet.has(p.id)),
+    [selectPerformances, (_state: RootState, performanceIds: string[]) => performanceIds.join(',')],
+    (performances, performanceIdsKey) => {
+        if (!performanceIdsKey) return [];
+
+        const idsArray = performanceIdsKey.split(',');
+        const idsSet = new Set(idsArray.filter((id) => id)); // Отфильтруем пустые значения
+
+        return performances.filter((p) => idsSet.has(p.id));
+    },
 );
