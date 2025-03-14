@@ -6,7 +6,7 @@ import { TeamFilterCategories } from 'consts';
 
 const initialState: TeamState = {
     data: [],
-    loading: false,
+    loading: true,
     error: null,
     selectedCategory: TeamFilterCategories.Actors, // начальная категория
 };
