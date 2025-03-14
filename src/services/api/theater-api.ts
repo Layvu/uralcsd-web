@@ -1,7 +1,8 @@
 import { IPerformance } from 'types/performance';
 import { IMember } from 'types/member';
-import { mockPerformances, mockProjects, mockTeam } from 'mockData';
+import { mockPerformances, mockProjects, mockTeam, mockTheaterInfo } from 'mockData';
 import { IProject } from 'types/project';
+import { ITheaterInfo } from 'types/theater';
 
 // Проверка ответа
 const checkResponse = <T>(res: T): T => res;
@@ -24,4 +25,9 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
 export const fetchProjectsApi = async (): Promise<IProject[]> => {
     console.log('fetchProjectsApi...');
     return mockApiResponse(mockProjects);
+};
+
+export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {
+    console.log('fetchTheaterInfoApi...');
+    return mockApiResponse(mockTheaterInfo);
 };

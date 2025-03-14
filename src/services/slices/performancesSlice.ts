@@ -4,7 +4,7 @@ import { PerformanceState } from './types';
 
 const initialState: PerformanceState = {
     data: [],
-    loading: false,
+    loading: true,
     error: null,
 };
 

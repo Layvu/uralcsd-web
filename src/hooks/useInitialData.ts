@@ -6,19 +6,22 @@ import { AppDispatch } from '@services/store';
 import { fetchPerformances } from '@services/slices/performancesSlice';
 import { fetchTeam } from '@services/slices/teamSlice';
 import { fetchProjects } from '@services/slices/projectsSlice';
+import { fetchTheaterInfo } from '@services/slices/theaterSlice';
 
 import { selectPerformances } from '@services/selectors/performancesSelectors';
 import { selectTeam } from '@services/selectors/teamSelectors';
 import { selectProjects } from '@services/selectors/projectsSelectors';
+import { selectTheaterInfo } from '@services/selectors/theaterSelectors';
 
 import { initYandexTicketsWidget } from '@services/yandexTickets';
 
 import { ROUTES } from 'consts';
 
 const isPerformancesRoute = (pathname: string) =>
-    [ROUTES.HOME, ROUTES.PERFORMANCES, ROUTES.AFISHA].some((route) => pathname.includes(route));
-const isTeamRoute = (pathname: string) => pathname.includes(ROUTES.TEAM);
-const isProjectsRoute = (pathname: string) => pathname.includes(ROUTES.PROJECTS);
+    [ROUTES.HOME, ROUTES.PERFORMANCES, ROUTES.AFISHA].some((route) => pathname === route);
+const isTeamRoute = (pathname: string) => pathname === ROUTES.TEAM;
+const isProjectsRoute = (pathname: string) => pathname === ROUTES.PROJECTS;
+const isAboutRoute = (pathname: string) => pathname === ROUTES.ABOUT;
 
 export const useInitialData = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -28,6 +31,7 @@ export const useInitialData = () => {
     const performancesData = useSelector(selectPerformances);
     const teamData = useSelector(selectTeam);
     const projectsData = useSelector(selectProjects);
+    const theaterInfoData = useSelector(selectTheaterInfo);
 
     useEffect(() => {
         const loadData = async () => {
@@ -35,6 +39,7 @@ export const useInitialData = () => {
 
             if (!performancesData.length && isPerformancesRoute(location.pathname)) {
                 console.log('Загрузка данных спектаклей');
+                isPerformancesRoute(location.pathname);
                 promises.push(dispatch(fetchPerformances()));
 
                 // Инициализируем виджет Яндекс.Билетов только при первой загрузке данных о событиях
@@ -58,6 +63,11 @@ export const useInitialData = () => {
                 promises.push(dispatch(fetchProjects()));
             }
 
+            if (!theaterInfoData.description.length && isAboutRoute(location.pathname)) {
+                console.log('Загрузка данных о театре');
+                promises.push(dispatch(fetchTheaterInfo()));
+            }
+
             try {
                 await Promise.all(promises);
             } catch (error) {
@@ -66,5 +76,5 @@ export const useInitialData = () => {
         };
 
         loadData();
-    }, [dispatch, location.pathname, performancesData.length, teamData.length, projectsData.length]);
+    }, [dispatch, location.pathname, performancesData.length, teamData.length, projectsData.length, theaterInfoData]);
 };

@@ -11,7 +11,7 @@ import { HomePage } from '@pages/HomePage';
 import { AfishaPage } from '@pages/AfishaPage';
 import { PerformancesPage } from '@pages/PerformancesPage';
 import { PerformancePage } from '@pages/PerformancesPage/PerformancePage';
-import { About } from '@pages/about';
+import { AboutPage } from '@pages/AboutPage';
 import { TeamPage } from '@pages/TeamPage';
 import { TeamCardFull } from '@pages/TeamPage/TeamCardFull';
 import { ProjectsPage } from '@pages/ProjectsPage';
@@ -30,7 +30,7 @@ const AppContent = () => {
                     <Route path={ROUTES.AFISHA} element={<AfishaPage />} />
                     <Route path={ROUTES.PERFORMANCES} element={<PerformancesPage />} />
                     <Route path={`${ROUTES.PERFORMANCES}/:slug`} element={<PerformancePage />} />
-                    <Route path={ROUTES.ABOUT} element={<About />} />
+                    <Route path={ROUTES.ABOUT} element={<AboutPage />} />
                     <Route path={ROUTES.TEAM} element={<TeamPage />} />
                     <Route path={`${ROUTES.TEAM}/:slug`} element={<TeamCardFull />} />
                     <Route path={ROUTES.PROJECTS} element={<ProjectsPage />} />

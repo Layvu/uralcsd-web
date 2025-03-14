@@ -4,7 +4,7 @@ import { ProjectsState } from './types';
 
 const initialState: ProjectsState = {
     data: [],
-    loading: false,
+    loading: true,
     error: null,
 };
 
