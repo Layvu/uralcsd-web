@@ -16,7 +16,7 @@ import { TeamPage } from '@pages/TeamPage';
 import { TeamCardFull } from '@pages/TeamPage/TeamCardFull';
 import { ProjectsPage } from '@pages/ProjectsPage';
 import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
-import { Contacts } from '@pages/contacts';
+import { ContactsPage } from '@pages/ContactsPage';
 
 const AppContent = () => {
     useInitialData();
@@ -35,7 +35,7 @@ const AppContent = () => {
                     <Route path={`${ROUTES.TEAM}/:slug`} element={<TeamCardFull />} />
                     <Route path={ROUTES.PROJECTS} element={<ProjectsPage />} />
                     <Route path={`${ROUTES.PROJECTS}/:slug`} element={<ProjectPage />} />
-                    <Route path={ROUTES.CONTACTS} element={<Contacts />} />
+                    <Route path={ROUTES.CONTACTS} element={<ContactsPage />} />
                 </Routes>
             </main>
             <Footer />

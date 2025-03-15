@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { FooterUI } from '@components/ui/Footer';
+import { ContactsUI } from '@components/ui/ContactsPage';
 import { selectContactsInfo } from '@services/selectors/contactsSelectors';
 
-export const Footer: React.FC = () => {
+export const ContactsPage: React.FC = () => {
     const contactsInfo = useSelector(selectContactsInfo);
 
-    return <FooterUI contactsInfo={contactsInfo} />;
+    return <ContactsUI contactsInfo={contactsInfo} />;
 };

@@ -7,11 +7,13 @@ import { fetchPerformances } from '@services/slices/performancesSlice';
 import { fetchTeam } from '@services/slices/teamSlice';
 import { fetchProjects } from '@services/slices/projectsSlice';
 import { fetchTheaterInfo } from '@services/slices/theaterSlice';
+import { fetchContacts } from '@services/slices/contactsSlice';
 
 import { selectPerformances } from '@services/selectors/performancesSelectors';
 import { selectTeam } from '@services/selectors/teamSelectors';
 import { selectProjects } from '@services/selectors/projectsSelectors';
 import { selectTheaterInfo } from '@services/selectors/theaterSelectors';
+import { selectContactsInfo } from '@services/selectors/contactsSelectors';
 
 import { initYandexTicketsWidget } from '@services/yandexTickets';
 
@@ -32,10 +34,17 @@ export const useInitialData = () => {
     const teamData = useSelector(selectTeam);
     const projectsData = useSelector(selectProjects);
     const theaterInfoData = useSelector(selectTheaterInfo);
+    const contactsInfoData = useSelector(selectContactsInfo);
 
     useEffect(() => {
         const loadData = async () => {
             const promises = [];
+
+            // Загружаем контакты сразу, так как они нужны для футера на всех страницах
+            if (!contactsInfoData.address) {
+                console.log('Загрузка данных о контактах');
+                await dispatch(fetchContacts());
+            }
 
             if (!performancesData.length && isPerformancesRoute(location.pathname)) {
                 console.log('Загрузка данных спектаклей');
@@ -76,5 +85,13 @@ export const useInitialData = () => {
         };
 
         loadData();
-    }, [dispatch, location.pathname, performancesData.length, teamData.length, projectsData.length, theaterInfoData]);
+    }, [
+        dispatch,
+        location.pathname,
+        performancesData.length,
+        teamData.length,
+        projectsData.length,
+        theaterInfoData,
+        contactsInfoData,
+    ]);
 };
