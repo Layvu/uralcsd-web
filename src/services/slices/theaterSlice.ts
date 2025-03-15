@@ -7,6 +7,7 @@ const initialState: TheaterState = {
     data: { image: '', description: '' } as ITheaterInfo,
     loading: true,
     error: null,
+    isInitialized: false,
 };
 
 const theaterSlice = createSlice({
@@ -23,6 +24,7 @@ const theaterSlice = createSlice({
                 state.data = action.payload;
                 state.loading = false;
                 state.error = null;
+                state.isInitialized = true;
             })
             .addCase(fetchTheaterInfo.rejected, (state, action) => {
                 state.error = action.error.message || 'Failed to fetch theater info';

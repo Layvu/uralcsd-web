@@ -6,6 +6,7 @@ const initialState: PerformanceState = {
     data: [],
     loading: true,
     error: null,
+    isInitialized: false,
 };
 
 const performancesSlice = createSlice({
@@ -22,6 +23,7 @@ const performancesSlice = createSlice({
                 state.data = action.payload;
                 state.loading = false;
                 state.error = null;
+                state.isInitialized = true;
             })
             .addCase(fetchPerformances.rejected, (state, action) => {
                 state.error = action.error.message || 'Failed to fetch performances';

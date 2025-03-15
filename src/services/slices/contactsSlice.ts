@@ -25,6 +25,7 @@ const initialState: ContactsState = {
     } as IContactInfo,
     loading: true,
     error: null,
+    isInitialized: false,
 };
 
 const contactsSlice = createSlice({
@@ -41,6 +42,7 @@ const contactsSlice = createSlice({
                 state.data = action.payload;
                 state.loading = false;
                 state.error = null;
+                state.isInitialized = true;
             })
             .addCase(fetchContacts.rejected, (state, action) => {
                 state.error = action.error.message || 'Failed to fetch contacts info';

@@ -9,6 +9,7 @@ type GenericState<T> = {
     data: T;
     loading: boolean;
     error: string | null;
+    isInitialized: boolean;
 };
 
 export interface TeamState extends GenericState<IMember[]> {

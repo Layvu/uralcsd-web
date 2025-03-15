@@ -4,6 +4,8 @@ import { groupPerformancesByDate } from 'utils/groupPerformancesByDate';
 
 export const selectPerformancesState = (state: RootState) => state.performances;
 export const selectPerformances = createSelector([selectPerformancesState], (state) => state.data);
+export const selectPerformancesLoading = createSelector([selectPerformancesState], (state) => state.loading);
+export const selectPerformancesInitialized = createSelector([selectPerformancesState], (state) => state.isInitialized);
 
 const performancesBySlug = createSelector([selectPerformances], (performances) =>
     Object.fromEntries(performances.map((p) => [p.slug, p])),

@@ -6,3 +6,4 @@ export const selectContactsInfo = createSelector([selectContactsState], (state) 
 
 export const selectContactsLoading = createSelector([selectContactsState], (state) => state.loading);
 export const selectContactsError = createSelector([selectContactsState], (state) => state.error);
+export const selectContactsInitialized = createSelector([selectContactsState], (state) => state.isInitialized);
