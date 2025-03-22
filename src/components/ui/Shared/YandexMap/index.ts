@@ -1,0 +1,1 @@
+export { YandexMapUI } from './YandexMapUI';
