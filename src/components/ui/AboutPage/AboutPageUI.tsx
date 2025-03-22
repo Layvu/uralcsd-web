@@ -1,6 +1,7 @@
 import React from 'react';
 import { MainTitle } from '@components/Shared/MainTitle';
 import { AboutPageUIProps } from './type';
+import { DefaultBanner } from '@components/Shared/DefaultBanner';
 
 import './about-page.scss';
 
@@ -23,6 +24,11 @@ export const AboutPageUI: React.FC<AboutPageUIProps> = React.memo(({ theaterInfo
                             {paragraph}
                         </p>
                     ))}
+                </div>
+
+                <div className="about-page__partners">
+                    <h2 className="about-page__partners-title">Наши партнёры</h2>
+                    <DefaultBanner name="Партнёр" images={theaterInfo.partnersImages} />
                 </div>
             </div>
         </div>

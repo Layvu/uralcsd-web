@@ -4,7 +4,7 @@ import { TheaterState } from './types';
 import { ITheaterInfo } from 'types/theater';
 
 const initialState: TheaterState = {
-    data: { image: '', description: '' } as ITheaterInfo,
+    data: { image: '', description: '', partnersImages: [] } as ITheaterInfo,
     loading: true,
     error: null,
     isInitialized: false,
