@@ -6,6 +6,7 @@ const initialState: ProjectsState = {
     data: [],
     loading: true,
     error: null,
+    isInitialized: false,
 };
 
 export const projectsSlice = createSlice({
@@ -22,6 +23,7 @@ export const projectsSlice = createSlice({
                 state.data = action.payload;
                 state.loading = false;
                 state.error = null;
+                state.isInitialized = true;
             })
             .addCase(fetchProjects.rejected, (state, action) => {
                 state.loading = false;
@@ -31,8 +33,7 @@ export const projectsSlice = createSlice({
 });
 
 export const fetchProjects = createAsyncThunk('projects/fetchProjects', async () => {
-    const response = await fetchProjectsApi();
-    return response;
+    return await fetchProjectsApi();
 });
 
 export default projectsSlice.reducer;

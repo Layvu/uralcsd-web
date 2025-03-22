@@ -1,5 +1,5 @@
 import { IContactInfo } from 'types/contacts';
 
-export interface FooterUIProps {
+export interface ContactsUIProps {
     contactsInfo: IContactInfo;
 }

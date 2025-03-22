@@ -8,6 +8,7 @@ const initialState: TeamState = {
     data: [],
     loading: true,
     error: null,
+    isInitialized: false,
     selectedCategory: TeamFilterCategories.Actors, // начальная категория
 };
 
@@ -29,6 +30,7 @@ const teamSlice = createSlice({
                 state.data = action.payload;
                 state.loading = false;
                 state.error = null;
+                state.isInitialized = true;
             })
             .addCase(fetchTeam.rejected, (state, action) => {
                 state.error = action.error.message || 'Failed to fetch team';
@@ -39,8 +41,7 @@ const teamSlice = createSlice({
 
 export const { setCategory } = teamSlice.actions;
 export const fetchTeam = createAsyncThunk('team/fetchTeam', async () => {
-    const response = await fetchTeamApi();
-    return response;
+    return await fetchTeamApi();
 });
 
 export default teamSlice.reducer;

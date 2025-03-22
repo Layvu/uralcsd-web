@@ -6,3 +6,5 @@ export const selectTheaterInfo = createSelector([selectTheaterState], (state) =>
 
 export const selectTheaterLoading = createSelector([selectTheaterState], (state) => state.loading);
 export const selectTheaterError = createSelector([selectTheaterState], (state) => state.error);
+
+export const selectTheaterInitialized = createSelector([selectTheaterState], (state) => state.isInitialized);

@@ -5,9 +5,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { SvgIcon } from '@components/Shared/SvgIcon';
+import { FooterUIProps } from './type';
 //import { Social } from "@components/Shared/Social";
 
-export const FooterUI: React.FC = React.memo(() => {
+export const FooterUI: React.FC<FooterUIProps> = React.memo(({ contactsInfo }) => {
+    const { phones, email, workingDaysText, workingHours, daysOff } = contactsInfo;
+
     return (
         <footer className="footer">
             <div className="wrap footer__wrap">
@@ -32,16 +35,16 @@ export const FooterUI: React.FC = React.memo(() => {
                 <div className="footer__contacts">
                     <h3 className="footer__title">КОНТАКТЫ</h3>
                     <p className="footer__contacts-text">Номер кассы</p>
-                    <a href="tel:+71111111111" className="footer__phone">
-                        +7(111)111-11-11
+                    <a href={`tel:${phones?.boxOffice?.replace(/[^\d+]/g, '')}`} className="footer__phone">
+                        {phones?.boxOffice}
                     </a>
-                    <p className="footer__contacts-text">Другой номер</p>
-                    <a href="tel:+71111111111" className="footer__phone">
-                        +7(111)111-11-11
+                    <p className="footer__contacts-text">Основной телефон</p>
+                    <a href={`tel:${phones?.main?.replace(/[^\d+]/g, '')}`} className="footer__phone">
+                        {phones?.main}
                     </a>
                     <p className="footer__contacts-text">Email</p>
-                    <a href="mailto:dramcentr@gmail.com" className="footer__email">
-                        dramcentr@gmail.com
+                    <a href={`mailto:${email}`} className="footer__email">
+                        {email}
                     </a>
                 </div>
 
@@ -50,16 +53,16 @@ export const FooterUI: React.FC = React.memo(() => {
                     <div className="footer__work-hours-container">
                         <p className="footer__work-days">Рабочие дни</p>
                         <div className="footer__work-time">
-                            <span className="footer__work-time-text">Со вторника по воскресенье</span>
+                            <span className="footer__work-time-text">{workingDaysText}</span>
                             <div className="footer__work-time-line">
-                                <span className="footer__work-time-start">9:00</span>
+                                <span className="footer__work-time-start">{workingHours?.start}</span>
                                 <div className="footer__work-time-divider"></div>
-                                <span className="footer__work-time-end">21:00</span>
+                                <span className="footer__work-time-end">{workingHours?.end}</span>
                             </div>
                         </div>
                     </div>
                     <p className="footer__off-days">Выходные дни</p>
-                    <p className="footer__off-days-text">Понедельник</p>
+                    <p className="footer__off-days-text">{daysOff?.join(', ')}</p>
                 </div>
             </div>
         </footer>
