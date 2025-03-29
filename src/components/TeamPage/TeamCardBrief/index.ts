@@ -1,0 +1,1 @@
+export { TeamCardBrief } from "./TeamCardBrief";

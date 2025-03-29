@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 html {
     font-size: 20px;
     box-sizing: border-box;
@@ -11,7 +13,7 @@ html {
 
 body {
     margin: 0;
-    margin-top: 74px; // HEADER_SIZE
+    margin-top: 80px; // HEADER_SIZE
     font-family: 'Lexend-Regular', sans-serif;
     font-weight: 400;
     color: var(--text-primary);
@@ -39,9 +41,17 @@ ul {
 
 button {
     padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
 }
 
-h3 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: normal;
     font-size: inherit;
     margin: 0;

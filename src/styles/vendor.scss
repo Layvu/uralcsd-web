@@ -1,2 +1,4 @@
-@import "./vendor/normalize";
-@import "../../node_modules/swiper/swiper-bundle.css";
+@use './vendor/normalize';
+@use 'swiper/scss';
+@use 'swiper/scss/navigation';
+@use 'swiper/scss/pagination';

@@ -1,0 +1,33 @@
+.project-info {
+    &__wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        padding: 77px 0 68px;
+    }
+
+    &__name {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+
+    &__description-title {
+        font-size: 32px;
+
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    &__description {
+        font-size: 20px;
+
+        margin: 0;
+        margin-bottom: 60px;
+    }
+
+    &__button {
+        margin-top: 30px;
+    }
+}

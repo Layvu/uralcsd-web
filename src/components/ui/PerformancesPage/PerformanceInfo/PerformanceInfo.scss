@@ -1,0 +1,59 @@
+.performance-info {
+    &__wrap {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+
+        padding: 77px 0 68px;
+    }
+
+    &__name {
+        font-size: 36px;
+        margin-bottom: 16px;
+    }
+
+    &__additional {
+        font-size: 24px;
+
+        margin: 0;
+        margin-bottom: 60px;
+    }
+
+    &__description-title {
+        font-size: 32px;
+
+        margin: 0;
+        margin-bottom: 16px;
+    }
+
+    &__description {
+        font-size: 20px;
+
+        margin: 0;
+        margin-bottom: 60px;
+    }
+
+    &__details {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 300px;
+
+        width: 100%;
+    }
+
+    &__cast-title,
+    &__crew-title {
+        font-size: 32px;
+    }
+    &__cast-item,
+    &__crew-item {
+        font-size: 20px;
+        margin-top: 16px;
+    }
+
+    &__ya-button {
+        margin-bottom: 30px;
+    }
+}

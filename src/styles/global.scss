@@ -1,8 +1,9 @@
-@import "@styles/fonts";
-@import "@styles/vars";
-@import "@styles/mixins";
-@import "@styles/vendor";
-@import "@styles/settings";
+@use 'mixins' as *;
+@use 'fonts' as *;
+@use 'vars' as *;
+@use 'vendor' as *;
+@use 'settings' as *;
+@use 'atoms' as *;
 
 // @media (max-width: 1024px) {
 //   .container {
