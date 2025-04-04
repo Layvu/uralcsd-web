@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "afisha_items",
+  "info": {
+    "singularName": "afisha-item",
+    "pluralName": "afisha-items",
+    "displayName": "afisha_item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "performance": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::performance.performance"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "tland_adress": {
+      "type": "string"
+    },
+    "isPremiere": {
+      "type": "boolean",
+      "default": false
+    },
+    "price": {
+      "type": "integer"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}

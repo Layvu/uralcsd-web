@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "singularName": "member",
+    "pluralName": "members",
+    "displayName": "Member",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "surname": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "surname"
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "male",
+        "female"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "actor",
+        "manager",
+        "director"
+      ]
+    },
+    "mainPhoto": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "biography": {
+      "type": "richtext"
+    },
+    "position": {
+      "type": "string"
+    },
+    "performance_casts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::performance-cast.performance-cast",
+      "mappedBy": "actor"
+    },
+    "aPerformances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::performance.performance",
+      "mappedBy": "director"
+    }
+  }
+}

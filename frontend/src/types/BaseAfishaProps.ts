@@ -1,4 +1,4 @@
-import { IMonth } from 'interfases/IMonth';
+import { IMonth } from './month';
 
 export interface BaseAfishaProps {
     months: IMonth[];
