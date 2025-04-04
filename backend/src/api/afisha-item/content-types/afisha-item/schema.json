@@ -19,7 +19,7 @@
     "date": {
       "type": "datetime"
     },
-    "tland_adress": {
+    "sessionId": {
       "type": "string"
     },
     "isPremiere": {

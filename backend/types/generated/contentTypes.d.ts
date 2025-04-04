@@ -424,9 +424,9 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
     photo: Schema.Attribute.Media<'images'>;
     price: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
+    sessionId: Schema.Attribute.String;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
-    tland_adress: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
