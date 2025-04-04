@@ -1,4 +1,5 @@
 import { TeamFilterCategory } from 'types/TeamFilterCategory';
+import { IPerformance } from './performance';
 
 export interface IMember {
     id: string;
@@ -8,11 +9,13 @@ export interface IMember {
     gender: 'male' | 'female';
     category: TeamFilterCategory; // Должность - в какой вкладке будет отображаться // или string, если для api
     additionalRoles: string[];
-    biography: string[];
+    biography: string[] | null;
+    position: string | null; // Занимаемая должность, отображается снизу фотографии на странице /team
+    aPerformances: IPerformance[] // Если режиссер - список спектаклей, которых он поставил
     performances: {
-        performanceId: string; // Связь через Performance-cast
-        role: string[];
+        performanceCastId: string; // Связь через PerformanceCast
+        role: string;
     }[];
     mainPhoto: string;
-    images: string[];
+    imagesUrls: string[];
 }

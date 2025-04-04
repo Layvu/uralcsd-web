@@ -543,9 +543,6 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
       'api::performance.performance'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     performance_casts: Schema.Attribute.Relation<
       'oneToMany',
       'api::performance-cast.performance-cast'
@@ -556,8 +553,11 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
       true
     >;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'name'>;
+    slug: Schema.Attribute.UID<'title'>;
     teaser: Schema.Attribute.String;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
