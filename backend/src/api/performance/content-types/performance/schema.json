@@ -4,7 +4,7 @@
   "info": {
     "singularName": "performance",
     "pluralName": "performances",
-    "displayName": "performance",
+    "displayName": "Performance",
     "description": ""
   },
   "options": {
@@ -20,7 +20,7 @@
       "type": "uid",
       "targetField": "title"
     },
-    "age_limit": {
+    "ageLimit": {
       "type": "integer"
     },
     "description": {
@@ -36,7 +36,7 @@
     "duration": {
       "type": "string"
     },
-    "photos": {
+    "images": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -50,7 +50,7 @@
     "isActual": {
       "type": "boolean"
     },
-    "photo_anons": {
+    "mainImage": {
       "type": "media",
       "multiple": false,
       "required": false,
@@ -58,7 +58,7 @@
         "images"
       ]
     },
-    "performance_casts": {
+    "performanceCasts": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::performance-cast.performance-cast",

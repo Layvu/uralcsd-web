@@ -8,6 +8,7 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
             {/* TODO Продюссеров еще надо рассмотреть */}
             <div>{member.name}</div>
             <div>{member.surname}</div>
+
             {performancesWithRoles.map(({ performance, role }) =>
                 performance ? (
                     <Link to={`/performances/${performance.slug}`} key={performance.id}>
@@ -19,6 +20,10 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
                     <div key={`no-performance-${member.id}-${role}`}>Спектакль не найден - {role}</div>
                 ),
             )}
+
+            {/* Проверка */}
+            <img src={member.mainPhoto.url} />
+            {member.imagesUrls.map((url : string) => url ? (<img src={url} key={url} />) : null)}
         </>
     );
 });

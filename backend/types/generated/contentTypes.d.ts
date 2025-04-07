@@ -450,7 +450,9 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
       'api::performance.performance'
     >;
     biography: Schema.Attribute.RichText;
-    category: Schema.Attribute.Enumeration<['actor', 'manager', 'director']>;
+    category: Schema.Attribute.Enumeration<
+      ['actors', 'management', 'directors']
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -464,7 +466,7 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     mainPhoto: Schema.Attribute.Media<'images' | 'files', true>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
-    performance_casts: Schema.Attribute.Relation<
+    performanceCasts: Schema.Attribute.Relation<
       'oneToMany',
       'api::performance-cast.performance-cast'
     >;
@@ -483,7 +485,7 @@ export interface ApiPerformanceCastPerformanceCast
   collectionName: 'performance_casts';
   info: {
     description: '';
-    displayName: 'performance-cast';
+    displayName: 'PerformanceCast';
     pluralName: 'performance-casts';
     singularName: 'performance-cast';
   };
@@ -517,7 +519,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
   collectionName: 'performances';
   info: {
     description: '';
-    displayName: 'performance';
+    displayName: 'Performance';
     pluralName: 'performances';
     singularName: 'performance';
   };
@@ -526,7 +528,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
   };
   attributes: {
     additionalInfo: Schema.Attribute.String;
-    age_limit: Schema.Attribute.Integer;
+    ageLimit: Schema.Attribute.Integer;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -534,6 +536,10 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
     director: Schema.Attribute.Relation<'manyToOne', 'api::member.member'>;
     dramatist: Schema.Attribute.String;
     duration: Schema.Attribute.String;
+    images: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
     isActual: Schema.Attribute.Boolean;
     isWithIntermission: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
@@ -543,14 +549,10 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
       'api::performance.performance'
     > &
       Schema.Attribute.Private;
-    performance_casts: Schema.Attribute.Relation<
+    mainImage: Schema.Attribute.Media<'images'>;
+    performanceCasts: Schema.Attribute.Relation<
       'oneToMany',
       'api::performance-cast.performance-cast'
-    >;
-    photo_anons: Schema.Attribute.Media<'images'>;
-    photos: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;

@@ -32,9 +32,9 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "actor",
-        "manager",
-        "director"
+        "actors",
+        "management",
+        "directors"
       ]
     },
     "mainPhoto": {
@@ -61,7 +61,7 @@
     "position": {
       "type": "string"
     },
-    "performance_casts": {
+    "performanceCasts": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::performance-cast.performance-cast",

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "performance-cast",
     "pluralName": "performance-casts",
-    "displayName": "performance-cast",
+    "displayName": "PerformanceCast",
     "description": ""
   },
   "options": {
@@ -14,17 +14,17 @@
     "role": {
       "type": "string"
     },
-    "performance": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::performance.performance",
-      "inversedBy": "performance_casts"
-    },
     "actor": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::member.member",
-      "inversedBy": "performance_casts"
+      "inversedBy": "performanceCasts"
+    },
+    "performance": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::performance.performance",
+      "inversedBy": "performanceCasts"
     }
   }
 }

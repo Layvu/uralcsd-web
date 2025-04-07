@@ -7,13 +7,20 @@ export interface IPerformance {
     description: string;
     teaser: string;
     additionalInfo: string; // Дополнительное описание 
-    cast: { performanceCastId: string; role: string }[];  // Актеры (через Performance-cast)
-    director: IMember;  // режиссер
-    dramatist: string; // драматург
-    imagesUrls: string[];
-    mainImageUrl: string; 
     ageLimit: number;
     duration: string;
+    dramatist: string; // драматург
+
+    performanceCasts: { 
+        id: string; 
+    }[];  // Актеры (через Performance-cast)
+    director: {
+        id: string // режиссер, связь через IMember
+    };  
+
+    images?: { url: string }[];
+    mainImage?: { url: string }[];
+
     isWithIntermission: boolean;
     isActual: boolean;
 }
