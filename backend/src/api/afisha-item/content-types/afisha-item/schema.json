@@ -4,7 +4,7 @@
   "info": {
     "singularName": "afisha-item",
     "pluralName": "afisha-items",
-    "displayName": "afisha_item",
+    "displayName": "AfishaItem",
     "description": ""
   },
   "options": {

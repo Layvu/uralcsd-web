@@ -398,7 +398,7 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
   collectionName: 'afisha_items';
   info: {
     description: '';
-    displayName: 'afisha_item';
+    displayName: 'AfishaItem';
     pluralName: 'afisha-items';
     singularName: 'afisha-item';
   };
@@ -442,7 +442,7 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
     singularName: 'member';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     aPerformances: Schema.Attribute.Relation<
