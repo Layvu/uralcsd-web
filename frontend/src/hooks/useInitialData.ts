@@ -8,16 +8,21 @@ import { fetchTeam } from '@services/slices/teamSlice';
 import { fetchProjects } from '@services/slices/projectsSlice';
 import { fetchTheaterInfo } from '@services/slices/theaterSlice';
 import { fetchContacts } from '@services/slices/contactsSlice';
+import { fetchPerformanceCasts } from '@services/slices/performanceCastsSlice';
+import { fetchAfishaItems } from '@services/slices/afishaItemsSlice';
 
 import { selectPerformancesInitialized } from '@services/selectors/performancesSelectors';
 import { selectTeamInitialized } from '@services/selectors/teamSelectors';
 import { selectProjectsInitialized } from '@services/selectors/projectsSelectors';
 import { selectTheaterInitialized } from '@services/selectors/theaterSelectors';
 import { selectContactsInitialized } from '@services/selectors/contactsSelectors';
+import { selectPerformanceCastsInitialized } from '@services/selectors/performanceCastSelectors';
 
 import { initYandexTicketsWidget } from '@services/yandexTickets';
 
 import { ROUTES } from 'consts';
+import { selectAfishaInitialized } from '@services/selectors/afishaItemsSelectors';
+
 
 const isPerformancesRoute = (pathname: string) => {
     if (pathname === '/') return true;
@@ -27,6 +32,7 @@ const isPerformancesRoute = (pathname: string) => {
 const isTeamRoute = (pathname: string) => pathname.includes(ROUTES.TEAM);
 const isProjectsRoute = (pathname: string) => pathname.includes(ROUTES.PROJECTS);
 const isAboutRoute = (pathname: string) => pathname.includes(ROUTES.ABOUT);
+const isAfishaRoute = (pathname: string) => pathname.includes(ROUTES.AFISHA);
 
 export const useInitialData = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -39,6 +45,8 @@ export const useInitialData = () => {
     const isTeamInitialized = useSelector(selectTeamInitialized);
     const isProjectsInitialized = useSelector(selectProjectsInitialized);
     const isTheaterInitialized = useSelector(selectTheaterInitialized);
+    const isPerformanceCastInitialized = useSelector(selectPerformanceCastsInitialized);
+    const isAfishaItemsInitialized = useSelector(selectAfishaInitialized);
 
     useEffect(() => {
         const loadData = async () => {
@@ -65,6 +73,11 @@ export const useInitialData = () => {
                 }
             }
 
+            if (!isAfishaItemsInitialized && isAfishaRoute(location.pathname)) {
+                console.log('Загрузка данных афиши');
+                promises.push(dispatch(fetchAfishaItems()));
+            }
+
             if (!isTeamInitialized && isTeamRoute(location.pathname)) {
                 console.log('Загрузка данных команды');
                 promises.push(dispatch(fetchTeam()));
@@ -73,6 +86,11 @@ export const useInitialData = () => {
             if (!isProjectsInitialized && isProjectsRoute(location.pathname)) {
                 console.log('Загрузка данных проектов');
                 promises.push(dispatch(fetchProjects()));
+            }
+
+            if (!isPerformanceCastInitialized && (isTeamRoute(location.pathname) || isPerformancesRoute(location.pathname))) {
+                console.log('Загрузка данных списка акторов и ролей в спектаклях');
+                promises.push(dispatch(fetchPerformanceCasts()));
             }
 
             if (!isTheaterInitialized && isAboutRoute(location.pathname)) {
@@ -96,5 +114,7 @@ export const useInitialData = () => {
         isProjectsInitialized,
         isTheaterInitialized,
         isContactsInitialized,
+        isPerformanceCastInitialized,
+        isAfishaItemsInitialized,
     ]);
 };

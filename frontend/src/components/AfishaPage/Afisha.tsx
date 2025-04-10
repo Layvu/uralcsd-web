@@ -5,17 +5,19 @@ import { AfishaUI } from '@components/ui/AfishaPage';
 
 import { getNextThreeMonths } from 'utils/getNextThreeMonths';
 
-import { makeSelectFilteredPerformances } from 'services/selectors/performancesSelectors';
+import { makeSelectFilteredAfishaItems } from '@services/selectors/afishaItemsSelectors';
 import { RootState } from '@services/store';
 
 export const Afisha: React.FC = () => {
     const currentDate = useMemo(() => new Date(), []);
     const [activeMonthIndex, setActiveMonthIndex] = useState(currentDate.getMonth());
 
-    const selectFilteredPerformances = useMemo(() => makeSelectFilteredPerformances(), []);
-    const groupedPerformances = useSelector((state: RootState) =>
-        selectFilteredPerformances(state, activeMonthIndex, currentDate),
+    const selectFilteredAfishaItems = useMemo(() => makeSelectFilteredAfishaItems(), []);
+    const groupedAfishaItems = useSelector((state: RootState) =>
+        selectFilteredAfishaItems(state, activeMonthIndex),
     );
+
+
 
     const handleMonthChange = useCallback((monthIndex: number) => {
         setActiveMonthIndex(monthIndex);
@@ -28,7 +30,7 @@ export const Afisha: React.FC = () => {
             months={months}
             activeMonthIndex={activeMonthIndex}
             onMonthChange={handleMonthChange}
-            groupedPerformancesByDate={groupedPerformances}
+            groupedAfishaItemsWithPerformanceByDate={groupedAfishaItems}
         />
     );
 };

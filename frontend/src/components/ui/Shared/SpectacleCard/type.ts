@@ -1,3 +1,4 @@
-import { IPerformance } from 'types/performance';
+import { IAfishaItemsWithPerformance } from 'types/afishaItemsWithPerformance';
 
-export type SpectacleCardProps = IPerformance;
+
+export type SpectacleCardProps = IAfishaItemsWithPerformance;

@@ -22,8 +22,8 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
             )}
 
             {/* Проверка */}
-            <img src={member.mainPhoto.url} />
-            {member.imagesUrls.map((url : string) => url ? (<img src={url} key={url} />) : null)}
+            <img src={member.mainPhoto?.url} />
+            {member.images?.map((image: {url:string}) => image ? (<img src={image.url} key={image.url} />) : null)}
         </>
     );
 });

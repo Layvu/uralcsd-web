@@ -13,13 +13,13 @@ export interface IPerformance {
 
     performanceCasts: { 
         id: string; 
-    }[];  // Актеры (через Performance-cast)
+    }[];  // Актеры (через PerformanceСast)
     director: {
         id: string // режиссер, связь через IMember
     };  
 
     images?: { url: string }[];
-    mainImage?: { url: string }[];
+    mainImage?: { url: string };
 
     isWithIntermission: boolean;
     isActual: boolean;

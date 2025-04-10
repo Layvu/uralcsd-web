@@ -1,5 +1,5 @@
-import { Performance } from 'types/performance';
+import { IAfishaItemsWithPerformance } from 'types/afishaItemsWithPerformance';
 
 export interface DayScheduleProps {
-    performances: Performance[];
+    afishaItemsWithPerformance: IAfishaItemsWithPerformance[];
 }

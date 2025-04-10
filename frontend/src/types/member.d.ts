@@ -16,6 +16,6 @@ export interface IMember {
     performanceCasts?: {
         id: string; // Связь через PerformanceCast
     }[];
-    mainPhoto?: { url: string }[];
-    imagesUrl?: string[];
+    mainPhoto?: { url: string };
+    images?: {url : string}[];
 }

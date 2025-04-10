@@ -91,7 +91,7 @@ export const mockAfishaItems: IAfishaItem[] = [
     {
         id: '101',
         performanceId: '1',
-        date: '2025-03-15T19:00:00',
+        date: '2025-04-15T19:00:00',
         sessionId: '247907',
         isPremiere: true,
         price: 1000,
@@ -102,7 +102,7 @@ export const mockAfishaItems: IAfishaItem[] = [
     {
         id: '102',
         performanceId: '2',
-        date: '2025-03-28T14:30:00',
+        date: '2025-04-28T14:30:00',
         sessionId: '247907',
         isPremiere: true,
         price: 800,
@@ -113,7 +113,7 @@ export const mockAfishaItems: IAfishaItem[] = [
     {
         id: '103',
         performanceId: '3',
-        date: '2025-03-28T18:00:00',
+        date: '2025-04-28T18:00:00',
         sessionId: '247907',
         isPremiere: false,
         price: 900,

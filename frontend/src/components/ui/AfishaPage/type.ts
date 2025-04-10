@@ -1,9 +1,9 @@
-import { Performance } from 'types/performance';
+import { IAfishaItemsWithPerformance } from 'types/afishaItemsWithPerformance';
 import { BaseAfishaProps } from 'types/BaseAfishaProps';
 
 
 export interface AfishaProps extends BaseAfishaProps {
-    groupedPerformancesByDate: {
-        [key: string]: Performance[];
+    groupedAfishaItemsWithPerformanceByDate: {
+        [key: string]: IAfishaItemsWithPerformance[];
     },
 }
