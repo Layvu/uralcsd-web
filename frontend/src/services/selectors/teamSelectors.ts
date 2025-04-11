@@ -17,6 +17,32 @@ export const selectTeamMemberBySlug = createSelector(
     (bySlug, slug) => bySlug[slug],
 );
 
+export const teamMemberById = createSelector([selectTeam],(team) => 
+    Object.fromEntries(team.map(t => [t.id, t]))
+);
+
+export const selectTeamMemberById = createSelector(
+    [teamMemberById, (_, id: string) => id],
+    (byId, id) => byId[id]
+);
+
 export const selectFilteredTeam = createSelector([selectTeam, selectSelectedCategory], (team, category) =>
     team.filter((member) => member.category === category),
+);
+
+export const selectTeamMembersByIds = createSelector(
+    [selectTeam, (_state: RootState, memberIds: string[] | string) => memberIds],
+    (teamMembers, memberIds) => {
+        if (!memberIds || !memberIds.length) return [];
+        
+        const idsArray = Array.isArray(memberIds) 
+            ? memberIds 
+            : typeof memberIds === 'string' 
+                ? memberIds.split(',') 
+                : [];
+        
+        const idsSet = new Set(idsArray.filter(Boolean));
+        
+        return teamMembers.filter((member) => member.id && idsSet.has(member.id));
+    }
 );

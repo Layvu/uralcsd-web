@@ -23,7 +23,6 @@ import { initYandexTicketsWidget } from '@services/yandexTickets';
 import { ROUTES } from 'consts';
 import { selectAfishaInitialized } from '@services/selectors/afishaItemsSelectors';
 
-
 const isPerformancesRoute = (pathname: string) => {
     if (pathname === '/') return true;
     if (pathname.includes(ROUTES.TEAM) && pathname.split('/').length > 2) return true;
@@ -58,7 +57,11 @@ export const useInitialData = () => {
                 await dispatch(fetchContacts());
             }
 
-            if (!isPerformancesInitialized && isPerformancesRoute(location.pathname)) {
+            if (
+                (!isPerformancesInitialized && isPerformancesRoute(location.pathname)) ||
+                (!isTeamInitialized && isTeamRoute(location.pathname)) ||
+                (!isAfishaItemsInitialized && isAfishaRoute(location.pathname))
+            ) {
                 console.log('Загрузка данных спектаклей');
                 promises.push(dispatch(fetchPerformances()));
 
@@ -71,26 +74,20 @@ export const useInitialData = () => {
                         console.error('Failed to initialize Yandex Tickets widget:', error);
                     }
                 }
-            }
 
-            if (!isAfishaItemsInitialized && isAfishaRoute(location.pathname)) {
                 console.log('Загрузка данных афиши');
                 promises.push(dispatch(fetchAfishaItems()));
-            }
 
-            if (!isTeamInitialized && isTeamRoute(location.pathname)) {
                 console.log('Загрузка данных команды');
                 promises.push(dispatch(fetchTeam()));
+
+                console.log('Загрузка данных списка акторов и ролей в спектаклях');
+                promises.push(dispatch(fetchPerformanceCasts()));
             }
 
             if (!isProjectsInitialized && isProjectsRoute(location.pathname)) {
                 console.log('Загрузка данных проектов');
                 promises.push(dispatch(fetchProjects()));
-            }
-
-            if (!isPerformanceCastInitialized && (isTeamRoute(location.pathname) || isPerformancesRoute(location.pathname))) {
-                console.log('Загрузка данных списка акторов и ролей в спектаклях');
-                promises.push(dispatch(fetchPerformanceCasts()));
             }
 
             if (!isTheaterInitialized && isAboutRoute(location.pathname)) {

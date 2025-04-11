@@ -19,3 +19,22 @@ export const selectPerformanceCastsInitialized = createSelector(
     [selectPerformanceCastState],
     (state) => state.isInitialized,
 );
+
+export const selectPerformanceCastByIds = createSelector(
+    [selectPerformanceCasts, (_state: RootState, castIds: string[] | string) => castIds],
+    (casts, castIds) => {
+        if (!castIds || !castIds.length) return [];
+        
+        // Нормализуем входные данные (может быть string или string[])
+        const idsArray = Array.isArray(castIds) 
+            ? castIds 
+            : typeof castIds === 'string' 
+                ? castIds.split(',') 
+                : [];
+        
+        // Создаем Set для быстрого поиска
+        const idsSet = new Set(idsArray.filter(Boolean));
+        
+        return casts.filter((cast) => cast.id && idsSet.has(cast.id));
+    }
+);

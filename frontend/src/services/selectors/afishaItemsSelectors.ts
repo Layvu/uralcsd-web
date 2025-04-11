@@ -28,6 +28,10 @@ export const selectPremiereAfishaItems = createSelector(
     (items) => items.filter(item => item.isPremiere)
 );
 
+export const selectLatestAfishaItems = createSelector([selectAfishaItems], (afishaItem) => 
+    afishaItem.slice(0, 3)
+);
+
 // Селектор для событий по ID спектакля
 export const selectAfishaItemsByPerformanceId = (performanceId: string) => 
     createSelector(
@@ -35,21 +39,7 @@ export const selectAfishaItemsByPerformanceId = (performanceId: string) =>
         (items) => items.filter(item => item.performance.id === performanceId)
     );
 
-// export const makeSelectFilteredAfishaItems = () =>
-//     createSelector(
-//         [
-//             selectAfishaItems, // базовый селектор для всех элементов афиши
-//             (_state: RootState, activeMonth: number) => activeMonth, // принимаем activeMonth как параметр
-//         ],
-//         (afishaItems, activeMonth) => {
-//             const filtered = afishaItems.filter((item) => {
-//                 const itemDate = new Date(item.date);
-//                 return itemDate.getMonth() === activeMonth;
-//             });
-        
-//             return groupAfishaItemsByDate(filtered);
-//         }
-//     );
+
 
 export const makeSelectFilteredAfishaItems = () =>
     createSelector(

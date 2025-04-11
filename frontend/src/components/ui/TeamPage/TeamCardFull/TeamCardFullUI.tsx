@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { TeamCardFullProps } from './type';
 
 export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member, performancesWithRoles }) => {
+    if (!member){
+        return <div>Загрузка</div>;
+    };
     return (
         <>
             {/* TODO Продюссеров еще надо рассмотреть */}
@@ -11,9 +14,9 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
 
             {performancesWithRoles.map(({ performance, role }) =>
                 performance ? (
-                    <Link to={`/performances/${performance.slug}`} key={performance.id}>
+                    <Link to={`/performances/${performance?.slug}`} key={performance?.id}>
                         <div>
-                            {performance.name} - {role}
+                            {performance.title} - {role}
                         </div>
                     </Link>
                 ) : (
@@ -22,8 +25,8 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
             )}
 
             {/* Проверка */}
-            <img src={member.mainPhoto?.url} />
-            {member.images?.map((image: {url:string}) => image ? (<img src={image.url} key={image.url} />) : null)}
+            <img src={member?.mainPhoto?.url} />
+            {member?.images?.map((image: {url:string}) => image ? (<img src={image.url} key={image.url} />) : null)}
         </>
     );
 });

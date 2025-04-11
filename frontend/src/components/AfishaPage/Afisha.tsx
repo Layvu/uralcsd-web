@@ -17,8 +17,6 @@ export const Afisha: React.FC = () => {
         selectFilteredAfishaItems(state, activeMonthIndex),
     );
 
-
-
     const handleMonthChange = useCallback((monthIndex: number) => {
         setActiveMonthIndex(monthIndex);
     }, []);

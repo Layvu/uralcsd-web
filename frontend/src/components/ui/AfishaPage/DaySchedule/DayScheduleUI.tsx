@@ -1,6 +1,6 @@
 import React from 'react';
 import { DayScheduleProps } from './type';
-import { SpectacleCard } from '@components/Shared/SpectacleCard';
+import { SpectacleCard } from '@components/AfishaPage/SpectacleCard';
 
 import './day-schedule.scss';
 

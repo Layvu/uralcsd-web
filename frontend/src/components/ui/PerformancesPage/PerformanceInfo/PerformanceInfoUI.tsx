@@ -4,43 +4,43 @@ import './PerformanceInfo.scss';
 import { PerformanceInfoUIProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import { openTicketsWidget } from 'services/yandexTickets';
+import { Link } from 'react-router-dom';
 
-export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
-    name,
-    description,
-    cast,
-    crew,
-    images,
-    sessionId,
-}) => {
-    const handleBuyTicket = () => {
-        if (sessionId) {
-            openTicketsWidget(sessionId);
-        }
-    };
+export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles }) => {
+    // const handleBuyTicket = () => {
+    //     if (sessionId) {
+    //         openTicketsWidget(sessionId);
+    //     }
+    // };
 
+    const performanceImages = performance.images?.map((image) => image.url);
     return (
         <>
             <div className="performance-info">
-                <DefaultBanner name={name} images={images} />
+                <DefaultBanner name={performance.title} images={performanceImages || []} />
 
                 <div className="performance-info__wrap wrap">
-                    <h2 className="performance-info__name">{name}</h2>
-                    <p className="performance-info__additional">Прочее</p>
+                    <h2 className="performance-info__name">{performance.title}</h2>
+                    <p className="performance-info__additional">{performance.additionalInfo}</p>
                     <p className="performance-info__description-title">Описание</p>
-                    <p className="performance-info__description">{description}</p>
+                    <p className="performance-info__description">{performance.description}</p>
 
-                    <button className="performance-info__ya-button select-button" onClick={handleBuyTicket}>
+
+                    {/* Циклом смотреть какие есть данные в афише по этому спектаклю */}
+                    {/* <button className="performance-info__ya-button select-button" onClick={handleBuyTicket}>
                         Купить билет
-                    </button>
+                    </button> */}
 
                     <div className="performance-info__details">
                         <div className="performance-info__cast">
                             <h3 className="performance-info__cast-title">Актерский состав</h3>
                             <ul className="performance-info__cast-list">
-                                {cast.map((actor) => (
-                                    <li key={`${actor.name}-${actor.role}`} className="performance-info__cast-item">
-                                        {actor.name} — {actor.role}
+                                {actorsWithRoles.map((item) => (
+                                    <li key={`${item.actor?.name}-${item.role}`} className="performance-info__cast-item">
+                                        <Link to={`/team/${item.actor?.slug}`} key={item.actor?.id}>
+                                            {item.actor?.name} — {item.role}
+                                        </Link>
+
                                     </li>
                                 ))}
                             </ul>
@@ -48,7 +48,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
 
                         <div className="performance-info__crew">
                             <h3 className="performance-info__crew-title">Постановщики</h3>
-                            <ul className="performance-info__crew-list">
+                            {/* <ul className="performance-info__crew-list">
                                 {crew.map((member, key) => (
                                     // TODO
                                     // member: IMember и из него уже вытаскивать роль в этом спектакле
@@ -59,7 +59,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                                         {member.role} — {member.name}
                                     </li>
                                 ))}
-                            </ul>
+                            </ul> */}
                         </div>
                     </div>
                 </div>

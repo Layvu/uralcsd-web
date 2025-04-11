@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './latest-performances.scss';
 
 import { ROUTES } from 'consts';
-import { SpectacleCard } from '@components/Shared/SpectacleCard';
+import { SpectacleCard } from '@components/AfishaPage/SpectacleCard';
 import { LatestPerformancesProps } from './type';
 
 export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latestPerformances }) => {
@@ -15,11 +15,14 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
             <h2 className="latest-performances__title title-h2">Последние спектакли</h2>
 
             <ul className="latest-performances__list">
-                {latestPerformances.map((performance) => (
-                    <li key={performance.slug} className="latest-performances__card">
-                        <SpectacleCard {...performance} />
-                    </li>
-                ))}
+                {latestPerformances.map((afishaItem) => {
+                    console.log(afishaItem);
+                    return (
+                        <li key={afishaItem?.performance?.slug} className="latest-performances__card">
+                            {/* Тут уже другой компонент нужен */}
+                            <SpectacleCard {...afishaItem} />
+                        </li>
+                    );})}
             </ul>
 
             <button

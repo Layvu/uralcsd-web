@@ -1,7 +1,7 @@
-import { IMember } from 'interfases/IMember';
-import { Performance } from 'types/performance';
+import { IMember } from 'types/member';
+import { IPerformance } from 'types/performance';
 
 export interface TeamCardFullProps {
     member: IMember;
-    performancesWithRoles: { performance?: Performance; role: string }[];
+    performancesWithRoles: { performance?: IPerformance; role: string }[];
 }

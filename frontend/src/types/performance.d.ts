@@ -14,9 +14,9 @@ export interface IPerformance {
     performanceCasts: { 
         id: string; 
     }[];  // Актеры (через PerformanceСast)
-    director: {
-        id: string // режиссер, связь через IMember
-    };  
+    directors: {
+        id: string // режиссеры, связь через IMember
+    }[];  
 
     images?: { url: string }[];
     mainImage?: { url: string };

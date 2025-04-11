@@ -11,14 +11,6 @@ import axios from 'axios';
 import { getAbsoluteImagePath } from 'utils/getAbsoluteImagePath';
 
 
-interface IBackendMember extends Omit<IMember, 'mainPhoto'> {
-    mainPhoto: { url: string }[];
-}
-interface IBackendPerformance extends Omit<IPerformance, 'mainImage'> {
-    mainImage: { url: string }[];
-}
-
-
 const apiClient = axios.create({
     baseURL: `${import.meta.env.VITE_PUBLIC_API_URL}/api`,
 
@@ -43,13 +35,14 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             params: {
                 populate: {
                     performanceCasts: { fields: ['id'] },
+                    directors: { fields: ['id'] },
                     images: { fields: ['url'] },
                     mainImage: { fields: ['url'] },
                 },
             },
         });
 
-        const performances = response.data.data.map((item: IBackendPerformance) => ({
+        const performances = response.data.data.map((item: IPerformance) => ({
             id: item.id,
             title: item.title,
             slug: item.slug,
@@ -60,9 +53,9 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             duration: item.duration,
             dramatist: item.dramatist,
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
-            director: item.director?.id ? { id: item.director.id } : null,
+            directors: item.directors?.map((director) => ({ id: director.id })) || [], // Исправляем на массив
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
-            mainImage: item.mainImage?.[0]?.url ? { url: getAbsoluteImagePath(item.mainImage[0].url) } : null,
+            mainImage: item.mainImage?.url ? { url: getAbsoluteImagePath(item.mainImage.url) } : null,
             isWithIntermission: item.isWithIntermission,
             isActual: item.isActual,
         }));
@@ -88,7 +81,7 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
             },
         });
 
-        const members = response.data.data.map((item: IBackendMember) => ({
+        const members = response.data.data.map((item: IMember) => ({
             id: item.id,
             slug: item.slug,
             name: item.name,
@@ -97,7 +90,7 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
             category: item.category,
             biography: item.biography,
             position: item.position,
-            mainPhoto: item.mainPhoto?.[0]?.url ? { url: getAbsoluteImagePath(item.mainPhoto[0].url) } : null,
+            mainPhoto: item.mainPhoto?.url ? { url: getAbsoluteImagePath(item.mainPhoto.url) } : null,
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             aPerformances: item.aPerformances?.map((performance) => ({ id: performance.id })) || [],
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
