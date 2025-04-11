@@ -37,7 +37,7 @@ export const selectPerformancesByIds = createSelector(
                 : [];
         
         // Создаем Set для быстрого поиска
-        const idsSet = new Set(idsArray.filter(Boolean)); // Фильтруем пустые значения
+        const idsSet = new Set(idsArray.filter(Boolean).map((item) => item.toString())); // Фильтруем пустые значения
         
         return performances.filter((p) => idsSet.has(p.id.toString()));
     }
