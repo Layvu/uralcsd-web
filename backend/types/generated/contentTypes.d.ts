@@ -446,7 +446,7 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
   };
   attributes: {
     aPerformances: Schema.Attribute.Relation<
-      'oneToMany',
+      'manyToMany',
       'api::performance.performance'
     >;
     biography: Schema.Attribute.RichText;
@@ -464,7 +464,7 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
       'api::member.member'
     > &
       Schema.Attribute.Private;
-    mainPhoto: Schema.Attribute.Media<'images' | 'files', true>;
+    mainPhoto: Schema.Attribute.Media<'images' | 'files'>;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     performanceCasts: Schema.Attribute.Relation<
       'oneToMany',
@@ -490,7 +490,7 @@ export interface ApiPerformanceCastPerformanceCast
     singularName: 'performance-cast';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     actor: Schema.Attribute.Relation<'manyToOne', 'api::member.member'>;
@@ -524,7 +524,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
     singularName: 'performance';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     additionalInfo: Schema.Attribute.String;
@@ -533,7 +533,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText;
-    director: Schema.Attribute.Relation<'manyToOne', 'api::member.member'>;
+    directors: Schema.Attribute.Relation<'manyToMany', 'api::member.member'>;
     dramatist: Schema.Attribute.String;
     duration: Schema.Attribute.String;
     images: Schema.Attribute.Media<

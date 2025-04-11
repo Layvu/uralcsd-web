@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "title": {
@@ -67,9 +67,9 @@
     "dramatist": {
       "type": "string"
     },
-    "director": {
+    "directors": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::member.member",
       "inversedBy": "aPerformances"
     },
