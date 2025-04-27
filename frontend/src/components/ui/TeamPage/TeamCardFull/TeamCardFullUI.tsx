@@ -6,6 +6,7 @@ import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import './team-card-full.scss';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
+import { MainTitle } from '@components/Shared/MainTitle';
 
 export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member, performancesWithRoles }) => {
     const [biographyHtml, setBiographyHtml] = useState<string>('');
@@ -41,17 +42,17 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
                 </div>
                 <div className="team-card-full__info-container">
                     <div className="team-card-full__name-container">
-                        <h2 className="team-card-full__name title-h2--underline">{member.name} {member.surname}</h2>
+                        <MainTitle className="team-card-full__name title-h2--underline">{member.name} {member.surname}</MainTitle>
                         <div className="team-card-full__position">{member.position}</div>
                     </div>
                     <div className="team-card-full__biography-container">
-                        <h3 className="title-h4">Биография</h3>
+                        <h2 className="title-h4">Биография</h2>
                         <div className="team-card-full__biography" 
                             dangerouslySetInnerHTML={{ __html: biographyHtml }}>
                         </div>
                     </div> 
                     <div className="team-card-full__spectacles-container">
-                        <h3 className="title-h4">Спектакли</h3>
+                        <h2 className="title-h4">Спектакли</h2>
                         <div className="team-card-full__spectacles">
                             {performancesWithRoles.map(({ performance, role }) =>
                                 performance ? (
