@@ -1,4 +1,5 @@
 @use 'mixins/font-face' as *;
+// @import './fonts/Jost/stylesheet.css'; вызывается в main.tsx
 
 @include font-face('Inter-ExtraBold', 'Inter-ExtraBold', 800);
 @include font-face('Inter-SemiBold', 'Inter-SemiBold', 600);

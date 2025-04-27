@@ -1,4 +1,4 @@
-import { mockPerformances, mockProjects, mockTeam, mockTheaterInfo, mockContactInfo } from 'mockData';
+import { mockProjects,  mockTheaterInfo, mockContactInfo } from 'mockData';
 import { IPerformance } from 'types/performance';
 import { IMember } from 'types/member';
 import { IProject } from 'types/project';

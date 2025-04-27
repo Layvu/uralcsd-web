@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client';
 
 import { Provider } from 'react-redux';
 import store from './services/store';
+import 'styles/fonts/Jost/stylesheet.css';
 
 import App from './App.tsx';
 
