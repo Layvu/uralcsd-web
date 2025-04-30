@@ -1,13 +1,13 @@
 .select-button {
-    border-radius: 30px;
-    padding: 13px 87px;
-
-    background-color: var(--white);
-    border: 1px solid var(--skeleton);
-
+    border-radius: 200px;
+    justify-self: center;
+    align-self: center;
+    height: 50px;
+    padding: 12px 30px;
+    
     cursor: pointer;
 
     &--active {
-        background-color: var(--skeleton);
+        background-color: var(--pomegranate-medium);
     }
 }

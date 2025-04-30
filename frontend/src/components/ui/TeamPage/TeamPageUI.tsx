@@ -8,8 +8,11 @@ import { TeamList } from '@components/TeamPage/TeamList';
 export const TeamPageUI: React.FC = React.memo(() => {
     return (
         <section className="team-page wrap">
-            <MainTitle className="team-page__title">Команда</MainTitle>
-            <TeamFilter />
+            <div className="team-page__header">
+                <MainTitle className="team-page__title title-h3--underline">Команда</MainTitle>
+                <TeamFilter />
+            </div>
+
             <TeamList />
         </section>
     );

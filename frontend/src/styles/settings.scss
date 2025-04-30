@@ -14,10 +14,13 @@ html {
 body {
     margin: 0;
     margin-top: 80px; // HEADER_SIZE
-    font-family: 'Lexend-Regular', sans-serif;
-    font-weight: 400;
+    font-family: 'Jost', 'Lexend-Regular', sans-serif;
     color: var(--text-primary);
-    background-color: var(--white);
+    background-color: var(--gray-medium);
+    
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
 }
 
 main {
@@ -46,6 +49,8 @@ button {
     cursor: pointer;
 }
 
+div,
+p,
 h1,
 h2,
 h3,
@@ -86,6 +91,6 @@ h6 {
 }
 
 .wrap {
-    @include min-max(320px, 1300px);
-    // Элемент ограничен шириной 1300px, даже если экран больше
+    @include min-max(320px, 1220px);
+    // Элемент ограничен шириной 1220px, даже если экран больше
 }

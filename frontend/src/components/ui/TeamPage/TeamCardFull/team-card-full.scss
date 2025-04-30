@@ -1,0 +1,74 @@
+.team-card-full{
+    margin-bottom: 100px;
+
+    &__info{
+        margin-top: 50px;
+        display: flex;
+        gap: 60px;
+        padding: 0 50px;
+    }
+
+    &__info-container{
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    &__photo{
+        
+        img{
+            display: block;
+            max-width: 330px;
+            max-height: 440px;
+        }
+    }
+
+    &__name-container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    &__position{
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    &__biography-container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__biography{
+        p{
+            font-size: 22px;
+            line-height: 28px;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+    }
+
+    &__spectacles-container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    &__spectacles{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    &__spectacle-container{
+        display: flex;
+        justify-content: space-between;
+        text-align: center; 
+        padding-bottom: 15px;
+        border-bottom: 1.5px solid var(--gray-medium);
+    }
+    &__spectacle-role{
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+}

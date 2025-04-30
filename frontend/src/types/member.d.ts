@@ -8,7 +8,7 @@ export interface IMember {
     gender: 'male' | 'female';
     category: TeamFilterCategory; // Должность - в какой вкладке будет отображаться // или string, если для api
     // additionalRoles: string[];
-    biography?: string[] | null;
+    biography?: string | null;
     position: string | null; // Занимаемая должность, отображается снизу фотографии на странице /team
     aPerformances?: {
         id: string

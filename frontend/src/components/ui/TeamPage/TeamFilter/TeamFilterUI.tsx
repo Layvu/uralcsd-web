@@ -6,7 +6,7 @@ import { TeamFilterCategories } from 'consts';
 
 const categoriesLabels: Record<TeamFilterCategories, string> = {
     [TeamFilterCategories.Actors]: 'Актёры',
-    [TeamFilterCategories.Directors]: 'Режиссёры',
+    [TeamFilterCategories.Directors]: 'Постановщики',
     [TeamFilterCategories.Management]: 'Руководство',
 };
 
