@@ -1,0 +1,13 @@
+.select-button {
+    border-radius: 200px;
+    justify-self: center;
+    align-self: center;
+    height: 50px;
+    padding: 12px 30px;
+    
+    cursor: pointer;
+
+    &--active {
+        background-color: var(--pomegranate-medium);
+    }
+}

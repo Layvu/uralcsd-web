@@ -1,0 +1,12 @@
+.team-page{
+    margin-bottom: 100px;
+    padding: 0 50px;
+    &__header{
+        margin-top: 100px;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+        
+    }
+}

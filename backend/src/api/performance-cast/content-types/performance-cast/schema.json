@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "performance_casts",
+  "info": {
+    "singularName": "performance-cast",
+    "pluralName": "performance-casts",
+    "displayName": "PerformanceCast",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "role": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::member.member",
+      "inversedBy": "performanceCasts"
+    },
+    "performance": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::performance.performance",
+      "inversedBy": "performanceCasts"
+    }
+  }
+}

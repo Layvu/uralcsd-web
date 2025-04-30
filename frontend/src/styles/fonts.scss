@@ -1,0 +1,10 @@
+@use 'mixins/font-face' as *;
+// @import './fonts/Jost/stylesheet.css'; вызывается в main.tsx
+
+@include font-face('Inter-ExtraBold', 'Inter-ExtraBold', 800);
+@include font-face('Inter-SemiBold', 'Inter-SemiBold', 600);
+@include font-face('Lexend-Bold', 'Lexend-Bold', 700);
+@include font-face('Lexend-Light', 'Lexend-Light', 300);
+@include font-face('Lexend-Medium', 'Lexend-Medium', 500);
+@include font-face('Lexend-Regular', 'Lexend-Regular', 400);
+@include font-face('Lexend-SemiBold', 'Lexend-SemiBold', 600);

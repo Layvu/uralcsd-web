@@ -1,0 +1,30 @@
+{
+	"small": {
+		"ext": ".jpg",
+		"url": "/uploads/small_f9677c345e42071411b51f3034e637f4_9f1464345f.jpg",
+		"hash": "small_f9677c345e42071411b51f3034e637f4_9f1464345f",
+		"mime": "image/jpeg",
+		"name": "small_f9677c345e42071411b51f3034e637f4.jpg",
+		"path": null,
+		"size": 44.85,
+		"width": 500,
+		"height": 500,
+		"sizeInBytes": 44847
+	},
+	"thumbnail": {
+		"ext": ".jpg",
+		"url": "/uploads/thumbnail_f9677c345e42071411b51f3034e637f4_9f1464345f.jpg",
+		"hash": "thumbnail_f9677c345e42071411b51f3034e637f4_9f1464345f",
+		"mime": "image/jpeg",
+		"name": "thumbnail_f9677c345e42071411b51f3034e637f4.jpg",
+		"path": null,
+		"size": 2.69,
+		"width": 156,
+		"height": 156,
+		"sizeInBytes": 2693
+	}
+    
+}
+
+
+

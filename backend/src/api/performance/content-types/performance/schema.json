@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "performances",
+  "info": {
+    "singularName": "performance",
+    "pluralName": "performances",
+    "displayName": "Performance",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "ageLimit": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "teaser": {
+      "type": "string"
+    },
+    "isWithIntermission": {
+      "type": "boolean",
+      "default": false
+    },
+    "duration": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "isActual": {
+      "type": "boolean"
+    },
+    "mainImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "performanceCasts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::performance-cast.performance-cast",
+      "mappedBy": "performance"
+    },
+    "dramatist": {
+      "type": "string"
+    },
+    "directors": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::member.member",
+      "inversedBy": "aPerformances"
+    },
+    "additionalInfo": {
+      "type": "string"
+    }
+  }
+}
