@@ -1,4 +1,4 @@
-import './Header.scss';
+import './header.scss';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -11,9 +11,9 @@ import { menuLinks } from 'consts';
 export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen }) => {
     return (
         <header className="header">
-            <div className="wrap header__wrap">
-                <Link to="/" className="logo header__logo">
-                    <SvgIcon id="ellipseMock" title="Logotype" />
+            <div className="header__wrap wrap">
+                <Link to="/" className="header__logo">
+                    <SvgIcon id="logo--white" title="Logotype" />
                 </Link>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
@@ -26,10 +26,10 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen }) 
                 </nav>
                 <div className="header__social-media">
                     <a href="#" className="header__social-media-item">
-                        <SvgIcon id="ellipseMock" title="VK icon" />
+                        <SvgIcon id="vk" title="VK icon" />
                     </a>
                     <a href="#" className="header__social-media-item">
-                        <SvgIcon id="ellipseMock" title="Telegram icon" />
+                        <SvgIcon id="telegram" title="Telegram icon" />
                     </a>
                 </div>
                 <button

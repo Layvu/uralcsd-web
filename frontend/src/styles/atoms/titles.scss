@@ -9,8 +9,6 @@
 }
 
 .title-h2--underline {
-    color: var(--black, #000);
-
     font-family: Jost;
     font-size: 48px;
     font-style: normal;
@@ -27,8 +25,6 @@
 }
 
 .title-h3--underline{
-    color: var(--black, #000);
-
     font-family: Jost;
     font-size: 40px;
     font-style: normal;
@@ -45,8 +41,6 @@
 }
 
 .title-h4{
-    color: var(--black, #000);
-
     /* H4 */
     font-family: Jost;
     font-size: 32px;
@@ -57,8 +51,6 @@
 }
 
 .title-h5{
-    color: var(--black, #000);
-
     /* H5 */
     font-family: Jost;
     font-size: 24px;
@@ -69,7 +61,6 @@
 
     &--underline{
         /* H5 - underline */
-
         text-decoration-line: underline;
         text-decoration-style: solid;
         text-decoration-skip-ink: auto;

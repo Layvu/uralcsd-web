@@ -14,7 +14,7 @@ export const menuLinks = [
     { path: ROUTES.ABOUT, label: 'О театре' },
     { path: ROUTES.TEAM, label: 'Команда' },
     { path: ROUTES.PROJECTS, label: 'Проекты' },
-    { path: ROUTES.CONTACTS, label: 'Контакты' },
+    { path: ROUTES.CONTACTS, label: 'Визит в театр' },
 ];
 
 export enum TeamFilterCategories {
