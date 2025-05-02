@@ -17,6 +17,7 @@ import { TeamCardFull } from '@pages/TeamPage/TeamCardFull';
 import { ProjectsPage } from '@pages/ProjectsPage';
 import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
 import { ContactsPage } from '@pages/ContactsPage';
+import { Background } from '@components/Shared/Background';
 
 const AppContent = () => {
     useInitialData();
@@ -46,7 +47,10 @@ const AppContent = () => {
 const App: React.FC = () => {
     return (
         <Router>
-            <AppContent />
+            <div className="app-wrapper">
+                <Background />
+                <AppContent />
+            </div>
         </Router>
     );
 };

@@ -1,0 +1,33 @@
+
+.app-wrapper {
+    position: relative;
+    overflow: hidden; 
+}
+
+.background-wrapper {
+    overflow: hidden;
+    
+    .pomegranates {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        pointer-events: none; 
+        z-index: -1;
+    }
+
+    .pomegranate {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        overflow: hidden;
+
+        &.left {
+            left: -250px; 
+        }
+
+        &.right {
+            right: -250px; 
+        }
+    }
+}
