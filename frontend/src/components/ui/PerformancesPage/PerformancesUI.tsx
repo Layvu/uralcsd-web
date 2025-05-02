@@ -8,7 +8,7 @@ import './performances.scss';
 export const PerformancesUI: React.FC<PerformancesListProps> = () => {
     return (
         <section className='performances wrap'>
-            <MainTitle className='performances__title'>Спектакли</MainTitle>
+            <MainTitle className='performances__title title-h3--underline'>Спектакли</MainTitle>
             <PerformancesList />
         </section>
     );

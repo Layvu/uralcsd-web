@@ -8,18 +8,22 @@ import './performance-card.scss';
 // карточка спектакля на странице /performances, отличается от той что в афише
 export const PerformanceCardUI: React.FC<PerformanceCardProps> = (performance) => {
     return (
-        <>
-            <div className="performance-card">
-                <div className="container performance-card__container">
-                    <Link to={`/performances/${performance?.slug}`}>
-                        <img src={performance.mainImage?.url} alt={performance?.title} className="spectacle-card__image" />
-                        <h2 className="performance-card__name">{performance?.title}</h2>
-                    </Link>
-                    <p className="performance-card__age">{performance?.ageLimit}</p>
+        <div className="performance-card">
+            <Link to={`/performances/${performance?.slug}`} className="performance-card__link">
+                <img
+                    src={performance.mainImage?.url}
+                    alt={performance?.title}
+                    className="performance-card__image"
+                />
+
+                <div className="performance-card__gradient">
+                    <h2 className="performance-card__title">«{performance?.title.trim()}»</h2>
                     <p className="performance-card__description">{performance?.description}</p>
-                    <p className="performance-card__duration">{performance?.duration}</p>
                 </div>
-            </div>
-        </>
+                <div className="performance-card__tag-container">
+                </div>
+            </Link>
+        </div>
     );
 };
+
