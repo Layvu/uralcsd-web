@@ -15,5 +15,5 @@ export const Header: React.FC = () => {
         setIsMenuOpen((prev) => !prev);
     };
 
-    return <HeaderUI onMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} />;
+    return <HeaderUI onMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} location={location.pathname}/>;
 };

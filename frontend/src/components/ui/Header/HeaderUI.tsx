@@ -8,7 +8,7 @@ import { HeaderUIProps } from './type';
 import { SvgIcon } from '@components/Shared/SvgIcon';
 import { menuLinks } from 'consts';
 
-export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen }) => {
+export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, location }) => {
     return (
         <header className="header">
             <div className="header__wrap wrap">
@@ -17,11 +17,14 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen }) 
                 </Link>
                 <nav className="header__nav">
                     <ul className="header__nav-list">
-                        {menuLinks.map(({ path, label }) => (
-                            <li key={path} className="header__nav-item">
-                                <Link to={path}>{label}</Link>
-                            </li>
-                        ))}
+                        {menuLinks.map(({ path, label }) => {
+                            const isActive = location.includes(path);
+                            return (
+                                <li key={path} className={`header__nav-item ${isActive && 'header__nav-item--active'}`}>
+                                    <Link to={path}>{label}</Link>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </nav>
                 <div className="header__social-media">
