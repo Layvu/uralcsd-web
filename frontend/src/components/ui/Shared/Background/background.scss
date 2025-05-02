@@ -8,15 +8,33 @@
     overflow: hidden;
     
     .pomegranates {
-        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         pointer-events: none; 
         z-index: -1;
     }
+    .red-circle{
+        position: absolute;
+        width: 500px;
+        height: 500px;
 
+        border-radius: 500px;
+        opacity: 0.8;
+        background: radial-gradient(50% 50% at 50% 50%, #C7001A 0%, rgba(199, 0, 26, 0.00) 100%);
+        mix-blend-mode: color-dodge;
+        filter: blur(10px);
+
+        &.left {
+            left: -250px; 
+        }
+
+        &.right {
+            right: -250px; 
+        }
+    }
     .pomegranate {
+        mix-blend-mode: hard-light;
         position: absolute;
         width: 500px;
         height: 500px;

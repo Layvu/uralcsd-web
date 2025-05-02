@@ -1,5 +1,4 @@
 .title-h1 {
-    color: var(--black, #000);
     font-family: Jost;
     font-size: 64px;
     font-style: normal;
@@ -17,7 +16,7 @@
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
-    text-decoration-color: var(--pomegranate-basic, #b40018);
+    text-decoration-color: var(--pomegranate-bright, #D1001C);
     text-decoration-thickness: auto;
     text-underline-offset: 25%; /* 12px */
     text-underline-position: from-font;
@@ -33,7 +32,7 @@
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
-    text-decoration-color: var(--pomegranate-basic, #B40018);
+    text-decoration-color: var(--pomegranate-bright, #D1001C);
     text-decoration-thickness: auto;
     text-underline-offset: 22.5%; /* 9px */
     text-underline-position: from-font;
@@ -64,7 +63,7 @@
         text-decoration-line: underline;
         text-decoration-style: solid;
         text-decoration-skip-ink: auto;
-        text-decoration-color: var(--pomegranate-basic, #B40018);
+        text-decoration-color: var(--pomegranate-bright, #D1001C);
         text-decoration-thickness: 7.5%; /* 1.8px */
         text-underline-offset: 22%; /* 5.28px */
         text-underline-position: from-font;

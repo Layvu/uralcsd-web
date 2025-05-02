@@ -7,7 +7,7 @@ export const Background: React.FC = () => {
 
     React.useEffect(() => {
         const updateCount = () => {
-            const pageHeight = document.body.scrollHeight;
+            const pageHeight = document.body.scrollHeight - 514;
             const pomegranateSpacing = 900;
             const needed = Math.ceil(pageHeight / pomegranateSpacing);
             setCount(needed);
