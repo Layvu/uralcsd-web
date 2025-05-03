@@ -5,6 +5,7 @@ import { PerformanceInfoUIProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import { openTicketsWidget } from 'services/yandexTickets';
 import { Link } from 'react-router-dom';
+import { MainTitle } from '@components/Shared/MainTitle';
 
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles }) => {
     // const handleBuyTicket = () => {
@@ -13,42 +14,47 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
     //     }
     // };
 
-    const performanceImages = performance.images?.map((image) => image.url);
-    return (
-        <>
-            <div className="performance-info">
-                <DefaultBanner name={performance.title} images={performanceImages || []} />
+    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, isWithIntermission, isActual } = performance;
 
-                <div className="performance-info__wrap wrap">
-                    <h2 className="performance-info__name">{performance.title}</h2>
-                    <p className="performance-info__additional">{performance.additionalInfo}</p>
-                    <p className="performance-info__description-title">Описание</p>
-                    <p className="performance-info__description">{performance.description}</p>
+    const performanceImages = images?.map((image) => image.url);
+    return (
+
+        <div className="performance-info">
+            <DefaultBanner name={title} images={performanceImages || []} />
+            <div className="performance-info__wrap wrap">
+
+                <section className="performance-info__main-section">
+                    <div className="performance-info__title-section">
+                        <div className="performance-info__title-container">
+                            <MainTitle className="performance-info__title title-h2--underline">«{title.trim()}»</MainTitle>
+                            <p className="performance-info__additional-description">{additionalInfo}</p>
+                        </div>
+                        <div className="performance-info__tags-container">
+                            <div className="performance-info__duration-container">
+                                <p className="performance-info__duration">{duration}</p>
+                                <p className="performance-info__addition">{isWithIntermission && 'дополнение'}</p>
+                            </div>
+                            <div className="performance-info__age-rate">
+                                <p>{ageLimit}+</p>
+                            </div>
+                            <div className="performance-info__tags">
+                                <p>текст</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="performance-info__description-section">
+                        <p className="performance-info__description-title title-h4">Описание спектакля</p>
+                        <p className="performance-info__description">{description}</p>
+                    </div>
 
 
                     {/* Циклом смотреть какие есть данные в афише по этому спектаклю */}
                     {/* <button className="performance-info__ya-button select-button" onClick={handleBuyTicket}>
                         Купить билет
                     </button> */}
-
-                    <div className="performance-info__details">
-                        <div className="performance-info__cast">
-                            <h3 className="performance-info__cast-title">Актерский состав</h3>
-                            <ul className="performance-info__cast-list">
-                                {actorsWithRoles.map((item) => (
-                                    <li key={`${item.actor?.name}-${item.role}`} className="performance-info__cast-item">
-                                        <Link to={`/team/${item.actor?.slug}`} key={item.actor?.id}>
-                                            {item.actor?.name} — {item.role}
-                                        </Link>
-
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <div className="performance-info__crew">
-                            <h3 className="performance-info__crew-title">Постановщики</h3>
-                            {/* <ul className="performance-info__crew-list">
+                    <div className="performance-info__crew">
+                        <h2 className="performance-info__crew-title title-h4">Постановщики</h2>
+                        {/* <ul className="performance-info__crew-list">
                                 {crew.map((member, key) => (
                                     // TODO
                                     // member: IMember и из него уже вытаскивать роль в этом спектакле
@@ -60,10 +66,34 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                     </li>
                                 ))}
                             </ul> */}
-                        </div>
                     </div>
-                </div>
+
+                    {actorsWithRoles.length > 0 &&
+                    <div className="performance-info__cast">
+                        <h2 className="performance-info__cast-title title-h4">Актерский состав</h2>
+                        <ul className="performance-info__cast-list">
+                            {actorsWithRoles.map((item) => (
+                                <li key={`${item.actor?.name}-${item.role}`}>
+                                    <Link to={`/team/${item.actor?.slug}`} key={item.actor?.id}  className="performance-info__cast-item">
+                                        <p className="performance-info__cast-actor">{item.actor?.name}</p> 
+                                        <p className="performance-info__cast-role">{item.role}</p> 
+                                    </Link>
+
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    }
+
+
+                </section>
+                <section className='performance-info__ticket-section'>
+                    <ul className="performance-info__ticket-list">
+
+                    </ul>
+                </section>
             </div>
-        </>
+        </div>
+
     );
 };

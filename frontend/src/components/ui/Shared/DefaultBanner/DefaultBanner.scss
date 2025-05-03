@@ -12,6 +12,11 @@
         justify-content: center;
     }
 
+    &__single-image{
+        max-width: 1120px;
+        max-height: 600px;
+    }
+
     &__slider {
         height: 100%;
         text-align: center;

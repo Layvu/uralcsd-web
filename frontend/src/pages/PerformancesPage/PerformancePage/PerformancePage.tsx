@@ -12,11 +12,13 @@ import { RootState } from '@services/store';
 export const PerformancePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const performance = useSelector((state) => selectPerformanceBySlug(state, slug || ''));
+    
+
 
     // Производим операции чтобы вытащить актеров с ролями
-    const perdormanceCastIds = performance.performanceCasts.map((performanceCast) => performanceCast.id);
+    const perdormanceCastIds = performance?.performanceCasts.map((performanceCast) => performanceCast.id);
     const performanceCasts = useSelector((state: RootState) => selectPerformanceCastByIds(state, perdormanceCastIds ? perdormanceCastIds : ''));    
-    const performanceActorsIds = performanceCasts.map((performanceCasts) => performanceCasts.actor?.id);
+    const performanceActorsIds = performanceCasts?.map((performanceCasts) => performanceCasts.actor?.id);
     const performanceActors = useSelector((state: RootState) => selectTeamMembersByIds(state, performanceActorsIds));
 
     const actorsWithRoles = React.useMemo(() => {
@@ -37,7 +39,7 @@ export const PerformancePage: React.FC = () => {
     // const performanceDirectors = performance.directors.map((director) =>
     //     useSelector((state) => 
     //         selectTeamMemberById(state, director.id || '')));
-
+    
     if (!performance) {
         return <div>Событие не найдено</div>;
     }

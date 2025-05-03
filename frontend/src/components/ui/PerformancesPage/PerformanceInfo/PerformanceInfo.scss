@@ -1,56 +1,141 @@
 .performance-info {
-    &__wrap {
+    margin-bottom: 100px;
+
+    &__wrap{
+        display: flex;
+        justify-content: space-between;
+        
+        padding: 0 50px;
+        margin-top: 50px;
+    }
+    &__main-section {
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         flex-direction: column;
-
-        padding: 77px 0 68px;
+        max-width: 730px;
+        width: 100%;
+        gap: 60px;
+    }
+    &__title-section{
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+    }
+    &__title-container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    &__tags-container{
+        display: flex;
+        align-items: flex-start;
+        align-self: stretch;
+        gap: 30px;
     }
 
-    &__name {
-        font-size: 36px;
-        margin-bottom: 16px;
+    &__duration-container{
+        display: flex;
+        flex-direction: column;
+    }
+    &__duration{
+        font-size: 22px;
+        line-height: 28px;
+    }
+    &__addition{
+        color: var(--gray-light);
+        font-size: 18px;
+        line-height: 22px; 
     }
 
-    &__additional {
+    &__age-rate{
+        display: flex;
+        width: 50px;
+        height: 50px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 11px;
+
+        border-radius: 50%;
+        border: 1.2px solid white;
+        backdrop-filter: blur(10px);
+
+    }
+
+    &__additional-description {
+        color: var(--gray-light);
         font-size: 24px;
-
-        margin: 0;
-        margin-bottom: 60px;
+        line-height: 28px;
     }
 
-    &__description-title {
-        font-size: 32px;
-
-        margin: 0;
-        margin-bottom: 16px;
+    &__description-section{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     &__description {
-        font-size: 20px;
-
-        margin: 0;
-        margin-bottom: 60px;
+        color: var(--gray-light);
+        font-size: 22px;
+        line-height: 28px;
     }
 
-    &__details {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 300px;
+    // &__cast-details {
+    //     display: flex;
+    //     align-items: flex-start;
+    //     justify-content: flex-start;
+    //     gap: 300px;
 
+    //     width: 100%;
+    // }
+    &__cast, &__crew{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px
+    }
+
+    
+   
+    &__cast-list{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
         width: 100%;
     }
-
-    &__cast-title,
-    &__crew-title {
-        font-size: 32px;
+    
+    &__cast-item{
+        display: flex;
+        justify-content: space-between;
+        text-align: center; 
+        padding-bottom: 15px;
+        border-bottom: 1.5px solid var(--gray-medium);
     }
-    &__cast-item,
-    &__crew-item {
-        font-size: 20px;
-        margin-top: 16px;
+
+    &__cast-item:hover{
+        color: var(--pomegranate-bright);
+        border-color: inherit;
+        .performance-info__cast-role{
+            color: inherit;
+        }
+    }
+    &__cast-actor{
+        font-size: 22px;
+        line-height: 28px; 
+    }
+
+    &__cast-role{
+        color: var(--gray-light);
+        font-size: 18px;
+        line-height: 22px; 
+    }
+
+    &__ticket-section{
+        width: 100px;
+        height: 100px;
+        background: var(--white-10);
+        backdrop-filter: blur(20px);
     }
 
     &__ya-button {
