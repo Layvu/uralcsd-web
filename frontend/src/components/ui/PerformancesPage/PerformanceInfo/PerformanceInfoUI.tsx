@@ -6,13 +6,14 @@ import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import { openTicketsWidget } from 'services/yandexTickets';
 import { Link } from 'react-router-dom';
 import { MainTitle } from '@components/Shared/MainTitle';
+import { formatDateTime, formatToWeekday } from 'utils/timeFormat';
 
-export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles }) => {
-    // const handleBuyTicket = () => {
-    //     if (sessionId) {
-    //         openTicketsWidget(sessionId);
-    //     }
-    // };
+export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles, currentAfishaItems }) => {
+    const handleBuyTicket = (sessionId: string) => {
+        if (sessionId) {
+            openTicketsWidget(sessionId);
+        }
+    };
 
     const { title, description, additionalInfo, ageLimit, duration, dramatist, images, isWithIntermission, isActual } = performance;
 
@@ -34,9 +35,10 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                 <p className="performance-info__duration">{duration}</p>
                                 <p className="performance-info__addition">{isWithIntermission && 'дополнение'}</p>
                             </div>
-                            <div className="performance-info__age-rate">
+                            {ageLimit && <div className="performance-info__age-rate">
                                 <p>{ageLimit}+</p>
                             </div>
+                            }
                             <div className="performance-info__tags">
                                 <p>текст</p>
                             </div>
@@ -87,11 +89,30 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
 
 
                 </section>
+                {currentAfishaItems.length > 0 && 
                 <section className='performance-info__ticket-section'>
                     <ul className="performance-info__ticket-list">
-
+                        {currentAfishaItems.map((afishaItem) => {
+                            return(
+                                <li key={afishaItem.id} className='performance-info__ticket-item'>
+                                    <div className='performance-info__ticket-date-container'>
+                                        <p className="performance-info__ticket-date">
+                                            {formatDateTime(afishaItem.date)}
+                                        </p>
+                                        <p className="performance-info__ticket-weekday">
+                                            {formatToWeekday(afishaItem.date)}
+                                        </p>
+                                    </div>
+                                    <button className='performance-info__ticket-button' onClick={() => handleBuyTicket(afishaItem.sessionId)}>
+                                        Билеты
+                                    </button>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </section>
+                }
+                
             </div>
         </div>
 

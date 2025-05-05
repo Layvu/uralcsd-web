@@ -36,7 +36,7 @@ export const selectLatestAfishaItems = createSelector([selectAfishaItems], (afis
 export const selectAfishaItemsByPerformanceId = (performanceId: string) => 
     createSelector(
         [selectAfishaItems],
-        (items) => items.filter(item => item.performance.id === performanceId)
+        (items) => items.filter(item => item.performance.id == performanceId)
     );
 
 

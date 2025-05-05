@@ -1,4 +1,4 @@
-import { IMonth } from 'interfases/IMonth';
+import { IMonth } from './../types/month.d';
 
 const getNextThreeMonths = (): IMonth[] => {
     const months = [

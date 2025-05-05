@@ -8,7 +8,8 @@ export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
             <div className="pomegranates">
                 {Array.from({ length: count }).map((_, i) => {
                     const isEven = i % 2 === 0;
-                    return (<>
+                    const uniqueKey = `pomegranate-${i}`;
+                    return (<React.Fragment key={uniqueKey}>
                         <div
                             className={`red-circle ${isEven ? 'left' : 'right'}`}
                             style={{
@@ -17,7 +18,6 @@ export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
                         >
                         </div>
                         <img
-                            key={i}
                             src="/src/assets/backgrounds/pomegranate.png"
                             className={`pomegranate ${isEven ? 'left' : 'right'}`}
                             style={{
@@ -25,7 +25,7 @@ export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
                                 transform: isEven ? 'none' : 'scale(-1,1)',
                             }}
                         />
-                    </>
+                    </React.Fragment>
                     );
                 })}
             </div>
