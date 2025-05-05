@@ -60,7 +60,29 @@
         border-radius: 50%;
         border: 1.2px solid white;
         backdrop-filter: blur(10px);
+    }
 
+    &__tags{
+        display: flex;
+        gap: 30px;
+    }
+    &__tag{
+        display: flex;
+        height: 50px;
+        padding: 0px 30px 12px 30px;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 10px;
+
+        border-radius: 30px;
+        border: 1.5px solid var(--pomegranate-bright);
+        background: var(--black-10, rgba(0, 0, 0, 0.10));
+
+        backdrop-filter: blur(20px);
+
+        color: var(--pomegranate-bright);
+        font-size: 22px;
+        line-height: 28px; 
     }
 
     &__additional-description {

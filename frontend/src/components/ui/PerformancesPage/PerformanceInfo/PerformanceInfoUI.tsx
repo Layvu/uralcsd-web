@@ -40,7 +40,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                             </div>
                             }
                             <div className="performance-info__tags">
-                                <p>текст</p>
+                                <p className='performance-info__tag'>текст</p>
                             </div>
                         </div>
                     </div>
