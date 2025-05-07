@@ -10,6 +10,9 @@ export const PerformanceCardUI: React.FC<PerformanceCardProps> = (performance) =
     return (
         <div className="performance-card">
             <Link to={`/performances/${performance?.slug}`} className="performance-card__link">
+                <div className="performance-card__tag tag--small">
+                    Есть в репертуаре
+                </div>
                 <img
                     src={performance.mainImage?.url}
                     alt={performance?.title}

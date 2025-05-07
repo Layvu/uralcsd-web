@@ -1,10 +1,10 @@
 .performance-info {
     margin-bottom: 100px;
 
-    &__wrap{
+    &__wrap {
         display: flex;
         justify-content: space-between;
-        
+
         padding: 0 50px;
         margin-top: 50px;
     }
@@ -17,38 +17,38 @@
         width: 100%;
         gap: 60px;
     }
-    &__title-section{
+    &__title-section {
         display: flex;
         flex-direction: column;
         gap: 48px;
     }
-    &__title-container{
+    &__title-container {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
-    &__tags-container{
+    &__tags-container {
         display: flex;
         align-items: flex-start;
         align-self: stretch;
         gap: 30px;
     }
 
-    &__duration-container{
+    &__duration-container {
         display: flex;
         flex-direction: column;
     }
-    &__duration{
+    &__duration {
         font-size: 22px;
         line-height: 28px;
     }
-    &__addition{
+    &__addition {
         color: var(--gray-light);
         font-size: 18px;
-        line-height: 22px; 
+        line-height: 22px;
     }
 
-    &__age-rate{
+    &__age-rate {
         display: flex;
         width: 50px;
         height: 50px;
@@ -62,27 +62,12 @@
         backdrop-filter: blur(10px);
     }
 
-    &__tags{
+    &__tags {
         display: flex;
         gap: 30px;
     }
-    &__tag{
-        display: flex;
-        height: 50px;
-        padding: 0px 30px 12px 30px;
-        justify-content: center;
-        align-items: flex-end;
-        gap: 10px;
+    &__tag {
 
-        border-radius: 30px;
-        border: 1.5px solid var(--pomegranate-bright);
-        background: var(--black-10, rgba(0, 0, 0, 0.10));
-
-        backdrop-filter: blur(20px);
-
-        color: var(--pomegranate-bright);
-        font-size: 22px;
-        line-height: 28px; 
     }
 
     &__additional-description {
@@ -91,7 +76,7 @@
         line-height: 28px;
     }
 
-    &__description-section{
+    &__description-section {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -111,78 +96,77 @@
 
     //     width: 100%;
     // }
-    &__cast, &__crew{
+    &__cast,
+    &__crew {
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 20px
+        gap: 20px;
     }
 
-    
-   
-    &__cast-list{
+    &__cast-list {
         display: flex;
         flex-direction: column;
         gap: 16px;
         width: 100%;
     }
-    
-    &__cast-item{
+
+    &__cast-item {
         display: flex;
         justify-content: space-between;
-        text-align: center; 
+        text-align: center;
         padding-bottom: 15px;
         border-bottom: 1.5px solid var(--gray-medium);
     }
 
-    &__cast-item:hover{
+    &__cast-item:hover {
         color: var(--pomegranate-bright);
         border-color: inherit;
-        .performance-info__cast-role{
+        .performance-info__cast-role {
             color: inherit;
         }
     }
-    &__cast-actor{
+    &__cast-actor {
         font-size: 22px;
-        line-height: 28px; 
+        line-height: 28px;
     }
 
-    &__cast-role{
+    &__cast-role {
         color: var(--gray-light);
         font-size: 18px;
-        line-height: 22px; 
+        line-height: 22px;
     }
 
-    &__ticket-section{
+    &__ticket-section {
         max-width: 330px;
         width: 100%;
         height: fit-content;
         background: var(--white-10);
         backdrop-filter: blur(20px);
+        padding: 20px;
     }
-    &__ticket-list{
+    &__ticket-list {
         display: flex;
         flex-direction: column;
-        padding: 20px;
         gap: 40px;
     }
 
-    &__ticket-item{
+    &__ticket-item {
         display: flex;
-        gap:10px;
+        gap: 10px;
     }
 
-    &__ticket-date-container{
+    &__ticket-date-container {
         flex: 1;
     }
-    &__ticket-date{
+    &__ticket-date {
         font-size: 22px;
-        line-height: 28px; 
+        line-height: 28px;
     }
-    &__ticket-weekday{
+    &__ticket-weekday {
         color: var(--gray-light);
         font-size: 18px;
-        line-height: 22px; 
+        line-height: 22px;
     }
 
     &__ticket-button {
@@ -198,17 +182,46 @@
         backdrop-filter: blur(30px);
 
         font-size: 18px;
-        line-height: 22px; 
+        line-height: 22px;
 
-        &:hover{
+        &:hover {
             color: var(--white);
             background: var(--pomegranate-basic);
             border-color: var(--pomegranate-basic);
         }
-        &:disabled{
+        &:disabled {
             background: var(--gray-basic);
             color: var(--black);
             border: none;
         }
+    }
+
+    &__no-performances-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__no-performances-button {
+        display: flex;
+        padding: 10px 32px;
+        justify-content: center;
+        align-items: center;
+        align-self: stretch;
+
+        color: var(--black);
+        background: var(--gray-basic);
+        backdrop-filter: blur(30px);
+        cursor: not-allowed;
+
+        font-size: 18px;
+        line-height: 22px; 
+    }
+
+    &__no-performances-info {
+        color: var(--gray-light);
+
+        font-size: 18px;
+        line-height: 22px; /* 122.222% */
     }
 }

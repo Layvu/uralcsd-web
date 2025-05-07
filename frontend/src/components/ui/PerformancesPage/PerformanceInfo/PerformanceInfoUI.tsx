@@ -40,7 +40,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                             </div>
                             }
                             <div className="performance-info__tags">
-                                <p className='performance-info__tag'>текст</p>
+                                <p className='performance-info__tag tag--big'>текст</p>
                             </div>
                         </div>
                     </div>
@@ -71,48 +71,59 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                     </div>
 
                     {actorsWithRoles.length > 0 &&
-                    <div className="performance-info__cast">
-                        <h2 className="performance-info__cast-title title-h4">Актерский состав</h2>
-                        <ul className="performance-info__cast-list">
-                            {actorsWithRoles.map((item) => (
-                                <li key={`${item.actor?.name}-${item.role}`}>
-                                    <Link to={`/team/${item.actor?.slug}`} key={item.actor?.id}  className="performance-info__cast-item">
-                                        <p className="performance-info__cast-actor">{item.actor?.name}</p> 
-                                        <p className="performance-info__cast-role">{item.role}</p> 
-                                    </Link>
+                        <div className="performance-info__cast">
+                            <h2 className="performance-info__cast-title title-h4">Актерский состав</h2>
+                            <ul className="performance-info__cast-list">
+                                {actorsWithRoles.map((item) => (
+                                    <li key={`${item.actor?.name}-${item.role}`}>
+                                        <Link to={`/team/${item.actor?.slug}`} key={item.actor?.id} className="performance-info__cast-item">
+                                            <p className="performance-info__cast-actor">{item.actor?.name}</p>
+                                            <p className="performance-info__cast-role">{item.role}</p>
+                                        </Link>
 
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     }
 
 
                 </section>
-                {currentAfishaItems.length > 0 && 
-                <section className='performance-info__ticket-section'>
-                    <ul className="performance-info__ticket-list">
-                        {currentAfishaItems.map((afishaItem) => {
-                            return(
-                                <li key={afishaItem.id} className='performance-info__ticket-item'>
-                                    <div className='performance-info__ticket-date-container'>
-                                        <p className="performance-info__ticket-date">
-                                            {formatDateTime(afishaItem.date)}
-                                        </p>
-                                        <p className="performance-info__ticket-weekday">
-                                            {formatToWeekday(afishaItem.date)}
-                                        </p>
-                                    </div>
-                                    <button className='performance-info__ticket-button' onClick={() => handleBuyTicket(afishaItem.sessionId)}>
-                                        Билеты
-                                    </button>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </section>
+                {currentAfishaItems.length > 0 ?
+                    <section className='performance-info__ticket-section'>
+                        <ul className="performance-info__ticket-list">
+                            {currentAfishaItems.map((afishaItem) => {
+                                return (
+                                    <li key={afishaItem.id} className='performance-info__ticket-item'>
+                                        <div className='performance-info__ticket-date-container'>
+                                            <p className="performance-info__ticket-date">
+                                                {formatDateTime(afishaItem.date)}
+                                            </p>
+                                            <p className="performance-info__ticket-weekday">
+                                                {formatToWeekday(afishaItem.date)}
+                                            </p>
+                                        </div>
+                                        <button className='performance-info__ticket-button' onClick={() => handleBuyTicket(afishaItem.sessionId)}>
+                                            Билеты
+                                        </button>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </section>
+                    :
+                    <section className='performance-info__ticket-section'>
+                        <div className="performance-info__no-performances-container">
+                            <button disabled className="performance-info__no-performances-button">
+                                Нет в показе
+                            </button>
+                            <p className="performance-info__no-performances-info">
+                            Следите за афишей театра ЦСД, чтобы не пропустить показ!
+                            </p>
+                        </div>
+                    </section>
                 }
-                
+
             </div>
         </div>
 
