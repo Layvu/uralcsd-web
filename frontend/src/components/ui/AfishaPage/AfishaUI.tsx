@@ -10,9 +10,11 @@ export const AfishaUI: React.FC<AfishaProps> = React.memo(
     ({ months, activeMonthIndex, onMonthChange, groupedAfishaItemsWithPerformanceByDate }) => {
         return (
             <section className="wrap afisha">
-                <MainTitle className="afisha__main-title">Афиша</MainTitle>
-                <MonthFilter months={months} activeMonthIndex={activeMonthIndex} onMonthChange={onMonthChange} />
-
+                <div className="afisha__header">
+                    <MainTitle className="afisha__main-title title-h3--underline">Афиша</MainTitle>
+                    <MonthFilter months={months} activeMonthIndex={activeMonthIndex} onMonthChange={onMonthChange} />
+                </div>
+                
                 <ul className="afisha__schedule">
                     {Object.entries(groupedAfishaItemsWithPerformanceByDate).map(([date, afishaItems]) => (
                         <li key={date} className="afisha__schedule-item">

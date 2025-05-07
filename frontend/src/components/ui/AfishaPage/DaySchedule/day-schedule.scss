@@ -1,25 +1,12 @@
 .day-schedule {
     &__day-title {
-        font-weight: 400;
         font-size: 24px;
-        color: #000;
-
-        display: flex;
-        align-items: center;
-        gap: 40px;
-
-        &::after {
-            content: '';
-            flex-grow: 1;
-            height: 1px;
-            background-color: #000;
-        }
+        line-height: 28px;
+        margin-bottom: 24px;
     }
 
     &__events {
         gap: 40px;
-        margin-top: 30px;
-
         display: grid;
         grid-template-columns: 1fr;
     }

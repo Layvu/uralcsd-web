@@ -3,17 +3,19 @@ import { DayScheduleProps } from './type';
 import { SpectacleCard } from '@components/AfishaPage/SpectacleCard';
 
 import './day-schedule.scss';
+import { formatToMonth, formatToWeekday } from 'utils/timeFormat';
 
 
 export const DayScheduleUI: React.FC<DayScheduleProps> = ({ afishaItemsWithPerformance }) => {
-    const date = new Date(afishaItemsWithPerformance[0].date);
+    const stringDate = afishaItemsWithPerformance[0].date;
+    const date = new Date(stringDate);
     const day = date.getDate();
-    const month = date.toLocaleString('ru', { month: 'long', day: 'numeric' }).split(' ')[1];
+    const month = formatToMonth(date);
 
     return (
         <article className="day-schedule">
             <h2 className="day-schedule__day-title">
-                {day} {month}
+                {day} {month} | {formatToWeekday(stringDate)}
             </h2>
             <ul className="day-schedule__events">
                 {afishaItemsWithPerformance.map((afishaItem) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { SpectacleCardProps } from './type';
 import { openTicketsWidget } from '@services/yandexTickets';
@@ -7,34 +7,62 @@ import './spectacle-card.scss';
 
 export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     performance,
+    isPremiere,
+    price,
     date,
     sessionId,
     photo,
 }) => {
-    const handleBuyTicket = () => {
+    const ISOdate = new Date(date);
+    
+    const handleBuyTicket = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation();
+        e.preventDefault();
         if (sessionId) {
             openTicketsWidget(sessionId);
         }
     };
 
+    if(!performance){
+        return <div className="container spectacle-card spectacle-card__loading">Загрузка...</div>;
+    }
+    
     return (
-        <>
-            <div className="spectacle-card">
-                <div className="container spectacle-card__container">
-                    <Link to={`/performances/${performance?.slug}`}>
-                        <img src={photo?.url} alt={performance?.title} className="spectacle-card__image" />
-                        <h2 className="spectacle-card__name">{performance?.title}</h2>
-                    </Link>
-                    <p className="spectacle-card__age">{performance?.ageLimit}</p>
-                    <p className="spectacle-card__description">{performance?.description}</p>
-                    <p className="spectacle-card__date">{date}</p>
-                    <p className="spectacle-card__duration">{performance?.duration}</p>
-
-                    <button className="spectacle-card__ya-button select-button" onClick={handleBuyTicket}>
+        <div className="container spectacle-card">
+            <Link to={`/performances/${performance.slug}`} className='spectacle-card__container'>
+                <img src={photo?.url ? photo.url : performance.mainImage?.url} alt={performance.title} className="spectacle-card__image" />
+                {isPremiere && <div className="spectacle-card__tag tag--small">
+                        Премьера
+                </div>}
+                <div className="spectacle-card__info-container">
+                    <div className="spectacle-card__title-container">
+                        <h3 className="spectacle-card__name title-h4">«{performance.title.trim()}»</h3>
+                        <p className="spectacle-card__teaser">{performance.teaser ? performance.teaser : performance.description}</p>
+                    </div>
+                    <div className="spectacle-card__additional-info-container">
+                        {date && 
+                        <div className="spectacle-card__start-time-container">
+                            <p className='spectacle-card__time'>{ISOdate.getHours()}:{ISOdate.getMinutes()}</p>
+                            <p>начало</p>
+                        </div>}
+                        {performance.duration && 
+                        <div className="spectacle-card__duration-container">
+                            <p className='spectacle-card__duration'>{performance.duration}</p>
+                            <p className='spectacle-card__addition'>{performance.isWithIntermission ? 'дополнение' : 'без дополнения'}</p>
+                        </div>}
+                        <div className="spectacle-card__price">{price} ₽</div>
+                        {performance.ageLimit && 
+                        <div className="spectacle-card__age-rate">
+                            <p>{performance.ageLimit}+</p>
+                        </div>}
+                    </div>
+                    <button className="spectacle-card__ya-button" disabled={!sessionId} onClick={(e) => {handleBuyTicket(e);}}>
                         Купить билет
                     </button>
                 </div>
-            </div>
-        </>
+              
+            </Link>
+
+        </div>
     );
 };
