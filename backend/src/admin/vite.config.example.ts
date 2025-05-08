@@ -1,12 +1,9 @@
-import { mergeConfig, type UserConfig } from 'vite';
+import { defineConfig } from "vite";
 
-export default (config: UserConfig) => {
-  // Important: always return the modified config
-  return mergeConfig(config, {
-    resolve: {
-      alias: {
-        '@': '/src',
-      },
+export default defineConfig({
+  resolve: {
+    alias: {
+      "@": "/src",
     },
-  });
-};
+  },
+});
