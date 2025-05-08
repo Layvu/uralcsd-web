@@ -1,5 +1,16 @@
 {
+  "name": "uralcsd",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev"
+  },
   "dependencies": {
     "date-fns": "^4.1.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "install-if-needed": "^1.0.4"
   }
 }
