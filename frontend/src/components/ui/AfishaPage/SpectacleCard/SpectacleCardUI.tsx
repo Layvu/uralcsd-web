@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { SpectacleCardProps } from './type';
 import { openTicketsWidget } from '@services/yandexTickets';
@@ -30,7 +30,9 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     return (
         <div className="container spectacle-card">
             <Link to={`/performances/${performance.slug}`} className='spectacle-card__container'>
-                <img src={photo?.url ? photo.url : performance.mainImage?.url} alt={performance.title} className="spectacle-card__image" />
+                <div className="spectacle-card__image-container">
+                    <img src={photo?.url ? photo.url : performance.mainImage?.url} alt={performance.title} className="spectacle-card__image" />
+                </div>
                 {isPremiere && <div className="spectacle-card__tag tag--small">
                         Премьера
                 </div>}

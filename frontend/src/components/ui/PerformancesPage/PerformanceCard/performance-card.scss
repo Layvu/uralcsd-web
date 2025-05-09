@@ -4,6 +4,12 @@
     overflow: hidden;
     background-color: var(--dark-skeleton);
 
+    &:hover{
+        img{
+            transform: scale(1.1);
+        }
+    }
+
     &__link {
         display: block;
         width: 100%;
@@ -25,6 +31,8 @@
         position: absolute;
         top: 0;
         left: 0;
+
+        transition: all 0.3s ease-out;
     }
 
     &__gradient {
