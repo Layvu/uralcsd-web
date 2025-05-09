@@ -35,7 +35,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                 <p className="performance-info__duration">{duration}</p>
                                 <p className="performance-info__addition">{isWithIntermission && 'дополнение'}</p>
                             </div>
-                            {ageLimit && <div className="performance-info__age-rate">
+                            {ageLimit != null && <div className="performance-info__age-rate">
                                 <p>{ageLimit}+</p>
                             </div>
                             }

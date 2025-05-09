@@ -1,4 +1,5 @@
 import { IAfishaItemsWithPerformance } from 'types/afishaItemsWithPerformance';
 
-
-export type SpectacleCardProps = IAfishaItemsWithPerformance;
+export type SpectacleCardProps = IAfishaItemsWithPerformance & {
+    isLatestPerformance: boolean 
+};

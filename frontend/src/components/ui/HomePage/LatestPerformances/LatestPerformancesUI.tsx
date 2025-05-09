@@ -12,27 +12,27 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
 
     return (
         <section className="latest-performances wrap">
-            <h2 className="latest-performances__title title-h2">Последние спектакли</h2>
-
+            <div className="latest-performances__header">
+                <h2 className="latest-performances__title title-h3--underline">Ближайшие спектакли</h2>
+                <button
+                    className="latest-performances__button "
+                    onClick={() => {
+                        navigate(ROUTES.AFISHA);
+                    }}
+                >
+                Полный репертуар
+                </button>
+            </div>
+            
             <ul className="latest-performances__list">
-                {latestPerformances.map((afishaItem) => {
-                    console.log(afishaItem);
-                    return (
-                        <li key={afishaItem?.performance?.slug} className="latest-performances__card">
-                            {/* Тут уже другой компонент нужен */}
-                            <SpectacleCard {...afishaItem} />
-                        </li>
-                    );})}
+                {latestPerformances.map((afishaItem) => (
+                    <li key={afishaItem?.performance?.slug} className="latest-performances__card">
+                        <SpectacleCard {...afishaItem} isLatestPerformance={true} />
+                    </li>
+                ))}
             </ul>
 
-            <button
-                className="latest-performances__button button"
-                onClick={() => {
-                    navigate(ROUTES.AFISHA);
-                }}
-            >
-                Переход ко всей афише
-            </button>
+            
         </section>
     );
 };

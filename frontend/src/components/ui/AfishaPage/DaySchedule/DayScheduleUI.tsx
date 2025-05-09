@@ -21,7 +21,7 @@ export const DayScheduleUI: React.FC<DayScheduleProps> = ({ afishaItemsWithPerfo
                 {afishaItemsWithPerformance.map((afishaItem) => {
                     return (
                         <li key={afishaItem.id} className="day-schedule__events-item">
-                            <SpectacleCard {...afishaItem} />
+                            <SpectacleCard {...afishaItem} isLatestPerformance={false}/>
                         </li>
                     );})}
             </ul>

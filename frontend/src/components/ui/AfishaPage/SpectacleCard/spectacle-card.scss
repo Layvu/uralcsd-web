@@ -4,24 +4,24 @@
     height: 350px;
     min-height: 350px;
     align-items: flex-start;
-    flex-shrink: 0;
     
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--white-10, rgba(255, 255, 255, 0.10));
+    background: var(--white-10);
     backdrop-filter: blur(20px);
-
-    &__tag{
-        position: absolute;
-        top: 20px;
-        left: 20px;
-    }
 
     &:hover{
         img{
             transform: scale(1.1);
         }
+    }
+
+
+    &__tag{
+        position: absolute;
+        top: 20px;
+        left: 20px;
     }
 
     &__loading{
@@ -42,14 +42,12 @@
 
     &__image{
         width: 100%;
-        background-size: cover;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 10px;
-        flex: 1 0 0;
+        object-fit: cover;
         align-self: stretch;
 
         transition: transform 0.4s ease-out;
@@ -132,6 +130,8 @@
 
         margin-top: auto;
 
+        transition: all ease-in 0.2s;
+
         &:hover{
             background: var(--pomegranate-medium);
             backdrop-filter: blur(10px);
@@ -146,6 +146,34 @@
             pointer-events: none;
             background: var(--gray-basic);
             color: var(--black);
+        }
+    }
+
+    &--latest{
+        height: 540px;
+        min-height: 540px;
+
+        .spectacle-card__container {
+            flex-direction: column;
+        }
+        .spectacle-card__image-container{
+            width: 100%;
+            height: 100%;
+            max-height: 245px;
+
+        }
+
+        .spectacle-card__info-container{
+            width: 100%;
+            flex: 1;
+            padding-top: 12px;
+            padding: 16px;
+            gap: 20px;
+        }
+
+        .spectacle-card__title-container{
+            gap: 10px;
+            padding-bottom: 16px;
         }
     }
 }
