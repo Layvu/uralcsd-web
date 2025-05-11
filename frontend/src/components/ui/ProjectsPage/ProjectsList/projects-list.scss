@@ -1,6 +1,8 @@
 .projects-list {
-    margin-top: 40px;
     display: grid;
     gap: 40px;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(400px, 540px), 1fr)
+      );
 }

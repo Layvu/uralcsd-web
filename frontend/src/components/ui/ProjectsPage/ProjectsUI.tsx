@@ -8,7 +8,7 @@ import './projects.scss';
 export const ProjectsUI: React.FC<ProjectsListProps> = () => {
     return (
         <section className="projects wrap">
-            <MainTitle className="projects__title">Проекты</MainTitle>
+            <MainTitle className="projects__title title-h3--underline">Проекты</MainTitle>
             <ProjectsList />
         </section>
     );
