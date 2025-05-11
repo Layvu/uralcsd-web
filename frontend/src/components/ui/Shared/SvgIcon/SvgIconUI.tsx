@@ -6,6 +6,6 @@ import { SvgIconProps } from './type';
 export const SvgIconUI: React.FC<SvgIconProps> = ({ id, className, title }) => (
     <svg className={className} role={title ? 'img' : undefined} aria-label={title}>
         {title && <title>{title}</title>}
-        <use xlinkHref={`img/sprite.svg#${id}`} />
+        <use xlinkHref={`/img/sprite.svg#${id}`} />
     </svg>
 );

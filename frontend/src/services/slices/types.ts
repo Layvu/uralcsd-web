@@ -15,7 +15,11 @@ type GenericState<T> = {
 };
 
 export interface TeamState extends GenericState<IMember[]> {
-    selectedCategory: TeamFilterCategory;
+    activeCategory: TeamFilterCategory;
+}
+
+export interface AfishaItemsState extends GenericState<IAfishaItem[]> {
+    activeMonth: number;
 }
 
 export type PerformanceState = GenericState<IPerformance[]>;
@@ -27,5 +31,3 @@ export type TheaterState = GenericState<ITheaterInfo>;
 export type ContactsState = GenericState<IContactInfo>;
 
 export type PerformanceCastState = GenericState<IPerformanceCast[]>;
-
-export type AfishaItemsState = GenericState<IAfishaItem[]>;

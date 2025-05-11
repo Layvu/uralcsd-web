@@ -1,27 +1,28 @@
-import React, { useCallback, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { AfishaUI } from '@components/ui/AfishaPage';
 
 import { getNextThreeMonths } from 'utils/getNextThreeMonths';
 
-import { makeSelectFilteredAfishaItems } from '@services/selectors/afishaItemsSelectors';
-import { RootState } from '@services/store';
+import { makeSelectFilteredAfishaItems, selectAfishaActiveMonth } from '@services/selectors/afishaItemsSelectors';
+import { AppDispatch, RootState } from '@services/store';
+import { setActiveMonth } from '@services/slices/afishaItemsSlice';
 
 export const Afisha: React.FC = () => {
-    const currentDate = useMemo(() => new Date(), []);
-    const [activeMonthIndex, setActiveMonthIndex] = useState(currentDate.getMonth());
+    const dispatch = useDispatch<AppDispatch>();
+    const months = useMemo(() => getNextThreeMonths(), []);
+    const activeMonthIndex = useSelector(selectAfishaActiveMonth);
 
-    const selectFilteredAfishaItems = useMemo(() => makeSelectFilteredAfishaItems(), []);
-    const groupedAfishaItems = useSelector((state: RootState) =>
-        selectFilteredAfishaItems(state, activeMonthIndex),
+    const handleMonthChange = useCallback(
+        (monthIndex: number) => {
+            dispatch(setActiveMonth(monthIndex));
+        },
+        [dispatch],
     );
 
-    const handleMonthChange = useCallback((monthIndex: number) => {
-        setActiveMonthIndex(monthIndex);
-    }, []);
-
-    const months = useMemo(() => getNextThreeMonths(), []);
+    const selectFilteredAfishaItems = useMemo(() => makeSelectFilteredAfishaItems(), []);
+    const groupedAfishaItems = useSelector((state: RootState) => selectFilteredAfishaItems(state, activeMonthIndex));
 
     return (
         <AfishaUI
