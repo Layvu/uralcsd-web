@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchAfishaItemsApi } from 'services/api/theater-api';
 import { AfishaItemsState } from './types';
 
@@ -7,12 +7,17 @@ const initialState: AfishaItemsState = {
     loading: true,
     error: null,
     isInitialized: false,
+    activeMonth: new Date().getMonth(),
 };
 
 const afishaItemsSlice = createSlice({
     name: 'afishaItems',
     initialState,
-    reducers: {},
+    reducers: {
+        setActiveMonth(state, action: PayloadAction<number>) {
+            state.activeMonth = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchAfishaItems.pending, (state) => {
@@ -31,6 +36,8 @@ const afishaItemsSlice = createSlice({
             });
     },
 });
+
+export const { setActiveMonth } = afishaItemsSlice.actions;
 
 export const fetchAfishaItems = createAsyncThunk('afishaItems/fetchAfishaItems', async () => {
     return await fetchAfishaItemsApi();

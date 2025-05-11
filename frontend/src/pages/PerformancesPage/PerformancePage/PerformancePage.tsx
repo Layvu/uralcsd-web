@@ -13,11 +13,12 @@ import { RootState } from '@services/store';
 export const PerformancePage: React.FC = () => {
     const { slug } = useParams<{ slug: string }>();
     const performance = useSelector((state: RootState) => selectPerformanceBySlug(state, slug || ''));
-    
 
     // Производим операции чтобы вытащить актеров с ролями
     const perdormanceCastIds = performance?.performanceCasts.map((performanceCast) => performanceCast.id);
-    const performanceCasts = useSelector((state: RootState) => selectPerformanceCastByIds(state, perdormanceCastIds ? perdormanceCastIds : ''));    
+    const performanceCasts = useSelector((state: RootState) =>
+        selectPerformanceCastByIds(state, perdormanceCastIds ? perdormanceCastIds : ''),
+    );
     const performanceActorsIds = performanceCasts?.map((performanceCasts) => performanceCasts.actor?.id);
     const performanceActors = useSelector((state: RootState) => selectTeamMembersByIds(state, performanceActorsIds));
 
@@ -32,20 +33,26 @@ export const PerformancePage: React.FC = () => {
                 };
             }) || []
         );
-    }, [performance, performanceActors]);
+    }, [performanceActors, performanceCasts]);
 
     // Директоров еще засунуть надо
 
     // const performanceDirectors = performance.directors.map((director) =>
-    //     useSelector((state) => 
+    //     useSelector((state) =>
     //         selectTeamMemberById(state, director.id || '')));
-    const currentAfishaItems = useSelector((state: RootState) => 
-        performance?.id ? selectAfishaItemsByPerformanceId(performance.id)(state) : []
+    const currentAfishaItems = useSelector((state: RootState) =>
+        performance?.id ? selectAfishaItemsByPerformanceId(performance.id)(state) : [],
     );
 
     if (!performance) {
         return <div>Событие не найдено</div>;
     }
 
-    return <PerformanceInfoUI performance={performance} actorsWithRoles={actorsWithRoles} currentAfishaItems={currentAfishaItems} />;
+    return (
+        <PerformanceInfoUI
+            performance={performance}
+            actorsWithRoles={actorsWithRoles}
+            currentAfishaItems={currentAfishaItems}
+        />
+    );
 };

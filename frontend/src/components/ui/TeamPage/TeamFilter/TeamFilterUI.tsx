@@ -10,14 +10,14 @@ const categoriesLabels: Record<TeamFilterCategories, string> = {
     [TeamFilterCategories.Management]: 'Руководство',
 };
 
-export const TeamFilterUI: React.FC<TeamFilterProps> = React.memo(({ selectedCategory, onSelectCategory }) => {
+export const TeamFilterUI: React.FC<TeamFilterProps> = React.memo(({ activeCategory, onSelectCategory }) => {
     return (
         <div className="team__team-filter team-filter">
             {Object.values(TeamFilterCategories).map((category) => (
                 <button
                     key={category}
                     className={`team-filter__button select-button ${
-                        selectedCategory === category ? 'team-filter__button--active select-button--active' : ''
+                        activeCategory === category ? 'team-filter__button--active select-button--active' : ''
                     }`}
                     onClick={() => onSelectCategory(category as TeamFilterCategories)}
                 >

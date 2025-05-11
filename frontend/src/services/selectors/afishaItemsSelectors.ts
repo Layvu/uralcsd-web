@@ -5,41 +5,22 @@ import { selectPerformances } from './performancesSelectors';
 
 export const selectAfishaState = (state: RootState) => state.afishaItems;
 
-export const selectAfishaItems = createSelector(
-    [selectAfishaState],
-    (state) => state.data,
-);
-export const selectAfishaLoading = createSelector(
-    [selectAfishaState],
-    (state) => state.loading,
-);
-export const selectAfishaError = createSelector(
-    [selectAfishaState],
-    (state) => state.error,
-);
-export const selectAfishaInitialized = createSelector(
-    [selectAfishaState],
-    (state) => state.isInitialized,
-);
+export const selectAfishaItems = createSelector([selectAfishaState], (state) => state.data);
+export const selectAfishaActiveMonth = createSelector([selectAfishaState], (state) => state.activeMonth);
+export const selectAfishaLoading = createSelector([selectAfishaState], (state) => state.loading);
+export const selectAfishaError = createSelector([selectAfishaState], (state) => state.error);
+export const selectAfishaInitialized = createSelector([selectAfishaState], (state) => state.isInitialized);
 
 // Селектор для премьер
-export const selectPremiereAfishaItems = createSelector(
-    [selectAfishaItems],
-    (items) => items.filter(item => item.isPremiere)
+export const selectPremiereAfishaItems = createSelector([selectAfishaItems], (items) =>
+    items.filter((item) => item.isPremiere),
 );
 
-export const selectLatestAfishaItems = createSelector([selectAfishaItems], (afishaItem) => 
-    afishaItem.slice(0, 3)
-);
+export const selectLatestAfishaItems = createSelector([selectAfishaItems], (afishaItem) => afishaItem.slice(0, 3));
 
 // Селектор для событий по ID спектакля
-export const selectAfishaItemsByPerformanceId = (performanceId: string) => 
-    createSelector(
-        [selectAfishaItems],
-        (items) => items.filter(item => item.performance.id == performanceId)
-    );
-
-
+export const selectAfishaItemsByPerformanceId = (performanceId: string) =>
+    createSelector([selectAfishaItems], (items) => items.filter((item) => item.performance.id == performanceId));
 
 export const makeSelectFilteredAfishaItems = () =>
     createSelector(
@@ -50,23 +31,19 @@ export const makeSelectFilteredAfishaItems = () =>
         ],
         (afishaItems, performances, activeMonth) => {
             // Создаем карту спектаклей для быстрого доступа
-            const performancesMap = Object.fromEntries(
-                performances.map(p => [p.id, p])
-            );
-            
+            const performancesMap = Object.fromEntries(performances.map((p) => [p.id, p]));
+
             // Фильтруем и обогащаем данные
             const filtered = afishaItems
-                .filter(item => {
+                .filter((item) => {
                     const itemDate = new Date(item.date);
                     return itemDate.getMonth() === activeMonth;
                 })
-                .map(item => ({
+                .map((item) => ({
                     ...item,
-                    performance: item.performance?.id 
-                        ? performancesMap[item.performance.id] 
-                        : null
+                    performance: item.performance?.id ? performancesMap[item.performance.id] : null,
                 }));
-      
+
             return groupAfishaItemsByDate(filtered);
-        }
+        },
     );

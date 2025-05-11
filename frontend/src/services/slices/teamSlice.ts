@@ -9,15 +9,15 @@ const initialState: TeamState = {
     loading: true,
     error: null,
     isInitialized: false,
-    selectedCategory: TeamFilterCategories.Actors, // начальная категория
+    activeCategory: TeamFilterCategories.Actors, // начальная категория
 };
 
 const teamSlice = createSlice({
     name: 'team',
     initialState,
     reducers: {
-        setCategory: (state, action: PayloadAction<TeamFilterCategory>) => {
-            state.selectedCategory = action.payload;
+        setActiveCategory: (state, action: PayloadAction<TeamFilterCategory>) => {
+            state.activeCategory = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -39,7 +39,8 @@ const teamSlice = createSlice({
     },
 });
 
-export const { setCategory } = teamSlice.actions;
+export const { setActiveCategory } = teamSlice.actions;
+
 export const fetchTeam = createAsyncThunk('team/fetchTeam', async () => {
     return await fetchTeamApi();
 });

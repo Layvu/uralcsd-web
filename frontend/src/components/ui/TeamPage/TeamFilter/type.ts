@@ -1,7 +1,3 @@
-import { BaseTeamProps } from "types/BaseTeamProps";
+import { BaseTeamProps } from 'types/BaseTeamProps';
 
-export interface TeamFilterProps extends BaseTeamProps {
-    
-}
-
-
+export type TeamFilterProps = BaseTeamProps;
