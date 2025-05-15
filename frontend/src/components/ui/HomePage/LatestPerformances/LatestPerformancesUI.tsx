@@ -26,7 +26,7 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
             
             <ul className="latest-performances__list">
                 {latestPerformances.map((afishaItem) => (
-                    <li key={afishaItem?.performance?.slug} className="latest-performances__card">
+                    <li key={afishaItem?.id} className="latest-performances__card">
                         <SpectacleCard {...afishaItem} isLatestPerformance={true} />
                     </li>
                 ))}

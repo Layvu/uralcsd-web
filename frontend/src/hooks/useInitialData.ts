@@ -94,6 +94,10 @@ export const useInitialData = () => {
                     console.log('Загрузка связи данных списка акторов и ролей в спектаклях');
                     promises.push(dispatch(fetchPerformanceCasts()));
                 }
+                if (!isAfishaItemsInitialized) {
+                    console.log('Загрузка данных афиши');
+                    promises.push(dispatch(fetchAfishaItems()));
+                }
             }
 
             // Список участников

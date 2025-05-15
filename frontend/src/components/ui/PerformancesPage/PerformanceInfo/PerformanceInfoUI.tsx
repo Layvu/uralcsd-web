@@ -6,7 +6,7 @@ import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import { openTicketsWidget } from 'services/yandexTickets';
 import { Link } from 'react-router-dom';
 import { MainTitle } from '@components/Shared/MainTitle';
-import { formatDateTime, formatToWeekday } from 'utils/timeFormat';
+import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles, currentAfishaItems }) => {
     const handleBuyTicket = (sessionId: string) => {
@@ -97,7 +97,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                     <li key={afishaItem.id} className='performance-info__ticket-item'>
                                         <div className='performance-info__ticket-date-container'>
                                             <p className="performance-info__ticket-date">
-                                                {formatDateTime(afishaItem.date)}
+                                                {formatToFullDateTime(afishaItem.date)}
                                             </p>
                                             <p className="performance-info__ticket-weekday">
                                                 {formatToWeekday(afishaItem.date)}

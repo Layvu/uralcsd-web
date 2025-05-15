@@ -66,7 +66,7 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
 
                     <Swiper
                         ref={swiperRef}
-                        spaceBetween={50}
+                        spaceBetween={40}
                         slidesPerView="auto"
                         modules={[Navigation]}
                         navigation={{

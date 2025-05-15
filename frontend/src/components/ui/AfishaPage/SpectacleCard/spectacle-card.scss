@@ -82,6 +82,10 @@
     &__additional-info-container{
         display: flex;
         justify-content: space-between;
+
+        &>div:not(:last-child){
+            padding-right: 10px;
+        }
     }
 
     &__start-time-container{

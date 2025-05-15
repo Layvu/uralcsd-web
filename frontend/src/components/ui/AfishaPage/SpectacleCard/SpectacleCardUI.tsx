@@ -4,7 +4,7 @@ import { SpectacleCardProps } from './type';
 import { openTicketsWidget } from '@services/yandexTickets';
 
 import './spectacle-card.scss';
-import { formatDateTime, formatToWeekday } from 'utils/timeFormat';
+import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 
 export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     performance,
@@ -45,7 +45,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                     </div>
                     <div className="spectacle-card__additional-info-container">
                         {isLatestPerformance ? <div className="spectacle-card__start-time-container">
-                            <p className='spectacle-card__time'>{formatDateTime(date)}</p>
+                            <p className='spectacle-card__time'>{formatToFullDateTime(date)}</p>
                             <p>{formatToWeekday(date)}</p>
                         </div> :
                             <>{date &&
