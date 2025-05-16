@@ -56,7 +56,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                             {performance.duration &&
                                     <div className="spectacle-card__duration-container">
                                         <p className='spectacle-card__duration'>{performance.duration}</p>
-                                        <p className='spectacle-card__addition'>{performance.isWithIntermission ? 'дополнение' : 'без дополнения'}</p>
+                                        <p className='spectacle-card__addition'>{performance.intermissionInfo}</p>
                                     </div>}
 
                             <div className="spectacle-card__price">{price} ₽</div>
@@ -66,7 +66,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                                 <p>{performance.ageLimit}+</p>
                             </div>}
                     </div>
-                    <button className="spectacle-card__ya-button" disabled={!sessionId} onClick={(e) => { handleBuyTicket(e); }}>
+                    <button className="spectacle-card__ya-button ticket-button" disabled={!sessionId} onClick={(e) => { handleBuyTicket(e); }}>
                         Купить билет
                     </button>
                 </div>

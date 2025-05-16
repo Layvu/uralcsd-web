@@ -101,34 +101,44 @@
         gap: 20px;
     }
 
-    &__cast-list {
+    &__cast-list,
+    &__crew-list {
         display: flex;
         flex-direction: column;
         gap: 16px;
         width: 100%;
     }
 
-    &__cast-item {
+    &__cast-item,
+    &__crew-item {
         display: flex;
         justify-content: space-between;
         text-align: center;
         padding-bottom: 15px;
         border-bottom: 1.5px solid var(--gray-medium);
+        transition: all 0.2s ease-out;
     }
 
-    &__cast-item:hover {
+    &__cast-item:hover,
+    &__crew-item:not(.performance-info__dramatist):hover {
         color: var(--pomegranate-bright);
         border-color: inherit;
         .performance-info__cast-role {
             color: inherit;
         }
+        .performance-info__crew-position{
+            color: inherit;
+        }
     }
-    &__cast-actor {
+
+    &__cast-actor,
+    &__crew-member {
         font-size: 22px;
         line-height: 28px;
     }
 
-    &__cast-role {
+    &__cast-role,
+    &__crew-position {
         color: var(--gray-light);
         font-size: 18px;
         line-height: 22px;
@@ -167,30 +177,9 @@
     }
 
     &__ticket-button {
-        display: flex;
-        flex: 1 0 0;
-        height: 50px;
         max-width: 100px;
         padding: 10px 20px;
-        justify-content: center;
-        align-items: center;
-        color: var(--pomegranate-bright);
-        border: 1.5px solid var(--pomegranate-bright);
-        backdrop-filter: blur(30px);
-
-        font-size: 18px;
-        line-height: 22px;
-
-        &:hover {
-            color: var(--white);
-            background: var(--pomegranate-basic);
-            border-color: var(--pomegranate-basic);
-        }
-        &:disabled {
-            background: var(--gray-basic);
-            color: var(--black);
-            border: none;
-        }
+        
     }
 
     &__no-performances-container {

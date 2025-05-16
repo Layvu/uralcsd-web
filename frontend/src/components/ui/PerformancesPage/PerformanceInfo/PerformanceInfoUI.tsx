@@ -15,7 +15,9 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
         }
     };
 
-    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, isWithIntermission, isActual } = performance;
+    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, isActual, directors, choreographers } = performance;
+    console.log(choreographers);
+    console.log(directors);
 
     const performanceImages = images?.map((image) => image.url);
     return (
@@ -33,7 +35,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                         <div className="performance-info__tags-container">
                             <div className="performance-info__duration-container">
                                 <p className="performance-info__duration">{duration}</p>
-                                <p className="performance-info__addition">{isWithIntermission && 'дополнение'}</p>
+                                <p className="performance-info__addition">{intermissionInfo}</p>
                             </div>
                             {ageLimit != null && <div className="performance-info__age-rate">
                                 <p>{ageLimit}+</p>
@@ -44,32 +46,43 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                             </div>
                         </div>
                     </div>
+                    {description &&
                     <div className="performance-info__description-section">
                         <p className="performance-info__description-title title-h4">Описание спектакля</p>
                         <p className="performance-info__description">{description}</p>
-                    </div>
+                    </div>}
 
-
-                    {/* Циклом смотреть какие есть данные в афише по этому спектаклю */}
-                    {/* <button className="performance-info__ya-button select-button" onClick={handleBuyTicket}>
-                        Купить билет
-                    </button> */}
+                    {/* Постановщики, включает в себя хореографов, режиссеров и драматурга  */}
+                    {(dramatist?.length > 0 || directors?.length > 0 || choreographers?.length > 0) &&
                     <div className="performance-info__crew">
                         <h2 className="performance-info__crew-title title-h4">Постановщики</h2>
-                        {/* <ul className="performance-info__crew-list">
-                                {crew.map((member, key) => (
-                                    // TODO
-                                    // member: IMember и из него уже вытаскивать роль в этом спектакле
-                                    <li
-                                        key={`${member.name}-${member.role}-${key}`}
-                                        className="performance-info__crew-item"
-                                    >
-                                        {member.role} — {member.name}
-                                    </li>
-                                ))}
-                            </ul> */}
+                        <ul className="performance-info__crew-list">
+                            {dramatist && <li className="performance-info__crew-item performance-info__dramatist">
+                                <p className="performance-info__crew-member">{dramatist}</p>
+                                <p className="performance-info__crew-position">драматург</p>
+                            </li>}
+                            {directors.map((director) => (
+                                <li key={`${director?.name}-${director.id}`}>
+                                    <Link to={`/team/${director?.slug}`} className="performance-info__crew-item">
+                                        <p className="performance-info__crew-member">{director?.name} {director?.surname}</p>
+                                        <p className="performance-info__crew-position">Режиссер</p>
+                                    </Link>
+                                </li>
+                            ))}
+                            {choreographers.map((choreographer) => (
+                                <li key={`${choreographer?.name}-${choreographer.id}`}>
+                                    <Link to={`/team/${choreographer?.slug}`} className="performance-info__crew-item">
+                                        <p className="performance-info__crew-member">{choreographer?.name} {choreographer?.surname}</p>
+                                        <p className="performance-info__crew-position">Xореограф</p>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
+                    }
 
+
+                    {/* Актерский состав */}
                     {actorsWithRoles.length > 0 &&
                         <div className="performance-info__cast">
                             <h2 className="performance-info__cast-title title-h4">Актерский состав</h2>
@@ -77,18 +90,18 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                 {actorsWithRoles.map((item) => (
                                     <li key={`${item.actor?.name}-${item.role}`}>
                                         <Link to={`/team/${item.actor?.slug}`} key={item.actor?.id} className="performance-info__cast-item">
-                                            <p className="performance-info__cast-actor">{item.actor?.name}</p>
+                                            <p className="performance-info__cast-actor">{item.actor?.name} {item.actor?.surname}</p>
                                             <p className="performance-info__cast-role">{item.role}</p>
                                         </Link>
-
                                     </li>
                                 ))}
                             </ul>
                         </div>
                     }
-
-
                 </section>
+
+
+                {/* секция покупки билетов на этот спектакль, даты которого есть в репертуаре */}
                 {currentAfishaItems.length > 0 ?
                     <section className='performance-info__ticket-section'>
                         <ul className="performance-info__ticket-list">
@@ -103,7 +116,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                                 {formatToWeekday(afishaItem.date)}
                                             </p>
                                         </div>
-                                        <button className='performance-info__ticket-button' onClick={() => handleBuyTicket(afishaItem.sessionId)}>
+                                        <button className='performance-info__ticket-button ticket-button' onClick={() => handleBuyTicket(afishaItem.sessionId)}>
                                             Билеты
                                         </button>
                                     </li>
@@ -118,7 +131,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                 Нет в показе
                             </button>
                             <p className="performance-info__no-performances-info">
-                            Следите за афишей театра ЦСД, чтобы не пропустить показ!
+                                Следите за афишей театра ЦСД, чтобы не пропустить показ!
                             </p>
                         </div>
                     </section>
