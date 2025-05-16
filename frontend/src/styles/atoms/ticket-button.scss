@@ -1,0 +1,36 @@
+.ticket-button{
+    height: 50px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--white);
+
+    background: var(--pomegranate-basic);
+    backdrop-filter: blur(30px);
+
+    transition: all ease-in 0.2s;
+
+    &:hover{
+        background: var(--pomegranate-medium);
+        backdrop-filter: blur(10px);
+    }
+    &:active{
+        color: var(--pomegranate-basic);
+        border: 2px solid var(--pomegranate-basic);
+        background: none;
+        backdrop-filter: blur(30px);
+    }
+    &:focus{
+        border: none;
+    }
+    &:disabled{
+        pointer-events: none;
+        background: var(--gray-basic);
+        color: var(--black);
+    }
+}

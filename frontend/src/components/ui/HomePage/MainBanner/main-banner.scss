@@ -68,15 +68,30 @@
     }
     &__description {
         color: var(--gray-light);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
         font-size: 20px;
         line-height: 24px;
+
         max-width: 550px;
         max-height: 78px;
+
         align-self: stretch;
-    }
+        
+        /* Multiline ellipsis with full browser support */
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+                
+        /* Additional safeguards */
+        word-break: break-word;
+        hyphens: auto;
+      }
 
     &__additional-info-container {
         display: flex;
@@ -117,39 +132,14 @@
         border-radius: 50%;
         border: 1.2px solid var(--white);
         backdrop-filter: blur(10px);
+
+        align-self: center;
     }
 
     &__ya-button {
-        display: flex;
-        width: 550px;
-        height: 50px;
+        width: 100%;
         max-width: 550px;
         padding: 10px 40px;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-
-        color: var(--white);
-        background: var(--pomegranate-basic);
-        backdrop-filter: blur(30px);
-
-        transition: all ease-in 0.2s;
-
-        &:hover {
-            background: var(--pomegranate-medium);
-            backdrop-filter: blur(10px);
-        }
-        &:active {
-            color: var(--pomegranate-basic);
-            border: 2px solid var(--pomegranate-basic);
-            background: none;
-            backdrop-filter: blur(30px);
-        }
-        &:disabled {
-            pointer-events: none;
-            background: var(--gray-basic);
-            color: var(--black);
-        }
     }
 
     &__buttons-container {
@@ -162,6 +152,7 @@
 
         .swiper-button-prev,
         .swiper-button-next {
+            cursor: pointer;
             display: flex;
             width: 50px;
             height: 50px;
@@ -176,7 +167,9 @@
 
         .swiper-button-prev {
             left: 0;
-            background-image: url('../../../../assets/icons/swiper-prev-btn.svg');
+            background-image: url('/src/assets/icons/swiper-arrow-btn.svg');
+            background-position: center;
+            background-repeat: no-repeat;
 
             &:hover {
                 background-color: var(--white-20);
@@ -185,7 +178,11 @@
 
         .swiper-button-next {
             right: 0;
-            background-image: url('../../../../assets/icons/swiper-next-btn.svg');
+            background-image: url('/src/assets/icons/swiper-arrow-btn.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+
+            transform: scaleX(-1);
 
             &:hover {
                 background-color: var(--white-20);

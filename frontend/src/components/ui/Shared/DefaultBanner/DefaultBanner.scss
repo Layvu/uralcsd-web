@@ -65,18 +65,26 @@
     }
 
     .swiper-button-prev {
-        background-image: url('../../../../assets/icons/swiper-prev-btn.svg');
+        
+        background-image: url('/src/assets/icons/swiper-arrow-btn.svg');
+        background-position: center;
+        background-repeat: no-repeat;
 
         &:hover {
-            background-image: url('../../../../assets/icons/swiper-prev-btn--hover.svg');
+            background-color: var(--white-20);
         }
     }
 
     .swiper-button-next {
-        background-image: url('../../../../assets/icons/swiper-next-btn.svg');
+
+        background-image: url('/src/assets/icons/swiper-arrow-btn.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+
+        transform: scaleX(-1);
 
         &:hover {
-            background-image: url('../../../../assets/icons/swiper-next-btn--hover.svg');
+            background-color: var(--white-20);
         }
     }
 

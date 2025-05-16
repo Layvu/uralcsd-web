@@ -34,11 +34,15 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
         if (!swiperRef.current) return;
         swiperRef.current.slideNext();
     };
+
+    if(premiereAfishaItemsWithPerformances.length == 0) return;
     return (
         <section className="main-banner">
             <Swiper
                 onInit={(swiper) => {
                     swiperRef.current = swiper;
+                    swiper.wrapperEl.style.transitionTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
                 }}
                 spaceBetween={0}
                 slidesPerView={1}
@@ -47,7 +51,17 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                     prevEl: '.swiper-button-prev',
                     nextEl: '.swiper-button-next',
                 }}
-                cssMode={true}
+
+                // По необъяснимой причине иногда кнопки на первой загрузке могут не работать.
+                // Нужно перелистнуть один раз вручную и тогда activeIndex становится не NaN.
+                // Иногда activeIndex изначально 0 иногда NaN, пробовал определить его до 
+                // инициализации разными способами - все тчетно. Волшебным образом помогает
+                // свойство cssMode={true}, но тогда ручной переход не работает. 
+                // Почему cssMode помогает? не знаю.
+                // Но вроде натыкал что-то, пока работает без него
+                
+                //cssMode={true}
+                speed={800}
                 initialSlide={0}
                 loop={true}
                 loopAddBlankSlides={true}
@@ -81,7 +95,7 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                                         {afishaItem.performance?.duration &&
                                             <div className="main-banner__duration-container">
                                                 <p className='main-banner__duration'>{afishaItem.performance?.duration}</p>
-                                                <p className='main-banner__addition'>{afishaItem.performance?.isWithIntermission ? 'дополнение' : 'без дополнения'}</p>
+                                                <p className='main-banner__addition'>{afishaItem.performance?.intermissionInfo}</p>
                                             </div>}
 
                                         {afishaItem.performance?.ageLimit &&
@@ -89,7 +103,7 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                                                 <p>{afishaItem.performance.ageLimit}+</p>
                                             </div>}
                                     </div>
-                                    <button className="main-banner__ya-button" disabled={!afishaItem.sessionId} onClick={(e) => { handleBuyTicket(e, afishaItem.sessionId); }}>
+                                    <button className="main-banner__ya-button ticket-button" disabled={!afishaItem.sessionId} onClick={(e) => { handleBuyTicket(e, afishaItem.sessionId); }}>
                                         Купить билет
                                     </button>
                                 </div>
