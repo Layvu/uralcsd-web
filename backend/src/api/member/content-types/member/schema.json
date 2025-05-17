@@ -16,18 +16,13 @@
       "required": true
     },
     "surname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "slug": {
       "type": "uid",
-      "targetField": "surname"
-    },
-    "gender": {
-      "type": "enumeration",
-      "enum": [
-        "male",
-        "female"
-      ]
+      "targetField": "surname",
+      "required": true
     },
     "category": {
       "type": "enumeration",
@@ -72,6 +67,12 @@
       "relation": "manyToMany",
       "target": "api::performance.performance",
       "mappedBy": "directors"
+    },
+    "choreographedPerformances": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::performance.performance",
+      "mappedBy": "choreographers"
     }
   }
 }

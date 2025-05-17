@@ -15,12 +15,21 @@ export interface IPerformance {
         id: string; 
     }[];  // Актеры (через PerformanceСast)
     directors: {
-        id: string // режиссеры, связь через IMember
-    }[];  
+        id: string; // режиссеры, связь через IMember
+        slug: string;
+        name: string;
+        surname: string;
+    }[]; 
+    choreographers: {
+        id: string // хореографы, связь через IMember
+        slug: string;
+        name: string;
+        surname: string;
+    }[]; 
 
     images?: { url: string }[];
     mainImage?: { url: string };
 
-    isWithIntermission: boolean;
+    intermissionInfo: string;
     isActual: boolean;
 }

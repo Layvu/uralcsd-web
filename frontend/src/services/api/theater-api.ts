@@ -35,7 +35,12 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             params: {
                 populate: {
                     performanceCasts: { fields: ['id'] },
-                    directors: { fields: ['id'] },
+                    directors: {
+                        populate: true,
+                    },
+                    choreographers: {
+                        populate: true,
+                    },
                     images: { fields: ['url'] },
                     mainImage: { fields: ['url'] },
                 },
@@ -53,10 +58,11 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             duration: item.duration,
             dramatist: item.dramatist,
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
-            directors: item.directors?.map((director) => ({ id: director.id })) || [], // Исправляем на массив
+            directors: item.directors?.map((director) => ({id: director.id, slug: director.slug, name: director.name, surname: director.surname})) || [], 
+            choreographers: item.choreographers?.map((choreographer) => ({id: choreographer.id, slug: choreographer.slug, name: choreographer.name, surname: choreographer.surname})) || [], 
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             mainImage: item.mainImage?.url ? { url: getAbsoluteImagePath(item.mainImage.url) } : null,
-            isWithIntermission: item.isWithIntermission,
+            intermissionInfo: item.intermissionInfo,
             isActual: item.isActual,
         }));
 
@@ -86,13 +92,13 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
             slug: item.slug,
             name: item.name,
             surname: item.surname,
-            gender: item.gender,
             category: item.category,
             biography: item.biography,
             position: item.position,
             mainPhoto: item.mainPhoto?.url ? { url: getAbsoluteImagePath(item.mainPhoto.url) } : null,
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             aPerformances: item.aPerformances?.map((performance) => ({ id: performance.id })) || [],
+            choreographedPerformances: item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
         }));
 
@@ -173,5 +179,32 @@ export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {
 
 export const fetchContactsApi = async (): Promise<IContactInfo> => {
     console.log('fetchContactsApi...');
-    return mockApiResponse(mockContactInfo);
+    try{
+        const response = await apiClient.get('/contact',{
+            params: {
+                populate: {
+                    faq: {
+                        populate: ['info'] 
+                    },
+                    phones: true,
+                    workingHours: true,
+                    daysOff: true,
+                    social: true
+                }
+            }
+        });
+        
+        const contactItem = response.data.data;
+        const transformedContactItem = {
+            ...contactItem,
+            daysOff: contactItem.daysOff.map((dayOff:{dayOff:string}) => dayOff.dayOff),
+        };
+        console.log( transformedContactItem);
+
+        return transformedContactItem;
+
+    }catch(error){
+        console.error('Error fetching contact items:', error);
+        throw error;
+    }
 };

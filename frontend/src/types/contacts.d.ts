@@ -12,9 +12,16 @@ export interface IContactInfo {
     };
     email: string;
     faq: IFaqItem[];
+    social: {
+        vk: string,
+        tg: string,
+    }
 }
 
 export interface IFaqItem {
     question: string;
-    answer: string;
+    info: {
+        subtitle?: string;
+        answer?: string;
+    }[]
 }

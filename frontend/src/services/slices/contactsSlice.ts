@@ -20,7 +20,7 @@ const initialState: ContactsState = {
         faq: [],
         social: {
             vk: '',
-            telegram: '',
+            tg: '',
         },
     } as IContactInfo,
     loading: true,

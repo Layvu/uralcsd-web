@@ -7,8 +7,4 @@ export interface IAfishaItem {
     isPremiere: boolean; // Является ли премьерой
     price: number; 
     photo: {url : string}; // Фото для афиши
-
-    // Возможно лишнее:
-    // title: string; // Название показа (может отличаться от спектакля). Виден в панели администратора.
-    // slug: string; // Уникальный slug для показа
 }

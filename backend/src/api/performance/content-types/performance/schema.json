@@ -29,10 +29,6 @@
     "teaser": {
       "type": "string"
     },
-    "isWithIntermission": {
-      "type": "boolean",
-      "default": false
-    },
     "duration": {
       "type": "string"
     },
@@ -75,6 +71,16 @@
     },
     "additionalInfo": {
       "type": "string"
+    },
+    "intermissionInfo": {
+      "type": "string",
+      "default": "без антракта"
+    },
+    "choreographers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::member.member",
+      "inversedBy": "choreographedPerformances"
     }
   }
 }

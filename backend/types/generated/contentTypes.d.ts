@@ -425,11 +425,47 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
     price: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     sessionId: Schema.Attribute.String;
-    slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Struct.SingleTypeSchema {
+  collectionName: 'contacts';
+  info: {
+    description: '';
+    displayName: 'Contacts';
+    pluralName: 'contacts';
+    singularName: 'contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    address: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    daysOff: Schema.Attribute.Component<'contacts.day-off-item', true>;
+    email: Schema.Attribute.String;
+    faq: Schema.Attribute.Component<'contacts.faq-item', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::contact.contact'
+    > &
+      Schema.Attribute.Private;
+    phones: Schema.Attribute.Component<'contacts.phones', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    social: Schema.Attribute.Component<'contacts.social', false>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    workingDaysText: Schema.Attribute.String;
+    workingHours: Schema.Attribute.Component<'contacts.working-hours', false>;
   };
 }
 
@@ -453,10 +489,13 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
     category: Schema.Attribute.Enumeration<
       ['actors', 'management', 'directors']
     >;
+    choreographedPerformances: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::performance.performance'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    gender: Schema.Attribute.Enumeration<['male', 'female']>;
     images: Schema.Attribute.Media<'images' | 'files', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -472,8 +511,8 @@ export interface ApiMemberMember extends Struct.CollectionTypeSchema {
     >;
     position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID<'surname'>;
-    surname: Schema.Attribute.String;
+    slug: Schema.Attribute.UID<'surname'> & Schema.Attribute.Required;
+    surname: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -529,6 +568,10 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
   attributes: {
     additionalInfo: Schema.Attribute.String;
     ageLimit: Schema.Attribute.Integer;
+    choreographers: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::member.member'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -540,9 +583,9 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+    intermissionInfo: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'\u0431\u0435\u0437 \u0430\u043D\u0442\u0440\u0430\u043A\u0442\u0430'>;
     isActual: Schema.Attribute.Boolean;
-    isWithIntermission: Schema.Attribute.Boolean &
-      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -1077,6 +1120,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::about.about': ApiAboutAbout;
       'api::afisha-item.afisha-item': ApiAfishaItemAfishaItem;
+      'api::contact.contact': ApiContactContact;
       'api::member.member': ApiMemberMember;
       'api::performance-cast.performance-cast': ApiPerformanceCastPerformanceCast;
       'api::performance.performance': ApiPerformancePerformance;

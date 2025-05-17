@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_contacts_faq_items",
+  "info": {
+    "displayName": "faqItem",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "string"
+    },
+    "info": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contacts.faq-item-info"
+    }
+  }
+}

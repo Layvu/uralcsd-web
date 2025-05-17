@@ -1,0 +1,52 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contacts",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "address": {
+      "type": "string"
+    },
+    "workingDaysText": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phones": {
+      "type": "component",
+      "repeatable": false,
+      "component": "contacts.phones"
+    },
+    "workingHours": {
+      "type": "component",
+      "repeatable": false,
+      "component": "contacts.working-hours"
+    },
+    "daysOff": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contacts.day-off-item"
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": true,
+      "component": "contacts.faq-item"
+    },
+    "title": {
+      "type": "string"
+    },
+    "social": {
+      "type": "component",
+      "repeatable": false,
+      "component": "contacts.social"
+    }
+  }
+}

@@ -1,84 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './contacts-page.scss';
 
-import { MainTitle } from '@components/Shared/MainTitle';
 import { ContactsUIProps } from './type';
 import { SvgIcon } from '@components/Shared/SvgIcon';
 import { YandexMap } from '@components/Shared/YandexMap';
 
 export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo }) => {
-    const { address, workingDaysText, workingHours, daysOff, phones, email, faq } = contactsInfo;
+    const { address, workingDaysText, workingHours, daysOff, phones, email, faq, social } = contactsInfo;
+
+    const [openedFaqIndexes, setOpenedFaqIndexes] = useState<number[]>([]);
+
+    const handleFaqClick = (index: number) => {
+        setOpenedFaqIndexes((prev) =>
+            prev.includes(index)
+                ? prev.filter((i) => i !== index)
+                : [...prev, index]
+        );
+    };
 
     return (
-        <section className="contacts-page">
-            <div className="wrap contacts-page__wrap">
-                <MainTitle className="contacts-page__main-title">Контакты</MainTitle>
+        <section className="contacts-page wrap">
+            <h1 className='visually-hidden'>FAQ</h1>
 
-                <div className="contacts-page__section">
-                    <h2 className="contacts-page__section-title">Наш адрес</h2>
-                    <p className="contacts-page__info-text">{address}</p>
-
-                    {/* Контейнер для карты */}
-                    <div className="contacts-page__map-container">
-                        <h2 className="contacts-page__section-title">Наше расположение</h2>
-                        <YandexMap />
-                    </div>
+            <div className="contacts-page__social-section">
+                <div className="contacts-page__social-title">
+                    Следите за нами в социальных сетях и будьте в курсе событий!
                 </div>
-
-                <div className="contacts-page__section">
-                    <h2 className="contacts-page__section-title">Время работы кассы</h2>
-                    <p className="contacts-page__info-text">{workingDaysText}</p>
-                    <p className="contacts-page__info-text">
-                        {workingHours.start} - {workingHours.end}
-                    </p>
-                    <p className="contacts-page__info-text">Выходные дни: {daysOff.join(', ')}</p>
-                </div>
-
-                <div className="contacts-page__section">
-                    <h2 className="contacts-page__section-title">Телефоны</h2>
-                    <p className="contacts-page__info-title">Основной телефон</p>
-                    <a href={`tel:${phones.main.replace(/[^\d+]/g, '')}`} className="contacts-page__phone">
-                        {phones.main}
+                <div className="contacts-page__social-links-container">
+                    <a href={social.tg} className="contacts-page__social-link">
+                        <SvgIcon id="telegram" title="Telegram icon" />
+                        Telegram-канал
                     </a>
-                    <p className="contacts-page__info-title">Касса</p>
-                    <a href={`tel:${phones.boxOffice.replace(/[^\d+]/g, '')}`} className="contacts-page__phone">
-                        {phones.boxOffice}
+                    <a href={social.vk} className="contacts-page__social-link">
+                        <SvgIcon id="vk" title="VK icon" />
+                        <p>Сообщество ВК</p>
                     </a>
-                </div>
-
-                <div className="contacts-page__section">
-                    <h2 className="contacts-page__section-title">Email</h2>
-                    <a href={`mailto:${email}`} className="contacts-page__email">
-                        {email}
-                    </a>
-                </div>
-
-                {faq && faq.length > 0 && (
-                    <div className="contacts-page__section">
-                        <h2 className="contacts-page__section-title">FAQ</h2>
-                        <div className="contacts-page__faq">
-                            {faq.map((item, index) => (
-                                <div key={index} className="contacts-page__faq-item">
-                                    <h3 className="contacts-page__faq-question">{item.question}</h3>
-                                    <p className="contacts-page__faq-answer">{item.answer}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )}
-
-                <div className="contacts-page__section">
-                    <h2 className="contacts-page__section-title">Мы в социальных сетях</h2>
-                    <div className="contacts-page__social-media">
-                        <a href="#" className="footer__social-media-item">
-                            <SvgIcon id="ellipseMock" title="VK icon" />
-                        </a>
-                        <a href="#" className="footer__social-media-item">
-                            <SvgIcon id="ellipseMock" title="Telegram icon" />
-                        </a>
-                    </div>
                 </div>
             </div>
+
+            {faq && faq.length > 0 && (
+                <div className="contacts-page__faq-section">
+                    <ul className="contacts-page__faq-list">
+                        {faq.map((faqItem, index) => {
+                            const isOpen = openedFaqIndexes.includes(index);
+                            return (
+                                <li key={faqItem.question} className="contacts-page__faq-item">
+                                    <h2
+                                        className={`contacts-page__faq-question title-h3 ${isOpen && 'contacts-page__faq-question--opened'} `}
+                                        onClick={() => handleFaqClick(index)}
+                                     
+                                    >
+                                        {faqItem.question}
+                                    </h2>
+
+                                    <ul
+                                        className={`contacts-page__faq-answer-container ${isOpen ? '' : 'visually-hidden'}`}
+                                    >
+                                        {faqItem.info.map((info) => (
+                                            <li
+                                                className="contacts-page__faq-answer-info"
+                                                key={info.answer}
+                                            >
+                                                <h3 className="contacts-page__faq-answer-title title-h5">
+                                                    {info?.subtitle}
+                                                </h3>
+                                                <p className="contacts-page__faq-answer-text">
+                                                    {info.answer}
+                                                </p>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            )}
+
+            <YandexMap />
         </section>
     );
 });

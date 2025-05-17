@@ -1,44 +1,105 @@
 .contacts-page {
-    &__wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin: 100px 0;
+    padding: 0 50px;
+    
+    &__social-section{
+        display: flex;
+        padding: 40px 60px;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        align-self: stretch;
+
+        background: var(--white-10);
+        /* Background blur */
+        backdrop-filter: blur(20px);
+    }
+
+    &__social-title{
+        text-align: center;
+        font-size: 32px;
+        line-height: 38px; 
+    }
+
+    &__social-links-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        gap: 40px;
+        align-self: stretch;
+        flex-wrap: wrap;
+    }
+    &__social-link{
+        display: flex;
+        width: 260px;
+        height: 50px;
+        padding: 10px 40px;
+        justify-content: space-between;
+        align-items: center;
+
+        border-radius: 100px;
+        background: var(--pomegranate-basic);
+        backdrop-filter: blur(30px);
+
+        color: var(--white-100, #FFF);
+    
+        font-size: 20px;
+        line-height: 24px; 
+        white-space: nowrap;
+
+        svg{
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
+        }
+    }
+
+    &__faq-list{
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    &__faq-question{
+        font-size: 40px;
+        line-height: 50px; 
+        text-transform: uppercase;
+
+        padding-bottom: 16px;
+        border-bottom: 1.5px solid var(--gray-light);;
+        
+        transition: border-color 0.3s ease-in;
+        
+        &:hover{
+            cursor: pointer;
+            border-color: var(--pomegranate-bright);
+        }
+
+        &--opened{
+            border-color: var(--pomegranate-bright);
+        }
+      
+    }
+
+    &__faq-answer-container{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    &__faq-answer-info{
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-
-    &__main-title {
-        margin-top: 120px;
-    }
-
-    &__info-title {
-        font-size: 18px;
-        color: var(--light-gray);
-    }
-
-    &__info-text {
-        font-size: 18px;
-        margin-bottom: 10px;
-    }
-
-    &__phone,
-    &__email {
-        display: block;
-        font-size: 18px;
-    }
-
-    &__map {
-        width: 100%;
-        height: 300px;
-    }
-
-    &__social-media {
-        display: flex;
-        justify-content: flex-start;
-        gap: 24px;
-    }
-    &__social-media-item {
-        width: 30px;
-        height: 30px;
-
-        color: var(--dark-skeleton);
+    &__faq-answer-text{
+        color: var(--gray-light);
+        font-size: 22px;
+        line-height: 28px;
     }
 }
