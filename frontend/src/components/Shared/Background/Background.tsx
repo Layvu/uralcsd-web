@@ -1,5 +1,6 @@
 import { BackgroundUI } from '@components/ui/Shared/Background';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 
 export const Background: React.FC = () => {
@@ -7,16 +8,36 @@ export const Background: React.FC = () => {
 
     React.useEffect(() => {
         const updateCount = () => {
-            const pageHeight = document.body.scrollHeight - 514;
+            const pageHeight = document.documentElement.scrollHeight - 514;
             const pomegranateSpacing = 900;
             const needed = Math.ceil(pageHeight / pomegranateSpacing);
             setCount(needed);
         };
-
-        updateCount();
+    
+        const observer = new MutationObserver(() => {
+            updateCount();
+        });
+    
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+        });
+    
+        setTimeout(updateCount, 0);
+    
         window.addEventListener('resize', updateCount);
-        return () => window.removeEventListener('resize', updateCount);
+    
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('resize', updateCount);
+        };
     }, []);
+    
+    const { pathname } = useLocation();
+
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <BackgroundUI count={count}/>
