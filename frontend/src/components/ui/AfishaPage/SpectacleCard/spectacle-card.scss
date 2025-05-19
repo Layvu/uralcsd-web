@@ -1,5 +1,4 @@
 .spectacle-card {
-    position: relative;
 
     height: 350px;
     min-height: 350px;
@@ -35,6 +34,7 @@
     }
 
     &__image-container{
+        position: relative;
         width: 50%;
         display: flex;
         overflow: hidden;
@@ -65,6 +65,23 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+
+        max-height: 142px;
+        height: 100%;
+
+        overflow: hidden;
+
+        padding-bottom: 2px;
+    }
+
+    &__title{
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        flex-shrink: 0; 
     }
 
     &__teaser{
@@ -72,21 +89,18 @@
         align-self: stretch;
         
         display: -webkit-box;
-        display: -moz-box;
-        display: box;
         -webkit-box-orient: vertical;
-        -moz-box-orient: vertical;
-        box-orient: vertical;
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
         overflow: hidden;
         text-overflow: ellipsis;
+      
+      
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+      
+        flex-grow: 1;
+        flex-shrink: 1;
 
-        word-break: break-word;
-        hyphens: auto;
-
-        max-width: 520px;
-        max-height: 100px;
+        max-height: 90px;
 
         font-size: 18px;
         line-height: 22px; 
@@ -131,7 +145,6 @@
 
         border-radius: 50%;
         border: 1.2px solid white;
-        backdrop-filter: blur(10px);
         white-space: nowrap;
     }
 
@@ -148,8 +161,8 @@
         }
         .spectacle-card__image-container{
             width: 100%;
-            height: 100%;
-            max-height: 245px;
+            height: 245px;
+            min-height: 245px;
 
         }
 
@@ -162,8 +175,14 @@
         }
 
         .spectacle-card__title-container{
-            gap: 10px;
-            padding-bottom: 16px;
+            gap: 10px;    
+            max-height: 109px;
+            height: 100%;
+        }
+
+        .spectacle-card__teaser{
+            -webkit-line-clamp: 3;
+            line-clamp: 3;   
         }
     }
 }

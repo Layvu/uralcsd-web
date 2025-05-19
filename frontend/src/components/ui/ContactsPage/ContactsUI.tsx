@@ -6,7 +6,7 @@ import { SvgIcon } from '@components/Shared/SvgIcon';
 import { YandexMap } from '@components/Shared/YandexMap';
 
 export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo }) => {
-    const { address, workingDaysText, workingHours, daysOff, phones, email, faq, social } = contactsInfo;
+    const { faq, social } = contactsInfo;
 
     const [openedFaqIndexes, setOpenedFaqIndexes] = useState<number[]>([]);
 
@@ -27,11 +27,19 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
                     Следите за нами в социальных сетях и будьте в курсе событий!
                 </div>
                 <div className="contacts-page__social-links-container">
-                    <a href={social.tg} className="contacts-page__social-link">
+                    <a
+                        href={social.tg}
+                        className="contacts-page__social-link"
+                        target="_blank"
+                        rel="noopener noreferrer">
                         <SvgIcon id="telegram" title="Telegram icon" />
                         Telegram-канал
                     </a>
-                    <a href={social.vk} className="contacts-page__social-link">
+                    <a
+                        href={social.vk}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="contacts-page__social-link">
                         <SvgIcon id="vk" title="VK icon" />
                         <p>Сообщество ВК</p>
                     </a>
@@ -48,7 +56,6 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
                                     <h2
                                         className={`contacts-page__faq-question title-h3 ${isOpen && 'contacts-page__faq-question--opened'} `}
                                         onClick={() => handleFaqClick(index)}
-                                     
                                     >
                                         {faqItem.question}
                                     </h2>

@@ -103,7 +103,11 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                                                 <p>{afishaItem.performance.ageLimit}+</p>
                                             </div>}
                                     </div>
-                                    <button className="main-banner__ya-button ticket-button" disabled={!afishaItem.sessionId} onClick={(e) => { handleBuyTicket(e, afishaItem.sessionId); }}>
+                                    <button 
+                                        className="main-banner__ya-button ticket-button" 
+                                        disabled={!afishaItem.sessionId} 
+                                        style={{ cursor: !afishaItem.sessionId ? 'not-allowed' : 'pointer' }}
+                                        onClick={(e) => { handleBuyTicket(e, afishaItem.sessionId); }}>
                                         Купить билет
                                     </button>
                                 </div>

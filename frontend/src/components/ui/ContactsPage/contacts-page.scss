@@ -51,6 +51,22 @@
         line-height: 24px; 
         white-space: nowrap;
 
+        transition: all ease-in 0.2s;
+
+        &:hover{
+            background: var(--pomegranate-medium);
+            backdrop-filter: blur(10px);
+        }
+        &:active{
+            color: var(--pomegranate-basic);
+            border: 2px solid var(--pomegranate-basic);
+            background: none;
+            backdrop-filter: blur(30px);
+        }
+        &:focus{
+            border: none;
+        }
+
         svg{
             width: 24px;
             height: 24px;

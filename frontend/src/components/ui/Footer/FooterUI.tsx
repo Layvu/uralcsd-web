@@ -9,7 +9,7 @@ import { FooterUIProps } from './type';
 //import { Social } from "@components/Shared/Social";
 
 export const FooterUI: React.FC<FooterUIProps> = React.memo(({ contactsInfo }) => {
-    const { phones, email, workingDaysText, workingHours, daysOff } = contactsInfo;
+    const { phones, email, workingDaysText, workingHours, daysOff, address } = contactsInfo;
 
     return (
         <footer className="footer">
@@ -55,7 +55,9 @@ export const FooterUI: React.FC<FooterUIProps> = React.memo(({ contactsInfo }) =
                         </li>
                         <li className="footer__contacts-info-item">
                             <p className="footer__contacts-text">Адрес</p>
-                            <p className="footer__contacts-adress footer__contacts-info-value">г. Екатеринбург, ул. Малышева, д. 145А, лит.Ф пространство бывшего «Рыбзавода»</p>
+                            <p className="footer__contacts-adress footer__contacts-info-value">
+                                {address}
+                            </p>
                         </li>
                     </ul>
                 </div>

@@ -1,6 +1,5 @@
 .tag {
 
-
     &--small {
         display: inline-flex;
         padding: 6px 16px 8px 16px;
@@ -17,7 +16,7 @@
         background: var(--black-10);
 
         /* Background blur 40 */
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(5px);
     }
 
     &--big{
@@ -40,6 +39,6 @@
         background: var(--black-10);
 
         /* Background blur 40 */
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(5px);
     }
 }

@@ -21,7 +21,7 @@ import { Background } from '@components/Shared/Background';
 
 const AppContent = () => {
     useInitialData();
-
+    
     return (
         <div className="site-container">
             <Header />

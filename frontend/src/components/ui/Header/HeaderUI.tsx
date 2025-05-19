@@ -8,7 +8,7 @@ import { HeaderUIProps } from './type';
 import { SvgIcon } from '@components/Shared/SvgIcon';
 import { menuLinks } from 'consts';
 
-export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, location }) => {
+export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, location, contactsInfo }) => {
     return (
         <header className="header">
             <div className="header__wrap wrap">
@@ -28,10 +28,10 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, lo
                     </ul>
                 </nav>
                 <div className="header__social-media">
-                    <a href="#" className="header__social-media-item">
+                    <a href={contactsInfo.social.vk} target="_blank" rel="noopener noreferrer" className="header__social-media-item">
                         <SvgIcon id="vk" title="VK icon" />
                     </a>
-                    <a href="#" className="header__social-media-item">
+                    <a href={contactsInfo.social.tg} target="_blank" rel="noopener noreferrer" className="header__social-media-item">
                         <SvgIcon id="telegram" title="Telegram icon" />
                     </a>
                 </div>

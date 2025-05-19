@@ -16,8 +16,6 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
     };
 
     const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, isActual, directors, choreographers } = performance;
-    console.log(choreographers);
-    console.log(directors);
 
     const performanceImages = images?.map((image) => image.url);
     return (
@@ -41,9 +39,9 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                 <p>{ageLimit}+</p>
                             </div>
                             }
-                            <div className="performance-info__tags">
+                            {/* <div className="performance-info__tags">
                                 <p className='performance-info__tag tag--big'>текст</p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     {description &&
@@ -116,7 +114,13 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                                 {formatToWeekday(afishaItem.date)}
                                             </p>
                                         </div>
-                                        <button className='performance-info__ticket-button ticket-button' onClick={() => handleBuyTicket(afishaItem.sessionId)}>
+                                        <button 
+                                            className='performance-info__ticket-button ticket-button' 
+                                            onClick={() => handleBuyTicket(afishaItem.sessionId)}
+                                            disabled={!afishaItem.sessionId} 
+                                            style={{ cursor: !afishaItem.sessionId ? 'not-allowed' : 'pointer' }}
+                                        >
+
                                             Билеты
                                         </button>
                                     </li>
