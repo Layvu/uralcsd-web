@@ -1,4 +1,4 @@
-import { mockProjects,  mockTheaterInfo } from 'mockData';
+import { mockProjects } from 'mockData';
 import { IPerformance } from 'types/performance';
 import { IMember } from 'types/member';
 import { IProject } from 'types/project';
@@ -9,7 +9,6 @@ import { IAfishaItem } from 'types/afishaItem';
 
 import axios from 'axios';
 import { getAbsoluteImagePath } from 'utils/getAbsoluteImagePath';
-
 
 const apiClient = axios.create({
     baseURL: `${import.meta.env.VITE_PUBLIC_API_URL}/api`,
@@ -58,8 +57,20 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             duration: item.duration,
             dramatist: item.dramatist,
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
-            directors: item.directors?.map((director) => ({id: director.id, slug: director.slug, name: director.name, surname: director.surname})) || [], 
-            choreographers: item.choreographers?.map((choreographer) => ({id: choreographer.id, slug: choreographer.slug, name: choreographer.name, surname: choreographer.surname})) || [], 
+            directors:
+                item.directors?.map((director) => ({
+                    id: director.id,
+                    slug: director.slug,
+                    name: director.name,
+                    surname: director.surname,
+                })) || [],
+            choreographers:
+                item.choreographers?.map((choreographer) => ({
+                    id: choreographer.id,
+                    slug: choreographer.slug,
+                    name: choreographer.name,
+                    surname: choreographer.surname,
+                })) || [],
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             mainImage: item.mainImage?.url ? { url: getAbsoluteImagePath(item.mainImage.url) } : null,
             intermissionInfo: item.intermissionInfo,
@@ -98,7 +109,8 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
             mainPhoto: item.mainPhoto?.url ? { url: getAbsoluteImagePath(item.mainPhoto.url) } : null,
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             aPerformances: item.aPerformances?.map((performance) => ({ id: performance.id })) || [],
-            choreographedPerformances: item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
+            choreographedPerformances:
+                item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
         }));
 
@@ -174,36 +186,66 @@ export const fetchProjectsApi = async (): Promise<IProject[]> => {
 
 export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {
     console.log('fetchTheaterInfoApi...');
-    return mockApiResponse(mockTheaterInfo);
+
+    try {
+        const response = await apiClient.get('/theater-info', {
+            params: {
+                populate: {
+                    images: {
+                        fields: ['url'],
+                    },
+                    partners: {
+                        fields: ['url'],
+                        populate: {
+                            image: {
+                                fields: ['url'],
+                            },
+                        },
+                    },
+                },
+            },
+        });
+
+        const traterInfoItem = response.data.data;
+        traterInfoItem.images = traterInfoItem.images.map((image: { url: string }) => ({ url: getAbsoluteImagePath(image.url) }));
+        traterInfoItem.partners = traterInfoItem.partners.map((partner: { url: string, image: { url: string } }) => ({
+            url: partner.url,
+            image: partner.image.url ? { url: getAbsoluteImagePath(partner.image.url) } : null,
+        }));
+
+        return traterInfoItem;
+
+    } catch (error) {
+        console.error('Error fetching theater info:', error);
+        throw error;
+    }
 };
 
 export const fetchContactsApi = async (): Promise<IContactInfo> => {
     console.log('fetchContactsApi...');
-    try{
-        const response = await apiClient.get('/contact',{
+    try {
+        const response = await apiClient.get('/contact', {
             params: {
                 populate: {
                     faq: {
-                        populate: ['info'] 
+                        populate: ['info'],
                     },
                     phones: true,
                     workingHours: true,
                     daysOff: true,
-                    social: true
-                }
-            }
+                    social: true,
+                },
+            },
         });
-        
+
         const contactItem = response.data.data;
         const transformedContactItem = {
             ...contactItem,
-            daysOff: contactItem.daysOff.map((dayOff:{dayOff:string}) => dayOff.dayOff),
+            daysOff: contactItem.daysOff.map((dayOff: { dayOff: string }) => dayOff.dayOff),
         };
-        console.log( transformedContactItem);
 
         return transformedContactItem;
-
-    }catch(error){
+    } catch (error) {
         console.error('Error fetching contact items:', error);
         throw error;
     }

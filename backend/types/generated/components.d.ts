@@ -67,6 +67,17 @@ export interface ContactsWorkingHours extends Struct.ComponentSchema {
   };
 }
 
+export interface TheaterInfoPartner extends Struct.ComponentSchema {
+  collectionName: 'components_theater_info_partners';
+  info: {
+    displayName: 'partner';
+  };
+  attributes: {
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    url: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -76,6 +87,7 @@ declare module '@strapi/strapi' {
       'contacts.phones': ContactsPhones;
       'contacts.social': ContactsSocial;
       'contacts.working-hours': ContactsWorkingHours;
+      'theater-info.partner': TheaterInfoPartner;
     }
   }
 }

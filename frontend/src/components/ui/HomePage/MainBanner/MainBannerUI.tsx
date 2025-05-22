@@ -42,7 +42,6 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                 onInit={(swiper) => {
                     swiperRef.current = swiper;
                     swiper.wrapperEl.style.transitionTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
-
                 }}
                 spaceBetween={0}
                 slidesPerView={1}

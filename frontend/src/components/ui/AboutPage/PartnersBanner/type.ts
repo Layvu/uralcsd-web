@@ -1,8 +1,4 @@
-export interface ITheaterInfo {
-    images:{
-        url: string;
-    }[];
-    description: string;
+export type PartnersBannerProps = {
     partners: {
         url: string;
         image: {

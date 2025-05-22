@@ -1,0 +1,34 @@
+{
+  "kind": "singleType",
+  "collectionName": "theater_infos",
+  "info": {
+    "singularName": "theater-info",
+    "pluralName": "theater-infos",
+    "displayName": "TheaterInfo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "theater-info.partner"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}
