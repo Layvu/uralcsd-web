@@ -1,23 +1,32 @@
-.team-card-brief{
+.team-card-brief {
     display: flex;
     max-width: 250px;
     flex-direction: column;
     gap: 12px;
 
-    &__photo{
+    &:hover {
+        .team-card-brief__position,
+        .team-card-brief__name {
+            color: var(--pomegranate-bright);
+        }
+    }
+
+    &__photo {
         max-width: 250px;
         object-fit: cover;
         height: 350px;
     }
-    &__name{
+    &__name {      
         font-size: 24px;
-        line-height: 28px; 
+        line-height: 28px;
+        transition: color 0.2s ease-out;
     }
-    &__position{
+    &__position {
         margin-top: 2px;
         color: var(--gray-basic);
 
         font-size: 18px;
-        line-height: 22px; 
+        line-height: 22px;
+        transition: color 0.2s ease-out;
     }
 }

@@ -1,4 +1,3 @@
-import { mockProjects } from 'mockData';
 import { IPerformance } from 'types/performance';
 import { IMember } from 'types/member';
 import { IProject } from 'types/project';
@@ -19,13 +18,6 @@ const apiClient = axios.create({
     },
 });
 
-// Проверка ответа
-const checkResponse = <T>(res: T): T => res;
-
-// Моковые данные
-const mockApiResponse = async <T>(data: T): Promise<T> => {
-    return checkResponse(data);
-};
 
 export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
     console.log('fetchPerformancesApi...');

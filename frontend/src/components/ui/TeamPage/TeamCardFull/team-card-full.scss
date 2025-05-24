@@ -65,6 +65,12 @@
         text-align: center; 
         padding-bottom: 15px;
         border-bottom: 1.5px solid var(--gray-medium);
+
+        transition: all 0.2s ease-out;
+        &:hover{
+            color: var(--pomegranate-bright);
+            border-color: var(--pomegranate-bright);
+        }
     }
     &__spectacle-role{
         font-size: 18px;

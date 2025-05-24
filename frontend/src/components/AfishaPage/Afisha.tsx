@@ -5,7 +5,7 @@ import { AfishaUI } from '@components/ui/AfishaPage';
 
 import { getNextThreeMonths } from 'utils/getNextThreeMonths';
 
-import { makeSelectFilteredAfishaItems, selectAfishaActiveMonth } from '@services/selectors/afishaItemsSelectors';
+import { makeSelectFilteredAfishaItems, selectAfishaActiveMonth, selectAfishaError, selectAfishaLoading } from '@services/selectors/afishaItemsSelectors';
 import { AppDispatch, RootState } from '@services/store';
 import { setActiveMonth } from '@services/slices/afishaItemsSlice';
 
@@ -24,6 +24,15 @@ export const Afisha: React.FC = () => {
     const selectFilteredAfishaItems = useMemo(() => makeSelectFilteredAfishaItems(), []);
     const groupedAfishaItems = useSelector((state: RootState) => selectFilteredAfishaItems(state, activeMonthIndex));
 
+    const loading = useSelector(selectAfishaLoading);
+    const error = useSelector(selectAfishaError);
+
+    if (loading) {
+        return <div className="loading">Загрузка информации афиши...</div>;
+    }
+    if (error) {
+        return <div className="error">Ошибка: {error}</div>;
+    }
     return (
         <AfishaUI
             months={months}

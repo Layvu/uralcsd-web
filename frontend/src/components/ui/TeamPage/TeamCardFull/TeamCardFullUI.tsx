@@ -23,9 +23,6 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
         processBiography();
     }, [member?.biography]);
 
-    if (!member) {
-        return <div>Загрузка...</div>;
-    }
 
     return (
         <section className="team-card-full">

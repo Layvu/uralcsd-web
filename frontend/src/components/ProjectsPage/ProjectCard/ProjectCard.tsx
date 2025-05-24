@@ -4,8 +4,6 @@ import React from 'react';
 
 export const ProjectCard: React.FC<ProjectCardProps> = (props) => {
     return (
-        <>
-            <ProjectCardUI {...props} />
-        </>
+        <ProjectCardUI {...props} />
     );
 };

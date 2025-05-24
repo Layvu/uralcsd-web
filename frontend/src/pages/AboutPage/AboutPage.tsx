@@ -9,10 +9,10 @@ export const AboutPage: React.FC = () => {
     const error = useSelector(selectTheaterError);
 
     if (loading) {
-        return <div className="about-page__loading">Загрузка информации о театре...</div>;
+        return <div className="loading">Загрузка информации о театре...</div>;
     }
     if (error) {
-        return <div className="about-page__error">Ошибка: {error}</div>;
+        return <div className="error">Ошибка: {error}</div>;
     }
 
     return <AboutPageUI theaterInfo={theaterInfo} />;

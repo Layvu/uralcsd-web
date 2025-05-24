@@ -21,7 +21,13 @@ export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
                         <p className="project-info__description">{project.description}</p>
                     </div>
                 }
-                {project.buttonLink && project.buttonText && <a href={project.buttonLink} className="project-info__button ticket-button">
+                {project.buttonLink && project.buttonText && 
+                <a 
+                    href={project.buttonLink} 
+                    className="project-info__button ticket-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     {project.buttonText}
                 </a>
                 }
