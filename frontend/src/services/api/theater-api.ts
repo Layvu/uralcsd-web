@@ -181,7 +181,29 @@ export const fetchAfishaItemsApi = async (): Promise<IAfishaItem[]> => {
 
 export const fetchProjectsApi = async (): Promise<IProject[]> => {
     console.log('fetchProjectsApi...');
-    return mockApiResponse(mockProjects);
+    try {
+        const response = await apiClient.get('/projects', {
+            params: {
+                populate: {
+                    images: {
+                        fields: ['url'],
+                    },
+                },
+            },
+        });
+
+        const projects = response.data.data.map((project: IProject) => ({
+            ...project,
+            images: project.images?.map((image: { url: string }) => 
+                ({ url: getAbsoluteImagePath(image.url) }))   
+        }));
+            
+        return projects;
+
+    } catch (error) {
+        console.error('Error fetching projects:', error);
+        throw error;
+    }
 };
 
 export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {

@@ -1,6 +1,7 @@
 export interface IProject {
     id: string;
-    name: string;
+    title: string;
+    additionalInfo: string;
     slug: string;
     images: {
         url: string;

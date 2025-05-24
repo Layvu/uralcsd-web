@@ -1,33 +1,36 @@
 .project-info {
+    margin-bottom: 100px;
     &__wrap {
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
         flex-direction: column;
+        gap: 60px;
 
-        padding: 77px 0 68px;
+        margin-top: 60px;
+        padding: 0 50px;
     }
 
-    &__name {
-        font-size: 36px;
-        margin-bottom: 16px;
+    &__title-container{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
-    &__description-title {
-        font-size: 32px;
-
-        margin: 0;
-        margin-bottom: 16px;
+    &__additional,
+    &__description{
+        color: var(--gray-light);
+        font-size: 24px;
+        line-height: 28px;
     }
 
-    &__description {
-        font-size: 20px;
-
-        margin: 0;
-        margin-bottom: 60px;
+    &__description-container{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     &__button {
-        margin-top: 30px;
+        width: fit-content;
+        max-width: 500px;
+        padding: 10px 100px;
     }
 }
