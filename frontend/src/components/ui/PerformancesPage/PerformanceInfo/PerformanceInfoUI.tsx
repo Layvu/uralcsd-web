@@ -15,7 +15,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
         }
     };
 
-    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, isWithIntermission, isActual } = performance;
+    const { title, description, additionalInfo, ageLimit, duration, images, isWithIntermission } = performance;
 
     const performanceImages = images?.map((image) => image.url);
     return (

@@ -14,31 +14,19 @@ export const selectPerformanceBySlug = createSelector(
     (bySlug, slug) => bySlug[slug],
 );
 
-export const performancesById = createSelector([selectPerformances],(performances) => 
-    Object.fromEntries(performances.map(p => [p.id, p]))
+export const performancesById = createSelector([selectPerformances], (performances) =>
+    Object.fromEntries(performances.map((p) => [p.id, p])),
 );
 
-export const selectPerformanceById = createSelector(
-    [performancesById, (_, id: string) => id],
-    (byId, id) => byId[id]
-);
-
+export const selectPerformanceById = createSelector([performancesById, (_, id: string) => id], (byId, id) => byId[id]);
 
 export const selectPerformancesByIds = createSelector(
-    [selectPerformances, (_state: RootState, performanceIds: string[] | string) => performanceIds],
-    (performances, performanceIds) => {
-        if (!performanceIds || !performanceIds.length) return [];
-        
-        // Нормализуем входные данные (может быть string или string[])
-        const idsArray = Array.isArray(performanceIds) 
-            ? performanceIds 
-            : typeof performanceIds === 'string' 
-                ? performanceIds.split(',') 
-                : [];
-        
-        // Создаем Set для быстрого поиска
-        const idsSet = new Set(idsArray.filter(Boolean).map((item) => item.toString())); // Фильтруем пустые значения
-        
-        return performances.filter((p) => idsSet.has(p.id.toString()));
-    }
+    [selectPerformances, (_, ids: string[]) => ids],
+    (performances, ids) => {
+        if (!ids?.length) return [];
+
+        const idsSet = new Set(ids);
+
+        return performances.filter((p) => idsSet.has(p.id));
+    },
 );

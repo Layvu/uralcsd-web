@@ -22,7 +22,7 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premierePerformances }
                         tag="div"
                         className="main-banner__slider-item main-banner__slider-item--placeholder"
                     >
-                        {performance.name}
+                        {performance.title}
                     </SwiperSlide>
                 ))}
             </Swiper>

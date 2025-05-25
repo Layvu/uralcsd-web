@@ -92,4 +92,13 @@ export default defineConfig({
             },
         },
     },
+    server: {
+        proxy: {
+            '/admin': {
+                target: 'http://localhost:1337',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/admin/, '/admin'),
+            },
+        },
+    },
 });
