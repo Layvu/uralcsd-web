@@ -79,7 +79,13 @@
         gap: 20px;
     }
 
-    &__description {
+    &__description-container{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    &__description-paragraph {
         color: var(--gray-light);
         font-size: 22px;
         line-height: 28px;

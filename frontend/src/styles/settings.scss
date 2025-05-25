@@ -75,22 +75,21 @@ h6 {
     overflow: hidden;
 }
 
-.error {
-    border: 2px #ff4019 solid !important;
+.loading,
+.not-found,
+.error{
     display: flex;
     margin-top: 50px;
+    margin-bottom: 100px;
     justify-self: center;
     font-size: 30px;
     line-height: 52px;
 }
 
-.loading{
-    display: flex;
-    margin-top: 50px;
-    justify-self: center;
-    font-size: 30px;
-    line-height: 52px;
+.error {
+    border: 2px #ff4019 solid !important;
 }
+
 
 .visually-hidden {
     @include visually-hidden;

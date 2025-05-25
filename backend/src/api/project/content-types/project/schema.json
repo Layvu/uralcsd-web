@@ -20,9 +20,6 @@
       "targetField": "title",
       "required": true
     },
-    "description": {
-      "type": "text"
-    },
     "buttonText": {
       "type": "string"
     },
@@ -39,6 +36,9 @@
     },
     "additionalInfo": {
       "type": "text"
+    },
+    "description": {
+      "type": "richtext"
     }
   }
 }

@@ -28,6 +28,12 @@
         gap: 20px;
     }
 
+    &__description{
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
     &__button {
         width: fit-content;
         max-width: 500px;

@@ -1,28 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { TeamCardFullProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
 
 import './team-card-full.scss';
-import { marked } from 'marked';
-import DOMPurify from 'dompurify';
 import { MainTitle } from '@components/Shared/MainTitle';
+import { proseedBackendText } from 'utils/proceedBackendText';
 
 export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member, performancesWithRoles }) => {
-    const [biographyHtml, setBiographyHtml] = useState<string>('');
 
-    // без этого ругается на биографию
-    useEffect(() => {
-        const processBiography = async () => {
-            if (member?.biography) {
-                const rawHtml = await marked(member.biography);
-                const sanitizedHtml = DOMPurify.sanitize(rawHtml);
-                setBiographyHtml(sanitizedHtml);
-            }
-        };
-        processBiography();
-    }, [member?.biography]);
-
+    const paragraphs = member?.biography?.split('\n').filter((p) => p.trim().length > 0);
 
     return (
         <section className="team-card-full">
@@ -44,8 +31,14 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({ member,
                     </div>
                     <div className="team-card-full__biography-container">
                         <h2 className="title-h4">Биография</h2>
-                        <div className="team-card-full__biography" 
-                            dangerouslySetInnerHTML={{ __html: biographyHtml }}>
+                        <div className="team-card-full__biography">
+                            {paragraphs?.map((paragraph, index) => (
+                                <p
+                                    key={index}
+                                    className="team-card-full__biography-paragraph"
+                                    dangerouslySetInnerHTML={{ __html: proseedBackendText(paragraph) }}
+                                />
+                            ))}
                         </div>
                     </div> 
                     <div className="team-card-full__spectacles-container">

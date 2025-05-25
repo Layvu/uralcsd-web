@@ -7,6 +7,7 @@ import { openTicketsWidget } from 'services/yandexTickets';
 import { Link } from 'react-router-dom';
 import { MainTitle } from '@components/Shared/MainTitle';
 import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
+import { proseedBackendText } from 'utils/proceedBackendText';
 
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles, currentAfishaItems }) => {
     const handleBuyTicket = (sessionId: string) => {
@@ -16,6 +17,8 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
     };
 
     const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, isActual, directors, choreographers } = performance;
+
+    const paragraphs = description?.split('\n').filter((p) => p.trim().length > 0);
 
     const performanceImages = images?.map((image) => image.url);
     return (
@@ -45,38 +48,46 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                         </div>
                     </div>
                     {description &&
-                    <div className="performance-info__description-section">
-                        <p className="performance-info__description-title title-h4">Описание спектакля</p>
-                        <p className="performance-info__description">{description}</p>
-                    </div>}
+                        <div className="performance-info__description-section">
+                            <p className="performance-info__description-title title-h4">Описание спектакля</p>
+                            <div className="performance-info__description-container">
+                                {paragraphs.map((paragraph, index) => (
+                                    <p
+                                        key={index}
+                                        className="performance-info__description-paragraph"
+                                        dangerouslySetInnerHTML={{ __html: proseedBackendText(paragraph) }}
+                                    />
+                                ))}
+                            </div>
+                        </div>}
 
                     {/* Постановщики, включает в себя хореографов, режиссеров и драматурга  */}
                     {(dramatist?.length > 0 || directors?.length > 0 || choreographers?.length > 0) &&
-                    <div className="performance-info__crew">
-                        <h2 className="performance-info__crew-title title-h4">Постановщики</h2>
-                        <ul className="performance-info__crew-list">
-                            {dramatist && <li className="performance-info__crew-item performance-info__dramatist">
-                                <p className="performance-info__crew-member">{dramatist}</p>
-                                <p className="performance-info__crew-position">драматург</p>
-                            </li>}
-                            {directors.map((director) => (
-                                <li key={`${director?.name}-${director.id}`}>
-                                    <Link to={`/team/${director?.slug}`} className="performance-info__crew-item">
-                                        <p className="performance-info__crew-member">{director?.name} {director?.surname}</p>
-                                        <p className="performance-info__crew-position">Режиссер</p>
-                                    </Link>
-                                </li>
-                            ))}
-                            {choreographers.map((choreographer) => (
-                                <li key={`${choreographer?.name}-${choreographer.id}`}>
-                                    <Link to={`/team/${choreographer?.slug}`} className="performance-info__crew-item">
-                                        <p className="performance-info__crew-member">{choreographer?.name} {choreographer?.surname}</p>
-                                        <p className="performance-info__crew-position">Xореограф</p>
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                        <div className="performance-info__crew">
+                            <h2 className="performance-info__crew-title title-h4">Постановщики</h2>
+                            <ul className="performance-info__crew-list">
+                                {dramatist && <li className="performance-info__crew-item performance-info__dramatist">
+                                    <p className="performance-info__crew-member">{dramatist}</p>
+                                    <p className="performance-info__crew-position">драматург</p>
+                                </li>}
+                                {directors.map((director) => (
+                                    <li key={`${director?.name}-${director.id}`}>
+                                        <Link to={`/team/${director?.slug}`} className="performance-info__crew-item">
+                                            <p className="performance-info__crew-member">{director?.name} {director?.surname}</p>
+                                            <p className="performance-info__crew-position">Режиссер</p>
+                                        </Link>
+                                    </li>
+                                ))}
+                                {choreographers.map((choreographer) => (
+                                    <li key={`${choreographer?.name}-${choreographer.id}`}>
+                                        <Link to={`/team/${choreographer?.slug}`} className="performance-info__crew-item">
+                                            <p className="performance-info__crew-member">{choreographer?.name} {choreographer?.surname}</p>
+                                            <p className="performance-info__crew-position">Xореограф</p>
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     }
 
 
@@ -114,10 +125,10 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                                 {formatToWeekday(afishaItem.date)}
                                             </p>
                                         </div>
-                                        <button 
-                                            className='performance-info__ticket-button ticket-button' 
+                                        <button
+                                            className='performance-info__ticket-button ticket-button'
                                             onClick={() => handleBuyTicket(afishaItem.sessionId)}
-                                            disabled={!afishaItem.sessionId} 
+                                            disabled={!afishaItem.sessionId}
                                             style={{ cursor: !afishaItem.sessionId ? 'not-allowed' : 'pointer' }}
                                         >
 

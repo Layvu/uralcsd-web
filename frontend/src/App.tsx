@@ -19,6 +19,12 @@ import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
 import { ContactsPage } from '@pages/ContactsPage';
 import { Background } from '@components/Shared/Background';
 
+const NotFoundPage = () => (
+    <div className="not-found">
+        Извините, запрашиваемая страница не существует.
+    </div>
+);
+
 const AppContent = () => {
     useInitialData();
     
@@ -37,6 +43,7 @@ const AppContent = () => {
                     <Route path={ROUTES.PROJECTS} element={<ProjectsPage />} />
                     <Route path={`${ROUTES.PROJECTS}/:slug`} element={<ProjectPage />} />
                     <Route path={ROUTES.CONTACTS} element={<ContactsPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </main>
             <Footer />

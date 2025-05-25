@@ -5,6 +5,7 @@ import { DefaultBanner } from '@components/Shared/DefaultBanner';
 
 import './about-page.scss';
 import { PartnersBanner } from '@components/AboutPage/PartnersBanner';
+import { proseedBackendText } from 'utils/proceedBackendText';
 
 export const AboutPageUI: React.FC<AboutPageUIProps> = React.memo(({ theaterInfo }) => {
     // Разбиваем описание на абзацы по переносам строк
@@ -18,11 +19,13 @@ export const AboutPageUI: React.FC<AboutPageUIProps> = React.memo(({ theaterInfo
 
                 <div className="about-page__title-container">
                     <MainTitle className="about-page__main-title title-h2--underline">О театре</MainTitle>
-                    <div className="about-page__description">
-                        {paragraphs.map((paragraph, index) => (
-                            <p key={index} className="about-page__paragraph">
-                                {paragraph}
-                            </p>
+                    <div className="about-page__description">            
+                        {paragraphs?.map((paragraph, index) => (
+                            <p
+                                key={index}
+                                className="about-page__paragraph"
+                                dangerouslySetInnerHTML={{ __html: proseedBackendText(paragraph) }}
+                            />
                         ))}
                     </div>
                 </div>
