@@ -1,1 +1,1 @@
-export { PerformanceCardUI } from "./performanceCardUI";
+export { PerformanceCardUI } from './PerformanceCardUI';
