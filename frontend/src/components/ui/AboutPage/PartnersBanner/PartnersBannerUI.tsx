@@ -26,7 +26,7 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
         if (!swiperRef.current) return;
         swiperRef.current.slideNext();
     };
-    if (partners.length) {
+    if (partners.length == 1) {
         return (
             <section className='partners-banner'>
                 <div className="partners-banner__single-container">
