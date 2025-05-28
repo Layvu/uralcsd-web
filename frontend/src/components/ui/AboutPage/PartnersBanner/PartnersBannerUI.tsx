@@ -17,15 +17,15 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
         [...partners, ...partners] : partners.length === 2 ?
             [...partners, ...partners, ...partners] : partners;
 
-    const handlePrev = () => {
-        if (!swiperRef.current) return;
-        swiperRef.current.slidePrev();
-    };
+    // const handlePrev = () => {
+    //     if (!swiperRef.current) return;
+    //     swiperRef.current.slidePrev();
+    // };
 
-    const handleNext = () => {
-        if (!swiperRef.current) return;
-        swiperRef.current.slideNext();
-    };
+    // const handleNext = () => {
+    //     if (!swiperRef.current) return;
+    //     swiperRef.current.slideNext();
+    // };
     if (partners.length == 1) {
         return (
             <section className='partners-banner'>
@@ -47,11 +47,11 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
             <div className="partners-banner__swiper-container">
                 <button
                     className="swiper-button-prev"
-                    onClick={handlePrev}
+                    //  onClick={handlePrev}
                 />
                 <button
                     className="swiper-button-next"
-                    onClick={handleNext}
+                    //  onClick={handleNext}
                 />
                 <Swiper
                     onInit={(swiper) => {

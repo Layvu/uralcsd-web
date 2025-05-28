@@ -6,19 +6,25 @@ import { DefaultBannerProps } from './type';
 import { SwiperRef } from 'swiper/react';
 
 export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) => {
-    const activeSlideRef = useRef<HTMLDivElement>(null);
+    const activeSlideRef = useRef<HTMLImageElement>(null);
     const swiperRef = useRef<SwiperRef>(null);
     const [slideWidth, setSlideWidth] = useState<number>(0);
 
     // вычисляет ширину главной картинки, далее на этой инфе ставит расположение кнопок
     useEffect(() => {
         if (!activeSlideRef.current) return;
-
+    
+        const handleResize = (entry: ResizeObserverEntry) => {
+            if (entry.contentRect) {
+                const baseWidth = entry.contentRect.width;
+                const adjustedWidth = window.innerWidth < 1200 ? baseWidth - 100 : baseWidth;
+                setSlideWidth(adjustedWidth);
+            }
+        };
+    
         const observer = new ResizeObserver((entries) => {
             for (let entry of entries) {
-                if (entry.contentRect) {
-                    setSlideWidth(entry.contentRect.width);
-                }
+                handleResize(entry);
             }
         });
 
@@ -54,62 +60,52 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
     return (
         <section className="default-banner">
             <div className="default-banner__container container">
-                {images.length !== 1 ? <>
-                    <button
-                        className="swiper-button-prev"
-                        style={{ left: `calc(50% - ${slideWidth / 2 + 25}px)` }}
-                    />
-                    <button
-                        className="swiper-button-next"
-                        style={{ right: `calc(50% - ${slideWidth / 2 + 25}px)` }}
-                    />
+                <button
+                    className="swiper-button-prev"
+                    style={{ left: `calc(50% - ${slideWidth / 2 + 25}px)` }}
+                />
+                <button
+                    className="swiper-button-next"
+                    style={{ right: `calc(50% - ${slideWidth / 2 + 25}px)` }}
+                />
 
-                    <Swiper
-                        ref={swiperRef}
-                        spaceBetween={40}
-                        slidesPerView="auto"
-                        modules={[Navigation]}
-                        navigation={{
-                            prevEl: '.swiper-button-prev',
-                            nextEl: '.swiper-button-next',
-                        }}
-                        loop={true}
-                        centeredSlides={true}
-                        speed={500}
-                        initialSlide={1}
-                        className="default-banner__slider"
-                    >
-                        {sliderImages.map((image, index) => (
-                            <SwiperSlide
-                                key={`${image}-${index}`}
-                                onClick={() => {
-                                    if (swiperRef.current?.swiper) {
-                                        const swiper = swiperRef.current.swiper;
-                                        swiper.slideToLoop(swiper.realIndex, 500); // 500 — это скорость анимации (миллисекунды)
-                                    }
-                                }}                                tag="div"
-                                className="default-banner__slider-item"
-                            >
-                                <div
-                                    ref={index === 1 ? activeSlideRef : null}
-                                    className="default-banner__slide-wrapper"
-                                >
-                                    <img
-                                        src={image}
-                                        alt={name}
-                                        draggable={false}
-                                        className="default-banner__slider-image"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                <Swiper
+                    ref={swiperRef}
+                    spaceBetween={40}
+                    slidesPerView="auto"
+                    modules={[Navigation]}
+                    navigation={{
+                        prevEl: '.swiper-button-prev',
+                        nextEl: '.swiper-button-next',
+                    }}
+                    loop={true}
+                    centeredSlides={true}
+                    speed={500}
+                    initialSlide={1}
+                    className="default-banner__slider"
+                >
+                    {sliderImages.map((image, index) => (
+                        <SwiperSlide
+                            key={`${image}-${index}`}
+                            onClick={() => {
+                                if (swiperRef.current?.swiper) {
+                                    const swiper = swiperRef.current.swiper;
+                                    swiper.slideToLoop(swiper.realIndex, 500); // 500 — это скорость анимации (миллисекунды)
+                                }
+                            }}
+                            className="default-banner__slider-item"
+                        >
 
-                </> : <img
-                    src={images[0]}
-                    alt={name}
-                    className="default-banner__slider-image"
-                />}
+                            <img
+                                src={image}
+                                alt={name}
+                                ref={index === 1 ? activeSlideRef : null}
+                                draggable={false}
+                                className="default-banner__slider-image"
+                            />
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
 
             </div>
         </section>
