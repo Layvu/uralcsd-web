@@ -16,7 +16,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
         }
     };
 
-    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, isActual, directors, choreographers } = performance;
+    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, directors, choreographers } = performance;
 
     const paragraphs = description?.split('\n').filter((p) => p.trim().length > 0);
 

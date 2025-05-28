@@ -1,6 +1,7 @@
 import React from 'react';
 import { BackgroundProps } from './type';
 import './background.scss';
+import pomegranateImg from '@assets/backgrounds/pomegranate.png';
 
 export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
     return (
@@ -18,12 +19,14 @@ export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
                         >
                         </div>
                         <img
-                            src="/src/assets/backgrounds/pomegranate.png"
+                            src={pomegranateImg}
                             className={`pomegranate ${isEven ? 'left' : 'right'}`}
                             style={{
                                 top: `${i * 880}px`,
                                 transform: isEven ? 'none' : 'scale(-1,1)',
                             }}
+                            alt='pomegranate background'
+                            rel="preload"
                         />
                     </React.Fragment>
                     );

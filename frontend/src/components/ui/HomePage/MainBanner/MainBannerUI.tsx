@@ -74,6 +74,7 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                     >
                         <img src={afishaItem.photo?.url ? afishaItem.photo?.url : afishaItem.performance?.mainImage?.url}
                             alt={afishaItem.performance?.title}
+                            rel="preload"
                             className='main-banner__main-image'
                         />
                         <div className="main-banner__gradient">
