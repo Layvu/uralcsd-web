@@ -4,6 +4,8 @@ import './partners-banner.scss';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
+
 
 export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) => {
     const swiperRef = useRef<SwiperType>();
@@ -60,10 +62,15 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
                     }}
                     spaceBetween={0}
                     slidesPerView={4}
-                    modules={[Navigation]}
+                    modules={[Navigation, Autoplay]}
                     navigation={{
                         prevEl: '.swiper-button-prev',
                         nextEl: '.swiper-button-next',
+                    }}
+                    autoplay={{
+                        delay: 2000, 
+                        disableOnInteraction: false, // Продолжать после ручного переключения
+                        pauseOnMouseEnter: true // Пауза при наведении
                     }}
                     loop={true}
                     speed={300}

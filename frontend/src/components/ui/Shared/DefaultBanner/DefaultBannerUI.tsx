@@ -1,13 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import React, { useEffect, useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import './DefaultBanner.scss';
 import { DefaultBannerProps } from './type';
-import { SwiperRef } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper';
 
 export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) => {
     const activeSlideRef = useRef<HTMLImageElement>(null);
-    const swiperRef = useRef<SwiperRef>(null);
+    const swiperRef = useRef<SwiperType>();
     const [slideWidth, setSlideWidth] = useState<number>(0);
 
     // вычисляет ширину главной картинки, далее на этой инфе ставит расположение кнопок
@@ -34,6 +35,19 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
             observer.disconnect();
         };
     }, []);
+
+    const handlePrev = () => {
+        if (!swiperRef.current) return;
+        swiperRef.current.autoplay.stop();
+        swiperRef.current.slidePrev();
+    };
+
+    const handleNext = () => {
+        if (!swiperRef.current) return;
+        swiperRef.current.autoplay.stop();
+        swiperRef.current.slideNext();
+    };
+
 
     // Клонируем массив если 2 или 3 изображения, нужно чтобы loop отрабатывал коррекстно
     // если 2 или 3 изображения
@@ -62,18 +76,26 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
             <div className="default-banner__container container">
                 <button
                     className="swiper-button-prev"
+                    onClick={handlePrev}
                     style={{ left: `calc(50% - ${slideWidth / 2 + 25}px)` }}
                 />
                 <button
                     className="swiper-button-next"
+                    onClick={handleNext}
                     style={{ right: `calc(50% - ${slideWidth / 2 + 25}px)` }}
                 />
 
                 <Swiper
-                    ref={swiperRef}
+                    onInit={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
                     spaceBetween={40}
                     slidesPerView="auto"
-                    modules={[Navigation]}
+                    modules={[Navigation, Autoplay]}
+                    autoplay={{
+                        delay: 5000, // Интервал в миллисекундах
+                        disableOnInteraction: true, // Остановить после ручного переключения
+                    }}
                     navigation={{
                         prevEl: '.swiper-button-prev',
                         nextEl: '.swiper-button-next',
@@ -87,12 +109,6 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                     {sliderImages.map((image, index) => (
                         <SwiperSlide
                             key={`${image}-${index}`}
-                            onClick={() => {
-                                if (swiperRef.current?.swiper) {
-                                    const swiper = swiperRef.current.swiper;
-                                    swiper.slideToLoop(swiper.realIndex, 500); // 500 — это скорость анимации (миллисекунды)
-                                }
-                            }}
                             className="default-banner__slider-item"
                         >
 
