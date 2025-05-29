@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { MainTitle } from '@components/Shared/MainTitle';
 import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 import { proseedBackendText } from 'utils/proceedBackendText';
-
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles, currentAfishaItems }) => {
     const handleBuyTicket = (sessionId: string) => {
         if (sessionId) {
