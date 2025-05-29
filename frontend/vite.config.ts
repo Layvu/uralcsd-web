@@ -50,15 +50,15 @@ export default defineConfig({
             '@assets': path.resolve(__dirname, './src/assets'),
         },
     },
-    css: {
-        preprocessorOptions: {
-            scss: {
-                additionalData: `
-                    @use "@styles/global" as *;
-                `,
-            },
-        },
-    },
+    // css: {
+    //     preprocessorOptions: {
+    //         scss: {
+    //             additionalData: `
+    //                 @use "@styles/global" as *;
+    //             `,
+    //         },
+    //     },
+    // },
     build: {
         outDir: 'dist',
         assetsDir: 'assets',
@@ -77,7 +77,7 @@ export default defineConfig({
                 assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
             },
         },
-        cssCodeSplit: true,
+        cssCodeSplit: false, // Генерировать один CSS-файл
         sourcemap: false,
         minify: 'terser',
         terserOptions: {

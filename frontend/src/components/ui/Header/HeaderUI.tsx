@@ -20,7 +20,7 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, lo
                         {menuLinks.map(({ path, label }) => {
                             const isActive = location.includes(path);
                             return (
-                                <li key={path} className={`header__nav-item ${isActive && 'header__nav-item--active'}`}>
+                                <li key={path} className={`header__nav-item ${isActive ? 'underlined' : ''}`}>
                                     <Link to={path}>{label}</Link>
                                 </li>
                             );
