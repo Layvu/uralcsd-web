@@ -13,19 +13,21 @@ html {
 
 body {
     margin: 0;
-    margin-top: 50px; // HEADER_SIZE
+    margin-top: 50px; /* HEADER_SIZE */
     font-family: 'Jost', 'Lexend-Regular', sans-serif;
     color: var(--white);
-    background: no-repeat center/cover fixed url('../assets/backgrounds/mainBackground.png');
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background: no-repeat center/cover fixed;
+    background-image: image-set(
+        url('../assets/backgrounds/mainBackground.webp') type("image/webp"),
+        url('../assets/backgrounds/mainBackground.png') type("image/png")
+    );
     background-size: cover;
 
     font-weight: 400;
     font-size: 22px;
     line-height: 28px;
 }
+
 
 main {
     position: relative;

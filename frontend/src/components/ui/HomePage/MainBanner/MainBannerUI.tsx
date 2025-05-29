@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { useRef } from 'react';
 import { Navigation } from 'swiper/modules';
-
+import { Autoplay } from 'swiper/modules';
 import './main-banner.scss';
 import { MainBannerProps } from './type';
 import { formatToDate, formatToTime } from 'utils/timeFormat';
@@ -27,15 +27,17 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
     };
     const handlePrev = () => {
         if (!swiperRef.current) return;
+        swiperRef.current.autoplay.stop();
         swiperRef.current.slidePrev();
     };
-      
+
     const handleNext = () => {
         if (!swiperRef.current) return;
+        swiperRef.current.autoplay.stop();
         swiperRef.current.slideNext();
     };
 
-    if(premiereAfishaItemsWithPerformances.length == 0) return;
+    if (premiereAfishaItemsWithPerformances.length == 0) return;
     return (
         <section className="main-banner">
             <Swiper
@@ -45,21 +47,17 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                 }}
                 spaceBetween={0}
                 slidesPerView={1}
-                modules={[Navigation]}
+                modules={[Navigation, Autoplay]}
                 navigation={{
                     prevEl: '.swiper-button-prev',
                     nextEl: '.swiper-button-next',
                 }}
+                autoplay={{
+                    delay: 7000, // Интервал в миллисекундах
+                    disableOnInteraction: true, // Остановить после ручного переключения
+                    //pauseOnMouseEnter: true // Пауза при наведении
+                }}
 
-                // По необъяснимой причине иногда кнопки на первой загрузке могут не работать.
-                // Нужно перелистнуть один раз вручную и тогда activeIndex становится не NaN.
-                // Иногда activeIndex изначально 0 иногда NaN, пробовал определить его до 
-                // инициализации разными способами - все тчетно. Волшебным образом помогает
-                // свойство cssMode={true}, но тогда ручной переход не работает. 
-                // Почему cssMode помогает? не знаю.
-                // Но вроде натыкал что-то, пока работает без него
-                
-                //cssMode={true}
                 speed={800}
                 initialSlide={0}
                 loop={true}
@@ -74,51 +72,55 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                     >
                         <img src={afishaItem.photo?.url ? afishaItem.photo?.url : afishaItem.performance?.mainImage?.url}
                             alt={afishaItem.performance?.title}
+                            rel="preload"
                             className='main-banner__main-image'
                         />
                         <div className="main-banner__gradient">
-                            <div className="main-banner__container wrap">
-                                <div className="main-banner__info-container">
-                                    <Link to={`/performances/${afishaItem.performance?.slug}`} className="main-banner__title-container">
-                                        <h2 className="main-banner__title title-h1">«{afishaItem?.performance?.title.trim()}»</h2>
+                            <div className="main-banner__wrap wrap">
+                                <Link to={`/performances/${afishaItem.performance?.slug}`} className="main-banner__title-container">
+                                    <h2 className="main-banner__title title-h1">«{afishaItem?.performance?.title.trim()}»</h2>
+                                </Link>
+                                <div className="main-banner__container">
+                                    <div className="main-banner__info-container">
                                         <div className="main-banner__description">
                                             {afishaItem?.performance?.teaser}
                                         </div>
-                                    </Link>
-                                    <div className="main-banner__additional-info-container">
-                                        {afishaItem.date &&
-                                            <div className="main-banner__start-time-container">
-                                                <p className='main-banner__start-date'>{formatToDate(afishaItem.date)}</p>
-                                                <p className='main-banner__start-datetime'>{formatToTime(afishaItem.date)}</p>
-                                            </div>}
-                                        {afishaItem.performance?.duration &&
-                                            <div className="main-banner__duration-container">
-                                                <p className='main-banner__duration'>{afishaItem.performance?.duration}</p>
-                                                <p className='main-banner__addition'>{afishaItem.performance?.intermissionInfo}</p>
-                                            </div>}
+                                        <div className="main-banner__additional-info-container">
+                                            {afishaItem.date &&
+                                                <div className="main-banner__start-time-container">
+                                                    <p className='main-banner__start-date'>{formatToDate(afishaItem.date)}</p>
+                                                    <p className='main-banner__start-datetime'>{formatToTime(afishaItem.date)}</p>
+                                                </div>}
+                                            {afishaItem.performance?.duration &&
+                                                <div className="main-banner__duration-container">
+                                                    <p className='main-banner__duration'>{afishaItem.performance?.duration}</p>
+                                                    <p className='main-banner__addition'>{afishaItem.performance?.intermissionInfo}</p>
+                                                </div>}
 
-                                        {afishaItem.performance?.ageLimit &&
-                                            <div className="main-banner__age-rate">
-                                                <p>{afishaItem.performance.ageLimit}+</p>
-                                            </div>}
+                                            {afishaItem.performance?.ageLimit &&
+                                                <div className="main-banner__age-rate">
+                                                    <p>{afishaItem.performance.ageLimit}+</p>
+                                                </div>}
+                                        </div>
+                                        <button
+                                            className="main-banner__ya-button ticket-button"
+                                            disabled={!afishaItem.sessionId}
+                                            style={{ cursor: !afishaItem.sessionId ? 'not-allowed' : 'pointer' }}
+                                            onClick={(e) => { handleBuyTicket(e, afishaItem.sessionId); }}>
+                                            Купить билет
+                                        </button>
+
                                     </div>
-                                    <button 
-                                        className="main-banner__ya-button ticket-button" 
-                                        disabled={!afishaItem.sessionId} 
-                                        style={{ cursor: !afishaItem.sessionId ? 'not-allowed' : 'pointer' }}
-                                        onClick={(e) => { handleBuyTicket(e, afishaItem.sessionId); }}>
-                                        Купить билет
-                                    </button>
-                                </div>
-                                <div className="main-banner__buttons-container">
-                                    <button 
-                                        className="swiper-button-prev"
-                                        onClick={handlePrev}
-                                    />
-                                    <button 
-                                        className="swiper-button-next"
-                                        onClick={handleNext}
-                                    />
+                                    <div className="main-banner__buttons-container">
+                                        <button
+                                            className="swiper-button-prev"
+                                            onClick={handlePrev}
+                                        />
+                                        <button
+                                            className="swiper-button-next"
+                                            onClick={handleNext}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>

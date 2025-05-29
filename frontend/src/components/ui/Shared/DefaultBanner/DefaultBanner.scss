@@ -24,7 +24,7 @@
         max-width: 1120px;
         width: 100%;
         max-height: 600px;
-        height: 100%;
+        min-height: 100%;
         object-fit: cover;
         user-select: none;
         pointer-events: none;
@@ -32,7 +32,6 @@
 
     &__slider {
         height: 100%;
-        text-align: center;
         overflow: visible;
     }
 
@@ -42,10 +41,6 @@
         justify-content: center;
         max-width: 1120px;
         max-height: 600px;
-
-        &.swiper-slide-active {
-            position: relative;
-        }
     }
 
     .swiper-button-prev,
@@ -59,6 +54,8 @@
         align-items: center;
         
         position: absolute;
+        // top: 50%;
+        // transform: translateY(-50%);
         border-radius: 50%;
 
         background: var(--white-10, rgba(255, 255, 255, 0.10));
@@ -67,7 +64,6 @@
     }
 
     .swiper-button-prev {
-        
         background-image: url('/src/assets/icons/swiper-arrow-btn.svg');
         background-position: center;
         background-repeat: no-repeat;
@@ -78,7 +74,6 @@
     }
 
     .swiper-button-next {
-
         background-image: url('/src/assets/icons/swiper-arrow-btn.svg');
         background-position: center;
         background-repeat: no-repeat;

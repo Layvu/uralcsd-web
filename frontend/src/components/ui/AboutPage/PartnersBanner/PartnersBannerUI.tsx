@@ -4,6 +4,8 @@ import './partners-banner.scss';
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
+
 
 export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) => {
     const swiperRef = useRef<SwiperType>();
@@ -17,16 +19,16 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
         [...partners, ...partners] : partners.length === 2 ?
             [...partners, ...partners, ...partners] : partners;
 
-    const handlePrev = () => {
-        if (!swiperRef.current) return;
-        swiperRef.current.slidePrev();
-    };
+    // const handlePrev = () => {
+    //     if (!swiperRef.current) return;
+    //     swiperRef.current.slidePrev();
+    // };
 
-    const handleNext = () => {
-        if (!swiperRef.current) return;
-        swiperRef.current.slideNext();
-    };
-    if (partners.length) {
+    // const handleNext = () => {
+    //     if (!swiperRef.current) return;
+    //     swiperRef.current.slideNext();
+    // };
+    if (partners.length == 1) {
         return (
             <section className='partners-banner'>
                 <div className="partners-banner__single-container">
@@ -47,11 +49,11 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
             <div className="partners-banner__swiper-container">
                 <button
                     className="swiper-button-prev"
-                    onClick={handlePrev}
+                    //  onClick={handlePrev}
                 />
                 <button
                     className="swiper-button-next"
-                    onClick={handleNext}
+                    //  onClick={handleNext}
                 />
                 <Swiper
                     onInit={(swiper) => {
@@ -60,10 +62,15 @@ export const PartnersBannerUI: React.FC<PartnersBannerProps> = ({ partners }) =>
                     }}
                     spaceBetween={0}
                     slidesPerView={4}
-                    modules={[Navigation]}
+                    modules={[Navigation, Autoplay]}
                     navigation={{
                         prevEl: '.swiper-button-prev',
                         nextEl: '.swiper-button-next',
+                    }}
+                    autoplay={{
+                        delay: 2000, 
+                        disableOnInteraction: false, // Продолжать после ручного переключения
+                        pauseOnMouseEnter: true // Пауза при наведении
                     }}
                     loop={true}
                     speed={300}

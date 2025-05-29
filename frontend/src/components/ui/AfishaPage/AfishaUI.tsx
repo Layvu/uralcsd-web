@@ -14,16 +14,17 @@ export const AfishaUI: React.FC<AfishaProps> = React.memo(
                     <MainTitle className="afisha__main-title title-h3--underline">Афиша</MainTitle>
                     <MonthFilter months={months} activeMonthIndex={activeMonthIndex} onMonthChange={onMonthChange} />
                 </div>
-                
-                <ul className="afisha__schedule">
-                    {Object.entries(groupedAfishaItemsWithPerformanceByDate).map(([date, afishaItems]) => (
-                        <li key={date} className="afisha__schedule-item">
-                            <DaySchedule afishaItemsWithPerformance={afishaItems} />
-                        </li>
-                    ))}
 
-                    {/* TODO
-                Спектаклей нет */}
+                <ul className="afisha__schedule">
+
+                    {Object.entries(groupedAfishaItemsWithPerformanceByDate).length != 0 ? 
+                        Object.entries(groupedAfishaItemsWithPerformanceByDate).map(([date, afishaItems]) => (
+                            <li key={date} className="afisha__schedule-item">
+                                <DaySchedule afishaItemsWithPerformance={afishaItems} />
+                            </li>
+                        ))
+                        : <div className='not-found'>Спектаклей в заданный период нет.</div>
+                    }
                 </ul>
             </section>
         );

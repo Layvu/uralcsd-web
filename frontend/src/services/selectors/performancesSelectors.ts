@@ -25,9 +25,9 @@ export const selectPerformancesByIds = createSelector(
     [selectPerformances, (_, ids: string[]) => ids],
     (performances, ids) => {
         if (!ids?.length) return [];
-
+        ids = ids.map(id => id.toString());
         const idsSet = new Set(ids);
 
-        return performances.filter((p) => idsSet.has(p.id));
+        return performances.filter((p) => idsSet.has(p.id.toString()));
     },
 );

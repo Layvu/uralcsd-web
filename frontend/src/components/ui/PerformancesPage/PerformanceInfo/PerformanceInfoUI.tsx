@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { MainTitle } from '@components/Shared/MainTitle';
 import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 import { proseedBackendText } from 'utils/proceedBackendText';
-
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles, currentAfishaItems }) => {
     const handleBuyTicket = (sessionId: string) => {
         if (sessionId) {
@@ -16,7 +15,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
         }
     };
 
-    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, isActual, directors, choreographers } = performance;
+    const { title, description, additionalInfo, ageLimit, duration, dramatist, images, intermissionInfo, directors, choreographers } = performance;
 
     const paragraphs = description?.split('\n').filter((p) => p.trim().length > 0);
 

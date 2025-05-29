@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PerformanceCardProps } from './type';
 
 import './performance-card.scss';
+import placeholder from '@assets/backgrounds/placeholder.jpg';
 
 
 // карточка спектакля на странице /performances, отличается от той что в афише
@@ -15,9 +16,17 @@ export const PerformanceCardUI: React.FC<PerformanceCardProps> = (performance) =
                 </div>
                 }
                 <img
-                    src={performance.mainImage?.url}
+                    src={performance.mainImage?.url ?
+                        performance.mainImage?.url :
+                        performance.images && performance.images?.length != 0 ?
+                            performance?.images[0].url :
+                            placeholder}
                     alt={performance?.title}
-                    className="performance-card__image"
+                    className={`performance-card__image ${
+                        !performance.mainImage?.url && !performance.images?.[0]?.url 
+                            ? 'performance-card__image--placeholder' 
+                            : ''
+                    }`}
                 />
 
                 <div className="performance-card__gradient">
