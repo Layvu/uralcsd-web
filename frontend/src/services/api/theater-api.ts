@@ -67,6 +67,7 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             mainImage: item.mainImage?.url ? { url: getAbsoluteImagePath(item.mainImage.url) } : null,
             intermissionInfo: item.intermissionInfo,
             isActual: item.isActual,
+            isPremiere: item.isPremiere,
         }));
 
         return performances;
@@ -159,7 +160,7 @@ export const fetchAfishaItemsApi = async (): Promise<IAfishaItem[]> => {
             performance: { id: item.performance?.id.toString() || '' },
             date: item.date,
             sessionId: item.sessionId,
-            isPremiere: item.isPremiere,
+            isInMainBanner: item.isInMainBanner,
             price: item.price,
             photo: item.photo?.url ? { url: getAbsoluteImagePath(item.photo.url) } : null,
         }));

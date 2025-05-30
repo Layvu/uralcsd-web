@@ -2,11 +2,11 @@ import { useSelector } from 'react-redux';
 
 import { MainBannerUI } from '@components/ui/HomePage/MainBanner';
 
-import { selectAfishaError, selectAfishaLoading, selectPremiereAfishaItems } from '@services/selectors/afishaItemsSelectors';
+import { selectAfishaError, selectAfishaLoading, selectMainBannerAfishaItems } from '@services/selectors/afishaItemsSelectors';
 import { getAfishaItemsWithPerformances } from 'utils/getAfishaItemsWithPerformances';
 
 export const MainBanner = () => {
-    const premiereAfishaItems = useSelector(selectPremiereAfishaItems);
+    const premiereAfishaItems = useSelector(selectMainBannerAfishaItems);
     const premiereAfishaItemsWithPerformances = getAfishaItemsWithPerformances(premiereAfishaItems);
 
     const loading = useSelector(selectAfishaLoading);
