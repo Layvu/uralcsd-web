@@ -12,8 +12,8 @@ export const selectAfishaError = createSelector([selectAfishaState], (state) => 
 export const selectAfishaInitialized = createSelector([selectAfishaState], (state) => state.isInitialized);
 
 // Селектор для премьер
-export const selectPremiereAfishaItems = createSelector([selectAfishaItems], (items) =>
-    items.filter((item) => item.isPremiere),
+export const selectMainBannerAfishaItems = createSelector([selectAfishaItems], (items) =>
+    items.filter((item) => item.isInMainBanner),
 );
 
 export const selectLatestAfishaItems = createSelector([selectAfishaItems], (afishaItem) => afishaItem.slice(0, 3));

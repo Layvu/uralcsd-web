@@ -32,4 +32,5 @@ export interface IPerformance {
 
     intermissionInfo: string;
     isActual: boolean;
+    isPremiere: boolean;
 }

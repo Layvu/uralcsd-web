@@ -5,8 +5,6 @@ import React from 'react';
 
 export const PerformanceCard: React.FC<PerformanceCardProps> = (performance) => {
     return (
-        <>
-            <PerformanceCardUI {...performance}/>
-        </>
+        <PerformanceCardUI {...performance}/>
     );
 };

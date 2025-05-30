@@ -41,9 +41,9 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                                 <p>{ageLimit}+</p>
                             </div>
                             }
-                            {/* <div className="performance-info__tags">
-                                <p className='performance-info__tag tag--big'>текст</p>
-                            </div> */}
+                            {performance.isPremiere && <div className="performance-info__tags">
+                                <p className='performance-info__tag tag--big'>Премьера</p>
+                            </div> }
                         </div>
                     </div>
                     {description &&

@@ -82,6 +82,10 @@
       "relation": "manyToMany",
       "target": "api::member.member",
       "inversedBy": "choreographedPerformances"
+    },
+    "isPremiere": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
