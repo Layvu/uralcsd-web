@@ -1,8 +1,8 @@
 .team-list{
     display: flex;
- 
+    align-items: flex-start;
+    align-content: flex-start;
     gap: 40px;
     align-self: stretch;
     flex-wrap: wrap;
-    justify-content: space-around;
 }

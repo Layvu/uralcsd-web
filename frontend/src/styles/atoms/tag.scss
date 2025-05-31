@@ -1,25 +1,24 @@
 .tag {
-
     &--small {
         display: inline-flex;
-        padding: 6px 16px 8px 16px;
+        padding: 8px 16px;
         justify-content: center;
         align-items: center;
         gap: 10px;
 
         color: var(--pomegranate-bright);
-        font-size: 16px;
-        line-height: 20px; 
-        
-        border-radius: 30px;
-        border: 1.2px solid var(--pomegranate-bright);
-        background: var(--black-10);
 
-        /* Background blur 40 */
-        backdrop-filter: blur(5px);
+        font-size: 18px;
+        line-height: 20px;
+
+        border-radius: 30px;
+        border: 1.5px solid var(--pomegranate-bright);
+        background: var(--black-30);
+
+        backdrop-filter: blur(20px);
     }
 
-    &--big{
+    &--big {
         display: inline-flex;
         height: 50px;
         padding: 0px 30px 12px 30px;
@@ -36,9 +35,9 @@
 
         border-radius: 30px;
         border: 1.5px solid var(--pomegranate-bright);
-        background: var(--black-10);
+        background: var(--black-30);
 
         /* Background blur 40 */
-        backdrop-filter: blur(5px);
+        backdrop-filter: blur(20px);
     }
 }

@@ -70,7 +70,6 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                         className="spectacle-card__ya-button ticket-button"
                         disabled={!sessionId}
                         onClick={(e) => { handleBuyTicket(e); }}
-                        // не работает почему-то
                         style={{ cursor: !sessionId ? 'not-allowed' : 'pointer' }}
                     >
                         Купить билет

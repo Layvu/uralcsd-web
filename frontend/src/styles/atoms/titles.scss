@@ -17,8 +17,8 @@
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
     text-decoration-color: var(--pomegranate-bright, #D1001C);
-    text-decoration-thickness: auto;
-    text-underline-offset: 25%; /* 12px */
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%; 
     text-underline-position: from-font;
     text-transform: uppercase;
 }
@@ -33,8 +33,8 @@
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
     text-decoration-color: var(--pomegranate-bright, #D1001C);
-    text-decoration-thickness: auto;
-    text-underline-offset: 22.5%; /* 9px */
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%; 
     text-underline-position: from-font;
     text-transform: uppercase;
 }
@@ -64,8 +64,8 @@
         text-decoration-style: solid;
         text-decoration-skip-ink: auto;
         text-decoration-color: var(--pomegranate-bright, #D1001C);
-        text-decoration-thickness: 7.5%; /* 1.8px */
-        text-underline-offset: 22%; /* 5.28px */
+        text-decoration-thickness: 5.5%;
+        text-underline-offset: 10%; 
         text-underline-position: from-font;
         text-transform: uppercase;
     }
