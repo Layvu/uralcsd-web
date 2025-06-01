@@ -41,7 +41,7 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, lo
                     aria-expanded={isMenuOpen}
                     aria-controls="mobile-menu"
                 >
-                    <SvgIcon id="ellipseMock" title="Menu icon" />
+                    <SvgIcon id={isMenuOpen ? 'menu--close' : 'menu--open'} title="Menu icon" />
                 </button>
 
                 <Menu isOpen={isMenuOpen} />

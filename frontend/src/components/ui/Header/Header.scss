@@ -59,12 +59,15 @@
     &__menu-button {
         display: none;
 
-        width: 50px;
-        height: 50px;
-        color: var(--skeleton);
-
+        width: 24px;
+        height: 24px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--white);
+        
         @media (max-width: 1024px) {
-            display: block;
+            display: flex;
         }
     }
 
