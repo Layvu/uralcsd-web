@@ -33,8 +33,6 @@ export const PerformanceCardUI: React.FC<PerformanceCardProps> = (performance) =
                     <h2 className="performance-card__title title-h6">«{performance?.title.trim()}»</h2>
                     <p className="performance-card__description">{performance?.teaser}</p>
                 </div>
-                <div className="performance-card__tag-container">
-                </div>
             </Link>
         </div>
     );

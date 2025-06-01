@@ -80,9 +80,9 @@
         display: flex;
         color: var(--gray-light);
         font-size: 20px;
-        line-height: 26px;
+        line-height: 130%;
 
-        max-height: 728x;
+        max-height: 78px;
         height: 78px;
         width: 100%;
         align-self: stretch;
@@ -116,19 +116,19 @@
     &__start-date,
     &__duration {
         font-size: 30px;
-        line-height: normal;
+        line-height: 40px;
     }
 
     &__start-datetime,
     &__addition {
         color: var(--gray-light);
         font-size: 20px;
-        line-height: 24px;
+        line-height: 130%;
     }
 
     &__age-rate {
         font-size: 22px;
-        line-height: 28px;
+        line-height: 30px;
 
         display: flex;
         width: 50px;
@@ -137,7 +137,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 10px;
         aspect-ratio: 1/1;
 
         border-radius: 50%;

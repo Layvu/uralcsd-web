@@ -8,8 +8,8 @@
 
         color: var(--pomegranate-bright);
 
-        font-size: 18px;
-        line-height: 20px;
+        font-size: 16px;
+        line-height: 130%;
 
         border-radius: 30px;
         border: 1.5px solid var(--pomegranate-bright);
@@ -31,13 +31,12 @@
 
         /* Text 22 */
         font-size: 22px;
-        line-height: 28px; /* 127.273% */
+        line-height: 130%;
 
         border-radius: 30px;
         border: 1.5px solid var(--pomegranate-bright);
         background: var(--black-30);
 
-        /* Background blur 40 */
         backdrop-filter: blur(20px);
     }
 }

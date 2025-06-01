@@ -9,20 +9,15 @@
         margin-bottom: 50px;
     }
 
-    &__title{
-        font-size: 36px;
-    }
 
     &__list{
         display: flex;
         gap: 20px;
-       
     }
 
     &__card{
         width: 100%;
         max-width: 360px;
-
     }
 
     &__button{

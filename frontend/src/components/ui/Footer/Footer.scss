@@ -35,22 +35,8 @@
     
         margin-top: 20px;
          
-        line-height: 20px; /* 125% */
+        line-height: 130%; 
     }
-
-    // &__social-media {
-    //     display: flex;
-    //     justify-content: center;
-    //     gap: 24px;
-
-    //     margin-top: 40px;
-    // }
-    // &__social-media-item {
-    //     width: 30px;
-    //     height: 30px;
-
-    //     color: var(--dark-skeleton);
-    // }
 
 
     &__contacts{
@@ -77,7 +63,7 @@
         font-style: normal;
         font-weight: 400;
         font-size: 20px;
-        line-height: 24px;
+        line-height: 130%;
     }
 
     &__contacts-text,
@@ -88,17 +74,16 @@
         font-weight: 400;
         color: var(--gray-light);
         margin-bottom: 8px;
-        line-height: 20px; /* 125% */
+        line-height: 130%;
     }
     
     &__schedule{
         max-width: 290px;
     }
 
-
     &__off-days-text{
         font-size: 20px;
-        line-height: 24px; /* 120% */
+        line-height: 130%;
     }
 
 
@@ -111,7 +96,7 @@
         flex-direction: column;
         align-items: flex-start;
         font-size: 20px;
-        line-height: 24px;
+        line-height: 130%;
     }
 
     &__work-time-text{

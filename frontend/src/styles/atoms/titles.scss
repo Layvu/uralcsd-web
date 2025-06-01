@@ -3,7 +3,7 @@
     font-size: 64px;
     font-style: normal;
     font-weight: 400;
-    line-height: 130%;  /* 109.375% */
+    line-height: 130%; /* 109.375% */
     text-transform: uppercase;
 }
 
@@ -16,61 +16,76 @@
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
-    text-decoration-color: var(--pomegranate-bright, #D1001C);
+    text-decoration-color: var(--pomegranate-bright, #d1001c);
     text-decoration-thickness: 5.5%;
-    text-underline-offset: 10%; 
+    text-underline-offset: 10%;
     text-underline-position: from-font;
     text-transform: uppercase;
 }
 
-.title-h3--underline{
+.title-h3 {
+    /* Heading/H3/default */
     font-family: Jost;
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
-    line-height: 130%; 
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-color: var(--pomegranate-bright, #D1001C);
-    text-decoration-thickness: 5.5%;
-    text-underline-offset: 10%; 
-    text-underline-position: from-font;
+    line-height: 130%; /* 52px */
     text-transform: uppercase;
+
+    &--underline {
+        font-family: Jost;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; /* 52px */
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: auto;
+        text-decoration-color: var(--pomegranate-bright, #d1001c);
+        text-decoration-thickness: 5.5%;
+        text-underline-offset: 10%;
+        text-underline-position: from-font;
+        text-transform: uppercase;
+    }
 }
 
-.title-h4{
+.title-h4 {
     /* H4 */
     font-family: Jost;
     font-size: 32px;
     font-style: normal;
     font-weight: 400;
-    line-height: 130%; 
+    line-height: 130%;
     text-transform: uppercase;
 }
 
-.title-h5{
+.title-h5 {
     /* H5 */
     font-family: Jost;
     font-size: 28px;
     font-style: normal;
     font-weight: 400;
-    line-height: 130%;  /* 116.667% */
+    line-height: 130%;
     text-transform: uppercase;
 
-    &--underline{
+    &--underline {
+        font-family: Jost;
+        font-size: 28px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 130%; 
         /* H5 - underline */
         text-decoration-line: underline;
         text-decoration-style: solid;
         text-decoration-skip-ink: auto;
-        text-decoration-color: var(--pomegranate-bright, #D1001C);
+        text-decoration-color: var(--pomegranate-bright, #d1001c);
         text-decoration-thickness: 5.5%;
-        text-underline-offset: 10%; 
+        text-underline-offset: 10%;
         text-underline-position: from-font;
         text-transform: uppercase;
     }
 }
-.title-h6{
+.title-h6 {
     /* Heading/H6/default */
     font-family: Jost;
     font-size: 24px;
@@ -79,7 +94,7 @@
     line-height: 130%; /* 31.2px */
     text-transform: uppercase;
 
-    &--underline{
+    &--underline {
         /* Heading/H6/underline */
         font-family: Jost;
         font-size: 24px;
@@ -89,7 +104,7 @@
         text-decoration-line: underline;
         text-decoration-style: solid;
         text-decoration-skip-ink: auto;
-        text-decoration-color: var(--Pomegranate-Bright, #D1001C);
+        text-decoration-color: var(--Pomegranate-Bright, #d1001c);
         text-decoration-thickness: 5.5%; /* 1.32px */
         text-underline-offset: 10%; /* 5.28px */
         text-underline-position: from-font;
