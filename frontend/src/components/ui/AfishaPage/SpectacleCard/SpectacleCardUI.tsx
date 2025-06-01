@@ -8,7 +8,6 @@ import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 
 export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     performance,
-    isPremiere,
     price,
     date,
     sessionId,
@@ -34,7 +33,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
             <Link to={`/performances/${performance.slug}`} className='spectacle-card__container'>
                 <div className="spectacle-card__image-container">
                     <img src={photo?.url ? photo.url : performance.mainImage?.url} alt={performance.title} className="spectacle-card__image" />
-                    {isPremiere && <div className="spectacle-card__tag tag--small">
+                    {performance.isPremiere && <div className="spectacle-card__tag tag--small">
                         Премьера
                     </div>}
                 </div>

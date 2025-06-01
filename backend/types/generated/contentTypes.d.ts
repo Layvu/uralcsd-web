@@ -385,7 +385,8 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     date: Schema.Attribute.DateTime;
-    isPremiere: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    isInMainBanner: Schema.Attribute.Boolean &
+      Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -561,6 +562,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
     intermissionInfo: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'\u0431\u0435\u0437 \u0430\u043D\u0442\u0440\u0430\u043A\u0442\u0430'>;
     isActual: Schema.Attribute.Boolean;
+    isPremiere: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',

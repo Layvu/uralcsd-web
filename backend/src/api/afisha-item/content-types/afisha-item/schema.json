@@ -22,7 +22,7 @@
     "sessionId": {
       "type": "string"
     },
-    "isPremiere": {
+    "isInMainBanner": {
       "type": "boolean",
       "default": false
     },
