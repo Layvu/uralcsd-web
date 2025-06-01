@@ -41,6 +41,22 @@ export const TeamCardFull: React.FC = React.memo(() => {
         }));
     }, [memberPerformanceCasts, memberPerformances]);
 
+    const directedPerformancesIds = React.useMemo(
+        () => member?.aPerformances ? member?.aPerformances?.map(p => p.id) : [], 
+        [member?.aPerformances]
+    );
+    const directedPerformances =  useSelector((state: RootState) =>
+        selectPerformancesByIds(state, directedPerformancesIds)
+    );
+
+    const choreographedPerformancesIds = React.useMemo(
+        () => member?.choreographedPerformances ? member?.choreographedPerformances?.map(p => p.id) : [],
+        [member?.choreographedPerformances]
+    );
+    const choreographedPerformances =  useSelector((state: RootState) =>
+        selectPerformancesByIds(state, choreographedPerformancesIds)
+    );
+
     const loading = useSelector(selectTeamLoading);
     const error = useSelector(selectTeamError);
 
@@ -54,5 +70,10 @@ export const TeamCardFull: React.FC = React.memo(() => {
         return <div className="not-found">Участник команды не найден</div>;
     }
 
-    return <TeamCardFullUI member={member} performancesWithRoles={performancesWithRoles} />;
+    return <TeamCardFullUI 
+        member={member} 
+        performancesWithRoles={performancesWithRoles}
+        directedPerformances={directedPerformances}
+        choreographedPerformances={choreographedPerformances}
+    />;
 });

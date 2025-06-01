@@ -83,6 +83,7 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
         const response = await apiClient.get('/members', {
             params: {
                 populate: {
+                    choreographedPerformances: { fields: ['id'] },
                     performanceCasts: { fields: ['id'] },
                     aPerformances: { fields: ['id'] },
                     images: { fields: ['url'] },
@@ -90,7 +91,6 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
                 },
             },
         });
-
         const members = response.data.data.map((item: IMember) => ({
             id: item.id,
             slug: item.slug,
@@ -102,8 +102,7 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
             mainPhoto: item.mainPhoto?.url ? { url: getAbsoluteImagePath(item.mainPhoto.url) } : null,
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             aPerformances: item.aPerformances?.map((performance) => ({ id: performance.id })) || [],
-            choreographedPerformances:
-                item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
+            choreographedPerformances: item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
         }));
 

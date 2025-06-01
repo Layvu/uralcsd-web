@@ -97,10 +97,11 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                                                     <p className='main-banner__addition'>{afishaItem.performance?.intermissionInfo}</p>
                                                 </div>}
 
-                                            {afishaItem.performance?.ageLimit &&
+                                            {afishaItem.performance?.ageLimit != null &&
                                                 <div className="main-banner__age-rate">
                                                     <p>{afishaItem.performance.ageLimit}+</p>
-                                                </div>}
+                                                </div>
+                                            }
                                         </div>
                                         <button
                                             className="main-banner__ya-button ticket-button"

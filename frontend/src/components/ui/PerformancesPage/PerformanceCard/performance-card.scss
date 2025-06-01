@@ -43,7 +43,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        height: 50%;
+        height: 250px;
         width: 100%;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 100%);        padding: 30px;
         display: flex;;
@@ -52,13 +52,31 @@
         gap: 12px;
         flex-shrink: 0;
         align-self: stretch;
+
+    }
+
+    &__title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        align-self: stretch;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     &__description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        align-self: stretch;
+
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
-        font-size: 18px;
-        line-height: 22px;
+        //white-space: nowrap;
+        font-size: 20px;
+        line-height: 130%;
     }
 }
