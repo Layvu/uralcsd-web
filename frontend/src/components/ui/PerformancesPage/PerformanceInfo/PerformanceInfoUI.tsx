@@ -139,14 +139,14 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                         </ul>
                     </section>
                     :
-                    <section className='performance-info__ticket-section'>
+                    <section className='performance-info__no-ticket-section'>
                         <div className="performance-info__no-performances-container">
-                            <button disabled className="performance-info__no-performances-button">
-                                Нет в показе
-                            </button>
                             <p className="performance-info__no-performances-info">
                                 Следите за афишей театра ЦСД, чтобы не пропустить показ!
                             </p>
+                            <button disabled className="performance-info__no-performances-button">
+                                Нет в показе
+                            </button>
                         </div>
                     </section>
                 }

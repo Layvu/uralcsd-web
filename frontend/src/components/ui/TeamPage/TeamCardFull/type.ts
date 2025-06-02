@@ -4,4 +4,6 @@ import { IPerformance } from 'types/performance';
 export interface TeamCardFullProps {
     member: IMember;
     performancesWithRoles: { performance?: IPerformance; role: string }[];
+    directedPerformances: IPerformance[];
+    choreographedPerformances: IPerformance[];
 }

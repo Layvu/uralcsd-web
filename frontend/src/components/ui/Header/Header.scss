@@ -9,7 +9,6 @@
     backdrop-filter: blur(20px);
     max-height: 50px;
 
-
     &__wrap {
         display: flex;
         justify-content: space-between;
@@ -19,11 +18,12 @@
         flex-wrap: wrap;
  
         font-size: 18px;
-        line-height: 24px;
+        line-height: 130%;
 
         padding: 15px 50px;
-        
-        @media (max-width: 1024px) {
+           
+        @include laptop{
+            padding: 15px;
         }
     }
 
@@ -40,13 +40,19 @@
         gap: 24px;
     }
 
+    &__nav{
+        min-width: 480px;
+        max-width: 665px;
+        flex: 1 0 0;
+
+    }
     &__nav-list{
         display: flex;
-        min-width: 665px;
         width: 100%;
         padding-right: 30px;
         justify-content: space-between;
         align-items: center;
+        align-content: center;
         flex-wrap: wrap;
     }
 
@@ -59,19 +65,22 @@
     &__menu-button {
         display: none;
 
-        width: 50px;
-        height: 50px;
-        color: var(--skeleton);
-
-        @media (max-width: 1024px) {
+        width: 24px;
+        height: 24px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        color: var(--white);
+        
+        @include laptop {
             display: block;
-        }
+        } 
     }
 
-    &__nav-list,
+    &__nav,
     &__social-media {
-        @media (max-width: 1024px) {
-            display: none;
-        }
+        @include laptop {
+            @include visually-hidden;
+        } 
     }
 }

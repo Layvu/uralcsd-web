@@ -50,15 +50,15 @@ export default defineConfig({
             '@assets': path.resolve(__dirname, './src/assets'),
         },
     },
-    // css: {
-    //     preprocessorOptions: {
-    //         scss: {
-    //             additionalData: `
-    //                 @use "@styles/global" as *;
-    //             `,
-    //         },
-    //     },
-    // },
+    css: {
+        preprocessorOptions: {
+            scss: {
+                additionalData: `
+                    @use '@styles/mixins' as *;
+                `,
+            },
+        },
+    },
     build: {
         outDir: 'dist',
         assetsDir: 'assets',

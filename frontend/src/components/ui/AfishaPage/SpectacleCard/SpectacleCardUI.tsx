@@ -61,16 +61,16 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
 
                             <div className="spectacle-card__price">{price} ₽</div>
                             </>}
-                        {performance.ageLimit &&
+                        {performance.ageLimit != null &&
                             <div className="spectacle-card__age-rate">
                                 <p>{performance.ageLimit}+</p>
-                            </div>}
+                            </div>
+                        }
                     </div>
                     <button
                         className="spectacle-card__ya-button ticket-button"
                         disabled={!sessionId}
                         onClick={(e) => { handleBuyTicket(e); }}
-                        // не работает почему-то
                         style={{ cursor: !sessionId ? 'not-allowed' : 'pointer' }}
                     >
                         Купить билет

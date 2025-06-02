@@ -1,82 +1,97 @@
-.team-card-full{
+.team-card-full {
     margin-bottom: 100px;
 
-    &__info{
+    &__info {
+        align-self: stretch;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        align-content: flex-start;
+
         margin-top: 50px;
         display: flex;
         gap: 60px;
         padding: 0 50px;
     }
 
-    &__info-container{
-        display: flex;
-        flex-direction: column;
-        gap: 60px;
-    }
+    &__photo {
+        max-width: 330px;
+        max-height: 440px;
+        min-height: 240px;
+        min-width: 180px;
+        flex: 1 0 0;
 
-    &__photo{
-        
-        img{
+        img {
             display: block;
-            max-width: 330px;
-            max-height: 440px;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
         }
     }
 
-    &__name-container{
+    &__info-container {
+        display: flex;
+        min-width: 500px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 60px;
+        flex: 1 0 0;
+    }
+
+    &__name-container {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
 
-    &__position{
+    &__position {
+        color: var(--gray-light);
         font-size: 24px;
-        line-height: 28px;
+        line-height: 130%;
     }
 
-    &__biography-container{
+    &__biography-container {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
-    &__biography{
+    &__biography {
         display: flex;
         flex-direction: column;
         gap: 14px;
     }
 
-    &__biography-paragraph{
+    &__biography-paragraph {
+        color: var(--gray-light);
         font-size: 22px;
-        line-height: 28px;
+        line-height: 130%; 
     }
 
-    &__spectacles-container{
+    &__spectacles-container,
+    &__spectacles {
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 24px;
+        width: 100%;
     }
-    &__spectacles{
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-    &__spectacle-container{
+    &__spectacle-container {
         display: flex;
         justify-content: space-between;
-        text-align: center; 
-        padding-bottom: 15px;
+        align-items: flex-end;
+        align-self: stretch;
+        padding-bottom: 12px;
         border-bottom: 1.5px solid var(--gray-medium);
 
         transition: all 0.2s ease-out;
-        &:hover{
+        &:hover {
             color: var(--pomegranate-bright);
             border-color: var(--pomegranate-bright);
         }
     }
-    &__spectacle-role{
-        font-size: 18px;
-        line-height: 22px;
+    &__spectacle-title,
+    &__spectacle-role {
+        font-size: 20px;
+        line-height: 130%; 
     }
-
 }

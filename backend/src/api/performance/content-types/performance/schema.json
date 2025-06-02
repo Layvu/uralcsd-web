@@ -28,7 +28,7 @@
       "type": "richtext"
     },
     "teaser": {
-      "type": "string"
+      "type": "text"
     },
     "duration": {
       "type": "string"

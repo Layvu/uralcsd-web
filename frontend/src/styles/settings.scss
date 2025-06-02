@@ -17,15 +17,16 @@ body {
     font-family: 'Jost', 'Lexend-Regular', sans-serif;
     color: var(--white);
     background: no-repeat center/cover fixed;
+    background-image: url('../assets/backgrounds/mainBackground.png');
     background-image: image-set(
-        url('../assets/backgrounds/mainBackground.webp') type("image/webp"),
-        url('../assets/backgrounds/mainBackground.png') type("image/png")
+      url('../assets/backgrounds/mainBackground.webp') type("image/webp"),
+      url('../assets/backgrounds/mainBackground.png') type("image/png")
     );
     background-size: cover;
 
     font-weight: 400;
     font-size: 22px;
-    line-height: 28px;
+    line-height: 130%; 
 }
 
 
@@ -109,6 +110,6 @@ h6 {
 }
 
 .wrap {
-    @include min-max(320px, 1220px);
+    @include min-max(220px, 1220px);
     // Элемент ограничен шириной 1220px, даже если экран больше
 }

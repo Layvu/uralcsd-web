@@ -7,7 +7,7 @@
     align-self: stretch;
 
     font-size: 20px;
-    line-height: 24px;
+    line-height: 130%;
     color: var(--white);
 
     background: var(--pomegranate-basic);
@@ -31,6 +31,6 @@
     &:disabled{
         pointer-events: none;
         background: var(--gray-basic);
-        color: var(--black);
+        color: var(--black-100);
     }
 }

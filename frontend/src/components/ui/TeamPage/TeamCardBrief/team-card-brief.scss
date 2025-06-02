@@ -1,7 +1,11 @@
 .team-card-brief {
     display: flex;
+    min-width: 200px;
+    width: 100%;
+    flex: 1 1 250px;
     max-width: 250px;
     flex-direction: column;
+    align-items: flex-start;
     gap: 12px;
 
     &:hover {
@@ -12,21 +16,33 @@
     }
 
     &__photo {
-        max-width: 250px;
+        max-height: 350px;
+        height: 100%;
+        align-self: stretch;
+        aspect-ratio: 5/7;
         object-fit: cover;
-        height: 350px;
     }
-    &__name {      
+    &__name {     
+        align-self: stretch; 
         font-size: 24px;
-        line-height: 28px;
+        line-height: 130%;
         transition: color 0.2s ease-out;
     }
     &__position {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        align-self: stretch;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+
         margin-top: 2px;
         color: var(--gray-basic);
 
-        font-size: 18px;
-        line-height: 22px;
+        font-size: 20px;
+        line-height: 130%;
         transition: color 0.2s ease-out;
     }
 }

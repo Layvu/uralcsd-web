@@ -26,7 +26,7 @@ export const MenuUI: React.FC<MenuProps> = ({ isOpen }) => {
             <div className="menu">
                 <div className="wrap menu__wrap">
                     <Link to="/" className="logo menu__logo">
-                        <SvgIcon id="ellipseMock" title="Logotype" />
+                        <SvgIcon id="menu--close" title="Logotype" />
                     </Link>
 
                     <nav className="menu__nav">
@@ -55,10 +55,10 @@ export const MenuUI: React.FC<MenuProps> = ({ isOpen }) => {
                     {/* <Social className="menu__social" /> */}
                     <div className="menu__social-media">
                         <a href="#" className="menu__social-media-item">
-                            <SvgIcon id="ellipseMock" title="VK icon" />
+                            <SvgIcon id="vk" title="VK icon" />
                         </a>
                         <a href="#" className="menu__social-media-item">
-                            <SvgIcon id="ellipseMock" title="Telegram icon" />
+                            <SvgIcon id="telegram" title="Telegram icon" />
                         </a>
                     </div>
                 </div>

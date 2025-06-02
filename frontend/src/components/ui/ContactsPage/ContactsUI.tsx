@@ -68,7 +68,7 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
                                                 className="contacts-page__faq-answer-info"
                                                 key={info.answer}
                                             >
-                                                <h3 className="contacts-page__faq-answer-title title-h5">
+                                                <h3 className="contacts-page__faq-answer-title title-h6">
                                                     {info?.subtitle}
                                                 </h3>
                                                 <p className="contacts-page__faq-answer-text">

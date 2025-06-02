@@ -576,7 +576,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
     >;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
-    teaser: Schema.Attribute.String;
+    teaser: Schema.Attribute.Text;
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
