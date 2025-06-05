@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { TeamCardFullProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
-import { MainTitle } from '@components/Shared/MainTitle';
 import { proseedBackendText } from 'utils/proceedBackendText';
 import placeholder from '@assets/backgrounds/member-placeholder.png';
 import './team-card-full.scss';
@@ -34,9 +33,9 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({
 
                 <div className="team-card-full__info-container">
                     <div className="team-card-full__name-container">
-                        <MainTitle className="team-card-full__name title-h2--underline">
+                        <h1 className="team-card-full__name title-h2--underline">
                             {member.name} {member.surname}
-                        </MainTitle>
+                        </h1>
                         <div className="team-card-full__position">{member.position}</div>
                     </div>
 

@@ -78,7 +78,7 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                         <div className="main-banner__gradient">
                             <div className="main-banner__wrap wrap">
                                 <Link to={`/performances/${afishaItem.performance?.slug}`} className="main-banner__title-container">
-                                    <h2 className="main-banner__title title-h1">«{afishaItem?.performance?.title.trim()}»</h2>
+                                    <h2 className="main-banner__title">«{afishaItem?.performance?.title.trim()}»</h2>
                                 </Link>
                                 <div className="main-banner__container">
                                     <div className="main-banner__info-container">

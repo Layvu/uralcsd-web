@@ -5,9 +5,8 @@
     width: 100%;
     z-index: 100;
 
-    background: var(--black-30);
+    background: var(--black-60);
     backdrop-filter: blur(20px);
-    max-height: 50px;
 
     &__wrap {
         display: flex;

@@ -1,6 +1,9 @@
 .select-button {
+  //  @include text-20;
+    font-size: 20px;
+    line-height: 26px;
+
     color: var(--white);
-    border-radius: 200px;
     justify-self: center;
     align-self: center;
     height: 50px;
@@ -8,7 +11,16 @@
     
     cursor: pointer;
 
+    border-radius: 200px;
+    border: 1.5px solid var(--pomegranate-medium);
+
+    transition: all 0.2s ease-out;
+
     &--active {
         background-color: var(--pomegranate-medium);
+    }
+
+    &:hover:not(.select-button--active){
+        color: var(--pomegranate-basic);
     }
 }

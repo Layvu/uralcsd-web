@@ -27,6 +27,9 @@
         flex-direction: column;
         gap: 15px;
     }
+    &__title{
+        @include title-h2--underline;
+    }
     &__tags-container {
         display: flex;
         align-items: flex-start;

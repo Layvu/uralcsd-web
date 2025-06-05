@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SpectacleCardProps } from './type';
 import { openTicketsWidget } from '@services/yandexTickets';
 
 import './spectacle-card.scss';
 import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
+import { useBreakpoint } from 'hooks/useBreakpoint';
 
 export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     performance,
@@ -14,6 +15,32 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     photo,
     isLatestPerformance,
 }) => {
+    const titleRef = useRef<HTMLHeadingElement>(null);
+    const [teaserLines, setTeaserLines] = useState<number>(3);
+    const [measured, setMeasured] = useState(false);
+    const { isMobile } = useBreakpoint();
+    useLayoutEffect(() => {
+        const frame = requestAnimationFrame(() => {
+            if (!titleRef.current) return;
+
+            const titleHeight = titleRef.current.clientHeight;
+            const titleLineHeight = parseInt(
+                getComputedStyle(titleRef.current).lineHeight
+            );
+            const titleLines = Math.round(titleHeight / titleLineHeight);
+
+            if (titleLines === 1) {
+                setTeaserLines(isLatestPerformance || isMobile ? 3 : 4);
+            } else {
+                setTeaserLines(2);
+            }
+
+            setMeasured(true); 
+        });
+
+        return () => cancelAnimationFrame(frame);
+    }, [isLatestPerformance]);
+
     const ISOdate = new Date(date);
 
     const handleBuyTicket = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -40,11 +67,13 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
 
                 <div className="spectacle-card__info-container">
                     <div className="spectacle-card__title-container">
-                        <h3 className={`spectacle-card__title ${isLatestPerformance ? 'title-h5' : 'title-h4'}`}>«{performance.title.trim()}»</h3>
-                        <p className="spectacle-card__teaser">{performance.teaser ? performance.teaser : performance.description}</p>
+                        <h3 className="spectacle-card__title" ref={titleRef}>«{performance.title.trim()}»</h3>
+                        <p className={`spectacle-card__teaser line-clamp-${teaserLines} ${measured ? `line-clamp-${teaserLines}` : undefined}`}>
+                            {performance.teaser ? performance.teaser : performance.description}
+                        </p>
                     </div>
                     <div className="spectacle-card__additional-info-container">
-                        {isLatestPerformance ? <div className="spectacle-card__start-time-container">
+                        {isLatestPerformance || isMobile ? <div className="spectacle-card__start-time-container">
                             <p className='spectacle-card__time'>{formatToFullDateTime(date)}</p>
                             <p>{formatToWeekday(date)}</p>
                         </div> :
@@ -78,7 +107,6 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                 </div>
 
             </Link>
-
         </div>
     );
 };

@@ -13,7 +13,7 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
     return (
         <section className="latest-performances wrap">
             <div className="latest-performances__header">
-                <h2 className="latest-performances__title title-h3--underline">Ближайшие спектакли</h2>
+                <h1 className="latest-performances__title">Ближайшие спектакли</h1>
                 <button
                     className="latest-performances__button "
                     onClick={() => {

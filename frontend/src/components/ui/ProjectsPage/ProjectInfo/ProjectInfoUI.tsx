@@ -3,7 +3,6 @@ import './ProjectInfo.scss';
 
 import { ProjectInfoUIProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
-import { MainTitle } from '@components/Shared/MainTitle';
 import { proseedBackendText } from 'utils/proceedBackendText';
 
 export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
@@ -15,7 +14,7 @@ export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
 
             <div className="project-info__wrap wrap">
                 <div className="project-info__title-container">
-                    <MainTitle className="project-info__name title-h2--underline">{project.title}</MainTitle>
+                    <h1 className="project-info__name title-h2--underline">{project.title}</h1>
                     {project.additionalInfo && <p className="project-info__additional">{project.additionalInfo}</p>}
                 </div>
                 {project.description &&

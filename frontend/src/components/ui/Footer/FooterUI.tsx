@@ -60,7 +60,7 @@ export const FooterUI: React.FC<FooterUIProps> = React.memo(({ contactsInfo }) =
                                     <p className="footer__work-time-text">{workingDaysText}</p>
                                     <div className="footer__work-time-line">
                                         <p className="footer__work-time-start">{workingHours?.start}</p>
-                                        <div className="footer__work-time-divider"></div>
+                                        —
                                         <p className="footer__work-time-end">{workingHours?.end}</p>
                                     </div>
                                 </div>

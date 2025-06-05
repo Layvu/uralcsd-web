@@ -1,9 +1,8 @@
 .spectacle-card {
-
     height: 350px;
     min-height: 350px;
     align-items: flex-start;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,30 +10,43 @@
     background: var(--white-10);
     backdrop-filter: blur(20px);
 
-    &:hover{
-        img{
+    @include laptop{
+        height: 700px;
+    }
+
+    @include mobile{
+        width: 100%;
+        height: 560px;
+        max-height: 560px;
+    }
+
+    &:hover {
+        img {
             transform: scale(1.1);
         }
     }
 
-
-    &__tag{
+    &__tag {
         position: absolute;
         top: 20px;
         left: 20px;
     }
 
-    &__loading{
-        font-size: 32px;
+    &__loading {
+        @include text-32;
     }
 
     &__container {
         display: flex;
         width: 100%;
         height: 100%;
+
+        @include laptop{
+            flex-direction: column;
+        }
     }
 
-    &__image-container{
+    &__image-container {
         position: relative;
         display: flex;
         height: 350px;
@@ -42,12 +54,24 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 10px;
         flex: 1 0 0;
         overflow: hidden;
+
+        img {
+            flex: 1 0 0;
+            align-self: stretch;
+        }
+
+        @include mobile{
+            height: 240px;
+            max-height: 240px;
+            flex-shrink: 0;
+            align-self: stretch;
+            width: 100%;
+        }
     }
 
-    &__image{
+    &__image {
         flex: 1 0 0;
         align-self: stretch;
         object-fit: cover;
@@ -55,19 +79,34 @@
         transition: transform 0.4s ease-out;
     }
 
-    &__info-container{
+    &__info-container {
         width: 50%;
         display: flex;
         height: 350px;
         min-width: 460px;
-        padding: 20px;
+        padding: 16px;
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
         flex: 1 0 0;
+
+        @include laptop{
+            width: 100%;
+            max-height: 350px;
+        }
+
+        @include mobile{
+            min-width: initial;
+            width: 100%;
+            max-height: 350px;
+            display: flex;
+            padding: 16px;
+            gap: 18px;
+            align-self: stretch;
+        }
     }
 
-    &__title-container{
+    &__title-container {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -76,19 +115,25 @@
         align-self: stretch;
     }
 
-    &__title{
+    &__title {
+        @include title-h4;
+
         display: -webkit-box;
         -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+
         align-self: stretch;
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @include mobile{
+            @include title-h6;
+        }
     }
 
-    &__teaser{
-        font-size: 18px;
-        line-height: 130%; 
+    &__teaser {
+        @include text-20;
 
         color: var(--gray-light);
         flex: 1 0 0;
@@ -98,15 +143,14 @@
         text-overflow: ellipsis;
         white-space: wrap;
 
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
-
-        //padding-bottom: 4px;
+        margin-bottom: 8px; 
+        
+        &.line-clamp-4{
+            margin-bottom: 0;
+        }
     }
 
-    &__additional-info-container{
+    &__additional-info-container {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -116,30 +160,47 @@
         padding-top: 20px;
         border-top: 1.5px solid var(--gray-medium);
 
-        &>div:not(:last-child){
+        & > div:not(:last-child) {
             padding-right: 10px;
+        }
+
+        @include mobile{
+            padding-top: 18px;
+            display: flex;
+            align-items: center;
+            align-content: center;
         }
     }
 
-    &__start-time-container{
+    &__start-time-container {
         display: flex;
         flex-direction: column;
+
+     
     }
-    &__time+p,
-    &__addition{    
+    &__time + p,
+    &__addition {
         color: var(--gray-light);
-        font-size: 18px;
-        line-height: 130%;         
+        @include text-18;
     }
 
-    &__duration-container{
+    &__duration-container {
         display: flex;
         flex-direction: column;
+
+        @include mobile{
+            display: none;            
+        }
     }
 
-    &__age-rate{
-        font-size: 22px;
-        line-height: 130%;
+    &__price{
+        @include mobile{
+            display: none;            
+        }
+    }
+
+    &__age-rate {
+        @include text-22;
 
         display: flex;
         width: 50px;
@@ -159,15 +220,19 @@
         padding: 10px 40px;
     }
 
-    &--latest{
-        height: 550px;
-        min-height: 520px;
-        max-height: 550px;
+    &--latest {
+        width: 360px;
+        height: 560px;
+        max-height: 560px;
+
+        @include mobile{
+            width: 100%;
+        }
 
         .spectacle-card__container {
             flex-direction: column;
         }
-        .spectacle-card__image-container{
+        .spectacle-card__image-container {
             display: flex;
             height: 240px;
             max-height: 240px;
@@ -178,13 +243,13 @@
             align-self: stretch;
             width: 100%;
 
-            img{
+            img {
                 flex: 1 0 0;
                 align-self: stretch;
             }
         }
 
-        .spectacle-card__info-container{
+        .spectacle-card__info-container {
             min-width: initial;
             width: 100%;
             display: flex;
@@ -194,20 +259,19 @@
             gap: 18px;
             flex: 1 0 0;
             align-self: stretch;
+
+            @include laptop{
+                width: 100%;
+                max-height: 350px;
+            }
         }
 
-        .spectacle-card__title-container{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-            flex: 1 0 0;
-            align-self: stretch;
+        .spectacle-card__title {
+            @include title-h6;
         }
 
-        .spectacle-card__teaser{
-            font-size: 20px;
-            line-height: 130%;
+        .spectacle-card__teaser {
+            @include text-20;
 
             flex: 1 0 0;
             align-self: stretch;
@@ -215,17 +279,35 @@
             text-overflow: ellipsis;
 
             white-space: wrap;
-            -webkit-line-clamp: 3;
-            line-clamp: 3;   
         }
-        .spectacle-card__additional-info-container{
+
+        .spectacle-card__additional-info-container {
             padding-top: 18px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             align-content: center;
-            align-self: stretch;
-            flex-wrap: wrap;
         }
     }
+}
+
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+}
+
+.line-clamp-4 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
 }

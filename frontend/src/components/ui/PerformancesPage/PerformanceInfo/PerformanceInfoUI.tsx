@@ -5,7 +5,6 @@ import { PerformanceInfoUIProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import { openTicketsWidget } from 'services/yandexTickets';
 import { Link } from 'react-router-dom';
-import { MainTitle } from '@components/Shared/MainTitle';
 import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 import { proseedBackendText } from 'utils/proceedBackendText';
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performance, actorsWithRoles, currentAfishaItems }) => {
@@ -29,7 +28,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({ performanc
                 <section className="performance-info__main-section">
                     <div className="performance-info__title-section">
                         <div className="performance-info__title-container">
-                            <MainTitle className="performance-info__title title-h2--underline">«{title.trim()}»</MainTitle>
+                            <h1 className="performance-info__title ">«{title.trim()}»</h1>
                             <p className="performance-info__additional-description">{additionalInfo}</p>
                         </div>
                         <div className="performance-info__tags-container">
