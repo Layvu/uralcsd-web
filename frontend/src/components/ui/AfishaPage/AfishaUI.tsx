@@ -1,6 +1,5 @@
 import { DaySchedule } from '@components/AfishaPage/DaySchedule';
 import { MonthFilter } from '@components/AfishaPage/MonthFilter';
-import { MainTitle } from '@components/Shared/MainTitle';
 import { AfishaProps } from './type';
 import React from 'react';
 
@@ -11,7 +10,7 @@ export const AfishaUI: React.FC<AfishaProps> = React.memo(
         return (
             <section className="wrap afisha">
                 <div className="afisha__header">
-                    <MainTitle className="afisha__main-title title-h3--underline">Афиша</MainTitle>
+                    <h1 className="afisha__main-title">Афиша</h1>
                     <MonthFilter months={months} activeMonthIndex={activeMonthIndex} onMonthChange={onMonthChange} />
                 </div>
 

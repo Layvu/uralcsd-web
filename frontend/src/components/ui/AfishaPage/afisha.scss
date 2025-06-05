@@ -1,16 +1,47 @@
 .afisha{
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 100px;
     padding: 0 50px;
+
+    @include laptop{
+        padding: 0 15px;
+    }
+
+    @include mobile{
+        padding: 0;
+    }
     
     &__header{
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        align-content: center;
+
+        align-self: stretch;
+        flex-wrap: wrap;
         margin-bottom: 50px;
+        row-gap: 30px;
+    }
+
+    &__main-title{
+        @include title-h3--underline;
+        padding-right: 40px;
+
+        @include mobile{
+            padding: 0 15px;
+        }
     }
 
     &__schedule{
         display: grid;
-        gap: 40px;
+        gap: 50px;
+
+        @include mobile{
+            padding: 0 15px;
+        }
+
+        @include tablet{
+            gap: 30px;
+        }
     } 
 }

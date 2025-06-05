@@ -1,7 +1,19 @@
 .month-filter{
     display: flex;
-    justify-content: center;
+    align-items: center;
     height: fit-content;
+
+    gap: 15px;
+
+    overflow-x: auto; /* или scroll для постоянной полосы прокрутки */
+    overflow-y: hidden; /* отключаем вертикальную прокрутку */
+    white-space: nowrap; /* запрещаем перенос элементов */
+    -webkit-overflow-scrolling: touch; /* плавная прокрутка на iOS */
+    scrollbar-width: thin; /* тонкий скроллбар для Firefox */
+    
+    @include mobile{
+        padding: 0 15px;
+    }
 
     &__button{
        // стили в select-button.scss
