@@ -1,0 +1,68 @@
+@mixin text-32 {
+    font-size: 32px;
+    line-height: 130%; /* 41.6px */
+}
+
+@mixin text-30 {
+    font-size: 30px;
+    line-height: 130%; /* 39px */
+}
+
+@mixin text-28 {
+    font-size: 28px;
+    line-height: 130%; /* 36.4px */
+}
+
+@mixin text-24 {
+    font-size: 24px;
+    line-height: 130%; /* 31.2px */
+}
+
+@mixin text-22 {
+    font-size: 22px;
+    line-height: 130%; /* 28.6px */
+}
+
+@mixin text-20 {
+    font-size: 20px;
+    line-height: 130%; /* 26px */
+}
+
+@mixin text-18 {
+    font-size: 18px;
+    line-height: 130%; /* 23.4px */
+}
+
+@mixin text-18--underline {
+    font-size: 18px;
+    line-height: 130%; /* 23.4px */
+
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: 19.5%; /* 3.51px */
+    text-underline-position: from-font;
+}
+
+@mixin text-16 {
+    font-size: 16px;
+    line-height: 130%; /* 20.8px */
+}
+
+@mixin text-16--underline {
+    font-size: 16px;
+    line-height: 130%; /* 20.8px */
+
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: 25%; /* 4px */
+    text-underline-position: from-font;
+}
+
+@mixin text-14 {
+    font-size: 14px;
+    line-height: 130%; /* 18.2px */
+}

@@ -1,0 +1,100 @@
+@mixin title-h1 {
+    font-size: 64px;
+    line-height: 130%;
+    text-transform: uppercase;
+}
+
+@mixin title-h2 {
+    font-size: 48px;
+    line-height: 130%; /* 62.4px */
+    text-transform: uppercase;
+}
+
+@mixin title-h2--underline {
+    font-size: 48px;
+    line-height: 130%; /* 62.4px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: var(--Pomegranate-Bright, #d1001c);
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+}
+
+@mixin title-h3--underline {
+    font-size: 40px;
+    line-height: 130%; /* 52px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: var(--Pomegranate-Bright, #d1001c);
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+}
+
+@mixin title-h3 {
+    font-size: 40px;
+    line-height: 130%; /* 52px */
+    text-transform: uppercase;
+}
+
+@mixin title-h4--underline {
+    font-size: 32px;
+    line-height: 130%; /* 41.6px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: var(--Pomegranate-Bright, #d1001c);
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+}
+
+@mixin title-h4 {
+    font-size: 32px;
+    line-height: 130%; /* 41.6px */
+    text-transform: uppercase;
+}
+
+@mixin title-h5--underline {
+    font-size: 28px;
+    line-height: 130%; /* 36.4px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: var(--Pomegranate-Bright, #d1001c);
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+}
+
+@mixin title-h5 {
+    font-size: 28px;
+    line-height: 130%; /* 36.4px */
+    text-transform: uppercase;
+}
+
+@mixin title-h6--underline {
+    font-size: 24px;
+    line-height: 130%; /* 31.2px */
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: var(--Pomegranate-Bright, #d1001c);
+    text-decoration-thickness: 5.5%;
+    text-underline-offset: 10%;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+}
+
+@mixin title-h6 {
+    font-size: 24px;
+    line-height: 130%; /* 31.2px */
+    text-transform: uppercase;
+}

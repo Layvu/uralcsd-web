@@ -49,13 +49,13 @@ try {
     scp $BackendZip "$($SshUser)@$($SshHost):$RemotePath"
 
     # Вызов update.sh на VM
-    Write-Host "Running /root/update.sh on VM..."
-    ssh $SshUser@$SshHost "/root/update.sh"
-    if (-not $?) {
-        throw "Failed to run /root/update.sh on VM"
-    }
+    # Write-Host "Running /root/update.sh on VM..."
+    # ssh $SshUser@$SshHost "/root/update.sh"
+    # if (-not $?) {
+    #     throw "Failed to run /root/update.sh on VM"
+    # }
 
-    Write-Host "Deployment completed successfully!"
+    # Write-Host "Deployment completed successfully!"
 }
 catch {
     Write-Error "Deployment failed: $($_.Exception.Message)"
