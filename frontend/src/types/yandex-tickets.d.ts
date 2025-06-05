@@ -6,7 +6,6 @@
 export interface YandexTicketsOpenOptions {
     id: string;
     type: 'session' | 'event';
-    regionId: string;
 }
 
 // Интерфейс для дилера Яндекс.Билетов

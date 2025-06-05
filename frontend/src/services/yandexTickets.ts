@@ -78,8 +78,7 @@ export const openTicketsWidget = (sessionId: string): void => {
 
     const options: YandexTicketsOpenOptions = {
         id: sessionId,
-        regionId: REGION_ID,
-        type: 'event',
+        type: 'session',
     };
 
     window.YandexTicketsDealer.push([
