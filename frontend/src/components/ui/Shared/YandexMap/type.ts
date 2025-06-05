@@ -1,6 +1,7 @@
+import React from 'react';
+
 export interface YandexMapUIProps {
-    apiKey: string;
-    mapState: MapState;
+    mapContainerRef: React.RefObject<HTMLDivElement>;
 }
 
 export interface MapState {

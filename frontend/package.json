@@ -11,7 +11,6 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@pbe/react-yandex-maps": "^1.2.5",
         "@reduxjs/toolkit": "^2.5.1",
         "axios": "^1.8.4",
         "clsx": "^2.1.1",
@@ -31,6 +30,7 @@
         "@types/react": "^18.3.18",
         "@types/react-dom": "^18.3.5",
         "@types/react-transition-group": "^4.4.12",
+        "@types/yandex-maps": "^2.1.36",
         "@typescript-eslint/eslint-plugin": "^8.23.0",
         "@typescript-eslint/parser": "^8.23.0",
         "@vitejs/plugin-react": "^4.3.4",
