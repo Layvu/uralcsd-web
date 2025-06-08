@@ -1,7 +1,11 @@
 .partners-banner {
     &__swiper-container {
         position: relative;
-        padding: 0 80px;
+        padding: 0 40px;
+
+        @include laptop{
+            padding: 0 60px;
+        }
 
         .swiper-button-prev,
         .swiper-button-next {
@@ -29,6 +33,10 @@
             &:hover {
                 background-color: var(--white-20);
             }
+
+            @include laptop{
+                left: 0px;
+            }
         }
 
         .swiper-button-next {
@@ -42,6 +50,10 @@
             &:hover {
                 background-color: var(--white-20);
             }
+
+            @include laptop{
+                right: 0px;
+            }
         }
 
         .swiper-button-prev::after,
@@ -50,14 +62,20 @@
         }
     }
 
+    &__slider-item{
+        display: flex;
+        overflow: hidden;
+        align-self: center;
+        justify-content: center;
+    }
+
 
     &__slider-link {
         display: flex;
         box-sizing: border-box;
-        height: 245px;
-        min-width: 180px;
+        min-width: 120px;
         max-width: 245px;
-        min-height: 180px;
+        min-height: 120px;
         max-height: 245px;
         padding: 20px;
         flex-direction: column;

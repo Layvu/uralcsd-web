@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { FooterUI } from '@components/ui/Footer';
-import { selectContactsError, selectContactsInfo, selectContactsLoading } from '@services/selectors/contactsSelectors';
+import { selectContactsInfo } from '@services/selectors/contactsSelectors';
+//import { selectContactsError, selectContactsLoading } from '@services/selectors/contactsSelectors';
 
 export const Footer: React.FC = () => {
     const contactsInfo = useSelector(selectContactsInfo);
