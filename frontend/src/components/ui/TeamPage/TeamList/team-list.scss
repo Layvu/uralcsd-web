@@ -1,11 +1,23 @@
 .team-list {
     display: grid;
+    align-items: flex-start;
+    align-content: flex-start;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 40px;
     width: 100%;
+
+    @include tablet{
+        padding: 0 15px;
+    }
+
+    @include mobile{
+        min-width: initial;
+        grid-template-columns: 1fr;
+
+    }
 }
 
 .team-list__list-item {
-    min-width: 200px;
-    max-width: 250px;
+    //min-width: 200px;
+    //max-width: 250px;
 }

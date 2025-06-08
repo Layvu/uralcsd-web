@@ -1,7 +1,10 @@
 @use 'mixins' as *;
 
+html, body {
+    overflow-x: hidden;
+}
+  
 html {
-    font-size: 20px;
     box-sizing: border-box;
 }
 
@@ -16,17 +19,31 @@ body {
     margin-top: 53.4px; /* HEADER_SIZE */
     font-family: 'Jost', 'Lexend-Regular', sans-serif;
     color: var(--white);
-    background: no-repeat center/cover fixed;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%; 
+}
+
+body::before { 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     background-image: url('../assets/backgrounds/mainBackground.png');
     background-image: image-set(
       url('../assets/backgrounds/mainBackground.webp') type("image/webp"),
       url('../assets/backgrounds/mainBackground.png') type("image/png")
     );
     background-size: cover;
-
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 130%; 
+    content: ''; 
+    height: 100%; 
+    width: 100%; 
+    left: 0; 
+    top: 0; 
+    position: fixed; 
+    will-change: transform; 
+    z-index: -1; 
 }
 
 
@@ -54,6 +71,7 @@ button {
     border: none;
     background: transparent;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 div,

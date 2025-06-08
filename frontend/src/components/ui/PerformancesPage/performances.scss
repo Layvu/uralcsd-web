@@ -2,8 +2,22 @@
     margin-top: 100px;
     padding: 0 50px;
     margin-bottom: 100px;
-    
+
+    @include laptop{
+        padding: 0 15px;
+    }
+
     &__title{   
+        @include title-h3--underline;
         margin-bottom: 50px;
+
+        @include tablet{
+            @include title-h4--underline;
+            margin-bottom: 30px; 
+        }
+
+        @include mobile{
+            @include title-h5--underline;
+        }
     }
 }

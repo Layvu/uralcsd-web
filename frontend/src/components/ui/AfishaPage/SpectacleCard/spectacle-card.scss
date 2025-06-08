@@ -9,6 +9,7 @@
 
     background: var(--white-10);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     @include laptop{
         height: 700px;
@@ -143,7 +144,7 @@
         text-overflow: ellipsis;
         white-space: wrap;
 
-        margin-bottom: 8px; 
+        margin-bottom: 11px; 
         
         &.line-clamp-4{
             margin-bottom: 0;

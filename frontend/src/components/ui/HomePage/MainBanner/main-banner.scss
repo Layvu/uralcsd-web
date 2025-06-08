@@ -175,6 +175,10 @@
         border: 1.5px solid var(--white);
 
         align-self: center;
+
+        @include tablet{
+            @include text-18;
+        }
     }
 
     &__ya-button {
