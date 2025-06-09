@@ -5,54 +5,77 @@ import { DefaultBanner } from '@components/Shared/DefaultBanner';
 import { proseedBackendText } from 'utils/proceedBackendText';
 import placeholder from '@assets/backgrounds/member-placeholder.png';
 import './team-card-full.scss';
+import { SEO } from '@components/Shared/SEO';
+import { ROUTES } from 'consts';
 
-export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({
-    member,
-    performancesWithRoles,
-    directedPerformances,
-    choreographedPerformances
-}) => {
-    const paragraphs = member?.biography?.split('\n').filter((p) => p.trim().length > 0) || [];
+export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
+    ({ member, performancesWithRoles, directedPerformances, choreographedPerformances }) => {
+        const paragraphs = member?.biography?.split('\n').filter((p) => p.trim().length > 0) || [];
+        const { biography, name, surname, position } = member;
 
-    return (
-        <section className="team-card-full">
-            <div className="team-card-full__slider">
-                <DefaultBanner
-                    name={member.name}
-                    images={member.images?.map((image) => image.url || '') || []}
+        // Описание страницы для SEO
+        const seoDescription = React.useMemo(() => {
+            return biography?.slice(0, 160) || `Биография актёра ${name} ${surname} театра ЦСД`;
+        }, [name, surname, biography]);
+
+        // Ключевые слова для SEO
+        const seoKeywords = React.useMemo(() => {
+            const baseKeywords = ['театр', 'ЦСД', 'актёр', 'биография', 'спектакли', name, surname, position];
+            const combined = [...baseKeywords];
+
+            if (biography) {
+                const biographyWords = biography
+                    .split(' ')
+                    .filter((word) => word.length > 3 && word.match(/^[a-zA-Zа-яА-Я0-9-]+$/))
+                    .slice(0, 5);
+                combined.push(...biographyWords);
+            }
+
+            return Array.from(new Set(combined)).join(', ');
+        }, [name, surname, position, biography]);
+
+        return (
+            <>
+                <SEO
+                    title={`${member.name} ${member.surname} — Актёр театра ЦСД`}
+                    description={seoDescription}
+                    keywords={seoKeywords}
+                    path={`${ROUTES.TEAM}/${member.slug}`}
                 />
-            </div>
 
-            <div className="team-card-full__info wrap">
-                <div className="team-card-full__photo">
-                    <img
-                        src={member.mainPhoto?.url || placeholder}
-                        alt={`${member.name} ${member.surname}`}
-                    />
-                </div>
-
-                <div className="team-card-full__info-container">
-                    <div className="team-card-full__name-container">
-                        <h1 className="team-card-full__name title-h2--underline">
-                            {member.name} {member.surname}
-                        </h1>
-                        <div className="team-card-full__position">{member.position}</div>
+                <section className="team-card-full">
+                    <div className="team-card-full__slider">
+                        <DefaultBanner name={name} images={member.images?.map((image) => image.url || '') || []} />
                     </div>
 
-                    {paragraphs.length > 0 && <BiographySection paragraphs={paragraphs} />}
+                    <div className="team-card-full__info wrap">
+                        <div className="team-card-full__photo">
+                            <img src={member.mainPhoto?.url || placeholder} alt={`${name} ${surname}`} />
+                        </div>
 
-                    <PerformancesSection
-                        performancesWithRoles={performancesWithRoles}
-                        directedPerformances={directedPerformances}
-                        choreographedPerformances={choreographedPerformances}
-                        memberId={member.id}
-                    />
-                </div>
-            </div>
-        </section>
-    );
-});
+                        <div className="team-card-full__info-container">
+                            <div className="team-card-full__name-container">
+                                <h1 className="team-card-full__name title-h2--underline">
+                                    {name} {surname}
+                                </h1>
+                                <div className="team-card-full__position">{position}</div>
+                            </div>
 
+                            {paragraphs.length > 0 && <BiographySection paragraphs={paragraphs} />}
+
+                            <PerformancesSection
+                                performancesWithRoles={performancesWithRoles}
+                                directedPerformances={directedPerformances}
+                                choreographedPerformances={choreographedPerformances}
+                                memberId={member.id}
+                            />
+                        </div>
+                    </div>
+                </section>
+            </>
+        );
+    },
+);
 
 const BiographySection: React.FC<{ paragraphs: string[] }> = ({ paragraphs }) => (
     <div className="team-card-full__biography-container">
@@ -76,9 +99,7 @@ const PerformancesSection: React.FC<{
     memberId: string;
 }> = ({ performancesWithRoles, directedPerformances, choreographedPerformances, memberId }) => {
     const hasPerformances =
-        performancesWithRoles.length > 0 ||
-        directedPerformances.length > 0 ||
-        choreographedPerformances.length > 0;
+        performancesWithRoles.length > 0 || directedPerformances.length > 0 || choreographedPerformances.length > 0;
 
     if (!hasPerformances) return null;
 
