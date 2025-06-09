@@ -4,7 +4,7 @@
 
     &__container {
         position: relative;
-        max-height: 600px;
+        //max-height: 600px;
         padding: 0;
         overflow: visible;
         display: flex;
@@ -15,23 +15,22 @@
     &__single-image{
         width: 100%;
         max-width: 1120px;
-        min-height: 600px;
-        height: 600px;
+        max-height: 600px;
+        height: 100%;
     }
 
     &__slider-image{
         display: block;
         max-width: 1120px;
         width: 100%;
-        min-height: 600px;
-        height: 600px;
+        max-height: 600px;
+        height: 100%;
         object-fit: cover;
         user-select: none;
         pointer-events: none;
     }
 
     &__slider {
-        height: 100%;
         overflow: visible;
     }
 
@@ -40,7 +39,10 @@
         align-items: center;
         justify-content: center;
         max-width: 1120px;
-        max-height: 600px;
+    }
+
+    .swiper-slide{
+        height: initial;
     }
 
     .swiper-button-prev,
@@ -54,13 +56,15 @@
         align-items: center;
         
         position: absolute;
-        // top: 50%;
-        // transform: translateY(-50%);
         border-radius: 50%;
 
         background: var(--white-10, rgba(255, 255, 255, 0.10));
 
         backdrop-filter: blur(20px);
+
+        @include tablet{
+            display: none;
+        }
     }
 
     .swiper-button-prev {
@@ -88,5 +92,25 @@
     .swiper-button-prev::after,
     .swiper-button-next::after {
         display: none;
+    }
+
+    .swiper-pagination-bullet {
+        display: none;
+        width: 6px;
+        height: 6px;
+        background: transparent;
+        border: 1px solid var(--gray-light);
+        border-radius: 50%;
+        opacity: 1;
+        transition: all 0.3s ease;
+        
+        &-active {
+          background: white;
+          border-color: white;
+        }
+
+        @include tablet{
+            display: inline-block;
+        }
     }
 }

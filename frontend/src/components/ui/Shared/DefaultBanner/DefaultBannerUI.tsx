@@ -1,15 +1,17 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import React, { useEffect, useRef, useState } from 'react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import { Autoplay } from 'swiper/modules';
 import './DefaultBanner.scss';
 import { DefaultBannerProps } from './type';
 import { Swiper as SwiperType } from 'swiper';
+import { useBreakpoint } from 'hooks/useBreakpoint';
 
 export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) => {
     const activeSlideRef = useRef<HTMLImageElement>(null);
     const swiperRef = useRef<SwiperType>();
     const [slideWidth, setSlideWidth] = useState<number>(0);
+    const {isTablet, isMobile} = useBreakpoint();
 
     // вычисляет ширину главной картинки, далее на этой инфе ставит расположение кнопок
     useEffect(() => {
@@ -51,7 +53,7 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
 
     // Клонируем массив если 2 или 3 изображения, нужно чтобы loop отрабатывал коррекстно
     // если 2 или 3 изображения
-    let sliderImages = images.length === 2 || images.length === 3 ? [...images, ...images] : images;
+    let sliderImages = images.length === 2 || images.length === 3 && !isTablet && !isMobile ? [...images, ...images] : images;
     
     // Также переносим последний элемент в начало, тоже для корректной работы
     if (sliderImages.length > 1) {
@@ -91,7 +93,7 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                     }}
                     spaceBetween={40}
                     slidesPerView="auto"
-                    modules={[Navigation, Autoplay]}
+                    modules={[Navigation, Autoplay, Pagination]}
                     autoplay={{
                         delay: 5000, // Интервал в миллисекундах
                         disableOnInteraction: true, // Остановить после ручного переключения
@@ -100,10 +102,12 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                         prevEl: '.swiper-button-prev',
                         nextEl: '.swiper-button-next',
                     }}
+
+                    pagination
                     loop={true}
                     centeredSlides={true}
                     speed={500}
-                    initialSlide={1}
+                    initialSlide={isTablet || isMobile ? 0 : 1}
                     className="default-banner__slider"
                 >
                     {sliderImages.map((image, index) => (
