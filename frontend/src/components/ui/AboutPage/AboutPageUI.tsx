@@ -25,7 +25,7 @@ export const AboutPageUI: React.FC<AboutPageUIProps> = React.memo(({ theaterInfo
 
                 <div className="container about-page__wrap wrap">
                     <div className="about-page__title-container">
-                        <h1 className="about-page__main-title title-h2--underline">О театре</h1>
+                        <h1 className="about-page__main-title">О театре</h1>
                         <div className="about-page__description">
                             {paragraphs?.map((paragraph, index) => (
                                 <p
@@ -38,7 +38,7 @@ export const AboutPageUI: React.FC<AboutPageUIProps> = React.memo(({ theaterInfo
                     </div>
 
                     <div className="about-page__partners">
-                        <h2 className="about-page__partners-title title-h2--underline">Наши партнёры</h2>
+                        <h2 className="about-page__partners-title">Наши партнёры</h2>
                         <PartnersBanner partners={theaterInfo.partners} />
                     </div>
                 </div>

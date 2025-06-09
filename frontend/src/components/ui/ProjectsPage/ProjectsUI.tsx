@@ -16,7 +16,7 @@ export const ProjectsUI: React.FC<ProjectsListProps> = () => {
             />
 
             <section className="projects wrap">
-                <h1 className="projects__title title-h3--underline">Проекты</h1>
+                <h1 className="projects__title">Проекты</h1>
                 <ProjectsList />
             </section>
         </>

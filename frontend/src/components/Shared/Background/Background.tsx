@@ -1,11 +1,12 @@
 import { BackgroundUI } from '@components/ui/Shared/Background';
+import { useBreakpoint } from 'hooks/useBreakpoint';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 
 export const Background: React.FC = () => {
     const [count, setCount] = React.useState(0);
-
+    const { isTablet, isMobile } = useBreakpoint();
     React.useEffect(() => {
         const updateCount = () => {
             const pageHeight = document.documentElement.scrollHeight - 514;
@@ -39,6 +40,9 @@ export const Background: React.FC = () => {
         window.scrollTo(0, 0);
     }, [pathname]);
 
+    if (isTablet || isMobile){
+        return null;
+    }
     return (
         <BackgroundUI count={count}/>
     );

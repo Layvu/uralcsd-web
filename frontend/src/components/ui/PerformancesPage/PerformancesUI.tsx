@@ -7,7 +7,7 @@ import './performances.scss';
 
 export const PerformancesUI: React.FC<PerformancesListProps> = () => {
     return (
-        <section className="performances wrap">
+        <>
             <SEO
                 title="Спектакли театра - Центр современной драматургии"
                 description="Ознакомьтесь с репертуаром театра ЦСД: наши спектакли и постановки"
@@ -15,8 +15,10 @@ export const PerformancesUI: React.FC<PerformancesListProps> = () => {
                 path={ROUTES.PERFORMANCES}
             />
 
-            <h1 className="performances__title title-h3--underline">Спектакли</h1>
-            <PerformancesList />
-        </section>
+            <section className="performances wrap">
+                <h1 className="performances__title">Спектакли</h1>
+                <PerformancesList />
+            </section>
+        </>
     );
 };

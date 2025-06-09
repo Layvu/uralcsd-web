@@ -17,7 +17,7 @@ export const TeamPageUI: React.FC = React.memo(() => {
 
             <section className="team-page wrap">
                 <div className="team-page__header">
-                    <h1 className="team-page__title title-h3--underline">Команда</h1>
+                    <h1 className="team-page__title">Команда</h1>
                     <TeamFilter />
                 </div>
 

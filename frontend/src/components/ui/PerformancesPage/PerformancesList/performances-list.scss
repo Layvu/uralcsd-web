@@ -1,8 +1,12 @@
 .performances-list {
     display: grid;
-    gap: 40px;
+    gap: 20px;
     grid-template-columns: repeat(
         auto-fit,
         minmax(min(400px, 540px), 1fr)
       );
+
+    @include laptop{
+        grid-template-columns: 1fr;
+    }
 }
