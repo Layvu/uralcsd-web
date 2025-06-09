@@ -2,15 +2,25 @@
     margin-bottom: 100px;
 
     &__info {
+        display: flex;
         align-self: stretch;
         flex-wrap: wrap;
         align-items: flex-start;
         align-content: flex-start;
 
         margin-top: 50px;
-        display: flex;
-        gap: 60px;
+        gap: 50px;
         padding: 0 50px;
+
+        @include laptop{
+            flex-direction: column;
+            padding: 0 15px;
+        }
+
+        @include tablet{
+            margin-top: 30px;
+            gap: 30px;
+        }
     }
 
     &__photo {
@@ -27,6 +37,12 @@
             height: 100%;
             width: 100%;
         }
+
+        @include laptop{
+            order: 1;
+            width: 250px;
+            min-height: 333.333px;
+        }
     }
 
     &__info-container {
@@ -34,8 +50,12 @@
         min-width: 500px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 60px;
+        gap: 50px;
         flex: 1 0 0;
+
+        @include laptop{
+            display: contents;
+        }
     }
 
     &__name-container {
@@ -44,16 +64,35 @@
         gap: 15px;
     }
 
+    &__name{
+        @include title-h2--underline;
+
+        @include tablet{
+            @include title-h3--underline
+        }
+        @include mobile{
+            @include title-h4--underline
+        }
+    }
+
     &__position {
+        @include text-24;
         color: var(--gray-light);
-        font-size: 24px;
-        line-height: 130%;
     }
 
     &__biography-container {
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        @include laptop{
+            order: 2;
+        }
+
+        @include tablet{
+            margin-top: 50px;
+            gap: 15px;
+        }
     }
 
     &__biography {
@@ -63,16 +102,22 @@
     }
 
     &__biography-paragraph {
+        @include text-20;
         color: var(--gray-light);
-        font-size: 22px;
-        line-height: 130%; 
     }
-
+    &__spectacles-container{
+        @include laptop{
+            order: 2;
+        }
+        @include tablet{
+            margin-top: 50px;
+        }
+    }
     &__spectacles-container,
     &__spectacles {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 20px;
         width: 100%;
     }
     &__spectacle-container {
@@ -91,7 +136,9 @@
     }
     &__spectacle-title,
     &__spectacle-role {
-        font-size: 20px;
-        line-height: 130%; 
+        @include text-20;
+    }
+    &__spectacle-title{
+        padding-right: 50px;
     }
 }

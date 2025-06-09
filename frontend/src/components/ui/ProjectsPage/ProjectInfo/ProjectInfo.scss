@@ -3,32 +3,54 @@
     &__wrap {
         display: flex;
         flex-direction: column;
-        gap: 60px;
+        gap: 50px;
 
-        margin-top: 60px;
+        margin-top: 50px;
         padding: 0 50px;
+
+        @include laptop {
+            padding: 0 15px;
+        }
     }
 
-    &__title-container{
+    &__title-container {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
 
-    &__additional,
-    &__description{
-        color: var(--gray-light);
-        font-size: 24px;
-        line-height: 130%;
+    &__title {
+        @include title-h2--underline;
+
+        @include tablet {
+            @include title-h3--underline;
+        }
+
+        @include mobile {
+            @include title-h4--underline;
+        }
     }
 
-    &__description-container{
+    &__additional,
+    &__description {
+        @include text-24;
+        color: var(--gray-light);
+    }
+
+    &__description-container {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
-    &__description{
+    &__description-title {
+        @include title-h4;
+        @include tablet {
+            @include title-h5;
+        }
+    }
+
+    &__description {
         display: flex;
         flex-direction: column;
         gap: 14px;
@@ -36,7 +58,10 @@
 
     &__button {
         width: fit-content;
-        max-width: 500px;
         padding: 10px 100px;
+
+        @include mobile{
+            width: 100%;
+        }
     }
 }

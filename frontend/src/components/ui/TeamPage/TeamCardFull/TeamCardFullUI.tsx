@@ -33,7 +33,7 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(({
 
                 <div className="team-card-full__info-container">
                     <div className="team-card-full__name-container">
-                        <h1 className="team-card-full__name title-h2--underline">
+                        <h1 className="team-card-full__name">
                             {member.name} {member.surname}
                         </h1>
                         <div className="team-card-full__position">{member.position}</div>
