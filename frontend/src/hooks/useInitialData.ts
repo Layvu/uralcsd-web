@@ -77,6 +77,10 @@ export const useInitialData = () => {
                     console.log('Загрузка данных спектаклей');
                     promises.push(dispatch(fetchPerformances()));
                 }
+                if (!isAfishaItemsInitialized) {
+                    console.log('Загрузка данных афиши');
+                    promises.push(dispatch(fetchAfishaItems()));
+                }
             }
 
             // Детали спектакля

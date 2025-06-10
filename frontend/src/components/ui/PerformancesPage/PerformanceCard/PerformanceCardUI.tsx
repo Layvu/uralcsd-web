@@ -7,11 +7,11 @@ import placeholder from '@assets/backgrounds/placeholder.jpg';
 
 
 // карточка спектакля на странице /performances, отличается от той что в афише
-export const PerformanceCardUI: React.FC<PerformanceCardProps> = (performance) => {
+export const PerformanceCardUI: React.FC<PerformanceCardProps> = ({ isInRepertoire, ...performance }) => {
     return (
         <div className="performance-card">
             <Link to={`/performances/${performance?.slug}`} className="performance-card__link">
-                {performance.isActual && <div className="performance-card__tag tag--small">
+                {isInRepertoire && <div className="performance-card__tag tag--small">
                     Есть в репертуаре
                 </div>
                 }
