@@ -1,6 +1,7 @@
 .footer {
     background-color: var(--black-60);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 50px;
 
     @include laptop {

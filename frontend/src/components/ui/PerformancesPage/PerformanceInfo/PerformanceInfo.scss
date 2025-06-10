@@ -66,6 +66,7 @@
         border-radius: 50%;
         border: 1.5px solid white;
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     &__tags {
@@ -176,6 +177,7 @@
         padding: 15px;
         background: var(--white-10);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     &__ticket-date-container {
@@ -205,6 +207,7 @@
         padding: 20px;
         background: var(--white-10);
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     &__no-performances-container {
@@ -223,6 +226,7 @@
         color: var(--black-100);
         background: var(--gray-basic);
         backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
         cursor: not-allowed;
 
         font-size: 20px;

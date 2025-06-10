@@ -212,6 +212,7 @@
 
             background-color: var(--white-10);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
         .swiper-button-prev {

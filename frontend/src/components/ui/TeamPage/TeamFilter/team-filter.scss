@@ -1,4 +1,4 @@
-.team-filter{
+.team-filter {
     display: flex;
     //justify-content: center;
     gap: 15px;
@@ -9,7 +9,11 @@
     -webkit-overflow-scrolling: touch; /* плавная прокрутка на iOS */
     scrollbar-width: thin; /* тонкий скроллбар для Firefox */
 
-    @include tablet{
+    /* Скрываем скроллбар */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
+
+    @include tablet {
         padding: 0 15px;
     }
 }

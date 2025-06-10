@@ -61,6 +61,7 @@
         background: var(--white-10, rgba(255, 255, 255, 0.10));
 
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
 
         @include tablet{
             display: none;

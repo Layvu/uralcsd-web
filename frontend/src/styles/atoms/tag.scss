@@ -16,6 +16,7 @@
         background: var(--black-30);
 
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     &--big {
@@ -38,5 +39,7 @@
         background: var(--black-30);
 
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
     }
 }

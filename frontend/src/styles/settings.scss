@@ -1,9 +1,10 @@
 @use 'mixins' as *;
 
-html, body {
+html,
+body {
     overflow-x: hidden;
 }
-  
+
 html {
     box-sizing: border-box;
 }
@@ -16,36 +17,59 @@ html {
 
 body {
     margin: 0;
-    margin-top: 53.4px; /* HEADER_SIZE */
-    font-family: 'Jost', 'Lexend-Regular', sans-serif;
+    padding-top: 53.4px;
+    font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--white);
-
     font-weight: 400;
     font-size: 20px;
-    line-height: 130%; 
+    line-height: 130%;
+    background-color: #0a0a0a; /* Фолбэк цвет */
+
+    /* Оптимизация рендеринга шрифтов */
+    font-display: swap;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
-body::before { 
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: #0a0a0a;
+
+    /* Modern background с фолбэками */
+    background-image: -webkit-image-set(
+        url('../assets/backgrounds/mainBackground.webp') 1x,
+        url('../assets/backgrounds/mainBackground.png') 1x
+    );
+    background-image: image-set(
+        url('../assets/backgrounds/mainBackground.webp') type('image/webp') 1x,
+        url('../assets/backgrounds/mainBackground.png') type('image/png') 1x
+    );
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    background-image: url('../assets/backgrounds/mainBackground.png');
-    background-image: image-set(
-      url('../assets/backgrounds/mainBackground.webp') type("image/webp"),
-      url('../assets/backgrounds/mainBackground.png') type("image/png")
-    );
-    background-size: cover;
-    content: ''; 
-    height: 100%; 
-    width: 100%; 
-    left: 0; 
-    top: 0; 
-    position: fixed; 
-    will-change: transform; 
-    z-index: -1; 
-}
 
+    /* Оптимизации */
+    will-change: transform;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+
+    @media (max-width: 768px), (hover: none) {
+        background-image: none !important;
+        background-attachment: initial;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        background-attachment: initial;
+    }
+}
 
 main {
     position: relative;
@@ -98,7 +122,7 @@ h6 {
 
 .loading,
 .not-found,
-.error{
+.error {
     display: flex;
     margin-top: 50px;
     margin-bottom: 100px;
@@ -110,7 +134,6 @@ h6 {
 .error {
     border: 2px #ff4019 solid !important;
 }
-
 
 .visually-hidden {
     @include visually-hidden;

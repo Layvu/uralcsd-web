@@ -10,6 +10,10 @@
     white-space: nowrap; /* запрещаем перенос элементов */
     -webkit-overflow-scrolling: touch; /* плавная прокрутка на iOS */
     scrollbar-width: thin; /* тонкий скроллбар для Firefox */
+
+    /* Скрываем скроллбар */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE и Edge */
     
     @include mobile{
         padding: 0 15px;

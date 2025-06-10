@@ -17,6 +17,7 @@
         background: var(--white-10);
         /* Background blur */
         backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
     }
 
     &__social-title{
@@ -45,6 +46,7 @@
         border-radius: 100px;
         background: var(--pomegranate-basic);
         backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
 
         color: var(--white-100, #FFF);
     
@@ -57,12 +59,15 @@
         &:hover{
             background: var(--pomegranate-medium);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
         }
         &:active{
             color: var(--pomegranate-basic);
             border: 2px solid var(--pomegranate-basic);
             background: none;
             backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
         }
         &:focus{
             border: none;
