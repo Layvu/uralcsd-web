@@ -6,14 +6,23 @@ import './DefaultBanner.scss';
 import { DefaultBannerProps } from './type';
 import { Swiper as SwiperType } from 'swiper';
 import { useBreakpoint } from 'hooks/useBreakpoint';
+import placeholder from '@assets/backgrounds/placeholder.jpg';
 
 export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) => {
     const activeSlideRef = useRef<HTMLImageElement>(null);
     const swiperRef = useRef<SwiperType>();
     const [slideWidth, setSlideWidth] = useState<number>(0);
     const {isTablet, isMobile} = useBreakpoint();
+    const [erroredImages, setErroredImages] = useState<Set<string>>(new Set());
 
-    // вычисляет ширину главной картинки, далее на этой инфе ставит расположение кнопок
+    const handleImageError = (imageUrl: string) => {
+        setErroredImages(prev => new Set(prev).add(imageUrl));
+    };
+
+    const getImageSource = (imageUrl: string) => {
+        return erroredImages.has(imageUrl) ? placeholder : imageUrl;
+    };
+
     useEffect(() => {
         if (!activeSlideRef.current) return;
     
@@ -50,11 +59,16 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
         swiperRef.current.slideNext();
     };
 
-
     // Клонируем массив если 2 или 3 изображения, нужно чтобы loop отрабатывал коррекстно
     // если 2 или 3 изображения
-    let sliderImages = images.length === 2 || images.length === 3 && !isTablet && !isMobile ? [...images, ...images] : images;
-    
+    const isFewImages = images.length === 2 || images.length === 3;
+    const isSmallDevise = isTablet || isMobile;
+    const isLoopOn = (!isSmallDevise && isFewImages);
+
+    let sliderImages = isLoopOn 
+        ? [...images, ...images] 
+        : images;
+
     // Также переносим последний элемент в начало, тоже для корректной работы
     if (sliderImages.length > 1) {
         sliderImages = [sliderImages[sliderImages.length - 1], ...sliderImages.slice(0, sliderImages.length - 1)];
@@ -66,7 +80,13 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
             <section className="default-banner">
                 <div className="default-banner__container container">
                     <div className="default-banner__single-image">
-                        <img src={images[0]} alt={name} className="default-banner__slider-image" />
+                        <img 
+                            src={getImageSource(images[0])}
+                            alt={name}
+                            className="default-banner__slider-image"
+                            onError={() => handleImageError(images[0])}
+                            loading="lazy"
+                        />
                     </div>
                 </div>
             </section>
@@ -102,9 +122,9 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                         prevEl: '.swiper-button-prev',
                         nextEl: '.swiper-button-next',
                     }}
-
                     pagination
-                    loop={true}
+                    // false только если мало изображений и маленький экран
+                    loop={!isFewImages || !isSmallDevise}
                     centeredSlides={true}
                     speed={500}
                     initialSlide={isTablet || isMobile ? 0 : 1}
@@ -115,18 +135,18 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                             key={`${image}-${index}`}
                             className="default-banner__slider-item"
                         >
-
                             <img
-                                src={image}
+                                src={getImageSource(image)}
                                 alt={name}
                                 ref={index === 1 ? activeSlideRef : null}
                                 draggable={false}
                                 className="default-banner__slider-image"
+                                onError={() => handleImageError(image)}
+                                loading="lazy"
                             />
                         </SwiperSlide>
                     ))}
                 </Swiper>
-
             </div>
         </section>
     );

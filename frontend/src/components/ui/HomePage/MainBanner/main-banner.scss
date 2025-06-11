@@ -10,8 +10,6 @@
 
     &__slider-item {
         display: flex;
-        align-items: center;
-        justify-content: center;
         height: 100%;
 
         &--placeholder {
@@ -32,16 +30,20 @@
     }
 
     &__gradient {
+        position: relative;
         width: 100%;
         height: 100%;
-        background: linear-gradient(0deg, var(--black-60, rgba(0, 0, 0, 0.6)));
+        
+        background-color: var(--black-60, rgba(0, 0, 0, 0.6));
         
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        align-self: stretch;
-    }
+      
+        @include tablet {
+          align-items: flex-end;
+        }
+      }
 
     &__wrap {
         width: 100%;
@@ -51,18 +53,22 @@
         align-items: flex-start;
         gap: 20px;
 
-        @include laptop{
+        @include laptop {
             padding: 0 15px 0;
+        }
+
+        @include tablet{
+            padding-bottom: 20px;
         }
     }
 
     &__container {
         width: 100%;
         display: flex;
-        
+
         justify-content: space-between;
 
-        @include laptop{
+        @include laptop {
             row-gap: 60px;
             flex-direction: column;
         }
@@ -77,10 +83,13 @@
         max-width: 600px;
         min-width: 500px;
 
-        @include laptop{
+        @include laptop {
             padding-right: 0;
             max-width: 100%;
             min-width: initial;
+        }
+        @include mobile {
+            gap: 40px;
         }
     }
     &__title-container {
@@ -94,12 +103,17 @@
         justify-content: flex-end;
         align-self: stretch;
 
-        @include laptop{
-            height: 300px;
+        @include laptop {
+            height: 200px;
         }
 
-        @include tablet{
+        @include tablet {
             @include title-h2;
+            height: fit-content;
+        }
+
+        @include mobile {
+            @include title-h3;
         }
     }
 
@@ -144,7 +158,7 @@
     &__duration {
         @include text-30;
 
-        @include tablet{
+        @include tablet {
             @include text-22;
         }
     }
@@ -154,7 +168,7 @@
         @include text-20;
         color: var(--gray-light);
 
-        @include tablet{
+        @include tablet {
             @include text-18;
         }
     }
@@ -176,7 +190,7 @@
 
         align-self: center;
 
-        @include tablet{
+        @include tablet {
             @include text-18;
         }
     }
@@ -195,8 +209,8 @@
         align-self: flex-end;
         gap: 40px;
 
-        @include laptop{
-            width: 100%;   
+        @include laptop {
+            width: 100%;
         }
 
         .swiper-button-prev,
