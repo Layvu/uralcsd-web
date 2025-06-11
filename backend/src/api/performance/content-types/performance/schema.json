@@ -44,9 +44,6 @@
         "audios"
       ]
     },
-    "isActual": {
-      "type": "boolean"
-    },
     "mainImage": {
       "type": "media",
       "multiple": false,

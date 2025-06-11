@@ -66,7 +66,6 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             mainImage: item.mainImage?.url ? { url: getAbsoluteImagePath(item.mainImage.url) } : null,
             intermissionInfo: item.intermissionInfo,
-            isActual: item.isActual,
             isPremiere: item.isPremiere,
         }));
 

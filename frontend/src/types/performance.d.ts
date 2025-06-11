@@ -31,6 +31,5 @@ export interface IPerformance {
     mainImage?: { url: string };
 
     intermissionInfo: string;
-    isActual: boolean;
     isPremiere: boolean;
 }
