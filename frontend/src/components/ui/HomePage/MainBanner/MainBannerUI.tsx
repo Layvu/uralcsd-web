@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { useRef } from 'react';
 import { Navigation } from 'swiper/modules';
@@ -9,6 +9,7 @@ import { MainBannerProps } from './type';
 import { formatToDate, formatToTime } from 'utils/timeFormat';
 import { openTicketsWidget } from '@services/yandexTickets';
 import { Link } from 'react-router-dom';
+import placeholder from '@assets/backgrounds/placeholder.jpg';
 
 export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWithPerformances }) => {
     const swiperRef = useRef<SwiperType>();
@@ -17,6 +18,41 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
             swiperRef.current.activeIndex = 0;
         }
     }, [premiereAfishaItemsWithPerformances]);
+
+    const [erroredImages, setErroredImages] = useState<Set<string>>(new Set());
+
+    const handleImageError = (imageUrl: string | undefined, performanceImageUrl: string | undefined) => {
+        // Добавляем оба URL в случае ошибки
+        const newErroredImages = new Set(erroredImages);
+        if (imageUrl) newErroredImages.add(imageUrl);
+        if (performanceImageUrl) newErroredImages.add(performanceImageUrl);
+        setErroredImages(newErroredImages);
+    };
+
+    const getImageSource = (afishaItem: typeof premiereAfishaItemsWithPerformances[0]) => {
+        // Проверяем оба URL на наличие ошибок
+        const isPhotoError = afishaItem.photo?.url && erroredImages.has(afishaItem.photo.url);
+        const isPerformanceImageError = afishaItem.performance?.mainImage?.url && 
+        erroredImages.has(afishaItem.performance.mainImage.url);
+
+        // Возвращаем плейсхолдер если оба URL дали ошибку или если нет изображений
+        if ((isPhotoError && isPerformanceImageError) || 
+            (!afishaItem.photo?.url && !afishaItem.performance?.mainImage?.url)) {
+            return placeholder;
+        }
+
+        // Возвращаем приоритетное изображение (photo), если оно не дало ошибку
+        if (afishaItem.photo?.url && !isPhotoError) {
+            return afishaItem.photo.url;
+        }
+
+        // Возвращаем изображение спектакля, если оно не дало ошибку
+        if (afishaItem.performance?.mainImage?.url && !isPerformanceImageError) {
+            return afishaItem.performance.mainImage.url;
+        }
+
+        return placeholder;
+    };
 
     const handleBuyTicket = (e: React.MouseEvent<HTMLButtonElement>, sessionId: string) => {
         e.stopPropagation();
@@ -43,7 +79,7 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
             <Swiper
                 onInit={(swiper) => {
                     swiperRef.current = swiper;
-                    swiper.wrapperEl.style.transitionTimingFunction = 'cubic-bezier(0.22, 1, 0.36, 1)';
+                    swiper.wrapperEl.style.transitionTimingFunction = 'cubic-bezier(0.22, 0.6, 0.36, 1)';
                 }}
                 spaceBetween={0}
                 slidesPerView={1}
@@ -70,10 +106,16 @@ export const MainBannerUI: React.FC<MainBannerProps> = ({ premiereAfishaItemsWit
                         tag="div"
                         className="main-banner__slider-item main-banner__slider-item--placeholder"
                     >
-                        <img src={afishaItem.photo?.url ? afishaItem.photo?.url : afishaItem.performance?.mainImage?.url}
+                        <img 
+                            src={getImageSource(afishaItem)}
                             alt={afishaItem.performance?.title}
                             rel="preload"
                             className='main-banner__main-image'
+                            onError={() => handleImageError(
+                                afishaItem.photo?.url, 
+                                afishaItem.performance?.mainImage?.url
+                            )}
+                            loading="lazy"
                         />
                         <div className="main-banner__gradient">
                             <div className="main-banner__wrap wrap">

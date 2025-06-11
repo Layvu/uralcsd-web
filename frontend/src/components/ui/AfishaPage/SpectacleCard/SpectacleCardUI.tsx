@@ -6,6 +6,7 @@ import { openTicketsWidget } from '@services/yandexTickets';
 import './spectacle-card.scss';
 import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 import { useBreakpoint } from 'hooks/useBreakpoint';
+import placeholder from '@assets/backgrounds/placeholder.jpg';
 
 export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     performance,
@@ -19,6 +20,17 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     const [teaserLines, setTeaserLines] = useState<number>(3);
     const [measured, setMeasured] = useState(false);
     const { isMobile } = useBreakpoint();
+    const [imageError, setImageError] = useState(false);
+
+    const handleImageError = () => {
+        setImageError(true);
+    };
+
+    const getImageSource = () => {
+        if (imageError) return placeholder;
+        return photo?.url || performance?.mainImage?.url || placeholder;
+    };
+    
     useLayoutEffect(() => {
         const frame = requestAnimationFrame(() => {
             if (!titleRef.current) return;
@@ -59,7 +71,12 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
         <div className={`container spectacle-card ${isLatestPerformance && 'spectacle-card--latest'}`}>
             <Link to={`/performances/${performance.slug}`} className='spectacle-card__container'>
                 <div className="spectacle-card__image-container">
-                    <img src={photo?.url ? photo.url : performance.mainImage?.url} alt={performance.title} className="spectacle-card__image" />
+                    <img 
+                        src={getImageSource()} 
+                        alt={performance.title} 
+                        className="spectacle-card__image"
+                        onError={handleImageError}
+                    />
                     {performance.isPremiere && <div className="spectacle-card__tag tag--small">
                         Премьера
                     </div>}
