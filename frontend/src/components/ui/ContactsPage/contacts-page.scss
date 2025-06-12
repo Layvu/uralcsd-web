@@ -5,8 +5,12 @@
     margin-top: 50px;
     margin-bottom: 100px;
     padding: 0 50px;
-    
-    &__social-section{
+
+    @include laptop {
+        padding: 0 15px;
+    }
+
+    &__social-section {
         display: flex;
         padding: 40px;
         flex-direction: column;
@@ -18,14 +22,30 @@
         /* Background blur */
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+
+        @include laptop {
+            padding: 20px;
+        }
     }
 
-    &__social-title{
+    &__social-title {
         @include text-32;
         text-align: center;
+
+        @include laptop {
+            @include text-28;
+        }
+
+        @include tablet {
+            @include text-24;
+        }
+
+        @include mobile {
+            @include text-20;
+        }
     }
 
-    &__social-links-container{
+    &__social-links-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -34,7 +54,7 @@
         align-self: stretch;
         flex-wrap: wrap;
     }
-    &__social-link{
+    &__social-link {
         @include text-20;
 
         display: flex;
@@ -51,38 +71,39 @@
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
 
-        color: var(--white-100, #FFF);
-    
+        color: var(--white-100, #fff);
+
         white-space: nowrap;
 
         transition: all ease-in 0.2s;
 
-        p{
+        p {
+            @include text-20;
             display: flex;
             padding: 0px 15px;
             justify-content: center;
             align-items: center;
             flex: 1 0 0;
         }
-
-        &:hover{
-            background: var(--pomegranate-medium);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-
+        @media (any-hover: hover) {
+            &:hover {
+                background: var(--pomegranate-medium);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
         }
-        &:active{
+        &:active {
             color: var(--pomegranate-basic);
             border: 2px solid var(--pomegranate-basic);
             background: none;
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
         }
-        &:focus{
+        &:focus {
             border: none;
         }
 
-        svg{
+        svg {
             width: 24px;
             height: 24px;
             flex-shrink: 0;
@@ -90,13 +111,13 @@
         }
     }
 
-    &__faq-list{
+    &__faq-list {
         display: flex;
         flex-direction: column;
         gap: 50px;
     }
 
-    &__faq-title-container{
+    &__faq-title-container {
         display: flex;
         align-items: center;
         width: 100%;
@@ -105,30 +126,42 @@
 
         padding-bottom: 8px;
         border-bottom: 1.5px solid var(--gray-light);
-        
-        transition: color 0.2s ease-in;
-        transition: border-color 0.2s ease-in;
+
+        transition: all 0.2s ease-in;
 
         cursor: pointer;
-
-        &:hover{
-            border-color: var(--pomegranate-bright);
-            color: var(--pomegranate-bright);
+        @media (any-hover: hover) {
+            &:hover {
+                border-color: var(--pomegranate-bright);
+                color: var(--pomegranate-bright);
+            }
         }
-       
-        &--opened{
+
+        &--opened {
             color: var(--pomegranate-bright);
             border-color: var(--pomegranate-bright);
         }
     }
 
-    &__faq-question{
+    &__faq-question {
         @include title-h3;
         width: 100%;
         color: white;
+
+        @include laptop {
+            @include title-h4;
+        }
+
+        @include tablet {
+            @include title-h5;
+        }
+
+        @include mobile {
+            @include title-h6;
+        }
     }
 
-    &__faq-arrow{
+    &__faq-arrow {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -137,21 +170,31 @@
         height: 36px;
     }
 
-    &__faq-answer-container{
-        margin-top: 40px;
+    &__faq-answer-container {
+        margin-top: 0px;
         display: flex;
         flex-direction: column;
         gap: 40px;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.2s ease-out, opacity 0.2s ease-out, margin-top 0.2s ease-out;
+
+        &--visible {
+            max-height: fit-content;
+            opacity: 1;
+            margin-top: 40px;
+        }
     }
-    &__faq-answer-info{
+    &__faq-answer-info {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-    &__faq-answer-title{
+    &__faq-answer-title {
         @include title-h6;
     }
-    &__faq-answer-text{
+    &__faq-answer-text {
         @include text-22;
         color: var(--gray-light);
     }

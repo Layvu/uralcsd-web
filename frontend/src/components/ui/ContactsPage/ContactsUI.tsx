@@ -75,7 +75,8 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
                                         </div>
 
                                         <ul
-                                            className={`contacts-page__faq-answer-container ${isOpen ? '' : 'visually-hidden'
+                                            className={`contacts-page__faq-answer-container ${
+                                                isOpen ? 'contacts-page__faq-answer-container--visible' : ''
                                             }`}
                                         >
                                             {faqItem.info.map((info) => (

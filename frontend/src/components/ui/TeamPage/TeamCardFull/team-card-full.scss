@@ -12,12 +12,12 @@
         gap: 50px;
         padding: 0 50px;
 
-        @include laptop{
+        @include laptop {
             flex-direction: column;
             padding: 0 15px;
         }
 
-        @include tablet{
+        @include tablet {
             margin-top: 30px;
             gap: 30px;
         }
@@ -38,7 +38,7 @@
             width: 100%;
         }
 
-        @include laptop{
+        @include laptop {
             order: 1;
             width: 250px;
             min-height: 333.333px;
@@ -53,7 +53,7 @@
         gap: 50px;
         flex: 1 0 0;
 
-        @include laptop{
+        @include laptop {
             display: contents;
         }
     }
@@ -64,14 +64,14 @@
         gap: 15px;
     }
 
-    &__name{
+    &__name {
         @include title-h2--underline;
 
-        @include tablet{
-            @include title-h3--underline
+        @include tablet {
+            @include title-h3--underline;
         }
-        @include mobile{
-            @include title-h4--underline
+        @include mobile {
+            @include title-h4--underline;
         }
     }
 
@@ -85,11 +85,11 @@
         flex-direction: column;
         gap: 20px;
 
-        @include laptop{
+        @include laptop {
             order: 2;
         }
 
-        @include tablet{
+        @include tablet {
             margin-top: 50px;
             gap: 15px;
         }
@@ -105,11 +105,11 @@
         @include text-20;
         color: var(--gray-light);
     }
-    &__spectacles-container{
-        @include laptop{
+    &__spectacles-container {
+        @include laptop {
             order: 2;
         }
-        @include tablet{
+        @include tablet {
             margin-top: 50px;
         }
     }
@@ -129,16 +129,18 @@
         border-bottom: 1.5px solid var(--gray-medium);
 
         transition: all 0.2s ease-out;
-        &:hover {
-            color: var(--pomegranate-bright);
-            border-color: var(--pomegranate-bright);
+        @media (any-hover: hover) {
+            &:hover {
+                color: var(--pomegranate-bright);
+                border-color: var(--pomegranate-bright);
+            }
         }
     }
     &__spectacle-title,
     &__spectacle-role {
         @include text-20;
     }
-    &__spectacle-title{
+    &__spectacle-title {
         padding-right: 50px;
     }
 }
