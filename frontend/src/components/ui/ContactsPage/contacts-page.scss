@@ -1,14 +1,14 @@
 .contacts-page {
     display: flex;
     flex-direction: column;
-    gap: 100px;
-    margin-top: 100px;
+    gap: 50px;
+    margin-top: 50px;
     margin-bottom: 100px;
     padding: 0 50px;
     
     &__social-section{
         display: flex;
-        padding: 40px 60px;
+        padding: 40px;
         flex-direction: column;
         align-items: center;
         gap: 30px;
@@ -21,9 +21,8 @@
     }
 
     &__social-title{
+        @include text-32;
         text-align: center;
-        font-size: 32px;
-        line-height: 130%;
     }
 
     &__social-links-container{
@@ -36,12 +35,16 @@
         flex-wrap: wrap;
     }
     &__social-link{
+        @include text-20;
+
         display: flex;
-        width: 260px;
         height: 50px;
-        padding: 10px 40px;
+        min-width: 200px;
+        max-width: 260px;
+        padding: 10px 10px 10px 15px;
         justify-content: space-between;
         align-items: center;
+        flex: 1 0 0;
 
         border-radius: 100px;
         background: var(--pomegranate-basic);
@@ -50,11 +53,17 @@
 
         color: var(--white-100, #FFF);
     
-        font-size: 20px;
-        line-height: 130%; 
         white-space: nowrap;
 
         transition: all ease-in 0.2s;
+
+        p{
+            display: flex;
+            padding: 0px 15px;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0 0;
+        }
 
         &:hover{
             background: var(--pomegranate-medium);
@@ -84,25 +93,48 @@
     &__faq-list{
         display: flex;
         flex-direction: column;
-        gap: 60px;
+        gap: 50px;
+    }
+
+    &__faq-title-container{
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+        align-self: stretch;
+
+        padding-bottom: 8px;
+        border-bottom: 1.5px solid var(--gray-light);
+        
+        transition: color 0.2s ease-in;
+        transition: border-color 0.2s ease-in;
+
+        cursor: pointer;
+
+        &:hover{
+            border-color: var(--pomegranate-bright);
+            color: var(--pomegranate-bright);
+        }
+       
+        &--opened{
+            color: var(--pomegranate-bright);
+            border-color: var(--pomegranate-bright);
+        }
     }
 
     &__faq-question{
+        @include title-h3;
+        width: 100%;
+        color: white;
+    }
 
-        padding-bottom: 8px;
-        border-bottom: 1.5px solid var(--gray-light);;
-        
-        transition: border-color 0.3s ease-in;
-        
-        &:hover{
-            cursor: pointer;
-            border-color: var(--pomegranate-bright);
-        }
-
-        &--opened{
-            border-color: var(--pomegranate-bright);
-        }
-      
+    &__faq-arrow{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
     }
 
     &__faq-answer-container{
@@ -116,9 +148,11 @@
         flex-direction: column;
         gap: 20px;
     }
+    &__faq-answer-title{
+        @include title-h6;
+    }
     &__faq-answer-text{
+        @include text-22;
         color: var(--gray-light);
-        font-size: 22px;
-        line-height: 130%;
     }
 }
