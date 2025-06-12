@@ -194,7 +194,14 @@
     &__faq-answer-title {
         @include title-h6;
     }
-    &__faq-answer-text {
+
+    &__faq-answer-paragraphs {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    &__faq-answer-paragraph {
         @include text-22;
         color: var(--gray-light);
     }

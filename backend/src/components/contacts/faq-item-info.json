@@ -1,7 +1,8 @@
 {
   "collectionName": "components_contacts_faq_item_infos",
   "info": {
-    "displayName": "faqItemInfo"
+    "displayName": "faqItemInfo",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,7 +10,7 @@
       "type": "string"
     },
     "answer": {
-      "type": "text"
+      "type": "richtext"
     }
   }
 }

@@ -25,10 +25,11 @@ export interface ContactsFaqItem extends Struct.ComponentSchema {
 export interface ContactsFaqItemInfo extends Struct.ComponentSchema {
   collectionName: 'components_contacts_faq_item_infos';
   info: {
+    description: '';
     displayName: 'faqItemInfo';
   };
   attributes: {
-    answer: Schema.Attribute.Text;
+    answer: Schema.Attribute.RichText;
     subtitle: Schema.Attribute.String;
   };
 }

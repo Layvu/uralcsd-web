@@ -5,6 +5,7 @@ import { SvgIcon } from '@components/Shared/SvgIcon';
 import { YandexMap } from '@components/Shared/YandexMap';
 import { SEO } from '@components/Shared/SEO';
 import { ROUTES } from 'consts';
+import { proseedBackendText } from 'utils/proceedBackendText';
 
 export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo }) => {
     const { faq, social } = contactsInfo;
@@ -67,26 +68,39 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
                                             <h2 className='contacts-page__faq-question'>
                                                 {faqItem.question}
                                             </h2>
-                                            <SvgIcon 
-                                                className="contacts-page__faq-arrow" 
-                                               
-                                                id={`${isOpen ? 'faq-item__arrow-up' : 'faq-item__arrow-down'}`}      
+                                            <SvgIcon
+                                                className="contacts-page__faq-arrow"
+
+                                                id={`${isOpen ? 'faq-item__arrow-up' : 'faq-item__arrow-down'}`}
                                                 title="arrow" />
                                         </div>
 
                                         <ul
-                                            className={`contacts-page__faq-answer-container ${
-                                                isOpen ? 'contacts-page__faq-answer-container--visible' : ''
+                                            className={`contacts-page__faq-answer-container ${isOpen ? 'contacts-page__faq-answer-container--visible' : ''
                                             }`}
                                         >
-                                            {faqItem.info.map((info) => (
-                                                <li className="contacts-page__faq-answer-info" key={info.answer}>
-                                                    <h3 className="contacts-page__faq-answer-title">
-                                                        {info?.subtitle}
-                                                    </h3>
-                                                    <p className="contacts-page__faq-answer-text">{info.answer}</p>
-                                                </li>
-                                            ))}
+                                            {faqItem.info.map((info) => {
+                                                const paragraphs = info?.answer?.split('\n').filter((p) => p.trim().length > 0) || [];
+
+
+                                                return (
+                                                    <li className="contacts-page__faq-answer-info" key={info.answer}>
+                                                        <h3 className="contacts-page__faq-answer-title">
+                                                            {info?.subtitle}
+                                                        </h3>
+                                                        <div className="contacts-page__faq-answer-paragraphs">
+                                                            {paragraphs.map((paragraph, index) => (
+                                                                <p
+                                                                    key={index}
+                                                                    className="contacts-page__faq-answer-paragraph"
+                                                                    dangerouslySetInnerHTML={{ __html: proseedBackendText(paragraph) }}
+                                                                />
+                                                            ))}
+                                                        </div>
+                                                    </li>
+                                                );
+                                            }
+                                            )}
                                         </ul>
                                     </li>
                                 );

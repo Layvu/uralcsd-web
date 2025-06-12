@@ -4,7 +4,7 @@ import { SpectacleCardProps } from './type';
 import { openTicketsWidget } from '@services/yandexTickets';
 
 import './spectacle-card.scss';
-import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
+import { formatToFullDateTime, formatToTime, formatToWeekday } from 'utils/timeFormat';
 import { useBreakpoint } from 'hooks/useBreakpoint';
 import placeholder from '@assets/backgrounds/placeholder.jpg';
 
@@ -53,7 +53,6 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
         return () => cancelAnimationFrame(frame);
     }, [isLatestPerformance]);
 
-    const ISOdate = new Date(date);
 
     const handleBuyTicket = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -96,7 +95,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
                         </div> :
                             <>{date &&
                                 <div className="spectacle-card__start-time-container">
-                                    <p className='spectacle-card__time'>{ISOdate.getHours()}:{ISOdate.getMinutes()}</p>
+                                    <p className='spectacle-card__time'>{formatToTime(date)}</p>
                                     <p>начало</p>
                                 </div>}
                             {performance.duration &&
