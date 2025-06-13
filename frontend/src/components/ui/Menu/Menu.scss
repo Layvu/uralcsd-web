@@ -1,77 +1,50 @@
 .menu {
-    height: 100vh;
+    pointer-events: none;
+    transition: opacity 400ms ease;
+    transition: height 0.2s linear;
+    height: calc(100vh - 54px); // header size
+    height: calc(100dvh - 54px);
     width: 100%;
 
-    position: fixed;
-    top: 82px; // Header height
-    right: 0;
-    z-index: 90;
-
-    overflow-y: auto;
-
-    &__wrap {
-        position: relative;
-        background-color: var(--skeleton);
-
-        min-height: 100%;
-        z-index: 90;
-
-        padding: 23px 8% 90px;
+    &--open {
+        opacity: 1;
+        pointer-events: auto;
     }
 
-    &__nav {
-        margin-bottom: 23px;
+    &--closed {
+        transition: opacity 0ms ease;
+        height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        height: 100%;
+        padding-top: 40px;
     }
 
     &__nav-list {
         display: flex;
         flex-direction: column;
+        gap: 30px;
     }
 
     &__nav-item {
-        font-size: 16px;
-        line-height: 178%;
-        letter-spacing: -0.04em;
-
-        width: 100%;
-
-        padding: 11px 0;
-        border-bottom: 1px solid;
+        @include text-22;
     }
 
-    // Тоже самое во многом:
-    &__logo {
-        display: block;
-        width: 197px;
-        height: 62px;
-        border-radius: 20px;
-
-        background-color: var(--dark-skeleton);
-    }
     &__social-media {
         display: flex;
         justify-content: flex-start;
-        gap: 24px;
+        gap: 20px;
     }
     &__social-media-item {
-        width: 30px;
-        height: 30px;
-
-        color: var(--dark-skeleton);
-    }
-
-    &--enter {
-        opacity: 0;
-    }
-    &--enter-active {
-        opacity: 1;
-        transition: opacity 400ms;
-    }
-    &--exit {
-        opacity: 1;
-    }
-    &--exit-active {
-        opacity: 0;
-        transition: opacity 400ms;
+        width: 24px;
+        height: 24px;
+        aspect-ratio: 1/1;
     }
 }

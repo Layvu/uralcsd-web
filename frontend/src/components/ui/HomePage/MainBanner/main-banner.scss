@@ -1,6 +1,7 @@
 .main-banner {
     width: 100vw;
     height: calc(100vh - 53.4px);
+    height: calc(100dvh - 53.4px);
 
     &__slider {
         position: relative;
