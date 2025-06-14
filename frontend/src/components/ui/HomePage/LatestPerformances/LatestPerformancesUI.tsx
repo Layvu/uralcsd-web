@@ -20,10 +20,10 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
                         navigate(ROUTES.AFISHA);
                     }}
                 >
-                Полный репертуар
+                    Полный репертуар
                 </button>
             </div>
-            
+
             <ul className="latest-performances__list">
                 {latestPerformances.map((afishaItem) => (
                     <li key={afishaItem?.id} className="latest-performances__card">
@@ -31,8 +31,6 @@ export const LatestPerformancesUI: React.FC<LatestPerformancesProps> = ({ latest
                     </li>
                 ))}
             </ul>
-
-            
         </section>
     );
 };

@@ -9,7 +9,12 @@ import eslint from 'vite-plugin-eslint2';
 
 export default defineConfig({
     plugins: [
-        react(),
+        react({
+            jsxRuntime: 'automatic',
+            babel: {
+                plugins: [['@babel/plugin-transform-runtime', { regenerator: false }]],
+            },
+        }),
         eslint({
             cache: true,
             fix: true,
@@ -86,10 +91,12 @@ export default defineConfig({
                 drop_debugger: true,
                 unused: true,
                 dead_code: true,
+                passes: 2,
             },
             format: {
                 comments: false,
             },
         },
+        target: 'es2019',
     },
 });

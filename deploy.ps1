@@ -23,7 +23,7 @@ try {
     if (-not (Test-Path "dist")) {
         throw "Frontend build failed: dist directory not found"
     }
-    Write-Host "Compressing frontend..."
+    Write-Host "Compressing frontend dist..."
     Remove-Item $FrontendZip -ErrorAction SilentlyContinue
     Compress-Archive -Path dist -DestinationPath $FrontendZip -Force
 
@@ -47,6 +47,8 @@ try {
     }
     scp $FrontendZip "$($SshUser)@$($SshHost):$RemotePath"
     scp $BackendZip "$($SshUser)@$($SshHost):$RemotePath"
+
+    Write-Host "Coping archives to VM done!"
 
     # Вызов update.sh на VM
     # Write-Host "Running /root/update.sh on VM..."

@@ -19,18 +19,15 @@ import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
 import { ContactsPage } from '@pages/ContactsPage';
 import { Background } from '@components/Shared/Background';
 
-const NotFoundPage = () => (
-    <div className="not-found">
-        Извините, запрашиваемая страница не существует.
-    </div>
-);
+const NotFoundPage = () => <div className="not-found">Извините, запрашиваемая страница не существует.</div>;
 
 const AppContent = () => {
     useInitialData();
-    
+    const isPrerender = navigator.userAgent.includes('ReactSnap');
+
     return (
         <div className="site-container">
-            <Header />
+            {!isPrerender && <Header />}
             <main className="main">
                 <Routes>
                     <Route path={ROUTES.HOME} element={<HomePage />} />
@@ -46,7 +43,7 @@ const AppContent = () => {
                     <Route path="*" element={<NotFoundPage />} />
                 </Routes>
             </main>
-            <Footer />
+            {!isPrerender && <Footer />}
         </div>
     );
 };

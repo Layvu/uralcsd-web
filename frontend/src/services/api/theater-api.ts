@@ -18,7 +18,6 @@ const apiClient = axios.create({
     },
 });
 
-
 export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
     console.log('fetchPerformancesApi...');
     try {
@@ -102,7 +101,8 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
             mainPhoto: item.mainPhoto?.url ? { url: getAbsoluteImagePath(item.mainPhoto.url) } : null,
             images: item.images?.map((image) => ({ url: getAbsoluteImagePath(image.url) })) || [],
             aPerformances: item.aPerformances?.map((performance) => ({ id: performance.id })) || [],
-            choreographedPerformances: item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
+            choreographedPerformances:
+                item.choreographedPerformances?.map((performance) => ({ id: performance.id })) || [],
             performanceCasts: item.performanceCasts?.map((cast) => ({ id: cast.id })) || [],
         }));
 
@@ -186,12 +186,10 @@ export const fetchProjectsApi = async (): Promise<IProject[]> => {
 
         const projects = response.data.data.map((project: IProject) => ({
             ...project,
-            images: project.images?.map((image: { url: string }) => 
-                ({ url: getAbsoluteImagePath(image.url) }))   
+            images: project.images?.map((image: { url: string }) => ({ url: getAbsoluteImagePath(image.url) })),
         }));
-            
-        return projects;
 
+        return projects;
     } catch (error) {
         console.error('Error fetching projects:', error);
         throw error;
@@ -221,14 +219,15 @@ export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {
         });
 
         const traterInfoItem = response.data.data;
-        traterInfoItem.images = traterInfoItem.images.map((image: { url: string }) => ({ url: getAbsoluteImagePath(image.url) }));
-        traterInfoItem.partners = traterInfoItem.partners.map((partner: { url: string, image: { url: string } }) => ({
+        traterInfoItem.images = traterInfoItem.images.map((image: { url: string }) => ({
+            url: getAbsoluteImagePath(image.url),
+        }));
+        traterInfoItem.partners = traterInfoItem.partners.map((partner: { url: string; image: { url: string } }) => ({
             url: partner.url,
             image: partner.image.url ? { url: getAbsoluteImagePath(partner.image.url) } : null,
         }));
 
         return traterInfoItem;
-
     } catch (error) {
         console.error('Error fetching theater info:', error);
         throw error;
