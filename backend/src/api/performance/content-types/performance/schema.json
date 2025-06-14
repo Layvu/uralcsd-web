@@ -22,7 +22,9 @@
       "required": true
     },
     "ageLimit": {
-      "type": "integer"
+      "type": "integer",
+      "min": 0,
+      "max": 99
     },
     "description": {
       "type": "richtext"

@@ -4,6 +4,10 @@
     &__day-title {
         @include text-24;
         margin-bottom: 20px;
+
+        @include mobile{
+            display: none;
+        }
     }
 
     &__events {

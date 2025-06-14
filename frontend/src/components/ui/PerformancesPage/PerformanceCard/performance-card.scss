@@ -67,6 +67,7 @@
 
     &__description {
         @include text-20;
+        color: var(--gray-light);
 
         display: -webkit-box;
         -webkit-box-orient: vertical;

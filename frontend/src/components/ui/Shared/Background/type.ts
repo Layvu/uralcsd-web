@@ -1,3 +1,4 @@
 export interface BackgroundProps{
-    count: number
+    count: number;
+    isInPageWithBanner: boolean;
 }

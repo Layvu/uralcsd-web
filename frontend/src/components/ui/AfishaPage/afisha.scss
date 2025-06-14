@@ -27,7 +27,12 @@
         @include title-h3--underline;
         padding-right: 40px;
 
+        @include tablet{
+            @include title-h4--underline;
+        }
+
         @include mobile{
+            @include title-h5--underline;
             padding: 0 15px;
         }
     }
@@ -36,12 +41,13 @@
         display: grid;
         gap: 50px;
 
-        @include mobile{
-            padding: 0 15px;
-        }
-
         @include tablet{
             gap: 30px;
+        }
+
+        @include mobile{
+            gap: 20px;
+            padding: 0 15px;
         }
     } 
 }

@@ -3,7 +3,7 @@ import { BackgroundProps } from './type';
 import './background.scss';
 import pomegranateImg from '@assets/backgrounds/pomegranate.png';
 
-export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
+export const BackgroundUI: React.FC<BackgroundProps> = ({count, isInPageWithBanner}) => {
     return (
         <div className="background-wrapper">
             <div className="pomegranates">
@@ -14,7 +14,7 @@ export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
                         <div
                             className={`red-circle ${isEven ? 'left' : 'right'}`}
                             style={{
-                                top: `${i * 880}px`,
+                                top: `${i * 880 + Number(isInPageWithBanner) * 630}px`,
                             }}
                         >
                         </div>
@@ -22,7 +22,7 @@ export const BackgroundUI: React.FC<BackgroundProps> = ({count}) => {
                             src={pomegranateImg}
                             className={`pomegranate ${isEven ? 'left' : 'right'}`}
                             style={{
-                                top: `${i * 880}px`,
+                                top: `${i * 880 + Number(isInPageWithBanner) * 630}px`,
                                 transform: isEven ? 'none' : 'scale(-1,1)',
                             }}
                             alt='pomegranate background'

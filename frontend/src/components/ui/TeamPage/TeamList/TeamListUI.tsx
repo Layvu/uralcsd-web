@@ -6,7 +6,7 @@ import './team-list.scss';
 
 export const TeamListUI: React.FC<TeamListProps> = React.memo(({ filteredMembers }) => {
     if (filteredMembers.length === 0) {
-        return <div className="team-list__empty">Нет участников в этой категории.</div>;
+        return <div className="not-found">Нет участников в этой категории.</div>;
     }
 
     return (

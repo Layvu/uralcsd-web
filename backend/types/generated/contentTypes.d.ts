@@ -543,7 +543,14 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
   };
   attributes: {
     additionalInfo: Schema.Attribute.String;
-    ageLimit: Schema.Attribute.Integer;
+    ageLimit: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 99;
+          min: 0;
+        },
+        number
+      >;
     choreographers: Schema.Attribute.Relation<
       'manyToMany',
       'api::member.member'

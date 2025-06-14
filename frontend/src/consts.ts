@@ -22,3 +22,13 @@ export enum TeamFilterCategories {
     Directors = 'directors',
     Management = 'management',
 }
+
+export const isHomeRoute = (pathname: string) => pathname === ROUTES.HOME;
+export const isAfishaRoute = (pathname: string) => pathname === ROUTES.AFISHA;
+export const isPerformancesListRoute = (pathname: string) => pathname === ROUTES.PERFORMANCES;
+export const isPerformanceDetailRoute = (pathname: string) => pathname.startsWith(`${ROUTES.PERFORMANCES}/`);
+export const isTeamListRoute = (pathname: string) => pathname === ROUTES.TEAM;
+export const isTeamDetailRoute = (pathname: string) => pathname.startsWith(`${ROUTES.TEAM}/`);
+export const isProjectsListRoute = (pathname: string) => pathname === ROUTES.PROJECTS;
+export const isProjectDetailRoute = (pathname: string) => pathname.startsWith(`${ROUTES.PROJECTS}/`);
+export const isAboutRoute = (pathname: string) => pathname === ROUTES.ABOUT;

@@ -21,19 +21,7 @@ import { selectTheaterInitialized } from '@services/selectors/theaterSelectors';
 import { selectContactsInitialized } from '@services/selectors/contactsSelectors';
 import { selectPerformanceCastsInitialized } from '@services/selectors/performanceCastSelectors';
 import { selectAfishaInitialized } from '@services/selectors/afishaItemsSelectors';
-
-// Routes
-import { ROUTES } from 'consts';
-
-const isHomeRoute = (pathname: string) => pathname === ROUTES.HOME;
-const isAfishaRoute = (pathname: string) => pathname === ROUTES.AFISHA;
-const isPerformancesListRoute = (pathname: string) => pathname === ROUTES.PERFORMANCES;
-const isPerformanceDetailRoute = (pathname: string) => pathname.startsWith(`${ROUTES.PERFORMANCES}/`);
-const isTeamListRoute = (pathname: string) => pathname === ROUTES.TEAM;
-const isTeamDetailRoute = (pathname: string) => pathname.startsWith(`${ROUTES.TEAM}/`);
-const isProjectsListRoute = (pathname: string) => pathname === ROUTES.PROJECTS;
-const isProjectDetailRoute = (pathname: string) => pathname.startsWith(`${ROUTES.PROJECTS}/`);
-const isAboutRoute = (pathname: string) => pathname === ROUTES.ABOUT;
+import { isAboutRoute, isAfishaRoute, isHomeRoute, isPerformanceDetailRoute, isPerformancesListRoute, isProjectDetailRoute, isProjectsListRoute, isTeamDetailRoute, isTeamListRoute } from 'consts';
 
 export const useInitialData = () => {
     const dispatch = useDispatch<AppDispatch>();

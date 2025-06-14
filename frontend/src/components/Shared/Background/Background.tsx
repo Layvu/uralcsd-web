@@ -1,16 +1,26 @@
 import { BackgroundUI } from '@components/ui/Shared/Background';
+import { isAboutRoute, isPerformanceDetailRoute, isProjectDetailRoute, isTeamDetailRoute } from 'consts';
 import { useBreakpoint } from 'hooks/useBreakpoint';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 
 export const Background: React.FC = () => {
+    const { pathname } = useLocation();
+
     const [count, setCount] = React.useState(0);
     const { isLaptop, isTablet, isMobile } = useBreakpoint();
+
+    const isInPageWithBanner = 
+        isProjectDetailRoute(pathname) ||
+        isPerformanceDetailRoute(pathname) ||
+        isTeamDetailRoute(pathname) || 
+        isAboutRoute(pathname);
+
     React.useEffect(() => {
         const updateCount = () => {
-            const pageHeight = document.documentElement.scrollHeight - 514;
-            const pomegranateSpacing = 900;
+            const pageHeight = document.documentElement.scrollHeight - 590 -  Number(isInPageWithBanner) * 630;
+            const pomegranateSpacing = 900 + Number(isInPageWithBanner) * 630;
             const needed = Math.ceil(pageHeight / pomegranateSpacing);
             setCount(needed);
         };
@@ -34,8 +44,6 @@ export const Background: React.FC = () => {
         };
     }, []);
     
-    const { pathname } = useLocation();
-
     React.useEffect(() => {
         window.scrollTo(0, 0);
     }, [pathname]);
@@ -44,6 +52,6 @@ export const Background: React.FC = () => {
         return null;
     }
     return (
-        <BackgroundUI count={count}/>
+        <BackgroundUI count={count} isInPageWithBanner={isInPageWithBanner}/>
     );
 };

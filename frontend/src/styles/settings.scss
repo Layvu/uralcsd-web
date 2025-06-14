@@ -87,13 +87,14 @@ ul {
     margin: 0;
     list-style: none;
 }
-
+div, button, a {
+    -webkit-tap-highlight-color: transparent;
+}
 button {
     padding: 0;
     border: none;
     background: transparent;
     cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
 }
 
 div,
@@ -124,9 +125,19 @@ h6 {
     display: flex;
     margin-top: 50px;
     margin-bottom: 100px;
-    justify-self: center;
-    font-size: 30px;
-    line-height: 52px;
+    font-size: 32px;
+    line-height: 130%;
+
+    padding: 40px;
+    width: 100%;
+
+    justify-content: center;
+    align-items: center;
+}
+.not-found{
+    background: var(--white-10, rgba(255, 255, 255, 0.10));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 }
 
 .error {
@@ -144,8 +155,8 @@ h6 {
 }
 
 .container {
-    @include min-max(320px, 100%);
-    // Элемент растягивается на всю ширину родителя, но не становится уже 320px
+    @include min-max(0px, 100%);
+    // Элемент растягивается на всю ширину родителя, но не становится уже 0px
 }
 
 .wrap {

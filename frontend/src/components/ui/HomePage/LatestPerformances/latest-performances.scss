@@ -1,5 +1,5 @@
 .latest-performances {
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 100px;
 
     @include laptop {
@@ -58,30 +58,12 @@
         scrollbar-width: thin; /* тонкий скроллбар для Firefox */
 
         // отключение полосы прокрутки
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
 
-        // scrollbar-width: none; /* Firefox */
-        // -ms-overflow-style: none; /* IE/Edge */
-
-        // &::-webkit-scrollbar {
-        //     display: none; /* Chrome/Safari */
-        //   }
-
-        // стили для комьютера
-        // &::-webkit-scrollbar-button{
-        //     display: none;
-        // }
-
-        // &::-webkit-scrollbar {
-        //     height: 4px;
-        //   }
-
-        // &::-webkit-scrollbar-track {
-        //  background-color: transparent;
-        // }
-
-        // &::-webkit-scrollbar-thumb {
-        //      background-color: var(--gray-medium);
-        //   }
+        &::-webkit-scrollbar {
+            display: none; /* Chrome/Safari */
+          }
 
         @include laptop {
             padding: 0 15px;
