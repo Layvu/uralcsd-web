@@ -39,7 +39,7 @@ body::before {
     height: 120vh;
     z-index: -1;
     background-color: #0a0a0a;
-
+    background-image: url('../assets/backgrounds/mainBackground.png');
     /* Modern background с фолбэками */
     background-image: -webkit-image-set(
         url('../assets/backgrounds/mainBackground.webp'),

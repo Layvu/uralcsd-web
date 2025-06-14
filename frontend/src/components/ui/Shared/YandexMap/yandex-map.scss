@@ -1,7 +1,15 @@
 .yandex-map-container {
     width: 100%;
-    height: 600px;
+    height: 400px;
     background-color: var(--gray-medium);
+
+    
+    @include laptop{
+        height: 300px;
+    }
+    @include mobile{
+        height: 200px;
+    }
 }
 
 .yandex-map {

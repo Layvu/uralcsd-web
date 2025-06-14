@@ -7,39 +7,40 @@
     align-items: flex-start;
     gap: 12px;
 
-    @include mobile{
+    @include mobile {
         min-width: initial;
     }
-
-    &:hover {
-        .team-card-brief__position,
-        .team-card-brief__name {
-            color: var(--pomegranate-bright);
+    @media (any-hover: hover) {
+        &:hover {
+            .team-card-brief__position,
+            .team-card-brief__name {
+                color: var(--pomegranate-bright);
+            }
         }
     }
 
     &__photo {
-      //  max-height: 350px;
+        //  max-height: 350px;
         height: 350px;
         align-self: stretch;
         aspect-ratio: 5/7;
         object-fit: cover;
 
-        @include laptop{
-          //  max-height: initial;
+        @include laptop {
+            //  max-height: initial;
             height: 364px;
         }
-        @include tablet{
+        @include tablet {
             height: 294px;
         }
-        @include mobile{
+        @include mobile {
             height: 490px;
         }
     }
-    &__name {     
+    &__name {
         @include text-24;
 
-        align-self: stretch;      
+        align-self: stretch;
         transition: color 0.2s ease-out;
     }
     &__position {
@@ -56,7 +57,7 @@
         text-overflow: ellipsis;
 
         margin-top: 2px;
-      
+
         transition: color 0.2s ease-out;
     }
 }

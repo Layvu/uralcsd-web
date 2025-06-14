@@ -1,6 +1,6 @@
-.ticket-button{
+.ticket-button {
     height: 50px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,23 +15,24 @@
     -webkit-backdrop-filter: blur(30px);
 
     transition: all ease-in 0.2s;
-
-    &:hover{
-        background: var(--pomegranate-medium);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+    @media (any-hover: hover) {
+        &:hover {
+            background: var(--pomegranate-medium);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
     }
-    &:active{
+    &:active {
         color: var(--pomegranate-basic);
         border: 2px solid var(--pomegranate-basic);
         background: none;
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
     }
-    &:focus{
+    &:focus {
         border: none;
     }
-    &:disabled{
+    &:disabled {
         pointer-events: none;
         background: var(--gray-basic);
         color: var(--black-100);

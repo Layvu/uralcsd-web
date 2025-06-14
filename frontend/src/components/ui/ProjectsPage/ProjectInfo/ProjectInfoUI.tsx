@@ -49,7 +49,7 @@ export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
 
                 <div className="project-info__wrap wrap">
                     <div className="project-info__title-container">
-                        <h1 className="project-info__name">{project.title}</h1>
+                        <h1 className="project-info__title">{project.title}</h1>
                         {project.additionalInfo && <p className="project-info__additional">{project.additionalInfo}</p>}
                     </div>
                     {project.description && (

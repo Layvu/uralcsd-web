@@ -1,14 +1,18 @@
 .contacts-page {
     display: flex;
     flex-direction: column;
-    gap: 100px;
-    margin-top: 100px;
+    gap: 50px;
+    margin-top: 50px;
     margin-bottom: 100px;
     padding: 0 50px;
-    
-    &__social-section{
+
+    @include laptop {
+        padding: 0 15px;
+    }
+
+    &__social-section {
         display: flex;
-        padding: 40px 60px;
+        padding: 40px;
         flex-direction: column;
         align-items: center;
         gap: 30px;
@@ -18,15 +22,30 @@
         /* Background blur */
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+
+        @include laptop {
+            padding: 20px;
+        }
     }
 
-    &__social-title{
+    &__social-title {
+        @include text-32;
         text-align: center;
-        font-size: 32px;
-        line-height: 130%;
+
+        @include laptop {
+            @include text-28;
+        }
+
+        @include tablet {
+            @include text-24;
+        }
+
+        @include mobile {
+            @include text-20;
+        }
     }
 
-    &__social-links-container{
+    &__social-links-container {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -35,45 +54,56 @@
         align-self: stretch;
         flex-wrap: wrap;
     }
-    &__social-link{
+    &__social-link {
+        @include text-20;
+
         display: flex;
-        width: 260px;
         height: 50px;
-        padding: 10px 40px;
+        min-width: 200px;
+        max-width: 260px;
+        padding: 10px 10px 10px 15px;
         justify-content: space-between;
         align-items: center;
+        flex: 1 0 0;
 
         border-radius: 100px;
         background: var(--pomegranate-basic);
         backdrop-filter: blur(30px);
         -webkit-backdrop-filter: blur(30px);
 
-        color: var(--white-100, #FFF);
-    
-        font-size: 20px;
-        line-height: 130%; 
+        color: var(--white-100, #fff);
+
         white-space: nowrap;
 
         transition: all ease-in 0.2s;
 
-        &:hover{
-            background: var(--pomegranate-medium);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-
+        p {
+            @include text-20;
+            display: flex;
+            padding: 0px 15px;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0 0;
         }
-        &:active{
+        @media (any-hover: hover) {
+            &:hover {
+                background: var(--pomegranate-medium);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+        }
+        &:active {
             color: var(--pomegranate-basic);
             border: 2px solid var(--pomegranate-basic);
             background: none;
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
         }
-        &:focus{
+        &:focus {
             border: none;
         }
 
-        svg{
+        svg {
             width: 24px;
             height: 24px;
             flex-shrink: 0;
@@ -81,44 +111,98 @@
         }
     }
 
-    &__faq-list{
+    &__faq-list {
         display: flex;
         flex-direction: column;
-        gap: 60px;
+        gap: 50px;
     }
 
-    &__faq-question{
+    &__faq-title-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 20px;
+        align-self: stretch;
 
         padding-bottom: 8px;
-        border-bottom: 1.5px solid var(--gray-light);;
-        
-        transition: border-color 0.3s ease-in;
-        
-        &:hover{
-            cursor: pointer;
-            border-color: var(--pomegranate-bright);
+        border-bottom: 1.5px solid var(--gray-light);
+
+        transition: all 0.2s ease-in;
+
+        cursor: pointer;
+        @media (any-hover: hover) {
+            &:hover {
+                border-color: var(--pomegranate-bright);
+                color: var(--pomegranate-bright);
+            }
         }
 
-        &--opened{
+        &--opened {
+            color: var(--pomegranate-bright);
             border-color: var(--pomegranate-bright);
         }
-      
     }
 
-    &__faq-answer-container{
-        margin-top: 40px;
+    &__faq-question {
+        @include title-h3;
+        width: 100%;
+        color: white;
+
+        @include laptop {
+            @include title-h4;
+        }
+
+        @include tablet {
+            @include title-h5;
+        }
+
+        @include mobile {
+            @include title-h6;
+        }
+    }
+
+    &__faq-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+    }
+
+    &__faq-answer-container {
+        margin-top: 0px;
         display: flex;
         flex-direction: column;
         gap: 40px;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        transition: max-height 0.2s ease-out, opacity 0.2s ease-out, margin-top 0.2s ease-out;
+
+        &--visible {
+            max-height: fit-content;
+            opacity: 1;
+            margin-top: 40px;
+        }
     }
-    &__faq-answer-info{
+    &__faq-answer-info {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
-    &__faq-answer-text{
+    &__faq-answer-title {
+        @include title-h6;
+    }
+
+    &__faq-answer-paragraphs {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    &__faq-answer-paragraph {
+        @include text-22;
         color: var(--gray-light);
-        font-size: 22px;
-        line-height: 130%;
     }
 }

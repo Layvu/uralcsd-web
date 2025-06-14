@@ -27,7 +27,7 @@
         flex-direction: column;
         gap: 15px;
     }
-    &__title{
+    &__title {
         @include title-h2--underline;
     }
     &__tags-container {
@@ -86,7 +86,7 @@
         gap: 20px;
     }
 
-    &__description-container{
+    &__description-container {
         display: flex;
         flex-direction: column;
         gap: 14px;
@@ -131,16 +131,17 @@
         border-bottom: 1.5px solid var(--gray-medium);
         transition: all 0.2s ease-out;
     }
-
-    &__cast-item:hover,
-    &__crew-item:not(.performance-info__dramatist):hover {
-        color: var(--pomegranate-bright);
-        border-color: inherit;
-        .performance-info__cast-role {
-            color: inherit;
-        }
-        .performance-info__crew-position{
-            color: inherit;
+    @media (any-hover: hover) {
+        &__cast-item:hover,
+        &__crew-item:not(.performance-info__dramatist):hover {
+            color: var(--pomegranate-bright);
+            border-color: inherit;
+            .performance-info__cast-role {
+                color: inherit;
+            }
+            .performance-info__crew-position {
+                color: inherit;
+            }
         }
     }
 
@@ -195,10 +196,10 @@
 
     &__ticket-button {
         max-width: 100px;
-        padding: 10px 20px;   
+        padding: 10px 20px;
     }
 
-    &__no-ticket-section{
+    &__no-ticket-section {
         min-width: 200px;
         max-width: 330px;
         width: 100%;
@@ -230,13 +231,13 @@
         cursor: not-allowed;
 
         font-size: 20px;
-        line-height: 130%; 
+        line-height: 130%;
     }
 
     &__no-performances-info {
         color: var(--gray-light);
 
         font-size: 18px;
-        line-height: 130%; 
+        line-height: 130%;
     }
 }

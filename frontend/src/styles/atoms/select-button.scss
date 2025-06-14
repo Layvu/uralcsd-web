@@ -1,5 +1,5 @@
 .select-button {
-  //  @include text-20;
+    //  @include text-20;
     font-size: 20px;
     line-height: 26px;
 
@@ -8,7 +8,7 @@
     align-self: center;
     height: 50px;
     padding: 12px 30px;
-    
+
     cursor: pointer;
 
     border-radius: 200px;
@@ -19,8 +19,10 @@
     &--active {
         background-color: var(--pomegranate-medium);
     }
-
-    &:hover:not(.select-button--active){
-        color: var(--pomegranate-basic);
+    
+    @media (any-hover: hover) {
+        &:hover:not(.select-button--active) {
+            color: var(--pomegranate-basic);
+        }
     }
 }

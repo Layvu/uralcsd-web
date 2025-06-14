@@ -22,6 +22,14 @@ export const selectLatestAfishaItems = createSelector([selectAfishaItems], (afis
 export const selectAfishaItemsByPerformanceId = (performanceId: string) =>
     createSelector([selectAfishaItems], (items) => items.filter((item) => item.performance.id == performanceId));
 
+export const selectUniquePerformanceIds = createSelector(
+    [selectAfishaItems],
+    (afishaItems) => new Set(
+      afishaItems
+          .map(item => item.performance?.id)
+          .filter(Boolean) as string[]
+    )
+);
 export const makeSelectFilteredAfishaItems = () =>
     createSelector(
         [

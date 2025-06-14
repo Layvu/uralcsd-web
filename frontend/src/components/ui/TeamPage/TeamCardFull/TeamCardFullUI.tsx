@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TeamCardFullProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
@@ -10,9 +10,15 @@ import { ROUTES } from 'consts';
 
 export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
     ({ member, performancesWithRoles, directedPerformances, choreographedPerformances }) => {
+        const [imageError, setImageError] = useState(false);
+        
+        const handleImageError = () => {
+            setImageError(true);
+        };
+        const imageUrl = imageError ? placeholder : member.mainPhoto?.url || placeholder;
         const paragraphs = member?.biography?.split('\n').filter((p) => p.trim().length > 0) || [];
         const { biography, name, surname, position } = member;
-
+    
         // Описание страницы для SEO
         const seoDescription = React.useMemo(() => {
             return biography?.slice(0, 160) || `Биография актёра ${name} ${surname} театра ЦСД`;
@@ -50,7 +56,11 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
 
                     <div className="team-card-full__info wrap">
                         <div className="team-card-full__photo">
-                            <img src={member.mainPhoto?.url || placeholder} alt={`${name} ${surname}`} />
+                            <img 
+                                src={imageUrl} 
+                                alt={`${name} ${surname}`}
+                                onError={handleImageError}
+                            />
                         </div>
 
                         <div className="team-card-full__info-container">
