@@ -89,7 +89,7 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
 
 const BiographySection: React.FC<{ paragraphs: string[] }> = ({ paragraphs }) => (
     <div className="team-card-full__biography-container">
-        <h2 className="title-h4">Биография</h2>
+        <h2 className="team-card-full__biography-title">Биография</h2>
         <div className="team-card-full__biography">
             {paragraphs.map((paragraph, index) => (
                 <p
@@ -115,7 +115,7 @@ const PerformancesSection: React.FC<{
 
     return (
         <div className="team-card-full__spectacles-container">
-            <h2 className="title-h4">Спектакли</h2>
+            <h2 className="team-card-full__spectacles-title">Спектакли</h2>
             <div className="team-card-full__spectacles">
                 {performancesWithRoles.map(({ performance, role }) => (
                     <PerformanceItem

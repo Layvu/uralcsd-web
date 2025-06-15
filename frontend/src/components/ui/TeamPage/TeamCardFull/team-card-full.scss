@@ -91,7 +91,23 @@
 
         @include tablet {
             margin-top: 50px;
+        }
+
+        @include mobile{
             gap: 15px;
+        }
+    }
+
+    &__biography-title,
+    &__spectacles-title{
+        @include title-h4;
+
+        @include tablet {
+            @include title-h5;
+        }
+
+        @include mobile{
+            @include title-h6;
         }
     }
 

@@ -8,12 +8,14 @@ import { formatToFullDateTime, formatToWeekday } from 'utils/timeFormat';
 import { proseedBackendText } from 'utils/proceedBackendText';
 import { SEO } from '@components/Shared/SEO';
 import { ROUTES } from 'consts';
+import { useBreakpoint } from 'hooks/useBreakpoint';
 
 export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
     performance,
     actorsWithRoles,
     currentAfishaItems,
 }) => {
+    const { isMobile } = useBreakpoint();
     const handleBuyTicket = (sessionId: string) => {
         if (sessionId) {
             openTicketsWidget(sessionId);
@@ -75,6 +77,11 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                     <section className="performance-info__main-section">
                         <div className="performance-info__title-section">
                             <div className="performance-info__title-container">
+                                {performance.isPremiere && isMobile && (
+                                    <div className="performance-info__tags">
+                                        <p className="performance-info__tag tag--big">Премьера</p>
+                                    </div>
+                                )}
                                 <h1 className="performance-info__title ">«{title.trim()}»</h1>
                                 <p className="performance-info__additional-description">{additionalInfo}</p>
                             </div>
@@ -88,7 +95,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                                         <p>{ageLimit}+</p>
                                     </div>
                                 )}
-                                {performance.isPremiere && (
+                                {performance.isPremiere && !isMobile && (
                                     <div className="performance-info__tags">
                                         <p className="performance-info__tag tag--big">Премьера</p>
                                     </div>
@@ -97,7 +104,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                         </div>
                         {description && (
                             <div className="performance-info__description-section">
-                                <p className="performance-info__description-title title-h4">Описание спектакля</p>
+                                <p className="performance-info__description-title">Описание спектакля</p>
                                 <div className="performance-info__description-container">
                                     {paragraphs.map((paragraph, index) => (
                                         <p
@@ -113,7 +120,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                         {/* Постановщики, включает в себя хореографов, режиссеров и драматурга  */}
                         {(dramatist?.length > 0 || directors?.length > 0 || choreographers?.length > 0) && (
                             <div className="performance-info__crew">
-                                <h2 className="performance-info__crew-title title-h4">Постановщики</h2>
+                                <h2 className="performance-info__crew-title">Постановщики</h2>
                                 <ul className="performance-info__crew-list">
                                     {dramatist && (
                                         <li className="performance-info__crew-item performance-info__dramatist">
@@ -154,7 +161,7 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                         {/* Актерский состав */}
                         {actorsWithRoles.length > 0 && (
                             <div className="performance-info__cast">
-                                <h2 className="performance-info__cast-title title-h4">Актерский состав</h2>
+                                <h2 className="performance-info__cast-title">Актерский состав</h2>
                                 <ul className="performance-info__cast-list">
                                     {actorsWithRoles.map((item) => (
                                         <li key={`${item.actor?.name}-${item.role}`}>
@@ -176,45 +183,42 @@ export const PerformanceInfoUI: React.FC<PerformanceInfoUIProps> = ({
                     </section>
 
                     {/* секция покупки билетов на этот спектакль, даты которого есть в репертуаре */}
-                    {currentAfishaItems.length > 0 ? (
-                        <section className="performance-info__ticket-section">
-                            <ul className="performance-info__ticket-list">
-                                {currentAfishaItems.map((afishaItem) => {
-                                    return (
-                                        <li key={afishaItem.id} className="performance-info__ticket-item">
-                                            <div className="performance-info__ticket-date-container">
-                                                <p className="performance-info__ticket-date">
-                                                    {formatToFullDateTime(afishaItem.date)}
-                                                </p>
-                                                <p className="performance-info__ticket-weekday">
-                                                    {formatToWeekday(afishaItem.date)}
-                                                </p>
-                                            </div>
-                                            <button
-                                                className="performance-info__ticket-button ticket-button"
-                                                onClick={() => handleBuyTicket(afishaItem.sessionId)}
-                                                disabled={!afishaItem.sessionId}
-                                                style={{ cursor: !afishaItem.sessionId ? 'not-allowed' : 'pointer' }}
-                                            >
-                                                Билеты
-                                            </button>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </section>
-                    ) : (
-                        <section className="performance-info__no-ticket-section">
-                            <div className="performance-info__no-performances-container">
-                                <p className="performance-info__no-performances-info">
-                                    Следите за афишей театра ЦСД, чтобы не пропустить показ!
-                                </p>
-                                <button disabled className="performance-info__no-performances-button">
-                                    Нет в показе
-                                </button>
-                            </div>
-                        </section>
-                    )}
+                    <section className="performance-info__ticket-section">
+                        <ul className="performance-info__ticket-list">
+                            {currentAfishaItems.length > 0 ? (
+                                currentAfishaItems.map((afishaItem) => (
+                                    <li key={afishaItem.id} className="performance-info__ticket-item">
+                                        <div className="performance-info__ticket-date-container">
+                                            <p className="performance-info__ticket-date">
+                                                {formatToFullDateTime(afishaItem.date)}
+                                            </p>
+                                            <p className="performance-info__ticket-weekday">
+                                                {formatToWeekday(afishaItem.date)}
+                                            </p>
+                                        </div>
+                                        <button
+                                            className={`performance-info__ticket-button ticket-button ${!afishaItem.sessionId ? "disabled" : ""
+                                            }`}
+                                            onClick={() => handleBuyTicket(afishaItem.sessionId)}
+                                            disabled={!afishaItem.sessionId}
+                                        >
+                                            Билеты
+                                        </button>
+                                    </li>
+                                ))
+                            ) : (
+                                <li className="performance-info__no-ticket-item">
+                                    <p className="performance-info__no-performances-info">
+                                        Следите за афишей театра ЦСД, чтобы не пропустить показ!
+                                    </p>
+                                    <button disabled className="performance-info__no-performances-button">
+                                        Нет в показе
+                                    </button>
+                                </li>
+                            )}
+                        </ul>
+                    </section>
+
                 </div>
             </div>
         </>

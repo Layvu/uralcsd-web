@@ -3,10 +3,20 @@
 
     &__wrap {
         display: flex;
-        justify-content: space-between;
-
+        gap: 50px 60px;
         padding: 0 50px;
         margin-top: 50px;
+
+        @include desktop{
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-direction: column;
+            padding: 0;
+        }
+        @include tablet{
+            margin-top: 30px;
+        }
+
     }
     &__main-section {
         display: flex;
@@ -15,26 +25,71 @@
         flex-direction: column;
         max-width: 730px;
         width: 100%;
-        gap: 60px;
+        gap: 50px;
+
+        @include desktop{
+            display: contents;
+        }
     }
-    &__title-section {
+    &__title-section{
         display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
         flex-direction: column;
-        gap: 48px;
+        gap: 50px;
+
+        @include tablet{
+            gap: 30px;
+        }
     }
     &__title-container {
         display: flex;
         flex-direction: column;
         gap: 15px;
+
+        @include desktop{
+            padding: 0 50px;
+        }
+        @include laptop{
+            padding: 0 15px;
+        }
     }
+ 
     &__title {
         @include title-h2--underline;
+
+        @include tablet{
+            @include title-h3--underline;
+        }
+        @include mobile{
+            @include title-h4--underline;
+        }
     }
     &__tags-container {
         display: flex;
         align-items: flex-start;
         align-self: stretch;
         gap: 30px;
+
+        @include desktop{
+            padding: 0 50px;
+        }
+        @include laptop{
+            padding: 0 15px;
+        }  
+    }
+
+    &__tag{
+        @include mobile{
+            font-size: 16px;
+            display: inline-flex;
+            height: 40px;
+            padding: 0px 16px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
     }
 
     &__duration-container {
@@ -42,18 +97,23 @@
         flex-direction: column;
     }
     &__duration {
-        font-size: 22px;
-        line-height: 130%;
+        @include text-24;
+
+        @include mobile{
+            @include text-22;
+        }
     }
     &__addition {
+        @include text-20;
         color: var(--gray-light);
-        font-size: 18px;
-        line-height: 130%;
+
+        @include mobile{
+            @include text-18;
+        }
     }
 
     &__age-rate {
-        font-size: 22px;
-        line-height: 130%;
+        @include text-22;
 
         display: flex;
         width: 50px;
@@ -67,6 +127,14 @@
         border: 1.5px solid white;
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(20px);
+
+        
+        @include mobile{
+            @include text-18;
+
+            width: 45px;
+            height: 45px;
+        }
     }
 
     &__tags {
@@ -75,15 +143,44 @@
     }
 
     &__additional-description {
+        @include text-24;
         color: var(--gray-light);
-        font-size: 24px;
-        line-height: 130%;
+
+        @include mobile{
+            @include text-20;
+        }
     }
 
     &__description-section {
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        order: 3; 
+        
+        @include desktop{
+            padding: 0 50px;
+        }
+        @include laptop{
+            padding: 0 15px;
+        }
+        @include mobile{
+            gap: 15px;
+        }
+    }
+
+    &__description-title,
+    &__crew-title,
+    &__cast-title{
+        @include title-h4;
+
+        @include tablet{
+            @include title-h5;
+
+        }
+        @include mobile{
+            @include title-h6;
+        }
     }
 
     &__description-container {
@@ -93,9 +190,8 @@
     }
 
     &__description-paragraph {
+        @include text-20;
         color: var(--gray-light);
-        font-size: 22px;
-        line-height: 130%;
     }
 
     // &__cast-details {
@@ -112,13 +208,25 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        order: 4;   
+
+        @include desktop{
+            padding: 0 50px;
+        }
+        @include laptop{
+            padding: 0 15px;
+        }
+        @include mobile{
+            gap: 15px;
+        }
     }
 
     &__cast-list,
     &__crew-list {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 20px;
         width: 100%;
     }
 
@@ -147,15 +255,14 @@
 
     &__cast-actor,
     &__crew-member {
-        font-size: 20px;
-        line-height: 130%;
+        padding-right: 30px;
+        @include text-20;
     }
 
     &__cast-role,
     &__crew-position {
         color: var(--gray-light);
-        font-size: 20px;
-        line-height: 130%;
+        @include text-20;
     }
 
     &__ticket-section {
@@ -164,12 +271,36 @@
         width: 100%;
         height: fit-content;
         align-items: center;
+
+        @include desktop{
+            display: contents;
+        }
     }
 
     &__ticket-list {
         display: flex;
         flex-direction: column;
         gap: 20px;
+
+        @include desktop{
+            flex-direction: row;
+            order: 2;
+            width: 100%;
+            padding: 0 50px;
+            overflow-x: auto; /* или scroll для постоянной полосы прокрутки */
+            overflow-y: hidden; /* отключаем вертикальную прокрутку */
+            white-space: nowrap; /* запрещаем перенос элементов */
+            -webkit-overflow-scrolling: touch; /* плавная прокрутка на iOS */
+            scrollbar-width: thin; /* тонкий скроллбар для Firefox */
+
+            /* Скрываем скроллбар */
+            // scrollbar-width: none; /* Firefox */
+            // -ms-overflow-style: none; /* IE и Edge */
+        }
+
+        @include laptop{
+            padding: 0 15px;
+        }
     }
 
     &__ticket-item {
@@ -179,36 +310,52 @@
         background: var(--white-10);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+
+        @include desktop{
+            flex-direction: column;
+        }
     }
 
     &__ticket-date-container {
         flex: 1;
     }
     &__ticket-date {
-        font-size: 22px;
-        line-height: 130%;
+        @include text-22;
     }
     &__ticket-weekday {
         color: var(--gray-light);
-        font-size: 18px;
-        line-height: 130%;
+        @include text-18;
     }
 
     &__ticket-button {
         max-width: 100px;
         padding: 10px 20px;
+
+        @include desktop{
+            max-width: 100%;
+        }
     }
 
-    &__no-ticket-section {
-        min-width: 200px;
-        max-width: 330px;
-        width: 100%;
-        height: fit-content;
-        align-items: center;
+    &__no-ticket-item {
+        display: flex;
+        width: 347px;
+        max-width: 350px;
         padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        white-space: wrap;
+        gap: 20px;
         background: var(--white-10);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
+
+        @include mobile{
+            width: 100%;
+            max-width: initial;
+        }
+        // @include desktop{
+        //     display: contents;
+        // }
     }
 
     &__no-performances-container {
@@ -230,14 +377,13 @@
         -webkit-backdrop-filter: blur(30px);
         cursor: not-allowed;
 
-        font-size: 20px;
-        line-height: 130%;
+        @include text-20;
     }
 
     &__no-performances-info {
         color: var(--gray-light);
 
-        font-size: 18px;
-        line-height: 130%;
+        @include text-18;
+
     }
 }
