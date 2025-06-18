@@ -17,7 +17,11 @@ export const Header: React.FC = () => {
         setIsMenuOpen((prev) => !prev);
     };
 
+    const handleMenuClose= () => {
+        setIsMenuOpen(false);
+    };
+
     const contactsInfo = useSelector(selectContactsInfo);
 
-    return <HeaderUI onMenuToggle={handleMenuToggle} isMenuOpen={isMenuOpen} location={location.pathname} contactsInfo={contactsInfo}/>;
+    return <HeaderUI onMenuToggle={handleMenuToggle} onClose={handleMenuClose} isMenuOpen={isMenuOpen} location={location.pathname} contactsInfo={contactsInfo}/>;
 };

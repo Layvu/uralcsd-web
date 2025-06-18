@@ -12,6 +12,9 @@
     /* Скрываем скроллбар */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE и Edge */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     @include tablet {
         padding: 0 15px;

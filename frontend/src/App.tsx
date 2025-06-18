@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { ROUTES } from 'consts';
@@ -17,12 +17,13 @@ import { TeamCardFull } from '@pages/TeamPage/TeamCardFull';
 import { ProjectsPage } from '@pages/ProjectsPage';
 import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
 import { ContactsPage } from '@pages/ContactsPage';
+import { NotFoundPage } from '@pages/NotFoundPage';
 import { Background } from '@components/Shared/Background';
-
-const NotFoundPage = () => <div className="not-found">Извините, запрашиваемая страница не существует.</div>;
+import { useScrollRestoration } from 'hooks/useScrollRestoration';
 
 const AppContent = () => {
     useInitialData();
+    useScrollRestoration();
     const isPrerender = navigator.userAgent.includes('ReactSnap');
 
     return (

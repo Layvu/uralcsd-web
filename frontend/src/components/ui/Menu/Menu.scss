@@ -1,8 +1,6 @@
 .menu {
     pointer-events: none;
     transition: opacity 400ms ease;
-    //transition: height 0.2s linear;
-    height: calc(100vh - 54px); // header size
     height: calc(100dvh - 54px);
     width: 100%;
 
@@ -24,7 +22,7 @@
         justify-content: space-between;
         width: 100%;
         height: 100%;
-        padding-top: 40px;
+        padding-top: 50px;
     }
 
     &__nav-list {
@@ -46,5 +44,18 @@
         width: 24px;
         height: 24px;
         aspect-ratio: 1/1;
+    }
+}
+
+
+@supports not (height: 100dvh) {
+    .menu {
+        height: calc(100vh - 54px); // header size + высота поисковой строки
+        padding-bottom: 50px; 
+    }
+
+    .menu--closed {
+        height: 0;
+        padding-bottom: 0;  
     }
 }

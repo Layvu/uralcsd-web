@@ -8,7 +8,7 @@ import { HeaderUIProps } from './type';
 import { SvgIcon } from '@components/Shared/SvgIcon';
 import { menuLinks } from 'consts';
 
-export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, location, contactsInfo }) => {
+export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, onClose, isMenuOpen, location, contactsInfo }) => {
     return (
         <header className="header">
             <div className="header__wrap wrap">
@@ -38,13 +38,14 @@ export const HeaderUI: React.FC<HeaderUIProps> = ({ onMenuToggle, isMenuOpen, lo
                 <button
                     className="header__menu-button"
                     onClick={onMenuToggle}
+                   
                     aria-expanded={isMenuOpen}
                     aria-controls="mobile-menu"
                 >
                     <SvgIcon id={isMenuOpen ? 'menu--close' : 'menu--open'} title="Menu icon" />
                 </button>
 
-                <Menu isOpen={isMenuOpen} />
+                <Menu isOpen={isMenuOpen}  onClose={onClose}/>
             </div>
         </header>
     );

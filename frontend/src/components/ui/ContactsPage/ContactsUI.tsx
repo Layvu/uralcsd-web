@@ -85,9 +85,10 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
 
                                                 return (
                                                     <li className="contacts-page__faq-answer-info" key={info.answer}>
-                                                        <h3 className="contacts-page__faq-answer-title">
-                                                            {info?.subtitle}
+                                                        {info?.subtitle && <h3 className="contacts-page__faq-answer-title">
+                                                            {info.subtitle}
                                                         </h3>
+                                                        }
                                                         <div className="contacts-page__faq-answer-paragraphs">
                                                             {paragraphs.map((paragraph, index) => (
                                                                 <p

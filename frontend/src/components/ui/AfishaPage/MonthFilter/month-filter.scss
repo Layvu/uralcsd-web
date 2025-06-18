@@ -14,7 +14,9 @@
     /* Скрываем скроллбар */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE и Edge */
-    
+    &::-webkit-scrollbar {
+        display: none;
+    }
     @include mobile{
         padding: 0 15px;
     }
