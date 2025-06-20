@@ -12,13 +12,16 @@
   },
   "attributes": {
     "address": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "workingDaysText": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "phones": {
       "type": "component",

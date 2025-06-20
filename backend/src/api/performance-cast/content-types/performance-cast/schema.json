@@ -12,7 +12,8 @@
   },
   "attributes": {
     "role": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "actor": {
       "type": "relation",

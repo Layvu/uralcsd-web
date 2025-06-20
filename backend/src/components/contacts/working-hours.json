@@ -1,15 +1,18 @@
 {
   "collectionName": "components_contacts_working_hours",
   "info": {
-    "displayName": "workingHours"
+    "displayName": "workingHours",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "start": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "end": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

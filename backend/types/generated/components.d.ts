@@ -3,10 +3,11 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface ContactsDayOffItem extends Struct.ComponentSchema {
   collectionName: 'components_contacts_day_off_items';
   info: {
+    description: '';
     displayName: 'dayOffItem';
   };
   attributes: {
-    dayOff: Schema.Attribute.String;
+    dayOff: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -37,34 +38,37 @@ export interface ContactsFaqItemInfo extends Struct.ComponentSchema {
 export interface ContactsPhones extends Struct.ComponentSchema {
   collectionName: 'components_contacts_phones';
   info: {
+    description: '';
     displayName: 'phones';
     icon: 'phone';
   };
   attributes: {
-    boxOffice: Schema.Attribute.String;
-    main: Schema.Attribute.String;
+    boxOffice: Schema.Attribute.String & Schema.Attribute.Required;
+    main: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
 export interface ContactsSocial extends Struct.ComponentSchema {
   collectionName: 'components_contacts_socials';
   info: {
+    description: '';
     displayName: 'social';
   };
   attributes: {
-    tg: Schema.Attribute.String;
-    vk: Schema.Attribute.String;
+    tg: Schema.Attribute.String & Schema.Attribute.Required;
+    vk: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
 export interface ContactsWorkingHours extends Struct.ComponentSchema {
   collectionName: 'components_contacts_working_hours';
   info: {
+    description: '';
     displayName: 'workingHours';
   };
   attributes: {
-    end: Schema.Attribute.String;
-    start: Schema.Attribute.String;
+    end: Schema.Attribute.String & Schema.Attribute.Required;
+    start: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 

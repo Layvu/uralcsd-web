@@ -1,12 +1,14 @@
 {
   "collectionName": "components_contacts_day_off_items",
   "info": {
-    "displayName": "dayOffItem"
+    "displayName": "dayOffItem",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "dayOff": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

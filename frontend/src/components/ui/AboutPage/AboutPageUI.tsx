@@ -25,7 +25,7 @@ export const AboutPageUI: React.FC<AboutPageUIProps> = React.memo(({ theaterInfo
 
                 <div className="container about-page__wrap wrap">
                     <div className="about-page__title-container">
-                        <h1 className="about-page__main-title">О театре</h1>
+                        <h1 className="about-page__main-title">{theaterInfo.title}</h1>
                         <div className="about-page__description">
                             {paragraphs?.map((paragraph, index) => (
                                 <p

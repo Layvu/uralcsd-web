@@ -420,12 +420,12 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    address: Schema.Attribute.String;
+    address: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     daysOff: Schema.Attribute.Component<'contacts.day-off-item', true>;
-    email: Schema.Attribute.String;
+    email: Schema.Attribute.String & Schema.Attribute.Required;
     faq: Schema.Attribute.Component<'contacts.faq-item', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -440,7 +440,7 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    workingDaysText: Schema.Attribute.String;
+    workingDaysText: Schema.Attribute.String & Schema.Attribute.Required;
     workingHours: Schema.Attribute.Component<'contacts.working-hours', false>;
   };
 }
@@ -523,7 +523,7 @@ export interface ApiPerformanceCastPerformanceCast
       'api::performance.performance'
     >;
     publishedAt: Schema.Attribute.DateTime;
-    role: Schema.Attribute.String;
+    role: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -642,7 +642,7 @@ export interface ApiTheaterInfoTheaterInfo extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText;
+    description: Schema.Attribute.RichText & Schema.Attribute.Required;
     images: Schema.Attribute.Media<'images', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<

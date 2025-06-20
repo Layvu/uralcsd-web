@@ -2,15 +2,18 @@
   "collectionName": "components_contacts_phones",
   "info": {
     "displayName": "phones",
-    "icon": "phone"
+    "icon": "phone",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "main": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "boxOffice": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -1,15 +1,18 @@
 {
   "collectionName": "components_contacts_socials",
   "info": {
-    "displayName": "social"
+    "displayName": "social",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "vk": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "tg": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

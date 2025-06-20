@@ -28,7 +28,8 @@
       "component": "theater-info.partner"
     },
     "description": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     }
   }
 }

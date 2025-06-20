@@ -1,4 +1,5 @@
 export interface ITheaterInfo {
+    title: string;
     images:{
         url: string;
     }[];
