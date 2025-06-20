@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { TeamFilterProps } from './type';
 
 import './team-filter.scss';
@@ -12,19 +12,19 @@ const categoriesLabels: Record<TeamFilterCategories, string> = {
 export const TeamFilterUI: React.FC<TeamFilterProps> = React.memo(({ activeCategory, onSelectCategory }) => {
     // Refs для кнопок
     const buttonRefs = React.useRef<Record<TeamFilterCategories, HTMLButtonElement | null>>(
-        {} as Record<TeamFilterCategories, HTMLButtonElement | null>
+        {} as Record<TeamFilterCategories, HTMLButtonElement | null>,
     );
-    
+
     const handleClick = (category: TeamFilterCategories) => {
         onSelectCategory(category);
-        
+
         // Прокручиваем к выбранному элементу
         const button = buttonRefs.current[category];
         if (button) {
             button.scrollIntoView({
                 behavior: 'smooth', // Плавная прокрутка
-                block: 'nearest',   // Прокручивает минимально необходимое расстояние
-                inline: 'center',   // Центрирует элемент по горизонтали
+                block: 'nearest', // Прокручивает минимально необходимое расстояние
+                inline: 'center', // Центрирует элемент по горизонтали
             });
         }
     };
