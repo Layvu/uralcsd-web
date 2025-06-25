@@ -43,18 +43,15 @@ export const useInitialData = () => {
 
             // Загружаем контакты сразу - нужны для футера на всех страницах
             if (!isContactsInitialized) {
-                console.log('Загрузка данных о контактах');
                 await dispatch(fetchContacts());
             }
 
             // Главная и Афиша
             if (isHomeRoute(location.pathname) || isAfishaRoute(location.pathname)) {
                 if (!isPerformancesInitialized) {
-                    console.log('Загрузка данных спектаклей');
                     promises.push(dispatch(fetchPerformances()));
                 }
                 if (!isAfishaItemsInitialized) {
-                    console.log('Загрузка данных афиши');
                     promises.push(dispatch(fetchAfishaItems()));
                 }
             }
@@ -62,11 +59,9 @@ export const useInitialData = () => {
             // Список спектаклей
             if (isPerformancesListRoute(location.pathname)) {
                 if (!isPerformancesInitialized) {
-                    console.log('Загрузка данных спектаклей');
                     promises.push(dispatch(fetchPerformances()));
                 }
                 if (!isAfishaItemsInitialized) {
-                    console.log('Загрузка данных афиши');
                     promises.push(dispatch(fetchAfishaItems()));
                 }
             }
@@ -75,19 +70,15 @@ export const useInitialData = () => {
             // Подтягиваем данные о команде и связь с командой для ссылок в "Актёрский состав"
             if (isPerformanceDetailRoute(location.pathname)) {
                 if (!isPerformancesInitialized) {
-                    console.log('Загрузка данных спектаклей');
                     promises.push(dispatch(fetchPerformances()));
                 }
                 if (!isTeamInitialized) {
-                    console.log('Загрузка данных команды');
                     promises.push(dispatch(fetchTeam()));
                 }
                 if (!isPerformanceCastInitialized) {
-                    console.log('Загрузка связи данных списка акторов и ролей в спектаклях');
                     promises.push(dispatch(fetchPerformanceCasts()));
                 }
                 if (!isAfishaItemsInitialized) {
-                    console.log('Загрузка данных афиши');
                     promises.push(dispatch(fetchAfishaItems()));
                 }
             }
@@ -95,7 +86,6 @@ export const useInitialData = () => {
             // Список участников
             if (isTeamListRoute(location.pathname)) {
                 if (!isTeamInitialized) {
-                    console.log('Загрузка данных команды');
                     promises.push(dispatch(fetchTeam()));
                 }
             }
@@ -104,15 +94,12 @@ export const useInitialData = () => {
             // Подтягиваем данные о спектаклях и связь со спектаклями для ссылок в "Спектакли"
             if (isTeamDetailRoute(location.pathname)) {
                 if (!isTeamInitialized) {
-                    console.log('Загрузка данных команды');
                     promises.push(dispatch(fetchTeam()));
                 }
                 if (!isPerformancesInitialized) {
-                    console.log('Загрузка данных спектаклей');
                     promises.push(dispatch(fetchPerformances()));
                 }
                 if (!isPerformanceCastInitialized) {
-                    console.log('Загрузка связи данных списка акторов и ролей в спектаклях');
                     promises.push(dispatch(fetchPerformanceCasts()));
                 }
             }
@@ -120,7 +107,6 @@ export const useInitialData = () => {
             // Проекты
             if (isProjectsListRoute(location.pathname) || isProjectDetailRoute(location.pathname)) {
                 if (!isProjectsInitialized) {
-                    console.log('Загрузка данных проектов');
                     promises.push(dispatch(fetchProjects()));
                 }
             }
@@ -128,7 +114,6 @@ export const useInitialData = () => {
             // О театре
             if (isAboutRoute(location.pathname)) {
                 if (!isTheaterInitialized) {
-                    console.log('Загрузка данных о театре');
                     promises.push(dispatch(fetchTheaterInfo()));
                 }
             }

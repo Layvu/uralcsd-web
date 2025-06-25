@@ -5,7 +5,7 @@ const config = {
 };
 
 const bootstrap = (app: StrapiApp) => {
-  console.log(app);
+  //console.log(app);
 };
 
 export default {
