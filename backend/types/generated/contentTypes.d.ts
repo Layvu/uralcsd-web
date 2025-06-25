@@ -378,13 +378,13 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
     singularName: 'afisha-item';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    date: Schema.Attribute.DateTime;
+    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
     isInMainBanner: Schema.Attribute.Boolean &
       Schema.Attribute.DefaultTo<false>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -398,9 +398,15 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
       'api::performance.performance'
     >;
     photo: Schema.Attribute.Media<'images'>;
-    price: Schema.Attribute.Integer;
+    price: Schema.Attribute.Integer &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      >;
     publishedAt: Schema.Attribute.DateTime;
-    sessionId: Schema.Attribute.String;
+    sessionId: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -417,7 +423,7 @@ export interface ApiContactContact extends Struct.SingleTypeSchema {
     singularName: 'contact';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     address: Schema.Attribute.String & Schema.Attribute.Required;
@@ -583,9 +589,7 @@ export interface ApiPerformancePerformance extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required;
     teaser: Schema.Attribute.Text;
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -601,7 +605,7 @@ export interface ApiProjectProject extends Struct.CollectionTypeSchema {
     singularName: 'project';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     additionalInfo: Schema.Attribute.Text;
@@ -636,7 +640,7 @@ export interface ApiTheaterInfoTheaterInfo extends Struct.SingleTypeSchema {
     singularName: 'theater-info';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;
