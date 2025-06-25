@@ -37,7 +37,7 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             },
         });
 
-        const performances = response.data.data.map((item: IPerformance) => ({
+        let performances = response.data.data.map((item: IPerformance) => ({
             id: item.id,
             title: item.title,
             slug: item.slug,
@@ -67,6 +67,13 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             intermissionInfo: item.intermissionInfo,
             isPremiere: item.isPremiere,
         }));
+
+        // сначала премьеры, затем остальные
+        performances = performances.sort((a: IPerformance, b: IPerformance) => {
+            if (a.isPremiere && !b.isPremiere) return -1;
+            if (!a.isPremiere && b.isPremiere) return 1;
+            return 0;
+        });
 
         return performances;
     } catch (error) {

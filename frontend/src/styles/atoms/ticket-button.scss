@@ -22,13 +22,6 @@
             -webkit-backdrop-filter: blur(10px);
         }
     }
-    &:active {
-        color: var(--pomegranate-basic);
-        border: 2px solid var(--pomegranate-basic);
-        background: none;
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-    }
     &:focus {
         border: none;
     }

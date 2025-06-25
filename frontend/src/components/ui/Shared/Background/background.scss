@@ -1,36 +1,45 @@
-
 .app-wrapper {
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .background-wrapper {
     overflow: hidden;
-    
+
     .pomegranates {
         top: 0;
         left: 0;
         width: 100%;
-        pointer-events: none; 
+        pointer-events: none;
         z-index: -1;
     }
-    .red-circle{
+
+    .red-circle {
+        mix-blend-mode: color-dodge;
         position: absolute;
         width: 500px;
         height: 500px;
 
         border-radius: 500px;
         opacity: 0.8;
-        background: radial-gradient(50% 50% at 50% 50%, #C7001A 0%, rgba(199, 0, 26, 0.00) 100%);
-        mix-blend-mode: color-dodge;
+        background: radial-gradient(50% 50% at 50% 50%, #c7001a 0%, rgba(199, 0, 26, 0) 100%);
+
         filter: blur(10px);
 
+        z-index: -1;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+
+        @supports not (mix-blend-mode: color-dodge) {
+            opacity: 0.3;
+        }
+
         &.left {
-            left: -250px; 
+            left: -250px;
         }
 
         &.right {
-            right: -250px; 
+            right: -250px;
         }
     }
     .pomegranate {
@@ -40,12 +49,20 @@
         height: 500px;
         overflow: hidden;
 
+        z-index: -1;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+
+        @supports not (mix-blend-mode: hard-light) {
+            opacity: 0.7;
+        }
+
         &.left {
-            left: -250px; 
+            left: -250px;
         }
 
         &.right {
-            right: -250px; 
+            right: -250px;
         }
     }
 }
