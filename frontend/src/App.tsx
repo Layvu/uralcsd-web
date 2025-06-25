@@ -18,12 +18,14 @@ import { ProjectsPage } from '@pages/ProjectsPage';
 import { ProjectPage } from '@pages/ProjectsPage/ProjectPage';
 import { ContactsPage } from '@pages/ContactsPage';
 import { NotFoundPage } from '@pages/NotFoundPage';
-import { Background } from '@components/Shared/Background';
-import { useScrollRestoration } from 'hooks/useScrollRestoration';
+//import { useScrollRestoration } from 'hooks/useScrollRestoration';
 
 const AppContent = () => {
     useInitialData();
-    useScrollRestoration();
+
+    // плохо работает: возвращает на предыдущую позицию только если скролл был небольшой (~2500px) 
+    //useScrollRestoration();
+    
     const isPrerender = navigator.userAgent.includes('ReactSnap');
 
     return (
@@ -52,10 +54,7 @@ const AppContent = () => {
 const App: React.FC = () => {
     return (
         <Router>
-            <div className="app-wrapper">
-                <Background />
-                <AppContent />
-            </div>
+            <AppContent />
         </Router>
     );
 };

@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TeamCardFullProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
-import { proseedBackendText } from 'utils/proceedBackendText';
+import { parseParagraphs, proseedBackendText } from 'utils/proceedBackendText';
 import placeholder from '@assets/backgrounds/member-placeholder.png';
 import './team-card-full.scss';
 import { SEO } from '@components/Shared/SEO';
 import { ROUTES } from 'consts';
+import { Background } from '@components/Shared/Background';
 
 export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
     ({ member, performancesWithRoles, directedPerformances, choreographedPerformances }) => {
@@ -16,9 +17,11 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
             setImageError(true);
         };
         const imageUrl = imageError ? placeholder : member.mainPhoto?.url || placeholder;
-        const paragraphs = member?.biography?.split('\n').filter((p) => p.trim().length > 0) || [];
-        const { biography, name, surname, position } = member;
-    
+        const paragraphs = parseParagraphs(member.biography ? member.biography : '');
+        const { biography, name, surname, position, images } = member;
+
+        const memberImages = images?.map((image) => image.url);
+
         // Описание страницы для SEO
         const seoDescription = React.useMemo(() => {
             return biography?.slice(0, 160) || `Биография актёра ${name} ${surname} театра ЦСД`;
@@ -41,13 +44,14 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
         }, [name, surname, position, biography]);
 
         return (
-            <>
+            <div className="app-wrapper">
                 <SEO
                     title={`${member.name} ${member.surname} — Актёр театра ЦСД`}
                     description={seoDescription}
                     keywords={seoKeywords}
                     path={`${ROUTES.TEAM}/${member.slug}`}
                 />
+                <Background needShift={memberImages?.length != 0}/>
 
                 <section className="team-card-full">
                     <div className="team-card-full__slider">
@@ -82,7 +86,7 @@ export const TeamCardFullUI: React.FC<TeamCardFullProps> = React.memo(
                         </div>
                     </div>
                 </section>
-            </>
+            </div>
         );
     },
 );

@@ -5,7 +5,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 
-export const Background: React.FC = () => {
+export const Background: React.FC<{needShift?: boolean}> = ({needShift = true}) => {
     const { pathname } = useLocation();
 
     const [count, setCount] = React.useState(0);
@@ -20,7 +20,7 @@ export const Background: React.FC = () => {
     React.useEffect(() => {
         const updateCount = () => {
             const pageHeight = document.documentElement.scrollHeight - 590 -  Number(isInPageWithBanner) * 630;
-            const pomegranateSpacing = 900 + Number(isInPageWithBanner) * 630;
+            const pomegranateSpacing = 900 + Number(isInPageWithBanner && needShift) * 630;
             const needed = Math.ceil(pageHeight / pomegranateSpacing);
             setCount(needed);
         };
@@ -52,6 +52,6 @@ export const Background: React.FC = () => {
         return null;
     }
     return (
-        <BackgroundUI count={count} isInPageWithBanner={isInPageWithBanner}/>
+        <BackgroundUI count={count} isInPageWithBanner={isInPageWithBanner && needShift}/>
     );
 };

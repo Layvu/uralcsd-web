@@ -6,6 +6,7 @@ import { YandexMap } from '@components/Shared/YandexMap';
 import { SEO } from '@components/Shared/SEO';
 import { ROUTES } from 'consts';
 import { proseedBackendText } from 'utils/proceedBackendText';
+import { Background } from '@components/Shared/Background';
 
 export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo }) => {
     const { faq, social } = contactsInfo;
@@ -17,14 +18,15 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
     };
 
     return (
-        <>
+        <div className="app-wrapper">
             <SEO
                 title="Социальные сети и FAQ - Центр современной драматургии"
                 description="Социальные сети театра ЦСД, театр на карте. Ответы на часто задаваемые вопросы: как добраться, как купить билет, график работы"
                 keywords="контакты, адрес, FAQ, соцсети, вк, телеграмм, телефон, email, театр, ЦСД, Центр современной драматургии, график"
                 path={ROUTES.CONTACTS}
             />
-
+            <Background />
+            
             <section className="contacts-page wrap">
                 <h1 className="visually-hidden">FAQ</h1>
 
@@ -112,6 +114,6 @@ export const ContactsUI: React.FC<ContactsUIProps> = React.memo(({ contactsInfo 
 
                 <YandexMap />
             </section>
-        </>
+        </div>
     );
 });

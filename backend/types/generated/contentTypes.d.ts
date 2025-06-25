@@ -399,6 +399,7 @@ export interface ApiAfishaItemAfishaItem extends Struct.CollectionTypeSchema {
     >;
     photo: Schema.Attribute.Media<'images'>;
     price: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
       Schema.Attribute.SetMinMax<
         {
           min: 0;

@@ -31,7 +31,7 @@ export const ProjectCardUI: React.FC<ProjectCardProps> = ({
                     loading="lazy"
                 />
                 <div className="project-card__gradient">
-                    <h2 className="project-card__title">«{title}»</h2>
+                    <h2 className="project-card__title">{title}</h2>
                 </div>
             </Link>
         </div>
