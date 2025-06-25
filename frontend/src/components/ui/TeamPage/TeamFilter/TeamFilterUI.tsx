@@ -3,6 +3,7 @@ import { TeamFilterProps } from './type';
 
 import './team-filter.scss';
 import { TeamFilterCategories } from 'consts';
+import { useBreakpoint } from 'hooks/useBreakpoint';
 
 const categoriesLabels: Record<TeamFilterCategories, string> = {
     [TeamFilterCategories.Actors]: 'Актёры',
@@ -15,17 +16,20 @@ export const TeamFilterUI: React.FC<TeamFilterProps> = React.memo(({ activeCateg
         {} as Record<TeamFilterCategories, HTMLButtonElement | null>,
     );
 
+    const {isMobile} = useBreakpoint();
+
     const handleClick = (category: TeamFilterCategories) => {
         onSelectCategory(category);
-
+        if(isMobile){
         // Прокручиваем к выбранному элементу
-        const button = buttonRefs.current[category];
-        if (button) {
-            button.scrollIntoView({
-                behavior: 'smooth', // Плавная прокрутка
-                block: 'nearest', // Прокручивает минимально необходимое расстояние
-                inline: 'center', // Центрирует элемент по горизонтали
-            });
+            const button = buttonRefs.current[category];
+            if (button) {
+                button.scrollIntoView({
+                    behavior: 'smooth', // Плавная прокрутка
+                    block: 'nearest', // Прокручивает минимально необходимое расстояние
+                    inline: 'center', // Центрирует элемент по горизонтали
+                });
+            }
         }
     };
 

@@ -1,19 +1,23 @@
 import React, { useRef } from "react";
 import { MonthFilterProps } from "./type";
 import './Month-filter.scss';
+import { useBreakpoint } from "hooks/useBreakpoint";
 
 export const MonthFilterUI: React.FC<MonthFilterProps> = React.memo(({ months, activeMonthIndex, onMonthChange }) => {
     const buttonsRef = useRef<Record<number, HTMLButtonElement | null>>({} as Record<number, HTMLButtonElement | null>);
-        
+    const {isMobile} = useBreakpoint();
+
     const handleClick = (monthIndex: number) => {
         onMonthChange(monthIndex);
+        if (isMobile){
 
-        const button = buttonsRef.current[monthIndex];
-        button?.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "center"
-        });
+            const button = buttonsRef.current[monthIndex];
+            button?.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+            });
+        }
     };
 
     return (

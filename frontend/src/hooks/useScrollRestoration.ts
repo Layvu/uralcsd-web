@@ -12,7 +12,8 @@ export const useScrollRestoration = () => {
         shouldRestoreScroll.current = [
             ROUTES.AFISHA,
             ROUTES.PERFORMANCES,
-            ROUTES.PROJECTS
+            ROUTES.PROJECTS,
+            ROUTES.TEAM
         ].some(path => location.pathname == path);
     }, [location.pathname]);
 
