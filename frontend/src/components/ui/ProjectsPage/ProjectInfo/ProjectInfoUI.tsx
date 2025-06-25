@@ -3,17 +3,20 @@ import './ProjectInfo.scss';
 
 import { ProjectInfoUIProps } from './type';
 import { DefaultBanner } from '@components/Shared/DefaultBanner';
-import { proseedBackendText } from 'utils/proceedBackendText';
+import { parseParagraphs, proseedBackendText } from 'utils/proceedBackendText';
 import { SEO } from '@components/Shared/SEO';
 import { ROUTES } from 'consts';
+import { Background } from '@components/Shared/Background';
 
 export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
-    const paragraphs = project?.description?.split('\n').filter((p) => p.trim().length > 0);
-    const { description, title, additionalInfo } = project;
+    const paragraphs = parseParagraphs(project.description);
+    const { description, title, additionalInfo, images } = project;
+
+    const projectImages = images?.map((image) => image.url) || [];
 
     // Описание страницы для SEO
     const seoDescription = React.useMemo(() => {
-        return description?.slice(0, 160) || `«${title}» — новый проект театра ЦСД`;
+        return description?.slice(0, 160) || `${title} — новый проект театра ЦСД`;
     }, [description, title]);
 
     // Ключевые слова для SEO
@@ -33,18 +36,19 @@ export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
     }, [title, additionalInfo]);
 
     return (
-        <>
+        <div className="app-wrapper">
             <SEO
                 title={`${project.title} - Проект театра ЦСД`}
                 description={seoDescription}
                 keywords={seoKeywords}
                 path={`${ROUTES.PROJECTS}/${project.slug}`}
             />
+            <Background needShift={projectImages.length > 0}/>
 
             <div className="project-info">
                 <DefaultBanner
                     name={project.title}
-                    images={project.images ? project.images.map((image) => image.url) : []}
+                    images={projectImages}
                 />
 
                 <div className="project-info__wrap wrap">
@@ -78,6 +82,6 @@ export const ProjectInfoUI: React.FC<ProjectInfoUIProps> = ({ project }) => {
                     )}
                 </div>
             </div>
-        </>
+        </div>
     );
 };

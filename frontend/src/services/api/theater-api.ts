@@ -19,7 +19,6 @@ const apiClient = axios.create({
 });
 
 export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
-    console.log('fetchPerformancesApi...');
     try {
         const response = await apiClient.get('/performances', {
             params: {
@@ -37,7 +36,7 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             },
         });
 
-        const performances = response.data.data.map((item: IPerformance) => ({
+        let performances = response.data.data.map((item: IPerformance) => ({
             id: item.id,
             title: item.title,
             slug: item.slug,
@@ -68,6 +67,13 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
             isPremiere: item.isPremiere,
         }));
 
+        // сначала премьеры, затем остальные
+        performances = performances.sort((a: IPerformance, b: IPerformance) => {
+            if (a.isPremiere && !b.isPremiere) return -1;
+            if (!a.isPremiere && b.isPremiere) return 1;
+            return 0;
+        });
+
         return performances;
     } catch (error) {
         console.error('Error fetching performances:', error);
@@ -76,7 +82,6 @@ export const fetchPerformancesApi = async (): Promise<IPerformance[]> => {
 };
 
 export const fetchTeamApi = async (): Promise<IMember[]> => {
-    console.log('fetchTeamApi...');
     try {
         const response = await apiClient.get('/members', {
             params: {
@@ -113,7 +118,6 @@ export const fetchTeamApi = async (): Promise<IMember[]> => {
 };
 
 export const fetchPerformanceCastsApi = async (): Promise<IPerformanceCast[]> => {
-    console.log('fetchPerformanceCastsApi...');
     try {
         const response = await apiClient.get('/performance-casts', {
             params: {
@@ -139,7 +143,6 @@ export const fetchPerformanceCastsApi = async (): Promise<IPerformanceCast[]> =>
 };
 
 export const fetchAfishaItemsApi = async (): Promise<IAfishaItem[]> => {
-    console.log('fetchAfishaItemsApi...');
     try {
         const currentDate = new Date().toISOString();
         const response = await apiClient.get('/afisha-items', {
@@ -171,7 +174,6 @@ export const fetchAfishaItemsApi = async (): Promise<IAfishaItem[]> => {
 };
 
 export const fetchProjectsApi = async (): Promise<IProject[]> => {
-    console.log('fetchProjectsApi...');
     try {
         const response = await apiClient.get('/projects', {
             params: {
@@ -196,8 +198,6 @@ export const fetchProjectsApi = async (): Promise<IProject[]> => {
 };
 
 export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {
-    console.log('fetchTheaterInfoApi...');
-
     try {
         const response = await apiClient.get('/theater-info', {
             params: {
@@ -234,7 +234,6 @@ export const fetchTheaterInfoApi = async (): Promise<ITheaterInfo> => {
 };
 
 export const fetchContactsApi = async (): Promise<IContactInfo> => {
-    console.log('fetchContactsApi...');
     try {
         const response = await apiClient.get('/contact', {
             params: {

@@ -12,8 +12,6 @@ export const SEO: React.FC<SEOProps> = ({ title, description, keywords, path }) 
     const baseUrl = 'https://uralcsd.com';
     const fullUrl = path ? `${baseUrl}${path}` : baseUrl;
 
-    console.log(`--\nSEO: ${fullUrl}\n\ntitle: ${title}\n\ndescription: ${description}\n\nkeywords: ${keywords}\n--`);
-
     return (
         <Helmet>
             <title>{title}</title>

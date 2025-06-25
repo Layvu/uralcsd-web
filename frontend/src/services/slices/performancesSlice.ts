@@ -23,7 +23,6 @@ const performancesSlice = createSlice({
                 state.data = action.payload;
                 state.loading = false;
                 state.error = null;
-                console.log('performancesSlice: fulfilled');
                 state.isInitialized = true;
             })
             .addCase(fetchPerformances.rejected, (state, action) => {

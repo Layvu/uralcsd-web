@@ -20,8 +20,8 @@
 
     &__tag {
         position: absolute;
-        top: 30px;
-        left: 30px;
+        top: 20px;
+        left: 20px;
         z-index: 1;
     }
 
@@ -43,7 +43,7 @@
         height: 250px;
         width: 100%;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.9) 100%);
-        padding: 30px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;

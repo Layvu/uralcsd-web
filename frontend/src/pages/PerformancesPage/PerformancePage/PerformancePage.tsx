@@ -65,7 +65,7 @@ export const PerformancePage: React.FC = () => {
     }
 
     if (!performance) {
-        return <div className='not-found wrap'>Событие не найдено</div>;
+        return <div className='not-found wrap' style={{'marginTop': '50px'}}>Событие не найдено</div>;
     }
 
     return (

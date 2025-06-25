@@ -41,7 +41,6 @@ async function fetchPerformancesSlugsApi(): Promise<RouteItem[]> {
                 fields: ['slug'], // Запрашиваем только slug
             },
         });
-        console.log('Performances slugs:', response.data.data);
         return response.data.data;
     } catch (error) {
         console.error('Error fetching performances:', error);
@@ -56,7 +55,6 @@ async function fetchTeamSlugsApi(): Promise<RouteItem[]> {
                 fields: ['slug'],
             },
         });
-        console.log('Team slugs:', response.data.data);
         return response.data.data;
     } catch (error) {
         console.error('Error fetching team members:', error);
@@ -71,7 +69,6 @@ async function fetchProjectsSlugsApi(): Promise<RouteItem[]> {
                 fields: ['slug'],
             },
         });
-        console.log('Projects slugs:', response.data.data);
         return response.data.data;
     } catch (error) {
         console.error('Error fetching projects:', error);
@@ -107,11 +104,9 @@ async function generateRoutes() {
         // Сохраняем обновлённый package.json
         fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-        console.log(`Generated ${routes.length} routes and updated package.json`);
         return routes;
     } catch (error) {
         console.error('Error fetching routes from API:', error);
-        console.log('Using fallback static routes');
 
         // Читаем текущий package.json для fallback
         const packageJsonPath = path.resolve(__dirname, '../package.json');
@@ -124,7 +119,6 @@ async function generateRoutes() {
         // Сохраняем обновлённый package.json
         fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
-        console.log('Updated package.json with fallback routes');
         return routes;
     }
 }

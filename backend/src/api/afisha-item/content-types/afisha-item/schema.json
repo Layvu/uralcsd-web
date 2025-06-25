@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "attributes": {
     "performance": {
@@ -17,17 +17,21 @@
       "target": "api::performance.performance"
     },
     "date": {
-      "type": "datetime"
+      "type": "datetime",
+      "required": true
     },
     "sessionId": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "isInMainBanner": {
       "type": "boolean",
       "default": false
     },
     "price": {
-      "type": "integer"
+      "type": "integer",
+      "min": 0,
+      "required": true
     },
     "photo": {
       "type": "media",
