@@ -256,8 +256,11 @@
 
     &__cast-actor,
     &__crew-member {
-        padding-right: 30px;  
-        text-align: start
+        min-width: 150px;
+        padding-right: 30px;
+        text-align: start;
+        justify-content: center;
+        align-items: center;
     }
 
     &__cast-role,
