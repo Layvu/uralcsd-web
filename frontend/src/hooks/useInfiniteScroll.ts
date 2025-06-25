@@ -35,6 +35,7 @@ export const useInfiniteScroll = (type: ListType) => {
 
     const loadMore = useCallback(() => {
         if (!hasMore) return;
+        setVisibleCount((prev) => prev + ITEMS_PER_LOAD);
     }, [hasMore]);
 
     const lastElementRef = useCallback(
