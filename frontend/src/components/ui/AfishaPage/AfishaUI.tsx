@@ -8,7 +8,7 @@ import { ROUTES } from 'consts';
 import { Background } from '@components/Shared/Background';
 
 export const AfishaUI: React.FC<AfishaProps> = React.memo(
-    ({ months, activeMonthIndex, onMonthChange, groupedAfishaItemsWithPerformanceByDate }) => {
+    ({ months, activeMonthIndex, onMonthChange, groupedAfishaItemsWithPerformanceByDate, lastElementRef, hasMore }) => {
         return (
             <div className="app-wrapper">
                 <SEO
@@ -29,9 +29,17 @@ export const AfishaUI: React.FC<AfishaProps> = React.memo(
                     </div>
 
                     <ul className="afisha__schedule">
-                        {Object.entries(groupedAfishaItemsWithPerformanceByDate).length != 0 ? (
-                            Object.entries(groupedAfishaItemsWithPerformanceByDate).map(([date, afishaItems]) => (
-                                <li key={date} className="afisha__schedule-item">
+                        {groupedAfishaItemsWithPerformanceByDate.length !== 0 ? (
+                            groupedAfishaItemsWithPerformanceByDate.map(([date, afishaItems], index) => (
+                                <li
+                                    key={date}
+                                    className="afisha__schedule-item"
+                                    ref={
+                                        index === groupedAfishaItemsWithPerformanceByDate.length - 1
+                                            ? lastElementRef
+                                            : null
+                                    }
+                                >
                                     <DaySchedule afishaItemsWithPerformance={afishaItems} />
                                 </li>
                             ))
@@ -39,6 +47,7 @@ export const AfishaUI: React.FC<AfishaProps> = React.memo(
                             <div className="not-found">Спектаклей в заданный период нет.</div>
                         )}
                     </ul>
+                    {hasMore && <div className="loading">Загрузка...</div>}
                 </section>
             </div>
         );

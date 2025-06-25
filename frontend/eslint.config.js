@@ -40,6 +40,7 @@ export default [
             '@typescript-eslint/no-unused-vars': 'warn', // Предупреждение о неиспользуемых переменных
             '@typescript-eslint/explicit-module-boundary-types': 'off', // Отключаем требование явных типов для функций
             '@typescript-eslint/no-explicit-any': 'warn', // Предупреждение при использовании any
+            '@typescript-eslint/indent': ['error', 4], // Использовать отступы в 4 пробела
         },
     },
 
