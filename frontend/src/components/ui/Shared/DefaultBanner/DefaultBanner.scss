@@ -28,6 +28,10 @@
         object-fit: cover;
         user-select: none;
         pointer-events: none;
+
+        @include laptop{
+            max-width: none;
+        }
     }
 
     &__slider {

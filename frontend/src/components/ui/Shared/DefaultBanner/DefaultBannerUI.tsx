@@ -70,7 +70,7 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
         : images;
 
     // Также переносим последний элемент в начало, тоже для корректной работы
-    if (sliderImages.length > 1) {
+    if (sliderImages.length > 1 && !isSmallDevise) {
         sliderImages = [sliderImages[sliderImages.length - 1], ...sliderImages.slice(0, sliderImages.length - 1)];
     }
 
@@ -111,7 +111,7 @@ export const DefaultBannerUI: React.FC<DefaultBannerProps> = ({ name, images }) 
                     onInit={(swiper) => {
                         swiperRef.current = swiper;
                     }}
-                    spaceBetween={40}
+                    spaceBetween={isSmallDevise ? 0 : 40}
                     slidesPerView="auto"
                     modules={[Navigation, Autoplay, Pagination]}
                     autoplay={{
