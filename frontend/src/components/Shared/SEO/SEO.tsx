@@ -9,11 +9,9 @@ interface SEOProps {
 }
 
 export const SEO: React.FC<SEOProps> = ({ title, description, keywords, path }) => {
-    // TODO: сменить на uralcsd
-    const baseUrl = 'https://vm-272e5375.na4u.ru';
+    const baseUrl = 'https://uralcsd.com';
     const fullUrl = path ? `${baseUrl}${path}` : baseUrl;
 
-    // TODO: remove
     console.log(`--\nSEO: ${fullUrl}\n\ntitle: ${title}\n\ndescription: ${description}\n\nkeywords: ${keywords}\n--`);
 
     return (

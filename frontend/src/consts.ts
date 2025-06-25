@@ -23,6 +23,13 @@ export enum TeamFilterCategories {
     Management = 'management',
 }
 
+export const CONTENT_LISTS = {
+    PERFORMANCES: 'performances',
+    PROJECTS: 'projects',
+    TEAM: 'team',
+    AFISHA_ITEMS: 'afishaItems',
+} as const;
+
 export const isHomeRoute = (pathname: string) => pathname === ROUTES.HOME;
 export const isAfishaRoute = (pathname: string) => pathname === ROUTES.AFISHA;
 export const isPerformancesListRoute = (pathname: string) => pathname === ROUTES.PERFORMANCES;
