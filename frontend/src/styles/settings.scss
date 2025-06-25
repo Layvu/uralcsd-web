@@ -123,7 +123,7 @@ h6 {
 .not-found,
 .error {
     display: flex;
-    margin-top: 50px;
+    
     margin-bottom: 100px;
     font-size: 32px;
     line-height: 130%;
@@ -133,6 +133,10 @@ h6 {
 
     justify-content: center;
     align-items: center;
+
+    @include tablet{
+        @include text-20;
+    }
 }
 .not-found{
     background: var(--white-10, rgba(255, 255, 255, 0.10));

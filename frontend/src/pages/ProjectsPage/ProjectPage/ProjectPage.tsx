@@ -20,7 +20,7 @@ export const ProjectPage: React.FC = () => {
     }
 
     if (!project) {
-        return <div className='not-found'>Проект не найден</div>;
+        return <div className='not-found wrap' style={{'marginTop': '50px'}}>Проект не найден</div>;
     }
 
     return <ProjectInfoUI project={project} />;

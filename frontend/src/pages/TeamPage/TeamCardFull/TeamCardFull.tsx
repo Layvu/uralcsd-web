@@ -67,7 +67,7 @@ export const TeamCardFull: React.FC = React.memo(() => {
         return <div className="error">Ошибка: {error}</div>;
     }
     if (!member) {
-        return <div className="not-found">Участник команды не найден</div>;
+        return <div className="not-found wrap" style={{'marginTop': '50px'}}>Участник команды не найден</div>;
     }
 
     return <TeamCardFullUI 
