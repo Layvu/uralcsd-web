@@ -22,12 +22,12 @@
     &--big {
         display: inline-flex;
         height: 50px;
-        padding: 0px 30px 12px 30px;
+        padding: 0px 30px;
         justify-content: center;
-        align-items: flex-end;
+        align-items: center;
+        align-self: stretch;
         gap: 10px;
         flex-shrink: 0;
-
         color: var(--pomegranate-bright);
 
         /* Text 22 */
