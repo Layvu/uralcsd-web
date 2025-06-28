@@ -17,7 +17,7 @@ export const SpectacleCardUI: React.FC<SpectacleCardProps> = ({
     isLatestPerformance,
 }) => {
     const titleRef = useRef<HTMLHeadingElement>(null);
-    const [teaserLines, setTeaserLines] = useState<number>(3);
+    const [teaserLines, setTeaserLines] = useState<number>(isLatestPerformance ? 3 : 4);
     const [measured, setMeasured] = useState(false);
     const { isMobile } = useBreakpoint();
     const [imageError, setImageError] = useState(false);
