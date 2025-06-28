@@ -64,7 +64,6 @@ export default [
 
     {
         rules: {
-            indent: ['error', 4], // Использовать отступы в 4 пробела
             semi: ['error', 'always'], // Требовать точку с запятой в конце строк
             'no-console': 'warn', // Предупреждение при использовании console.log
             'no-debugger': 'error', // Запретить использование debugger
